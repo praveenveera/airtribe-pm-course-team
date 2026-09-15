@@ -1,0 +1,100 @@
+{
+  "meta": {
+    "scenarioId": "gift-luxury",
+    "persona": "gift-giver",
+    "title": "Luxury gift set for a friend",
+    "goal": "Find a premium skincare or makeup gift set between ₹2000–₹5000",
+    "buyerMindset": "Wants perceived value, giftability, and fast delivery — less price-sensitive",
+    "platform": "Nykaa desktop web (Playwright Desktop Chrome 1440×900)",
+    "startedAt": "2026-09-04T09:48:46.922Z",
+    "finishedAt": "2026-09-04T09:49:07.526Z",
+    "totalDurationMs": 17377
+  },
+  "summary": {
+    "good": 2,
+    "bad": 0,
+    "neutral": 5,
+    "errors": 0
+  },
+  "steps": [
+    {
+      "step": "01-home",
+      "url": "https://www.nykaa.com/",
+      "timestamp": "2026-09-04T09:48:49.612Z",
+      "durationMs": 0,
+      "verdict": "neutral",
+      "buyerInsight": "Entry point sets discovery mode — browse vs search vs category shortcut.",
+      "uxNote": "Promo density vs goal-directed shortcuts (e.g. Face Moisturizer tile).",
+      "notes": "Homepage loaded for scenario: Luxury gift set for a friend",
+      "screenshot": "screenshots/web/gift-luxury-01-home.png"
+    },
+    {
+      "step": "02-search",
+      "url": "https://www.nykaa.com/search/result/?q=luxury%20skincare%20gift%20set&root=search&searchType=Manual&sourcepage=home",
+      "timestamp": "2026-09-04T09:48:49.737Z",
+      "durationMs": 3864,
+      "verdict": "good",
+      "buyerInsight": "Manageable results; PLP cards help shortlist.",
+      "uxNote": "Ratings, badges, offer prices on cards.",
+      "notes": "Search \"luxury skincare gift set\" via ui. Results loaded.",
+      "screenshot": "screenshots/web/gift-luxury-02-search-plp.png",
+      "goodScreenshot": "screenshots/good/gift-luxury-02-search-plp.png"
+    },
+    {
+      "step": "03-filters",
+      "url": "https://www.nykaa.com/search/result/?q=luxury%20skincare%20gift%20set&root=search&searchType=Manual&sourcepage=home",
+      "timestamp": "2026-09-04T09:48:53.795Z",
+      "durationMs": 2251,
+      "verdict": "neutral",
+      "buyerInsight": "Filters match beauty decision criteria (skin type, concern, price).",
+      "uxNote": "Strong taxonomy when accessible.",
+      "notes": "Filter not found.",
+      "screenshot": "screenshots/web/gift-luxury-03-filters.png"
+    },
+    {
+      "step": "04-add-to-bag",
+      "url": "https://www.nykaa.com/search/result/?q=luxury%20skincare%20gift%20set&root=search&searchType=Manual&sourcepage=home",
+      "timestamp": "2026-09-04T09:48:56.102Z",
+      "durationMs": 3099,
+      "verdict": "neutral",
+      "buyerInsight": "Confirmation reduces anxiety before proceeding to cart.",
+      "uxNote": "Inline PLP add-to-bag vs View Sizes for variants.",
+      "notes": "Add to bag action attempted.",
+      "screenshot": "screenshots/web/gift-luxury-04-add-to-bag.png"
+    },
+    {
+      "step": "05-bag-cart",
+      "url": "https://www.nykaa.com/shoppingbag/",
+      "timestamp": "2026-09-04T09:48:59.263Z",
+      "durationMs": 3146,
+      "verdict": "neutral",
+      "buyerInsight": "Buyer validates subtotal, savings, delivery promise before checkout.",
+      "uxNote": "Coupon complexity and delivery ETA clarity matter here.",
+      "notes": "Bag page opened.",
+      "screenshot": "screenshots/web/gift-luxury-05-bag-cart.png"
+    },
+    {
+      "step": "06-checkout-entry",
+      "url": "https://www.nykaa.com/shoppingbag/",
+      "timestamp": "2026-09-04T09:49:02.435Z",
+      "durationMs": 3011,
+      "verdict": "good",
+      "buyerInsight": "Saved address / wallet should accelerate repeat buyers.",
+      "uxNote": "Guest checkout vs forced login trade-off.",
+      "notes": "Checkout flow entered.",
+      "screenshot": "screenshots/web/gift-luxury-06-checkout-entry.png",
+      "goodScreenshot": "screenshots/good/gift-luxury-06-checkout-entry.png"
+    },
+    {
+      "step": "07-address-payment",
+      "url": "https://www.nykaa.com/shoppingbag/",
+      "timestamp": "2026-09-04T09:49:05.495Z",
+      "durationMs": 2006,
+      "verdict": "neutral",
+      "buyerInsight": "Final cost, delivery date, and payment trust decided here.",
+      "uxNote": "Hidden fees or offer confusion = highest abandonment risk.",
+      "notes": "Checkout captured. Address UI: false. Payment UI: false. Stopped before payment.",
+      "screenshot": "screenshots/web/gift-luxury-07-address-payment.png"
+    }
+  ]
+}

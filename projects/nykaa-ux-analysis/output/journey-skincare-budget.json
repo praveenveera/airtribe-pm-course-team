@@ -1,0 +1,100 @@
+{
+  "meta": {
+    "scenarioId": "skincare-budget",
+    "persona": "careful-buyer",
+    "title": "Budget skincare — dry sensitive skin",
+    "goal": "Find a face moisturizer for dry, sensitive skin under ₹800",
+    "buyerMindset": "Risk-averse; needs trust signals (reviews, skin-type labels) before purchase",
+    "platform": "Nykaa desktop web (Playwright Desktop Chrome 1440×900)",
+    "startedAt": "2026-09-04T09:49:51.514Z",
+    "finishedAt": "2026-09-04T09:50:34.831Z",
+    "totalDurationMs": 40241
+  },
+  "summary": {
+    "good": 2,
+    "bad": 0,
+    "neutral": 5,
+    "errors": 0
+  },
+  "steps": [
+    {
+      "step": "01-home",
+      "url": "https://www.nykaa.com/",
+      "timestamp": "2026-09-04T09:49:53.967Z",
+      "durationMs": 0,
+      "verdict": "neutral",
+      "buyerInsight": "Entry point sets discovery mode — browse vs search vs category shortcut.",
+      "uxNote": "Promo density vs goal-directed shortcuts (e.g. Face Moisturizer tile).",
+      "notes": "Homepage loaded for scenario: Budget skincare — dry sensitive skin",
+      "screenshot": "screenshots/web/skincare-budget-01-home.png"
+    },
+    {
+      "step": "02-search",
+      "url": "https://www.nykaa.com/search/result/?q=moisturizer%20dry%20sensitive%20skin&root=search&searchType=Manual&sourcepage=home",
+      "timestamp": "2026-09-04T09:49:54.096Z",
+      "durationMs": 4045,
+      "verdict": "good",
+      "buyerInsight": "Manageable results; PLP cards help shortlist.",
+      "uxNote": "Ratings, badges, offer prices on cards.",
+      "notes": "Search \"moisturizer dry sensitive skin\" via ui. Results loaded.",
+      "screenshot": "screenshots/web/skincare-budget-02-search-plp.png",
+      "goodScreenshot": "screenshots/good/skincare-budget-02-search-plp.png"
+    },
+    {
+      "step": "03-filters",
+      "url": "https://www.nykaa.com/search/result/?q=moisturizer%20dry%20sensitive%20skin&root=search&searchType=Manual&sourcepage=home",
+      "timestamp": "2026-09-04T09:49:58.433Z",
+      "durationMs": 2056,
+      "verdict": "neutral",
+      "buyerInsight": "Filters match beauty decision criteria (skin type, concern, price).",
+      "uxNote": "Strong taxonomy when accessible.",
+      "notes": "Filter not found.",
+      "screenshot": "screenshots/web/skincare-budget-03-filters.png"
+    },
+    {
+      "step": "04-add-to-bag",
+      "url": "https://www.nykaa.com/search/result/?q=moisturizer%20dry%20sensitive%20skin&root=search&searchType=Manual&sourcepage=home",
+      "timestamp": "2026-09-04T09:50:00.541Z",
+      "durationMs": 3100,
+      "verdict": "neutral",
+      "buyerInsight": "Confirmation reduces anxiety before proceeding to cart.",
+      "uxNote": "Inline PLP add-to-bag vs View Sizes for variants.",
+      "notes": "Add to bag action attempted.",
+      "screenshot": "screenshots/web/skincare-budget-04-add-to-bag.png"
+    },
+    {
+      "step": "05-bag-cart",
+      "url": "https://www.nykaa.com/shoppingbag/",
+      "timestamp": "2026-09-04T09:50:03.694Z",
+      "durationMs": 26025,
+      "verdict": "neutral",
+      "buyerInsight": "Buyer validates subtotal, savings, delivery promise before checkout.",
+      "uxNote": "Coupon complexity and delivery ETA clarity matter here.",
+      "notes": "Bag page opened.",
+      "screenshot": "screenshots/web/skincare-budget-05-bag-cart.png"
+    },
+    {
+      "step": "06-checkout-entry",
+      "url": "https://www.nykaa.com/shoppingbag/",
+      "timestamp": "2026-09-04T09:50:29.741Z",
+      "durationMs": 3009,
+      "verdict": "good",
+      "buyerInsight": "Saved address / wallet should accelerate repeat buyers.",
+      "uxNote": "Guest checkout vs forced login trade-off.",
+      "notes": "Checkout flow entered.",
+      "screenshot": "screenshots/web/skincare-budget-06-checkout-entry.png",
+      "goodScreenshot": "screenshots/good/skincare-budget-06-checkout-entry.png"
+    },
+    {
+      "step": "07-address-payment",
+      "url": "https://www.nykaa.com/shoppingbag/",
+      "timestamp": "2026-09-04T09:50:32.797Z",
+      "durationMs": 2006,
+      "verdict": "neutral",
+      "buyerInsight": "Final cost, delivery date, and payment trust decided here.",
+      "uxNote": "Hidden fees or offer confusion = highest abandonment risk.",
+      "notes": "Checkout captured. Address UI: false. Payment UI: false. Stopped before payment.",
+      "screenshot": "screenshots/web/skincare-budget-07-address-payment.png"
+    }
+  ]
+}

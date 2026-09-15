@@ -1,0 +1,104 @@
+{
+  "meta": {
+    "goal": "Find a face moisturizer for dry, sensitive skin under ₹800",
+    "platform": "Nykaa mobile web (Playwright iPhone 13 viewport)",
+    "searchQuery": "moisturizer dry sensitive skin",
+    "startedAt": "2026-09-04T09:15:35.715Z",
+    "finishedAt": "2026-09-04T09:16:56.223Z",
+    "totalDurationMs": 80407
+  },
+  "summary": {
+    "smoothSteps": 3,
+    "confusingSteps": 2,
+    "slowSteps": 2,
+    "frustratingSteps": 1,
+    "errors": 1
+  },
+  "steps": [
+    {
+      "step": "1. Open home",
+      "url": "https://www.nykaa.com/",
+      "timestamp": "2026-09-04T09:15:35.715Z",
+      "durationMs": 3288,
+      "smooth": true,
+      "confusing": true,
+      "slow": false,
+      "frustrating": false,
+      "notes": "Loaded homepage. Title: \"Buy Cosmetics Products & Beauty Products Online in India at Best Price | Nykaa\". Promotional banners visible on entry.",
+      "screenshot": "screenshots/web/01-home.png"
+    },
+    {
+      "step": "2. Search entry",
+      "url": "https://www.nykaa.com/search/result/?q=moisturizer%2Bdry%2Bsensitive%2Bskin",
+      "timestamp": "2026-09-04T09:15:39.003Z",
+      "durationMs": 4975,
+      "smooth": true,
+      "confusing": true,
+      "slow": false,
+      "frustrating": false,
+      "notes": "Search UI not found; navigated directly to search URL for \"moisturizer dry sensitive skin\".",
+      "screenshot": "screenshots/web/02-search.png"
+    },
+    {
+      "step": "3. Filters / sort",
+      "url": "https://www.nykaa.com/search/result/?q=moisturizer%2Bdry%2Bsensitive%2Bskin",
+      "timestamp": "2026-09-04T09:15:43.979Z",
+      "durationMs": 62990,
+      "smooth": false,
+      "confusing": false,
+      "slow": true,
+      "frustrating": false,
+      "notes": "Opened filter panel. Attempted price filter ≤ ₹800. Filter UX on mobile web can be dense.",
+      "screenshot": "screenshots/web/03-filters.png"
+    },
+    {
+      "step": "4. Product listing (PLP)",
+      "url": "https://www.nykaa.com/search/result/?q=moisturizer%2Bdry%2Bsensitive%2Bskin",
+      "timestamp": "2026-09-04T09:16:46.969Z",
+      "durationMs": 2705,
+      "smooth": false,
+      "confusing": false,
+      "slow": false,
+      "frustrating": false,
+      "notes": "Product listing visible. ~0 product links detected. Multiple brands/prices shown; comparison requires opening PDPs.",
+      "screenshot": "screenshots/web/04-plp.png"
+    },
+    {
+      "step": "5. Product detail (PDP)",
+      "url": "https://www.nykaa.com/search/result/?q=moisturizer%2Bdry%2Bsensitive%2Bskin",
+      "timestamp": "2026-09-04T09:16:49.674Z",
+      "durationMs": 621,
+      "smooth": false,
+      "confusing": false,
+      "slow": false,
+      "frustrating": true,
+      "notes": "Step failed: No product link found on listing page",
+      "error": "No product link found on listing page",
+      "screenshot": "screenshots/web/error-5.-product-detail-(pdp).png"
+    },
+    {
+      "step": "6. Reviews section",
+      "url": "https://www.nykaa.com/search/result/?q=moisturizer%2Bdry%2Bsensitive%2Bskin",
+      "timestamp": "2026-09-04T09:16:50.395Z",
+      "durationMs": 2608,
+      "smooth": false,
+      "confusing": false,
+      "slow": true,
+      "frustrating": false,
+      "notes": "Scrolled PDP; reviews section may be below fold or lazy-loaded.",
+      "screenshot": "screenshots/web/06-reviews.png"
+    },
+    {
+      "step": "7. Add to cart",
+      "url": "https://www.nykaa.com/search/result/?q=moisturizer%2Bdry%2Bsensitive%2Bskin",
+      "timestamp": "2026-09-04T09:16:53.003Z",
+      "durationMs": 3220,
+      "smooth": true,
+      "confusing": false,
+      "slow": false,
+      "frustrating": false,
+      "notes": "Added product to bag. Cart/bag indicator may require navigation. Stopped before checkout/payment.",
+      "screenshot": "screenshots/web/07-cart.png"
+    }
+  ]
+}

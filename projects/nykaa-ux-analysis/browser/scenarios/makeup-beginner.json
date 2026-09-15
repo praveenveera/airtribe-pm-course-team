@@ -1,0 +1,11 @@
+{
+  "id": "makeup-beginner",
+  "persona": "beauty-beginner",
+  "title": "First lipstick purchase",
+  "goal": "Buy a beginner-friendly everyday lipstick under ₹500 with shade guidance",
+  "searchQuery": "lipstick everyday wear",
+  "maxPrice": 500,
+  "category": "makeup",
+  "buyerMindset": "Uncertain about shades; needs guidance, bestseller tags, and try-before-commit confidence",
+  "phases": ["discover", "cart", "checkout"]
+}

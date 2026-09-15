@@ -1,0 +1,12 @@
+{
+  "id": "window-shopping",
+  "persona": "window-shopper",
+  "title": "Casual browse — no purchase today",
+  "goal": "Look around for ideas and offers without committing to a buy",
+  "searchQuery": "",
+  "maxPrice": null,
+  "category": "browse",
+  "buyerMindset": "Curious, not in a hurry; inspired by looks and deals; easy to leave if it feels pushy",
+  "phases": ["discover"],
+  "notes": "Do not force add-to-bag. Observe home, offers, and inspiration vs pressure to buy."
+}

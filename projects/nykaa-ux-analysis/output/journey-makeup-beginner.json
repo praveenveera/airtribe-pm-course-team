@@ -1,0 +1,100 @@
+{
+  "meta": {
+    "scenarioId": "makeup-beginner",
+    "persona": "beauty-beginner",
+    "title": "First lipstick purchase",
+    "goal": "Buy a beginner-friendly everyday lipstick under ₹500 with shade guidance",
+    "buyerMindset": "Uncertain about shades; needs guidance, bestseller tags, and try-before-commit confidence",
+    "platform": "Nykaa desktop web (Playwright Desktop Chrome 1440×900)",
+    "startedAt": "2026-09-04T09:49:07.723Z",
+    "finishedAt": "2026-09-04T09:49:28.052Z",
+    "totalDurationMs": 17288
+  },
+  "summary": {
+    "good": 2,
+    "bad": 0,
+    "neutral": 5,
+    "errors": 0
+  },
+  "steps": [
+    {
+      "step": "01-home",
+      "url": "https://www.nykaa.com/",
+      "timestamp": "2026-09-04T09:49:10.246Z",
+      "durationMs": 0,
+      "verdict": "neutral",
+      "buyerInsight": "Entry point sets discovery mode — browse vs search vs category shortcut.",
+      "uxNote": "Promo density vs goal-directed shortcuts (e.g. Face Moisturizer tile).",
+      "notes": "Homepage loaded for scenario: First lipstick purchase",
+      "screenshot": "screenshots/web/makeup-beginner-01-home.png"
+    },
+    {
+      "step": "02-search",
+      "url": "https://www.nykaa.com/search/result/?q=lipstick%20everyday%20wear&root=search&searchType=Manual&sourcepage=home",
+      "timestamp": "2026-09-04T09:49:10.360Z",
+      "durationMs": 3862,
+      "verdict": "good",
+      "buyerInsight": "Manageable results; PLP cards help shortlist.",
+      "uxNote": "Ratings, badges, offer prices on cards.",
+      "notes": "Search \"lipstick everyday wear\" via ui. Results loaded.",
+      "screenshot": "screenshots/web/makeup-beginner-02-search-plp.png",
+      "goodScreenshot": "screenshots/good/makeup-beginner-02-search-plp.png"
+    },
+    {
+      "step": "03-filters",
+      "url": "https://www.nykaa.com/search/result/?q=lipstick%20everyday%20wear&root=search&searchType=Manual&sourcepage=home",
+      "timestamp": "2026-09-04T09:49:14.424Z",
+      "durationMs": 2169,
+      "verdict": "neutral",
+      "buyerInsight": "Filters match beauty decision criteria (skin type, concern, price).",
+      "uxNote": "Strong taxonomy when accessible.",
+      "notes": "Filter not found.",
+      "screenshot": "screenshots/web/makeup-beginner-03-filters.png"
+    },
+    {
+      "step": "04-add-to-bag",
+      "url": "https://www.nykaa.com/search/result/?q=lipstick%20everyday%20wear&root=search&searchType=Manual&sourcepage=home",
+      "timestamp": "2026-09-04T09:49:16.648Z",
+      "durationMs": 3092,
+      "verdict": "neutral",
+      "buyerInsight": "Confirmation reduces anxiety before proceeding to cart.",
+      "uxNote": "Inline PLP add-to-bag vs View Sizes for variants.",
+      "notes": "Add to bag action attempted.",
+      "screenshot": "screenshots/web/makeup-beginner-04-add-to-bag.png"
+    },
+    {
+      "step": "05-bag-cart",
+      "url": "https://www.nykaa.com/shoppingbag/",
+      "timestamp": "2026-09-04T09:49:19.797Z",
+      "durationMs": 3151,
+      "verdict": "neutral",
+      "buyerInsight": "Buyer validates subtotal, savings, delivery promise before checkout.",
+      "uxNote": "Coupon complexity and delivery ETA clarity matter here.",
+      "notes": "Bag page opened.",
+      "screenshot": "screenshots/web/makeup-beginner-05-bag-cart.png"
+    },
+    {
+      "step": "06-checkout-entry",
+      "url": "https://www.nykaa.com/shoppingbag/",
+      "timestamp": "2026-09-04T09:49:22.970Z",
+      "durationMs": 3008,
+      "verdict": "good",
+      "buyerInsight": "Saved address / wallet should accelerate repeat buyers.",
+      "uxNote": "Guest checkout vs forced login trade-off.",
+      "notes": "Checkout flow entered.",
+      "screenshot": "screenshots/web/makeup-beginner-06-checkout-entry.png",
+      "goodScreenshot": "screenshots/good/makeup-beginner-06-checkout-entry.png"
+    },
+    {
+      "step": "07-address-payment",
+      "url": "https://www.nykaa.com/shoppingbag/",
+      "timestamp": "2026-09-04T09:49:26.021Z",
+      "durationMs": 2006,
+      "verdict": "neutral",
+      "buyerInsight": "Final cost, delivery date, and payment trust decided here.",
+      "uxNote": "Hidden fees or offer confusion = highest abandonment risk.",
+      "notes": "Checkout captured. Address UI: false. Payment UI: false. Stopped before payment.",
+      "screenshot": "screenshots/web/makeup-beginner-07-address-payment.png"
+    }
+  ]
+}

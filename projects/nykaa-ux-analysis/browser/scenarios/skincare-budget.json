@@ -1,0 +1,11 @@
+{
+  "id": "skincare-budget",
+  "persona": "careful-buyer",
+  "title": "Budget skincare — dry sensitive skin",
+  "goal": "Find a face moisturizer for dry, sensitive skin under ₹800",
+  "searchQuery": "moisturizer dry sensitive skin",
+  "maxPrice": 800,
+  "category": "skincare",
+  "buyerMindset": "Risk-averse; needs trust signals (reviews, skin-type labels) before purchase",
+  "phases": ["discover", "cart", "checkout"]
+}

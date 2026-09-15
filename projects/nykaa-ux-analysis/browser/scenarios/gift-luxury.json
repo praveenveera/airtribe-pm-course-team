@@ -1,0 +1,11 @@
+{
+  "id": "gift-luxury",
+  "persona": "gift-giver",
+  "title": "Luxury gift set for a friend",
+  "goal": "Find a premium skincare or makeup gift set between ₹2000–₹5000",
+  "searchQuery": "luxury skincare gift set",
+  "maxPrice": 5000,
+  "category": "gifting",
+  "buyerMindset": "Wants perceived value, giftability, and fast delivery — less price-sensitive",
+  "phases": ["discover", "cart", "checkout"]
+}

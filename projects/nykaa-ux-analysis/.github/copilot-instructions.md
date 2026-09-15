@@ -1,0 +1,1 @@
+Follow AGENTS.md at the repository root. This is an Airtribe Nykaa UX assignment (markdown + Playwright in browser/). Write simple PM-cohort language. Do not invent checkout if it was not observed. Do not commit .auth/.

@@ -1,0 +1,25 @@
+item,formula_or_source,value,unit,evidence_label,confidence,limitation,source_id
+Historical bike-taxi rides,"KPMG estimate across three aggregators in 2022",280000000,rides/year,FACT estimate,Medium,"Historical and consultant-estimated; not 2026",S05
+Illustrative serviceable available market,"Assumed EV bike-taxi rides across selected legal EV-ready metros",10000000,rides/year,PLANNING ASSUMPTION,Low,"Not based on current city-level ride volumes; validate legality charging coverage and EV supply",None
+Illustrative serviceable obtainable market,"10% assumed capture of illustrative SAM",1000000,rides/year,PLANNING ASSUMPTION,Low,"Not based on Uber Go market share active drivers or operating capacity",None
+Average trip length,"KPMG 2023 driver survey",6,km/trip,FACT survey,Medium-high,"Nine-city driver survey; may differ by city and year",S05
+Historical fare low,"KPMG 2023 range",8,INR/km,FACT estimate,Medium,"Not a current matched-route fare audit",S05
+Historical fare high,"KPMG 2023 range",10,INR/km,FACT estimate,Medium,"Not a current matched-route fare audit",S05
+Implied average fare low,"6 km x INR 8/km",48,INR/trip,INFERENCE,Low-medium,"Excludes base fare surge discount tax and deadhead",S05
+Implied average fare high,"6 km x INR 10/km",60,INR/trip,INFERENCE,Low-medium,"Excludes base fare surge discount tax and deadhead",S05
+Implied 2022 GBV low,"280m rides x INR 48",1344,INR crore/year,INFERENCE,Low-medium,"Historical planning anchor not audited market revenue",S05
+Implied 2022 GBV high,"280m rides x INR 60",1680,INR crore/year,INFERENCE,Low-medium,"Historical planning anchor not audited market revenue",S05
+Rapido total daily rides,"Company statement Feb 2025",3000000+,rides/day,VENDOR CLAIM,Low-medium,"All categories; rounded minimum",S11
+Rapido auto daily rides,"Company statement Feb 2025",1000000+,rides/day,VENDOR CLAIM,Low-medium,"Rounded minimum",S11
+Rapido cab daily rides,"Company statement Feb 2025",500000,rides/day,VENDOR CLAIM,Low-medium,"Described as nearly half a million",S11
+Rapido implied maximum bike rides,"3m total minus >1m auto minus ~0.5m cab",1500000,max rides/day,INFERENCE ceiling,Low,"Uses rounded values; true number could be lower",S11
+Rapido claimed bike share,"Company estimate Apr 2025 reported Sep 2026",70,percent,VENDOR CLAIM,Low-medium,"Not independently audited and different date from trip mix",S12
+Implied India daily bike market ceiling,"1.5m / 70%",2142857,max rides/day,INFERENCE ceiling,Low,"Combines company claims from different dates",S11|S12
+Implied annual bike market ceiling,"2.142857m x 365",782142805,max rides/year,INFERENCE ceiling,Low,"Not a forecast; order-of-magnitude ceiling",S11|S12
+Implied annual GBV ceiling low,"782.142805m x INR 48",3754,INR crore/year,INFERENCE ceiling,Low,"Uses historical fare and claim-based ride ceiling",S05|S11|S12
+Implied annual GBV ceiling high,"782.142805m x INR 60",4693,INR crore/year,INFERENCE ceiling,Low,"Uses historical fare and claim-based ride ceiling",S05|S11|S12
+Electric 2W national TCO,"CEEW 2025 model",1.48,INR/km,FACT model,Medium-high,"National representative model not platform cash flow",S06
+Petrol 2W national TCO,"CEEW 2025 model",2.46,INR/km,FACT model,Medium-high,"National representative model not platform cash flow",S06
+Illustrative TCO saving,"INR 2.46 minus INR 1.48",0.98,INR/km,INFERENCE,Medium,"Before partner lease downtime and platform incentives",S06
+India e-2W sales FY2024-25,"PIB Ministry of Heavy Industries",1149334,vehicles/year,FACT,High,"All e-2Ws; not commercial ride-hailing supply",S07
+FY2024-25 e-2W growth,"PIB Ministry of Heavy Industries",21,percent year-over-year,FACT,High,"Sales growth does not equal bike-taxi growth",S07

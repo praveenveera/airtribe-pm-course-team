@@ -1,0 +1,16 @@
+{
+  "name": "nykaa-ux-journey",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "login": "node login.js",
+    "journey": "node run-scenario.js",
+    "journey:legacy": "node journey.js",
+    "journey:all": "node run-scenario.js all",
+    "install-browsers": "playwright install chromium"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "playwright": "^1.49.0"
+  }
+}

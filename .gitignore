@@ -1,0 +1,26 @@
+# Operating-system files
+.DS_Store
+**/.DS_Store
+
+# Credentials and local authenticated browser state
+.auth/
+**/.auth/
+.env
+.env.*
+!.env.example
+
+# Dependencies and caches
+node_modules/
+**/node_modules/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+
+# Local research and rendering output
+**/research/outputs/
+**/.tmp/
+**/tmp/
+
+# Editor-local state
+.vscode/
+**/.vscode/

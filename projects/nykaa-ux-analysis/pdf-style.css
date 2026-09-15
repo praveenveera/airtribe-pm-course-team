@@ -1,0 +1,92 @@
+@page {
+  size: A4;
+  margin: 20mm 18mm 18mm 18mm;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+body {
+  font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.5;
+  color: #23202a;
+  margin: 0;
+}
+
+h1, h2, h3, h4 {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #1c1a22;
+  line-height: 1.2;
+  margin: 1.4em 0 .5em;
+  page-break-after: avoid;
+}
+h1 {
+  font-size: 21pt;
+  margin-top: 0;
+  letter-spacing: -.01em;
+}
+h2 {
+  font-size: 14.5pt;
+  border-bottom: 1.5px solid #9a1f45;
+  padding-bottom: 4px;
+  margin-top: 1.8em;
+}
+h3 { font-size: 11.5pt; }
+h1 + p, h2 + p { margin-top: .4em; }
+
+p { margin: .55em 0; }
+
+a { color: #9a1f45; text-decoration: none; }
+
+strong { color: #1c1a22; }
+
+hr {
+  border: none;
+  border-top: 1px solid #ddd6d9;
+  margin: 1.6em 0;
+}
+
+ul, ol { margin: .55em 0; padding-left: 1.3em; }
+li { margin: .28em 0; }
+
+blockquote {
+  margin: .8em 0;
+  padding: .3em 0 .3em 14px;
+  border-left: 3px solid #d9c9cf;
+  color: #55505c;
+}
+
+code {
+  font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  font-size: 9pt;
+  background: #f3eef0;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: .9em 0;
+  font-size: 9.5pt;
+  page-break-inside: avoid;
+}
+th, td {
+  border: 1px solid #e0d9dc;
+  padding: 6px 9px;
+  text-align: left;
+  vertical-align: top;
+}
+thead th {
+  background: #f4eef0;
+  font-family: -apple-system, Arial, sans-serif;
+  font-size: 8.5pt;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: #55505c;
+}
+tbody tr:nth-child(even) { background: #faf7f8; }
+
+h2 { page-break-before: auto; }

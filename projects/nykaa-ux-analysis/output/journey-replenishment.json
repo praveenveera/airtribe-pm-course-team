@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "scenarioId": "replenishment",
+    "persona": "loyal-replenisher",
+    "title": "Reorder known product quickly",
+    "goal": "Re-buy a previously purchased serum or shampoo with minimal steps",
+    "buyerMindset": "Knows exactly what they want; values speed, order history, and subscription/reorder",
+    "platform": "Nykaa desktop web (Playwright Desktop Chrome 1440×900)",
+    "startedAt": "2026-09-04T09:49:28.242Z",
+    "finishedAt": "2026-09-04T09:49:51.319Z",
+    "totalDurationMs": 19896
+  },
+  "summary": {
+    "good": 1,
+    "bad": 0,
+    "neutral": 6,
+    "errors": 0
+  },
+  "steps": [
+    {
+      "step": "01-home",
+      "url": "https://www.nykaa.com/",
+      "timestamp": "2026-09-04T09:49:30.915Z",
+      "durationMs": 0,
+      "verdict": "neutral",
+      "buyerInsight": "Entry point sets discovery mode — browse vs search vs category shortcut.",
+      "uxNote": "Promo density vs goal-directed shortcuts (e.g. Face Moisturizer tile).",
+      "notes": "Homepage loaded for scenario: Reorder known product quickly",
+      "screenshot": "screenshots/web/replenishment-01-home.png"
+    },
+    {
+      "step": "02-search",
+      "url": "https://www.nykaa.com/skin/serums/serums-essence/c/8397?redirectpath=slug&search_redirection=True",
+      "timestamp": "2026-09-04T09:49:31.034Z",
+      "durationMs": 6348,
+      "verdict": "neutral",
+      "buyerInsight": "Reorder from history is the job; search is a fallback tax.",
+      "uxNote": "Account → Orders vs search-from-scratch for known SKUs.",
+      "notes": "Fell back to search for a known-category product (serum).",
+      "screenshot": "screenshots/web/replenishment-02-search-plp.png"
+    },
+    {
+      "step": "03-filters",
+      "url": "https://www.nykaa.com/skin/serums/serums-essence/c/8397?redirectpath=slug&search_redirection=True",
+      "timestamp": "2026-09-04T09:49:37.470Z",
+      "durationMs": 2066,
+      "verdict": "neutral",
+      "buyerInsight": "Filters match beauty decision criteria (skin type, concern, price).",
+      "uxNote": "Strong taxonomy when accessible.",
+      "notes": "Filter not found.",
+      "screenshot": "screenshots/web/replenishment-03-filters.png"
+    },
+    {
+      "step": "04-add-to-bag",
+      "url": "https://www.nykaa.com/skin/serums/serums-essence/c/8397?redirectpath=slug&search_redirection=True",
+      "timestamp": "2026-09-04T09:49:39.628Z",
+      "durationMs": 3099,
+      "verdict": "neutral",
+      "buyerInsight": "Confirmation reduces anxiety before proceeding to cart.",
+      "uxNote": "Inline PLP add-to-bag vs View Sizes for variants.",
+      "notes": "Add to bag action attempted.",
+      "screenshot": "screenshots/web/replenishment-04-add-to-bag.png"
+    },
+    {
+      "step": "05-bag-cart",
+      "url": "https://www.nykaa.com/shoppingbag/",
+      "timestamp": "2026-09-04T09:49:42.840Z",
+      "durationMs": 3366,
+      "verdict": "neutral",
+      "buyerInsight": "Buyer validates subtotal, savings, delivery promise before checkout.",
+      "uxNote": "Coupon complexity and delivery ETA clarity matter here.",
+      "notes": "Bag page opened.",
+      "screenshot": "screenshots/web/replenishment-05-bag-cart.png"
+    },
+    {
+      "step": "06-checkout-entry",
+      "url": "https://www.nykaa.com/shoppingbag/",
+      "timestamp": "2026-09-04T09:49:46.232Z",
+      "durationMs": 3011,
+      "verdict": "good",
+      "buyerInsight": "Saved address / wallet should accelerate repeat buyers.",
+      "uxNote": "Guest checkout vs forced login trade-off.",
+      "notes": "Checkout flow entered.",
+      "screenshot": "screenshots/web/replenishment-06-checkout-entry.png",
+      "goodScreenshot": "screenshots/good/replenishment-06-checkout-entry.png"
+    },
+    {
+      "step": "07-address-payment",
+      "url": "https://www.nykaa.com/shoppingbag/",
+      "timestamp": "2026-09-04T09:49:49.292Z",
+      "durationMs": 2006,
+      "verdict": "neutral",
+      "buyerInsight": "Final cost, delivery date, and payment trust decided here.",
+      "uxNote": "Hidden fees or offer confusion = highest abandonment risk.",
+      "notes": "Checkout captured. Address UI: false. Payment UI: false. Stopped before payment.",
+      "screenshot": "screenshots/web/replenishment-07-address-payment.png"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "replenishment",
+  "persona": "loyal-replenisher",
+  "title": "Reorder known product quickly",
+  "goal": "Re-buy a previously purchased serum or shampoo with minimal steps",
+  "searchQuery": "reorder previous orders",
+  "maxPrice": null,
+  "category": "retention",
+  "buyerMindset": "Knows exactly what they want; values speed, order history, and subscription/reorder",
+  "phases": ["account", "discover", "cart", "checkout"],
+  "notes": "May use Account → Orders instead of search if logged in"
+}

@@ -1,0 +1,387 @@
+<title>Nykaa UX, End to End</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Archivo:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --ground:#FBF7F5;
+    --surface:#FFFFFF;
+    --sunk:#F3ECEA;
+    --ink:#251A22;
+    --ink-soft:#6E5E66;
+    --hairline:#E7DBD7;
+    --accent:#A81E48;
+    --accent-soft:#F6E1E8;
+    --good:#2F6F5E;
+    --good-soft:#E2EDE9;
+    --shadow:0 1px 2px rgba(37,26,34,.05),0 14px 34px -18px rgba(37,26,34,.20);
+    --display:"Fraunces",Georgia,"Times New Roman",serif;
+    --sans:"Archivo","Helvetica Neue",Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --ground:#161016;
+      --surface:#1E161C;
+      --sunk:#261D24;
+      --ink:#F2E7EC;
+      --ink-soft:#B6A1AB;
+      --hairline:#3B2E35;
+      --accent:#F2749A;
+      --accent-soft:#3B2029;
+      --good:#74BCA6;
+      --good-soft:#1E2E2A;
+      --shadow:0 1px 2px rgba(0,0,0,.35),0 16px 40px -18px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#161016;
+    --surface:#1E161C;
+    --sunk:#261D24;
+    --ink:#F2E7EC;
+    --ink-soft:#B6A1AB;
+    --hairline:#3B2E35;
+    --accent:#F2749A;
+    --accent-soft:#3B2029;
+    --good:#74BCA6;
+    --good-soft:#1E2E2A;
+    --shadow:0 1px 2px rgba(0,0,0,.35),0 16px 40px -18px rgba(0,0,0,.6);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:clamp(20px,4vw,56px) clamp(16px,4vw,40px) 80px;
+    display:flex;
+    flex-direction:column;
+    gap:clamp(22px,3vw,40px);
+  }
+
+  header.masthead{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    flex-wrap:wrap;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--hairline);
+  }
+  .masthead .mark{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:19px;
+    letter-spacing:.01em;
+  }
+  .masthead .meta{
+    font-size:12.5px;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    color:var(--ink-soft);
+  }
+
+  .panel{
+    background:var(--surface);
+    border:1px solid var(--hairline);
+    border-radius:14px;
+    padding:clamp(22px,3.4vw,44px);
+    box-shadow:var(--shadow);
+    scroll-margin-top:24px;
+  }
+  .eyebrow{
+    font-size:12px;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    color:var(--accent);
+    margin:0 0 14px;
+  }
+  h1{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(2rem,5.4vw,3.4rem);
+    line-height:1.04;
+    letter-spacing:-.015em;
+    text-wrap:balance;
+    margin:0 0 .5em;
+  }
+  h2{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(1.5rem,3.4vw,2.15rem);
+    line-height:1.1;
+    letter-spacing:-.01em;
+    text-wrap:balance;
+    margin:0 0 .7em;
+  }
+  .lede{
+    font-size:clamp(1.05rem,1.7vw,1.3rem);
+    color:var(--ink-soft);
+    max-width:60ch;
+    margin:0;
+  }
+
+  /* ---- Panel 1: the curve ---- */
+  figure.curve{margin:26px 0 0;display:flex;flex-direction:column;gap:6px}
+  .curve svg{width:100%;height:auto;display:block;overflow:visible}
+  figcaption{font-size:13px;color:var(--ink-soft);letter-spacing:.01em}
+  .stage-notes{
+    list-style:none;margin:22px 0 0;padding:0;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;
+  }
+  .stage-notes li{
+    border-top:2px solid var(--hairline);
+    padding-top:10px;
+    font-size:14.5px;
+  }
+  .stage-notes li.is-strong{border-top-color:var(--good)}
+  .stage-notes li.is-weak{border-top-color:var(--accent)}
+  .stage-notes b{display:block;font-family:var(--display);font-weight:600;font-size:16px;margin-bottom:2px}
+  .tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em}
+  .tag.s{color:var(--good)}
+  .tag.w{color:var(--accent)}
+
+  /* ---- tables ---- */
+  .tbl{width:100%;overflow-x:auto}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:520px}
+  caption{text-align:left;color:var(--ink-soft);font-size:13px;padding-bottom:10px}
+  th,td{text-align:left;padding:12px 14px;vertical-align:top;border-bottom:1px solid var(--hairline)}
+  thead th{
+    font-size:11px;text-transform:uppercase;letter-spacing:.13em;color:var(--ink-soft);
+    font-weight:700;border-bottom:1.5px solid var(--ink);
+  }
+  tbody tr:last-child td{border-bottom:none}
+  td.j{font-family:var(--display);font-weight:600;font-size:15px;white-space:nowrap}
+  .cell-good{color:var(--good)}
+  .cell-weak{color:var(--accent)}
+  td .num{font-variant-numeric:tabular-nums;font-weight:700}
+
+  /* ---- Panel 3: feature verdicts ---- */
+  .verdicts{
+    list-style:none;margin:0;padding:0;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;
+  }
+  .verdicts li{
+    background:var(--sunk);
+    border-radius:11px;
+    padding:20px;
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .verdicts h3{
+    font-family:var(--display);font-weight:600;font-size:1.15rem;margin:0;
+  }
+  .verdict-badge{
+    align-self:flex-start;
+    font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+    padding:4px 9px;border-radius:999px;
+  }
+  .vb-good{background:var(--good-soft);color:var(--good)}
+  .vb-mid{background:var(--accent-soft);color:var(--accent)}
+  .vb-bad{background:var(--accent);color:#fff}
+  :root[data-theme="dark"] .vb-bad,
+  :root:not([data-theme="light"]) .vb-bad{color:#1E161C}
+  .verdicts p{margin:0;font-size:14px;color:var(--ink-soft)}
+
+  /* ---- Panel 4: priorities ---- */
+  .prio{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+  .prio li{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:18px;
+    align-items:baseline;
+    padding:16px 0;
+    border-bottom:1px solid var(--hairline);
+  }
+  .prio li:last-child{border-bottom:none}
+  .rank{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:.04em;
+    color:var(--accent);
+    padding-top:2px;
+  }
+  .prio .what{font-size:15.5px}
+  .prio .what b{font-weight:600}
+  .prio .what span{display:block;color:var(--ink-soft);font-size:13.5px;margin-top:3px}
+  .not-now{
+    margin-top:20px;padding:16px 18px;border-radius:11px;
+    background:var(--sunk);font-size:14.5px;
+  }
+  .not-now b{font-family:var(--display);font-weight:600}
+
+  footer{
+    text-align:center;font-size:12.5px;letter-spacing:.06em;
+    color:var(--ink-soft);text-transform:uppercase;
+  }
+
+  @media (max-width:560px){
+    .prio li{grid-template-columns:1fr;gap:4px}
+  }
+  @media print{
+    body{background:#fff}
+    .panel{box-shadow:none;break-inside:avoid;page-break-inside:avoid}
+    .wrap{gap:20px}
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <span class="mark">Nykaa&nbsp;·&nbsp;UX Analysis</span>
+    <span class="meta">Praveen Veera — Airtribe AI-First PM</span>
+  </header>
+
+  <section class="panel" id="thesis">
+    <p class="eyebrow">The finding in one line</p>
+    <h1>Strong at the ends.<br>Weak in the middle.</h1>
+    <p class="lede">Nykaa is very good at getting you in and taking your money. It struggles with the part in between — turning a specific need into a confident choice.</p>
+
+    <figure class="curve">
+      <svg viewBox="0 0 820 300" role="img" aria-label="Experience quality across four stages: Discover high, Decide low, Buy high, Return low.">
+        <!-- baseline -->
+        <line x1="60" y1="250" x2="800" y2="250" stroke="var(--hairline)" stroke-width="1.5"/>
+        <!-- area under curve -->
+        <path d="M110,96 L330,208 L550,96 L770,208 L770,250 L110,250 Z" fill="var(--accent-soft)" opacity="0.55"/>
+        <!-- the curve -->
+        <polyline points="110,96 330,208 550,96 770,208"
+          fill="none" stroke="var(--ink)" stroke-width="2.5"
+          stroke-linejoin="round" stroke-linecap="round"/>
+        <!-- dots -->
+        <g>
+          <circle cx="110" cy="96" r="9" fill="var(--good)"/>
+          <circle cx="330" cy="208" r="9" fill="var(--accent)"/>
+          <circle cx="550" cy="96" r="9" fill="var(--good)"/>
+          <circle cx="770" cy="208" r="9" fill="var(--accent)"/>
+        </g>
+        <!-- state tags -->
+        <g font-family="Archivo, sans-serif" font-size="13" font-weight="700" letter-spacing="1" text-anchor="middle">
+          <text x="110" y="66" fill="var(--good)">STRONG</text>
+          <text x="330" y="238" fill="var(--accent)">WEAK</text>
+          <text x="550" y="66" fill="var(--good)">STRONG</text>
+          <text x="770" y="238" fill="var(--accent)">WEAK</text>
+        </g>
+        <!-- stage labels -->
+        <g font-family="Fraunces, Georgia, serif" font-size="19" font-weight="600" text-anchor="middle" fill="var(--ink)">
+          <text x="110" y="285">Discover</text>
+          <text x="330" y="285">Decide</text>
+          <text x="550" y="285">Buy</text>
+          <text x="770" y="285">Return</text>
+        </g>
+      </svg>
+      <figcaption>My read of experience quality at each stage of the shopping journey.</figcaption>
+    </figure>
+
+    <ul class="stage-notes">
+      <li class="is-strong"><b>Discover</b>Search, browse, badges, curation. Easy and even fun.</li>
+      <li class="is-weak"><b>Decide</b>696 results for a specific need. Ads 4–8× the budget on top.</li>
+      <li class="is-strong"><b>Buy</b>Coupons, reward points, COD, clear pricing. Clean 3 steps.</li>
+      <li class="is-weak"><b>Return</b>No "buy again", no reorder. Logged-in home = logged-out home.</li>
+    </ul>
+  </section>
+
+  <section class="panel" id="journeys">
+    <p class="eyebrow">Five goals, one website</p>
+    <h2>What worked, what got in the way</h2>
+    <div class="tbl">
+      <table>
+        <caption>Desktop web, 4 Sep 2026. Guest for four goals, logged in for one.</caption>
+        <thead>
+          <tr><th scope="col">Goal</th><th scope="col">Smooth</th><th scope="col">Stuck</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="j">Moisturizer&nbsp;≤&#8377;800</td>
+            <td class="cell-good">Rich cards, filters cut 696&nbsp;&rarr;&nbsp;178, clean checkout</td>
+            <td class="cell-weak"><span class="num">696</span> results; a <span class="num">&#8377;6,600</span> ad on top of a budget search</td>
+          </tr>
+          <tr>
+            <td class="j">Luxury gift set</td>
+            <td class="cell-good"><span class="num">91</span> curated sets, "Most Gifted" proof</td>
+            <td class="cell-weak">Delivery date &amp; gift wrap only shown deep in checkout</td>
+          </tr>
+          <tr>
+            <td class="j">First lipstick</td>
+            <td class="cell-good">Huge social proof — one at <span class="num">1.4M</span> reviews</td>
+            <td class="cell-weak"><span class="num">24</span>–<span class="num">30</span> shades per product, no shade help</td>
+          </tr>
+          <tr>
+            <td class="j">Logged-in visit</td>
+            <td class="cell-good">Name in the header, reward points in the cart</td>
+            <td class="cell-weak">Home page is identical to the logged-out one</td>
+          </tr>
+          <tr>
+            <td class="j">Casual browse</td>
+            <td class="cell-good">Lively, easy to wander, good for ideas</td>
+            <td class="cell-weak">Everything shouts "Shop Now" — no calm mode</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel" id="features">
+    <p class="eyebrow">Three features, three verdicts</p>
+    <h2>Where the product helps — and doesn't</h2>
+    <ul class="verdicts">
+      <li>
+        <span class="verdict-badge vb-good">Good</span>
+        <h3>Product cards</h3>
+        <p>Photo, price, offer price, rating, review count and a fit badge in one glance. Shortlist without opening anything.</p>
+      </li>
+      <li>
+        <span class="verdict-badge vb-mid">Right data, too passive</span>
+        <h3>Beauty filters</h3>
+        <p>Skin type, concern, ingredient — the right model. But never pre-applied or suggested, and blocked behind a login on mobile web.</p>
+      </li>
+      <li>
+        <span class="verdict-badge vb-bad">Bad</span>
+        <h3>Logged-in home</h3>
+        <p>Byte-for-byte the same as logged-out. No "buy again", no recently viewed, nothing personal. Nykaa knows my name and spends none of it.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="panel" id="fix">
+    <p class="eyebrow">What I would ship</p>
+    <h2>Fix the middle first</h2>
+    <ul class="prio">
+      <li>
+        <span class="rank">P0</span>
+        <span class="what"><b>Guided narrowing after a concern search.</b>
+          <span>One tap: skin type &rarr; concern &rarr; budget, pre-filled. Turn 696 into ~40. The filters already exist — just offer the combination.</span>
+        </span>
+      </li>
+      <li>
+        <span class="rank">P1</span>
+        <span class="what"><b>"Buy again" for logged-in shoppers.</b>
+          <span>A reorder row on the home page and a one-tap reorder in Orders. Defends the highest-value repeat behaviour.</span>
+        </span>
+      </li>
+      <li>
+        <span class="rank">P1</span>
+        <span class="what"><b>Let mobile guests filter without logging in.</b>
+          <span>Desktop already allows it. Ask for login at wishlist or checkout, not at the filter panel.</span>
+        </span>
+      </li>
+      <li>
+        <span class="rank">P2</span>
+        <span class="what"><b>Stop ranking over-budget ads above the best fit.</b>
+          <span>When a search has a budget signal, keep sponsored items that are several times over budget out of the top slot.</span>
+        </span>
+      </li>
+    </ul>
+    <p class="not-now"><b>Not now:&nbsp;</b>an AI chat assistant. The filters already fit the category — the fix is to use them at the right moment, not add a new thing to learn.</p>
+  </section>
+
+  <footer>Praveen Veera&nbsp;&nbsp;·&nbsp;&nbsp;Nykaa UX Analysis&nbsp;&nbsp;·&nbsp;&nbsp;September 2026</footer>
+
+</div>
