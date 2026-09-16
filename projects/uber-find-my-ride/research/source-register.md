@@ -79,6 +79,7 @@ The register records what each source can support and what it cannot support. â€
 | N08 | [Parade Grounds ride-hailing advisory](https://hyderabadmail.com/international-kite-sweet-festival-2026-hyderabad-traffic-advisory/) | Local news reporting police / B | Event-specific designated pickup and drop-off locations | Secondary report and temporary event context |
 | L01 | [Airport transport page on RGIA development domain](https://hialdev4.tempworkdomain.com/travellers/to-and-from-airport) | Airport-operator lead / pending | Lists separate D-zone boarding points for Uber, Ola, and Rapido and describes passenger-assistance staff | Production-domain authenticity and currentness must be confirmed before treating as Grade A |
 | API01 | [YouTube Data API v3 expanded Hyderabad pickup inventory](https://developers.google.com/youtube/v3) | Approved public API collection / C | 753 deduplicated videos plus complete accessible comment threads for the manually screened pickup set | Search-ranking and self-selection bias; metadata screening; no prevalence inference; two strict videos had comments disabled |
+| API02 | [OpenStreetMap Nominatim and Overpass location inventory](https://www.openstreetmap.org/copyright) | Volunteered geographic data and public APIs / C | Six bounded Hyderabad inventories with access, parking, transit, crossing, and pedestrian elements | Completeness and tagging vary; surrounding elements may not belong to the venue; no demand, rule, or prevalence inference |
 
 ## Source gaps still open
 

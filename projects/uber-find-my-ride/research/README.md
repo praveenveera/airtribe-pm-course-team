@@ -10,6 +10,8 @@ Use public internet evidence to understand the market, current pickup journey, c
 
 Internet research improves the interview questions, but it does not replace the assignment's minimum 10 interviews. It cannot reliably tell us how often Hyderabad riders face the problem, how severe it is, or which solution they would actually use.
 
+The reviewed execution sequence from manual validation through interviews and submission is maintained in [`../NEXT_PHASE_PLAN.md`](../NEXT_PHASE_PLAN.md).
+
 ## Evidence ladder
 
 | Grade | Evidence type | How it may be used |
@@ -36,12 +38,13 @@ Vendor pages remain vendor evidence even when they are primary sources for the v
 
 | File | Purpose |
 |---|---|
-| [`Uber_Find_My_Ride_Internet_Evidence.xlsx`](Uber_Find_My_Ride_Internet_Evidence.xlsx) | Structured tracker containing 94 curated evidence records, 72 non-API sources, and the separate expanded YouTube API inventory |
+| [`Uber_Find_My_Ride_Internet_Evidence.xlsx`](Uber_Find_My_Ride_Internet_Evidence.xlsx) | Structured tracker containing 94 curated evidence records, 72 non-API sources, the expanded YouTube inventory, and six mapped location inventories |
 | [`desk-research-report.md`](desk-research-report.md) | Initial evidence-led findings and implications |
 | [`source-register.md`](source-register.md) | Source-by-source evidence, strength, scope, and limitations |
 | [`search-plan.md`](search-plan.md) | Search universe, queries, exclusions, and stopping rule |
 | [`non-api-search-log.md`](non-api-search-log.md) | Reproducible non-API query families, outcomes, and saturation record |
 | [`youtube-api-search-log.md`](youtube-api-search-log.md) | YouTube API method, query-code register, coverage, and evidence limits |
+| [`osm-overpass-search-log.md`](osm-overpass-search-log.md) | OpenStreetMap method, six bounded location inventories, map signals, and evidence limits |
 | [`api-requirements.md`](api-requirements.md) | Data still worth collecting through APIs or approved exports |
 
 ## Structured data status
@@ -55,6 +58,8 @@ The completed broad non-API sweep contains:
 - explicit Grade A–D evidence labels and limitations.
 
 The separate YouTube API inventory contains 1,547 search-result appearances and 753 unique videos. Manual title-and-description screening retained 21 high-priority pickup-video candidates and 80 possible-relevance videos. Comment retrieval across the 26 initially automated candidates returned 45 top-level comments and 42 replies; after manual screening, the workbook retains 31 top-level comments and 30 replies belonging to the strict 21-video set. Two strict videos had comments disabled. These remain unreviewed Grade C leads in the `YouTube Videos` and `YouTube Comments` sheets and have not been added to the 94 curated evidence records.
+
+The OpenStreetMap collection covers six candidate Hyderabad environments: RGIA, Secunderabad Railway Station, Raidurg Metro area, Inorbit Mall Cyberabad, Apollo Hospitals Jubilee Hills, and DLF Cybercity. It retains 1,180 raw mapped elements and 96 focused feature rows in the `Location Maps` sheet. These map features identify gates, parking, transit, crossings, and other details to verify; they do not establish pickup-problem frequency, venue ownership, current access rules, or ride-hailing demand.
 
 Airport evidence remains overrepresented because it has the strongest combination of official instructions and recent public discussion. The expanded sweep now covers metro and railway stations, office gates, gated communities, event venues, accessibility cases, and public-road rules. Mall and hospital operator evidence remains thin. The distribution must not be interpreted as proof that the airport is Hyderabad's largest pickup problem.
 

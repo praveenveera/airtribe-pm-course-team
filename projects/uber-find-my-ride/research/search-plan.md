@@ -1,6 +1,6 @@
 # Internet Search Plan
 
-**Status:** Broad non-API sweep complete; targeted validation and API-assisted collection remain
+**Status:** Broad non-API, YouTube API, and OpenStreetMap collections complete; targeted validation remains
 
 ## Search principle
 

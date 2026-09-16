@@ -1,6 +1,6 @@
 # Initial Desk Research Report
 
-**Status:** Broad non-API sweep and YouTube API collection complete; manual review, observation, and interviews remain
+**Status:** Broad non-API, YouTube API, and location-mapping collections complete; manual review, observation, and interviews remain
 **Research cutoff:** 16 September 2026
 
 ## 1. Research goal
@@ -142,6 +142,16 @@ The complete deduplicated video inventory is stored in the workbook's `YouTube V
 
 **Implication:** the API helps us find visual walkthroughs and candidate user language efficiently. It still cannot tell us how frequent or severe pickup problems are in Hyderabad, and it does not replace interviews.
 
+### 3.11 Map data turns “complex location” into specific field probes
+
+The OpenStreetMap collection produced bounded inventories for six candidate environments: RGIA, Secunderabad Railway Station, the Raidurg Metro area, Inorbit Mall Cyberabad, Apollo Hospitals Jubilee Hills, and DLF Cybercity. Across them, the extract contains 1,180 mapped elements; the workbook retains 96 focused rows covering entrances, relevant gates or barriers, parking, taxi stands, transit features, and pedestrian crossings.
+
+The useful output is not the element count. It is a more concrete validation list. For example, Secunderabad's mapped platforms and entrances raise side-and-platform questions; Inorbit's main and parking entrances raise level-and-gate questions; DLF's named gates and surrounding crossings raise access-and-safe-stopping questions. Apollo and DLF are representative candidates, not proven hotspots.
+
+OpenStreetMap is volunteer-maintained, and each bounded extract includes surrounding streets and facilities. Missing tags do not prove absence, mapped access tags do not confirm current venue policy, and counts do not measure demand or problem prevalence. See the workbook's `Location Maps` sheet and [`osm-overpass-search-log.md`](osm-overpass-search-log.md).
+
+**Implication:** verify which side, gate, level, landmark, walking path, and stopping point is actually usable in the live app and on site. Then ask participants about those concrete decisions instead of asking only whether a location was “confusing.”
+
 ## 4. Early hypotheses—not interview insights
 
 | ID | Hypothesis to test | Why it is plausible | What would disprove it |
@@ -195,14 +205,15 @@ Without internal data, the assignment can present a **market-sizing model and da
 1. Audit the live Uber rider flow at selected Hyderabad locations using screenshots or observation, without booking unnecessary rides.
 2. Confirm current rules and pickup maps with airport, mall, campus, hospital, and venue sources.
 3. Manually review the high-priority YouTube videos and comments; keep accepted Grade C evidence separate from interviews.
-4. Finalise an interview guide that separates:
+4. Field-check the six mapped candidates, treating OpenStreetMap features as probes rather than verified access facts.
+5. Finalise an interview guide that separates:
    - finding the legal pickup zone;
    - walking to it;
    - driver reaching it;
    - rider and vehicle identifying each other;
    - queue or assignment delays;
    - cancellation, safety, and accessibility consequences.
-5. Conduct at least 10 interviews and compare their evidence with the desk-research hypotheses.
+6. Conduct at least 10 interviews and compare their evidence with the desk-research hypotheses.
 
 The public non-API search itself has reached the stopping rule. See [`non-api-search-log.md`](non-api-search-log.md) for the query coverage and [`api-requirements.md`](api-requirements.md) for the next data-access options.
 

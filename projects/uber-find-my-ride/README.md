@@ -64,7 +64,7 @@ Use the required submission structure:
 At project creation:
 
 - The assignment brief is captured.
-- A broad public-web sweep and a separate YouTube API collection have been completed; manual content review and targeted local verification remain.
+- A broad public-web sweep, a separate YouTube API collection, and six OpenStreetMap location inventories have been completed; manual content review and targeted local verification remain.
 - No interviews have been conducted or logged.
 - No direct quotes, participant pictures, or message screenshots have been collected.
 - No target-market estimate or product idea has been validated.
@@ -87,9 +87,10 @@ Research findings, interview evidence, interpretations, and product ideas must r
 | [`project-understanding.md`](project-understanding.md) | Plain-language explanation and evidence-first approach |
 | [`scope.md`](scope.md) | Phase 0 decisions, open scope questions, and completion rule |
 | [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Factual progress, blockers, and next actions |
+| [`NEXT_PHASE_PLAN.md`](NEXT_PHASE_PLAN.md) | Reviewed execution plan from manual validation through interviews, synthesis, and submission QA |
 | [`research/`](research/) | Internet research report, source register, and search plan |
 | [`research/Uber_Find_My_Ride_Internet_Evidence.xlsx`](research/Uber_Find_My_Ride_Internet_Evidence.xlsx) | Structured internet-evidence tracker |
 
 ## Current status
 
-**Broad internet collection is documented; manual validation and interviews remain.** See [`PROJECT_STATUS.md`](PROJECT_STATUS.md) for the active tracker.
+**Broad internet collection is documented; the reviewed execution plan now covers manual validation, interviews, synthesis, and submission QA.** See [`PROJECT_STATUS.md`](PROJECT_STATUS.md) for the active tracker and [`NEXT_PHASE_PLAN.md`](NEXT_PHASE_PLAN.md) for the gated sequence.

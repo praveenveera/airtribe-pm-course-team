@@ -1,6 +1,6 @@
 # API and Approved-Export Requirements
 
-**Status:** YouTube collection completed; Reddit API dropped; other credentials not requested
+**Status:** YouTube and OpenStreetMap collections completed; Reddit API dropped; other credentials not requested
 **Purpose:** Collect larger, reproducible samples after the non-API sweep
 
 ## Recommended order
@@ -8,7 +8,7 @@
 | Status | Source | What it adds | What is needed from the requester | Main limitation |
 |---|---|---|---|---|
 | Complete | YouTube Data API v3 | Search inventory, metadata, statistics, complete accessible top-level threads, and replies for the strict pickup-video set | Existing IP- and API-restricted key stored in the ignored project `.env` | Ranked public results remain anecdotal and require manual content review |
-| Next without key | OpenStreetMap Overpass API | Entrances, gates, parking, service roads, access tags, and nearby road structure for selected venues | Nothing | Map completeness varies; it does not reveal Uber demand or venue rules |
+| Complete | OpenStreetMap Nominatim and Overpass APIs | Six bounded inventories of entrances, gates, parking, transit, crossings, service roads, and access tags | Nothing | Map completeness varies; surrounding features may not belong to the venue; no demand or rule inference |
 | Later if justified | Google Maps Platform | Venue inventory, entrances, road access, walking paths, and distance estimates for selected sites | API key restricted to Places, Routes, and Geocoding APIs; billing project | Does not reveal Uber usage, venue rules, or actual pickup failures |
 | Optional only if already licensed | X API | Current public complaints and traffic/advisory posts by keyword and date | Existing approved bearer token and usage tier | Paid access, sampling bias, deleted posts, and terms restrictions |
 | Optional approved export | App-review export or approved provider | Larger bounded sample of Uber/Ola/Rapido reviews with dates and ratings | A lawful export or licensed provider access; no unofficial scraping credentials | Reviews usually lack city and pickup-location metadata |
@@ -47,6 +47,6 @@ When access is ready:
 
 ## Next collection
 
-Use OpenStreetMap Overpass without another credential to map a small set of Hyderabad pickup environments. Prioritise RGIA, Secunderabad Station, Raidurg Metro, Inorbit Mall, one hospital, and one office or gated-community entrance. Use the map only to prepare observation and interview probes; verify actual access and pickup rules on site.
+The OpenStreetMap step is complete for RGIA, Secunderabad Station, the Raidurg Metro area, Inorbit Mall, Apollo Hospitals Jubilee Hills, and DLF Cybercity. The next step is to review the 21 priority videos and verify the six mapped environments through official rules, the live rider app, and field observation. The map must remain a preparation aid rather than proof of access or pickup problems.
 
 After the YouTube search quota resets, a separate Telugu/Hindi query pack can reduce English-query bias. It should be logged as a new collection window rather than merged invisibly into the English-query method. Caption or transcript downloads are not part of the current API-key collection and would need a separate authorised workflow plus a content-use review.
