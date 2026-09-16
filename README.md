@@ -13,13 +13,19 @@ The work is shared for peer learning. Each project keeps its evidence limits vis
 
 Course-wide learning and repository guidance remain available as root documents: [`LEARNING.md`](LEARNING.md), [`DOCUMENTATION.md`](DOCUMENTATION.md), and [`PUBLIC_SHARING_CHECKLIST.md`](PUBLIC_SHARING_CHECKLIST.md).
 
-## Current work
+## Assignment projects
 
 | Workstream | User and job | Main outcome | Evidence status |
 |---|---|---|---|
 | [Nykaa UX analysis](projects/nykaa-ux-analysis/) | Nykaa shopper trying to complete common shopping journeys | First-person UX analysis, feature opinions, recommendation, deck, and submission files | Desktop journeys were observed; user-conversation work remains incomplete |
 | [B2B product strategy](projects/b2b-product-strategy/) | Customer-support teams handling complex work across multiple systems | Evidence-limited strategy, research pack, competitive teardown, interview material, and submission versions | Public research plus four anonymized interviews; buyer and willingness-to-pay evidence remain incomplete |
-| [Problem discovery and market research](breakout-room/problem-discover-and-market-research/) | Rider, driver, and platform stakeholders in a hypothetical two-wheeler EV-transition case | Competitive analysis, market sizing, decision memo, and pilot proposal | Secondary-research exercise; no internal company data or primary research |
+| [Uber Find My Ride](projects/uber-find-my-ride/) | Rider and driver trying to coordinate a reliable pickup in a complex location | Market research, at least 10 interviews, evidence-led insights, strategy implications, and three product ideas | Initial desk research documented; targeted validation and interviews remain |
+
+## Breakout-room activities
+
+| Activity | Case | Evidence status |
+|---|---|---|
+| [Problem discovery and market research](breakout-room/problem-discover-and-market-research/) | Hypothetical Uber Go two-wheeler EV-transition decision | Secondary-research exercise; no internal company data or primary research |
 
 ## How to read the work
 
