@@ -1,6 +1,6 @@
 # Initial Desk Research Report
 
-**Status:** Initial broad sweep complete; evidence gaps remain  
+**Status:** Broad non-API sweep and YouTube API collection complete; manual review, observation, and interviews remain
 **Research cutoff:** 16 September 2026
 
 ## 1. Research goal
@@ -22,6 +22,8 @@ What data we still lack                    What users value enough to change
 ```
 
 ## 3. What the internet currently supports
+
+The structured sweep retained **72 sources and 94 evidence records**. Of these, 89 are marked in scope and 55 are Hyderabad-specific. These counts describe the research corpus, not the number of affected users.
 
 ### 3.1 There is meaningful ride-hailing activity, but no defensible problem-size estimate yet
 
@@ -96,6 +98,50 @@ The [Digital Personal Data Protection Act, 2023](https://www.indiacode.nic.in/in
 
 **Important limitation:** Whether and how Telangana has adopted or supplemented the 2025 central guidelines requires current legal verification. Airport and local stopping-zone rules also need venue-level confirmation. This report is product research, not legal advice.
 
+### 3.7 Non-airport Hyderabad evidence changes the problem framing
+
+The expanded sweep shows that the airport is not the only complex pickup environment:
+
+- At **Raidurg Metro**, official station information uses arm-specific access and feeder pickup points. HMRL also called for more systematic peak passenger movement, while current reporting describes recurring congestion on the narrow approach road. [L&T Metro](https://ltmetro.com/stations/raidurg/), [HMRL](https://hmrl.co.in/hmrl-additional-md-sri-ajith-reddy-conducts-field-inspection-of-metro-stations-plans-for-enhanced-passenger-services/), and [Telangana Today](https://telanganatoday.com/raidurg-metro-traffic-woes-persist-as-road-widening-awaits)
+- At **Secunderabad Railway Station**, a reported SCR crowd study found a strong Platform 1-side concentration and advised Platform 10 for more spacious access, lifts, footbridges, and parking during redevelopment. Historical Ola material also shows that dedicated station counters and zones have been tried. [Telangana Today](https://telanganatoday.com/scr-gears-up-with-scientific-crowd-management-plan-for-festive-season) and [Ola](https://blog.olacabs.com/176778325-2/)
+- At **Cyberabad office gates**, police identified waiting cabs and autos as congestion contributors and recommended internal pickup/drop-off bays. This directly shows why an app cannot solve curb capacity without venue cooperation. [Telangana Today](https://telanganatoday.com/cyberabad-police-urge-it-firms-to-revamp-transport-traffic-practices)
+- During a **Parade Grounds event**, ride-hailing users were directed to four named external nodes. Temporary traffic plans can therefore move the valid pickup point away from the venue pin. [Hyderabad Mail](https://hyderabadmail.com/international-kite-sweet-festival-2026-hyderabad-traffic-advisory/)
+- Public cases involving an elderly passenger, an injured rider, and a grandparent unable to walk suggest that a small map or walking mismatch can become a material accessibility failure. They remain interview leads, not prevalence evidence.
+
+**Inference:** The common entity is not “airport navigation.” It is a changing **pickup environment** made of entrances, access rules, pedestrian paths, legal stopping space, crowd conditions, and rider capability.
+
+### 3.8 Competitor patterns go beyond “show a better map”
+
+The broader comparison adds five design patterns:
+
+| Pattern | Public example | Research lesson |
+|---|---|---|
+| Guide before booking | Grab moved venue guidance earlier after finding that travellers preferred to reach the pickup point before requesting | Test when guidance is needed, not only what it says |
+| Curated, operationally valid points | Grab Meeting Points and Waymo pullover spots account for unsafe or unreachable curbs | A selectable point should be physically and legally usable |
+| Walking as an explicit trade-off | Waymo alerts for longer walks and offers a minimise-walking preference | Ask users when a shorter walk is worth a longer vehicle approach |
+| Structured gate handoff | MyGate verifies a driver at the society gate without exposing the flat number | Venue access and privacy can be coordinated together |
+| Human or assisted bridge | Ola counters, venue information desks, and Lyft Assisted add physical help | Some riders need service support, not more map precision |
+
+These are patterns to test, not recommendations for Uber Hyderabad.
+
+### 3.9 Public context can size exposure pools, not the problem
+
+- GMR reports more than **30 million Hyderabad Airport passengers in FY2025-26**. [GMR](https://www.gmrgroup.com/airports-and-aero-services/airports/hyderabad-airport)
+- Hyderabad Metro reported average daily ridership above **4.75 lakh across 57 stations** in November 2024. [L&T Metro](https://www.ltmetro.com/wp-content/uploads/2025/01/28-11-2024-Press-Release-Hyderabad-Metro-Rail-Celebrates-its-7th-Anniversary-181-Chief-Guest.pdf)
+- Secunderabad station was reported at about **1.30 lakh passengers per normal day**, rising above 2 lakh during festivals. [Telangana Today](https://telanganatoday.com/scr-gears-up-with-scientific-crowd-management-plan-for-festive-season)
+
+These numbers justify studying complex pickup locations. They cannot be multiplied by invented “problem percentages” and called a market size.
+
+### 3.10 The YouTube API adds a review queue, not prevalence evidence
+
+The expanded YouTube Data API collection returned 1,547 search-result appearances, which deduplicated to 753 videos. An automated metadata screen initially selected 26 candidates for complete accessible comment-thread retrieval. A manual title-and-description check then downgraded five promotional, adjacent, or wrong-geography results, leaving 21 high-priority pickup-video candidates and 80 possible-relevance videos.
+
+Across the 26 initially selected candidates, the API returned 45 top-level comments and 42 replies. After the manual screen, the workbook retains 31 top-level comments and 30 replies belonging to the strict 21-video set. Two strict videos had comments disabled. “Complete” means every page exposed by the public API at collection time; it does not include deleted, moderated, private, or otherwise unavailable comments.
+
+The complete deduplicated video inventory is stored in the workbook's `YouTube Videos` sheet. The `YouTube Comments` sheet distinguishes top-level comments from replies and links each reply to a local anonymous parent record. Titles, descriptions, and English-keyword signals are only screening aids. Videos must be watched and comments interpreted in context before any item is promoted into the curated evidence table.
+
+**Implication:** the API helps us find visual walkthroughs and candidate user language efficiently. It still cannot tell us how frequent or severe pickup problems are in Hyderabad, and it does not replace interviews.
+
 ## 4. Early hypotheses—not interview insights
 
 | ID | Hypothesis to test | Why it is plausible | What would disprove it |
@@ -148,7 +194,7 @@ Without internal data, the assignment can present a **market-sizing model and da
 
 1. Audit the live Uber rider flow at selected Hyderabad locations using screenshots or observation, without booking unnecessary rides.
 2. Confirm current rules and pickup maps with airport, mall, campus, hospital, and venue sources.
-3. Sample and code recent app-store/forum posts as hypothesis data, not as interviews.
+3. Manually review the high-priority YouTube videos and comments; keep accepted Grade C evidence separate from interviews.
 4. Finalise an interview guide that separates:
    - finding the legal pickup zone;
    - walking to it;
@@ -157,6 +203,8 @@ Without internal data, the assignment can present a **market-sizing model and da
    - queue or assignment delays;
    - cancellation, safety, and accessibility consequences.
 5. Conduct at least 10 interviews and compare their evidence with the desk-research hypotheses.
+
+The public non-API search itself has reached the stopping rule. See [`non-api-search-log.md`](non-api-search-log.md) for the query coverage and [`api-requirements.md`](api-requirements.md) for the next data-access options.
 
 ## 8. Core research question for interviews
 

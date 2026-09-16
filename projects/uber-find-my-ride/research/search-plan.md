@@ -1,6 +1,6 @@
 # Internet Search Plan
 
-**Status:** Initial sweep complete; targeted validation remains
+**Status:** Broad non-API sweep complete; targeted validation and API-assisted collection remain
 
 ## Search principle
 
@@ -82,14 +82,28 @@ There is no practical way to search “all of the internet.” The defensible ap
 - Complaints that cannot be separated from fare, driver availability, or trip-quality issues
 - Product screenshots or videos whose location, date, or app version cannot be established
 
+## Non-API sweep outcome
+
+The broad sweep reached the stopping rule on 16 September 2026. The last two query rounds did not add a new cause, segment, location type, workaround, competitor pattern, legal constraint, or interview question. They repeated six established mechanisms:
+
+1. indoor-to-curb wayfinding;
+2. legal or physical stopping constraints;
+3. choosing the correct gate, arm, or side;
+4. peak crowd and traffic congestion;
+5. accessibility burden from walking or communication; and
+6. supply, fare, or cancellation failures that users may describe as pickup failures.
+
+This is **search saturation**, not proof that every relevant webpage has been indexed or read. The reproducible query record is in [`non-api-search-log.md`](non-api-search-log.md).
+
 ## Targeted work remaining
 
 1. Verify the live Hyderabad rider experience across selected location types.
-2. Locate current official RGIA and Telangana rules rather than relying on summaries.
-3. Search Ola, Rapido, and BluSmart for documented pickup-support capabilities.
-4. Code a recent, bounded sample of reviews and public posts by location and failure type.
-5. Review current airport passenger volumes as a context proxy, without calling them Uber demand.
-6. Convert confirmed gaps into neutral interview questions.
+2. Confirm current production-domain RGIA and Telangana implementation rules.
+3. Observe current Ola, Rapido, and Uber Hyderabad app flows at selected locations.
+4. Use APIs or approved exports for a bounded, reproducible review and discussion sample.
+5. Convert the confirmed gaps into neutral interview questions.
+
+API and export requirements are listed in [`api-requirements.md`](api-requirements.md). No credentials are stored in this repository.
 
 ## Stopping rule
 
@@ -104,4 +118,3 @@ Stop broad searching when two consecutive query rounds add no new:
 - interview question.
 
 Then shift effort to observation and interviews, which provide stronger evidence for this assignment.
-

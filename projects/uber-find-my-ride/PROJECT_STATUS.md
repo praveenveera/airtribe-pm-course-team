@@ -1,14 +1,14 @@
 # Uber Find My Ride — Project Status
 
 **Project:** Airtribe Project 3  
-**Overall status:** Initial desk research complete; targeted validation and interviews not started  
+**Overall status:** Broad desk research and YouTube API collection complete; manual validation and interviews not started
 **Last updated:** 16 September 2026  
 **Submission deadline:** Unknown  
 **Current blocker:** Interview population, participant recency, deadline, and submission format are not confirmed
 
 ## Current outcome
 
-The source assignment, problem framing, required research stages, interview minimum, proof requirements, and submission template are documented. Hyderabad is confirmed as the primary research city, with India as the broader market context. Standard on-demand four-wheel passenger rides are in scope; Auto and Moto are excluded. An initial internet-research sweep is documented with source limitations. No interviews, interview-led synthesis, or validated product concepts are represented as completed.
+The source assignment, problem framing, required research stages, interview minimum, proof requirements, and submission template are documented. Hyderabad is confirmed as the primary research city, with India as the broader market context. Standard on-demand four-wheel passenger rides are in scope; Auto and Moto are excluded. The broad non-API internet sweep contains 72 sources and 94 evidence records, including 89 in-scope and 55 Hyderabad-specific records. A separate expanded YouTube API inventory contains 1,547 search appearances and 753 unique videos. Manual metadata screening retained 21 high-priority pickup-video candidates and 80 possible-relevance videos. The accessible threads yielded 31 top-level comments and 30 replies for the strict set; these remain unreviewed Grade C leads and are not counted as curated evidence. No interviews, interview-led synthesis, or validated product concepts are represented as completed.
 
 ## Delivery tracker
 
@@ -17,8 +17,8 @@ The source assignment, problem framing, required research stages, interview mini
 | P01 | Assignment brief | Complete | `assignment-brief.md` | None | Preserve as source of truth |
 | P02 | Problem and user framing | Initial | `README.md`, `project-understanding.md` | Needs research validation | Validate rider and driver jobs through interviews |
 | P03 | Geographic and category scope | Complete | `scope.md`; Hyderabad and four-wheel rides confirmed | None | Preserve the boundary during research |
-| P04 | Market research | In progress | `research/desk-research-report.md`, `research/source-register.md`, `research/search-plan.md` | Reliable Hyderabad four-wheel volume and issue-rate data are unavailable | Verify local rules, live product flows, and sizing inputs |
-| P05 | Competitive and alternatives analysis | In progress | Initial Uber, Grab, Lyft, Google Maps, and workaround comparison in research report | Ola, Rapido, BluSmart, and Hyderabad availability need deeper verification | Complete targeted competitor sweep and live-app checks |
+| P04 | Market research | In progress | Research report, non-API and YouTube API logs, source register, and `research/Uber_Find_My_Ride_Internet_Evidence.xlsx` | Reliable Hyderabad four-wheel volume and issue-rate data are unavailable | Manually review high-priority videos; map and verify selected locations |
+| P05 | Competitive and alternatives analysis | In progress | Uber, Ola, Grab, Lyft, Waymo, MyGate, Google Maps, and workaround evidence | Current Hyderabad availability still needs live-app verification | Run live-app and field checks at selected locations |
 | P06 | Interview guide | Not started | None | Segment mix is undecided | Draft open-ended guide after research questions are fixed |
 | P07 | Participant recruitment | Not started | 0 of 10 interviews | Consent and segment plan required | Recruit a mixed rider/driver sample |
 | P08 | Interviews and proof | Not started | No notes or proof collected | Participants required | Conduct and document at least 10 interviews |
@@ -51,6 +51,6 @@ The mix should change if the evaluator requires 10 rider interviews specifically
 ## Immediate next actions
 
 1. Confirm interview population, participant recency, deadline, and submission format.
-2. Complete targeted Hyderabad, competitor, regulatory, and live-product validation.
+2. Review the high-priority YouTube leads, then map and observe selected Hyderabad pickup environments.
 3. Define rider and driver segments and convert hypotheses into the interview guide.
 4. Recruit participants and plan consent-safe evidence capture.
