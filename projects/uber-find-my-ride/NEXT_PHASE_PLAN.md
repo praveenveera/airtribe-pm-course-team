@@ -4,13 +4,13 @@
 
 **Prepared:** 16 September 2026
 
-**Starting point:** Broad internet research, YouTube collection, and OpenStreetMap location mapping are complete. Manual validation and interviews have not started.
+**Starting point:** Broad internet research, YouTube collection, and OpenStreetMap location mapping are complete. The live self-serve survey has produced 63 likely non-test responses, and a contact-safe normalized dataset and analytics workbook are stored in `data/survey/`. Manual video validation has started; final assignment synthesis remains pending.
 
 **Deadline:** Unknown; sequence is therefore defined by evidence gates rather than calendar dates.
 
 ## Recommendation
 
-Stop broad internet collection. Use the existing evidence to validate real pickup journeys, prepare the interview study, conduct at least 10 interviews, and only then develop strategy and product ideas.
+Stop broad internet and broad rider-volume collection. Use the existing survey evidence to complete the required insight synthesis, add only selective follow-up conversations where they materially improve depth or proof, close the remaining Step 1 gaps, and only then develop strategy and product ideas.
 
 The first deep-validation locations should be:
 
@@ -39,8 +39,8 @@ The proposed participant mix is six riders and four drivers. It must change if t
 
 | Stage | Work | Output | Completion gate | Main owner |
 |---|---|---|---|---|
-| 0. Evidence checkpoint | Preserve the completed internet and map research; confirm repository state | Committed research baseline | Current documents and workbook committed and remote status verified | Researcher with assistant support |
-| 1. Manual content validation | Watch the 21 priority YouTube videos; review retained comments in context; capture timestamps and observable behavior | Accepted/rejected video log and evidence notes | All 21 videos classified; every accepted claim has a URL, timestamp, context, and limitation | Assistant-supported review; researcher confirms interpretations |
+| 0. Evidence checkpoint | Preserve the completed internet and map research; confirm repository state | Local checkpoint committed as `219eec3`; remote push remains pending | Complete when the remote commit is verified | Researcher with assistant support |
+| 1. Manual content validation | Watch the 21 priority YouTube videos; review retained comments in context; capture timestamps and observable behavior | Manual review log plus caption-coverage analysis | 3 of 21 priority videos reviewed; complete when all 21 are classified and every accepted claim has a URL, timestamp, context, and limitation | Assistant-supported review; researcher confirms interpretations |
 | 2. Location validation | Check official rules, current Uber rider flow, and observable real-world access at the three priority locations; use the remaining three as comparison cases | One checklist per location with screenshots or field notes | Gate, side, level, legal stopping point, walking path, landmark, and accessibility questions are answered or explicitly marked unknown | Researcher for live app/fieldwork; assistant for desk evidence |
 | 3. Market-research closeout | Consolidate segment demand, target-market sizing logic and gaps, alternatives, rules, and trends | Assignment-ready Step 1 summary | All five required topics have sourced findings or an explicit unknown; no invented Hyderabad trip or problem rate | Assistant-supported analysis; researcher approves assumptions |
 | 4. Interview readiness | Confirm participant eligibility; prepare an open-ended guide, screener, consent wording, proof plan, and note template | Complete interview pack | Guide avoids leading questions; consent precedes recording; storage separates private raw evidence from public anonymised findings | Researcher with assistant support |
@@ -92,6 +92,8 @@ Close Step 1 using the existing source base plus the manual-validation findings:
 The output may conclude that a reliable numeric market size is unavailable publicly. A transparent model and data-acquisition gap is stronger than a fabricated estimate.
 
 ## Stage 4 — Interview-readiness decisions
+
+**Update (16 September 2026):** Live/scheduled interviews were the execution blocker, so the interview instrument is now a trilingual (EN/Telugu/Hindi) self-serve survey rather than a synchronous guide — see [`interviews/README.md`](interviews/README.md) and [`interviews/survey-form-content.md`](interviews/survey-form-content.md). It covers both riders and drivers through one link, which also resolves the fixed-mix question below. The real-event prompt and consent/privacy rules in this section still apply; they're just delivered as form questions instead of a spoken guide. The opt-in follow-up-call question in the survey is the path to the small number of live conversations still worth having for deeper "why" probing.
 
 Before recruitment starts, confirm:
 

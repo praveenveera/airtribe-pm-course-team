@@ -1,0 +1,64 @@
+Response ID	Submitted at	Source row	Schema	Language	Role	City group	City detail	Recent four-wheel	Pickup difficulty	Issue flag	Main story	Confusion start	Actions and reasoning	Frustration or missing help	What happened	Locations	Actions	Actions other	Extra time	What helped	Repeated	Additional comment	Follow-up opt-in	Qualitative coverage	In-scope flag	Hyderabad flag	Over five minutes flag	Current issue with story	All four open answers	All four detailed answers
+R004	2026-09-17T03:17:50.825Z	4	Legacy	en	rider	Hyderabad	Hyderabad	yes	no	0													no	No issue detail	1	1	0	0	0	0
+R005	2026-09-17T03:33:02.118Z	5	Legacy	en	rider	Hyderabad	Hyderabad	yes	yes	1						mall	called			driver_moved	no		no	Structured only	1	1	0	0	0	0
+R006	2026-09-17T03:38:11.657Z	6	Legacy	en	rider	Hyderabad	Hyderabad	yes	yes	1						residential	moved			called_messaged	yes		no	Structured only	1	1	0	0	0	0
+R007	2026-09-17T03:51:12.072Z	7	Legacy	en	rider	Hyderabad	Hyderabad	yes	yes	1						airport	called			called_messaged	yes		no	Structured only	1	1	0	0	0	0
+R008	2026-09-17T03:51:50.803Z	8	Legacy	en	rider	Hyderabad	Hyderabad	yes	no	0													no	No issue detail	1	1	0	0	0	0
+R009	2026-09-17T04:03:42.176Z	9	Legacy	en	rider	Hyderabad	Hyderabad	no	no	0													yes	No issue detail	0	1	0	0	0	0
+R010	2026-09-17T04:05:17.101Z	10	Legacy	en	rider	Other	Bangalore	yes	yes	1						mall	called			nothing	yes		yes	Structured only	1	0	0	0	0	0
+R011	2026-09-17T04:08:47.931Z	11	Legacy	en	rider	Hyderabad	Hyderabad	yes	yes	1						office	waited, messaged, called			landmark, called_messaged	yes		yes	Structured only	1	1	0	0	0	0
+R012	2026-09-17T04:10:19.215Z	12	Legacy	en	rider	Other	Bangalore	yes	no	0													yes	No issue detail	1	0	0	0	0	0
+R013	2026-09-17T04:10:52.256Z	13	Legacy	en	rider	Other	Kolkata	yes	yes	1						station	called, cancelled			called_messaged, nothing	yes		yes	Structured only	1	0	0	0	0	0
+R014	2026-09-17T04:12:41.962Z	14	Legacy	en	rider	Hyderabad	Hyderabad	no	no	0												After calling n asking by the driver the destination... they cancelled the ride... Faced the problem many times especially late hours and peak hours	yes	Context only	0	1	0	0	0	0
+R015	2026-09-17T04:12:44.287Z	15	Legacy	en	rider	Hyderabad	Hyderabad	no	yes	1						station	waited			called_messaged, landmark	yes	No	no	Structured only	0	1	0	0	0	0
+R016	2026-09-17T04:15:59.924Z	16	Legacy	te	rider	Other	VIZAG	yes	no	0												NOTHING	yes	No issue detail	1	0	0	0	0	0
+R017	2026-09-17T04:18:36.815Z	17	Legacy	en	rider	Other	Vizag	yes	yes	1						airport	called, moved			called_messaged	yes		yes	Structured only	1	0	0	0	0	0
+R018	2026-09-17T04:19:26.604Z	18	Legacy	en	rider	Other	VISAKHAPATNAM	no	yes	1						residential	cancelled			driver_moved	yes	The number of the vehicle mentioned in the app is different from the vehicle carrying us.	yes	Structured only	0	0	0	0	0	0
+R019	2026-09-17T04:21:13.214Z	19	Legacy	en	rider	Hyderabad	Hyderabad	yes	yes	1						mall	moved			called_messaged	yes		no	Structured only	1	1	0	0	0	0
+R020	2026-09-17T04:25:54.338Z	20	Legacy	en	rider	Hyderabad	Hyderabad	yes	yes	1						office	called			called_messaged	yes		no	Structured only	1	1	0	0	0	0
+R021	2026-09-17T04:26:50.130Z	21	Legacy	en	rider	Other	Kolkata	yes	yes	1						office	called, messaged, moved, waited			called_messaged, driver_moved, staff, nothing	yes		yes	Structured only	1	0	0	0	0	0
+R022	2026-09-17T04:31:00.586Z	22	Legacy	en	rider	Hyderabad	Hyderabad	yes	no	0												Nothing	yes	No issue detail	1	1	0	0	0	0
+R023	2026-09-17T04:31:29.424Z	23	Legacy	en	rider	Hyderabad	Hyderabad	yes	yes	1						airport, office	called			called_messaged	yes		no	Structured only	1	1	0	0	0	0
+R024	2026-09-17T04:32:51.682Z	24	Legacy	en	rider	Hyderabad	Hyderabad	yes	no	0													no	No issue detail	1	1	0	0	0	0
+R025	2026-09-17T04:38:14.177Z	25	Legacy	en	rider	Other	Visakhapatnam	yes	no	0													no	No issue detail	1	0	0	0	0	0
+R026	2026-09-17T04:42:22.866Z	26	Legacy	en	rider	Hyderabad	Hyderabad	yes	no	0												No	yes	No issue detail	1	1	0	0	0	0
+R027	2026-09-17T04:44:10.355Z	27	Legacy	en	rider	Other	Kolkata	yes	yes	1						station	cancelled			called_messaged	yes	I found Uber to be a better option than Ola	yes	Structured only	1	0	0	0	0	0
+R028	2026-09-17T04:44:52.002Z	28	Legacy	en	rider	Other	Visakhapatnam	yes	no	0												Most of the cars are not hygiene.  Riders who wish a hygiene vehicle are even forced to book Premium car which charges higher rate. Uber is not controlling this mafia. Its the prerequisite for the operator to maintain car in good condition all times	yes	Context only	1	0	0	0	0	0
+R029	2026-09-17T04:46:32.624Z	29	Legacy	en	rider	Hyderabad	Hyderabad	yes	yes	1						airport	called			called_messaged	yes		no	Structured only	1	1	0	0	0	0
+R030	2026-09-17T04:48:00.993Z	30	Legacy	en	rider	Other	Benguluru, Delhi, Hyderabad	no	yes	1						hotel, airport, street	called, waited, cancelled, moved			landmark, called_messaged	yes	On the whole the experience is good. Exceptions will always be there.	no	Structured only	0	0	0	0	0	0
+R031	2026-09-17T04:48:32.498Z	31	Legacy	en	rider	Other	Other / not specified	yes	no	0												Once an overcharging incident by not going to the destination occured at Hyderabad	yes	Context only	1	0	0	0	0	0
+R032	2026-09-17T04:48:41.785Z	32	Legacy	en	rider	Other	Other / not specified	yes	no	0												Once an overcharging incident by not going to the destination occured at Hyderabad	yes	Context only	1	0	0	0	0	0
+R033	2026-09-17T04:50:39.262Z	33	Legacy	en	rider	Hyderabad	Hyderabad	yes	no	0												No	no	No issue detail	1	1	0	0	0	0
+R034	2026-09-17T04:52:44.997Z	34	Legacy	en	rider	Other	Visakhapatnam	no	no	0												Prices are high. So prefering rapido most of the time	no	Context only	0	0	0	0	0	0
+R035	2026-09-17T04:55:13.882Z	35	Legacy	en	rider	Other	Bangalore	yes	no	0													yes	No issue detail	1	0	0	0	0	0
+R036	2026-09-17T04:57:03.256Z	36	Legacy	en	rider	Other	Bangalore	yes	no	0													yes	No issue detail	1	0	0	0	0	0
+R037	2026-09-17T05:00:59.298Z	37	Legacy	en	driver	Hyderabad	Hyderabad	yes	no	0													no	No issue detail	1	1	0	0	0	0
+R038	2026-09-17T05:04:47.169Z	38	Legacy	en	rider	Hyderabad	Hyderabad	no	no	0												No not much	no	No issue detail	0	1	0	0	0	0
+R039	2026-09-17T05:05:34.729Z	39	Legacy	en	driver	Hyderabad	Hyderabad	yes	no	0												Good to zero error friendly app	no	Context only	1	1	0	0	0	0
+R040	2026-09-17T05:10:09.894Z	40	Legacy	en	rider	Other	Bengaluru	yes	yes	1						mall	other	I had no choice but to carry on with ride		nothing	no		no	Structured only	1	0	0	0	0	0
+R041	2026-09-17T05:14:33.111Z	41	Legacy	te	rider	Other	Visakhapatnam	yes	yes	1						hotel	called			called_messaged	no		no	Structured only	1	0	0	0	0	0
+R042	2026-09-17T05:18:15.908Z	42	Current	te	rider	Hyderabad	Hyderabad	yes	no	0												అధిక టిప్స్ మరియు క్యాన్సిలషన్ ఇబ్బదిగా ఉంది.	no	Context only	1	1	0	0	0	0
+R045	2026-09-17T05:23:29.846Z	45	Current	en	rider	Other	Kolkata	yes	yes	1					wrong_pin, driver_no_stop, cancelled	hospital	waited		gt15	nothing	yes		no	Structured only	1	0	1	0	0	0
+R046	2026-09-17T05:23:59.404Z	46	Current	en	driver	Other	Mumbai	yes	no	0												The vehicles are dirty and not kept well. Not provided with simple things like a sealed bottle of water. No fire extinguisher. The Driver is shabbily dressed. Etc	no	Context only	1	0	0	0	0	0
+R047	2026-09-17T05:24:31.703Z	47	Current	en	rider	Hyderabad	Hyderabad	yes	yes	1	During rains it would be very difficult to book a cab and even after booking there are many cancellations based on the drop point.		Driver calls and asks for drop location. Then based on the location he cancels	Peek time bookings	poor_signal, cancelled, wrong_pin	mall, office, station, residential	moved, called		2to5	called_messaged	yes		yes	Partial detailed	1	1	0	1	0	0
+R048	2026-09-17T05:36:55.762Z	48	Current	en	rider	Hyderabad	Hyderabad	yes	no	0												xxx	no	No issue detail	1	1	0	0	0	0
+R049	2026-09-17T05:38:04.824Z	49	Current	en	rider	Hyderabad	Hyderabad	yes	no	0												There were instances when the driver has accepted the ride but will not move or start from the location for long time and later cancels or waits for us to cancel the ride.	yes	Context only	1	1	0	0	0	0
+R050	2026-09-17T05:49:37.538Z	50	Current	en	rider	Other	Bangalore	yes	yes	1					similar_gates, driver_no_stop, poor_signal, long_walk, cancelled, wrong_pin	airport, mall, office, street, residential	called, messaged, moved, waited		gt15	called_messaged	yes		yes	Structured only	1	0	1	0	0	0
+R051	2026-09-17T05:50:39.708Z	51	Current	en	rider	Hyderabad	Hyderabad	yes	no	0												If the pick up time is early in the morning say 4.30 am or 5 am there are issues of delay or last minute cancellation.   Few times the cab was smelling and not clean.  Drivers keep speaking on mobile while driving.	no	Context only	1	1	0	0	0	0
+R052	2026-09-17T05:57:33.647Z	52	Current	en	rider	Hyderabad	Hyderabad	yes	no	0													no	No issue detail	1	1	0	0	0	0
+R053	2026-09-17T06:01:53.083Z	53	Current	en	rider	Hyderabad	Hyderabad	yes	yes	1	Some of the driver's are unable to identity the location and they are asking me to cancel the ride		Because the waiting time is too long	Finding the location or they doesn't want come	wrong_pin	residential	messaged		5to15	called_messaged	yes	Nothing	yes	Partial detailed	1	1	1	1	0	0
+R054	2026-09-17T06:02:01.130Z	54	Current	en	rider	Other	Visakhapatnam	yes	no	0													no	No issue detail	1	0	0	0	0	0
+R055	2026-09-17T06:02:25.401Z	55	Current	en	rider	Other	Mumbai	notsure	yes	1	At times it takes unusually long time and we book uber under normal belief that the ride will be available within 2-3 minutes but at times it takes 10-15 minutes	Like in a busy area of Juhu Tara Road, I wouldn’t expect that it takes more than five minutes to get a ride			other	residential	waited		gt15	other	yes		no	Partial detailed	0	0	1	1	0	0
+R056	2026-09-17T06:08:55.562Z	56	Current	en	rider	Hyderabad	Hyderabad	yes	no	0													yes	No issue detail	1	1	0	0	0	0
+R057	2026-09-17T06:11:30.065Z	57	Current	en	rider	Other	Bangalore	yes	no	0													no	No issue detail	1	0	0	0	0	0
+R058	2026-09-17T06:26:26.659Z	58	Current	en	driver	Other	Other / not specified	yes	notsure	1	Good				pin_restricted, similar_gates	airport, station, residential	called		lt2	landmark	no	None	yes	Structured only	1	0	0	1	0	0
+R059	2026-09-17T06:37:04.204Z	59	Current	en	rider	Hyderabad	Hyderabad	yes	no	0													no	No issue detail	1	1	0	0	0	0
+R060	2026-09-17T07:05:11.242Z	60	Current	en	rider	Other	Other / not specified	yes	yes	1	Yes en number of times it was canceled	When ride was booked and it was allocated to someone or picked by someone it should be done	Every time they asking about drop location how much amount shows in app and your payment mode cash or Uber cash	Slow driving when it booked to airport	cancelled	airport	messaged		lt2	called_messaged	yes	Nothing	no	Complete detailed	1	0	0	1	1	1
+R061	2026-09-17T07:18:43.868Z	61	Current	en	rider	Hyderabad	Hyderabad	no	no	0												I always place a message on where i would stand with details	no	Context only	0	1	0	0	0	0
+R062	2026-09-17T08:19:54.171Z	62	Current	en	rider	Hyderabad	Hyderabad	no	no	0													no	No issue detail	0	1	0	0	0	0
+R063	2026-09-17T08:28:54.175Z	63	Current	en	rider	Hyderabad	Hyderabad	yes	yes	1	One month back	He was delayed	We talked to each other	No clarity	other	airport	called		5to15	called_messaged	no		no	Complete brief	1	1	1	1	1	0
+R064	2026-09-17T10:14:03.857Z	64	Current	en	rider	Other	Lucknow	yes	yes	1	Date i dont remember. The driver told he is coming n didnt turn up n cancelled finally	Confusion from the moment driver was alloted . I thought he will come but he kept on keeping me waiting	Spoke to him, he told he is coming n didnt, dont cancel, still didnt come	No one to seek redressal or help	cancelled	airport	waited		gt15	nothing	yes	Uber or Ola have no control over drivers. Grievance redressal has to b immediate	yes	Complete detailed	1	0	1	1	1	1
+R065	2026-09-17T10:44:10.442Z	65	Current	en	rider	Hyderabad	Hyderabad	yes	no	0												As per my experience reduce wating time	no	Context only	1	1	0	0	0	0
+R066	2026-09-17T11:17:41.554Z	66	Current	en	rider	Other	Visakhapatnam	yes	no	0													yes	No issue detail	1	0	0	0	0	0
+R067	2026-09-17T11:20:52.510Z	67	Current	en	rider	Other	Ernakulam	yes	yes	1	12th sept evening around 5.15pm from palarivattom to Elamakkara it took more than 10 minutes to capture the attn of driver , even though he was passing up snd down on cross road junction.	The aap says he has arrived, but almost 10 minutes to locate each other	We said 'hi, and got in	Generally the driver cancels trip without no prior indication	similar_gates	street	called, moved, waited		5to15	called_messaged	yes		yes	Complete detailed	1	0	1	1	1	1
+R068	2026-09-17T12:12:50.359Z	68	Current	en	rider	Other	Chandigarh	no	no	0												No	no	No issue detail	0	0	0	0	0	0

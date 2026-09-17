@@ -1,0 +1,1204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pickup Story — Hyderabad</title>
+<meta name="description" content="Praveen Veera's academic research survey about Uber pickup experiences in Hyderabad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&family=Hind:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Deliberately a single, fixed light theme — this app is used by an
+       older, mixed-literacy audience on unpredictable phones; a
+       consistent, high-contrast light surface beats matching device
+       dark-mode settings that vary per visitor. An 80s-arcade pixel
+       palette: bright paper (not moody neon-dark, for legibility),
+       thick ink-black outlines, hot-magenta + cyan retro accents. */
+    --ink: #1A1A2E;
+    --paper: #FAFAFF;
+    --paper-raised: #FFFFFF;
+    --line: #1A1A2E;
+    --muted: #4A4A68;
+    --accent: #FF6B00;
+    --accent-ink: #FFFFFF;
+    --accent-soft: #FFE2C7;
+    --teal: #00B8D4;
+    --teal-soft: #D6F7FC;
+    --yellow: #FFD400;
+    --success: #00C853;
+    --danger: #FF3860;
+    --radius: 0px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Work Sans', 'Hind', 'Noto Sans Telugu', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  body.lang-hi { font-family: 'Hind', 'Work Sans', sans-serif; }
+  body.lang-te { font-family: 'Noto Sans Telugu', 'Work Sans', sans-serif; }
+  html { font-size: 112.5%; } /* ~18px base — larger default text throughout */
+
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 10px 16px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px;
+  }
+  .brand { font-family: 'Press Start 2P', cursive; font-size: 0.8rem; letter-spacing: 0.01em; }
+  .lang-toggle { display: flex; gap: 8px; }
+  .lang-toggle button {
+    border: 2.5px solid var(--ink);
+    background: var(--paper-raised);
+    color: var(--ink);
+    border-radius: 0;
+    padding: 8px 14px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+    min-width: 44px;
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+  .lang-toggle button:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+  .lang-toggle button[aria-pressed="true"] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  .progress-track {
+    height: 4px;
+    background: var(--line);
+    width: 100%;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.25s ease;
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 20px 16px 100px;
+  }
+  .card {
+    width: 100%;
+    max-width: 460px;
+  }
+  .eyebrow {
+    color: var(--muted);
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+  }
+  h1.step-title {
+    /* Kept in the readable script fonts, not the pixel display face:
+       this text is translated into Telugu/Hindi (which the pixel font
+       can't render at all) and is real question content, not chrome —
+       forcing it blocky would hurt legibility exactly where it matters
+       most. The retro identity comes through shape/color/icons instead. */
+    font-size: 1.45rem;
+    line-height: 1.35;
+    margin: 0 0 8px;
+    text-wrap: balance;
+    border-bottom: 4px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 4px;
+  }
+  .step-hint {
+    color: var(--muted);
+    font-size: 0.98rem;
+    margin: 0 0 20px;
+    line-height: 1.55;
+  }
+  .options { display: flex; flex-direction: column; gap: 14px; margin-bottom: 8px; }
+  .option-card {
+    display: flex; align-items: center; gap: 14px;
+    border: 3px solid var(--ink);
+    background: var(--paper-raised);
+    border-radius: 0;
+    padding: 18px 20px;
+    cursor: pointer;
+    font-size: 1.08rem;
+    line-height: 1.45;
+    min-height: 44px;
+    box-shadow: 4px 4px 0 var(--ink);
+    transition: transform 0.05s ease, box-shadow 0.05s ease, background 0.1s ease;
+  }
+  .option-card:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
+  .option-card.selected {
+    background: var(--accent-soft);
+  }
+  .option-card .box {
+    width: 26px; height: 26px; flex: 0 0 26px;
+    border: 3px solid var(--ink);
+    border-radius: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink);
+    font-size: 16px;
+    font-weight: 700;
+    background: var(--paper-raised);
+  }
+  .option-card.selected .box { background: var(--accent); color: #fff; }
+  .option-icon { font-size: 1.3rem; line-height: 1; flex: 0 0 auto; }
+
+  textarea, input[type="text"] {
+    width: 100%;
+    border: 3px solid var(--ink);
+    background: var(--paper-raised);
+    color: var(--ink);
+    border-radius: 0;
+    padding: 14px 16px;
+    font-size: 1.08rem;
+    font-family: inherit;
+    resize: vertical;
+  }
+  textarea { min-height: 140px; }
+  textarea:focus, input[type="text"]:focus, .option-card:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+  .field-note { color: var(--muted); font-size: 0.92rem; margin-top: 6px; }
+
+  .textarea-wrap { position: relative; }
+  .textarea-wrap textarea { padding-right: 58px; }
+  .mic-btn {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 46px; height: 46px;
+    border-radius: 0;
+    border: 3px solid var(--ink);
+    background: var(--teal-soft);
+    color: var(--ink);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0;
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+  .mic-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+  .mic-btn.listening {
+    background: var(--danger);
+    border-color: var(--danger);
+    color: #fff;
+    animation: mic-pulse 1.1s ease-in-out infinite;
+  }
+  @keyframes mic-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--danger) 45%, transparent); }
+    50% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--danger) 0%, transparent); }
+  }
+  .mic-hint { color: var(--muted); font-size: 0.92rem; margin-top: 8px; }
+  .error-note { color: var(--danger); font-size: 1rem; font-weight: 600; margin-top: 12px; min-height: 1.2em; }
+
+  .other-field { margin-top: 10px; }
+
+  .navbar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    display: flex; justify-content: center; gap: 10px;
+  }
+  .navbar-inner { width: 100%; max-width: 460px; display: flex; gap: 10px; }
+  button.nav-btn {
+    flex: 1;
+    border-radius: 0;
+    padding: 17px 22px;
+    font-size: 1.12rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: 3px solid var(--ink);
+    min-height: 44px;
+    box-shadow: 4px 4px 0 var(--ink);
+    transition: transform 0.05s ease, box-shadow 0.05s ease;
+  }
+  button.nav-btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); }
+  .btn-secondary { background: var(--paper-raised); color: var(--ink); flex: 0 0 auto; padding: 17px 22px; }
+  button.nav-btn:disabled { opacity: 0.6; cursor: default; }
+
+  .welcome-block { background: var(--teal-soft); border: 3px solid var(--ink); border-radius: 0; padding: 18px; margin-bottom: 20px; font-size: 1.02rem; color: var(--ink); line-height: 1.6; }
+  .welcome-badge { display: block; width: fit-content; margin: 0 auto 18px; }
+
+  .pixel-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--teal-soft);
+    border: 3px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+    padding: 14px;
+  }
+
+  .thankyou { text-align: center; padding-top: 24px; }
+  .thankyou .badge { margin: 0 auto 16px; }
+  .thankyou h1 { font-size: 1.6rem; margin-bottom: 10px; }
+  .thankyou p { color: var(--ink); font-size: 1.05rem; line-height: 1.55; max-width: 360px; margin-left: auto; margin-right: auto; }
+
+  @keyframes confetti-fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(70px) rotate(200deg); opacity: 0; }
+  }
+  .confetti-dot { animation: confetti-fall 1.4s ease-out forwards; }
+
+  .config-warning {
+    background: var(--danger);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 10px 16px;
+    text-align: center;
+  }
+
+  .lang-gate-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 32px 20px;
+  }
+  .lang-gate-inner { width: 100%; max-width: 460px; margin: 0 auto; }
+  .lang-gate-hero { display: block; margin: 0 auto 20px; }
+  .lang-gate-brand { font-family: 'Press Start 2P', cursive; font-size: 1.05rem; line-height: 1.7; margin-bottom: 10px; }
+  .lang-gate-byline { color: var(--muted); font-size: 0.95rem; margin: 0 0 18px; font-style: italic; }
+  .lang-gate-heading { color: var(--muted); font-size: 1.1rem; margin: 0 0 4px; line-height: 1.5; }
+  .lang-gate-options { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+  .lang-gate-card {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 6px;
+    border: 3px solid var(--ink);
+    background: var(--paper-raised);
+    border-radius: 0;
+    padding: 22px 24px;
+    cursor: pointer;
+    min-height: 44px;
+    box-shadow: 5px 5px 0 var(--ink);
+    transition: transform 0.05s ease, box-shadow 0.05s ease;
+  }
+  .lang-gate-card:nth-child(1) { border-color: var(--accent); box-shadow: 5px 5px 0 var(--accent); }
+  .lang-gate-card:nth-child(2) { border-color: var(--teal); box-shadow: 5px 5px 0 var(--teal); }
+  .lang-gate-card:nth-child(3) { border-color: var(--ink); box-shadow: 5px 5px 0 var(--ink); }
+  .lang-gate-card:active { transform: translate(4px, 4px); }
+  .lang-gate-card:nth-child(1):active { box-shadow: 1px 1px 0 var(--accent); }
+  .lang-gate-card:nth-child(2):active { box-shadow: 1px 1px 0 var(--teal); }
+  .lang-gate-card:nth-child(3):active { box-shadow: 1px 1px 0 var(--ink); }
+  .lang-gate-native { font-size: 1.6rem; font-weight: 700; color: var(--ink); }
+  .lang-gate-sub { font-size: 1rem; color: var(--muted); }
+
+  @media (min-width: 480px) {
+    h1.step-title { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div id="configWarning" class="config-warning" hidden>
+  ⚠ APPS_SCRIPT_URL is not configured yet in index.html — responses will not be saved. See DEPLOY.md.
+</div>
+
+<div id="chrome" hidden>
+  <div class="topbar">
+    <div class="brand" id="brandText">Pickup Story</div>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="te" aria-pressed="false">TE</button>
+      <button type="button" data-lang="hi" aria-pressed="false">HI</button>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:4%"></div></div>
+</div>
+
+<main>
+  <div class="card" id="card"></div>
+</main>
+
+<div class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <button type="button" class="nav-btn btn-secondary" id="backBtn">Back</button>
+    <button type="button" class="nav-btn btn-primary" id="nextBtn">Next</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  // ======================================================================
+  // CONFIG — paste your deployed Google Apps Script Web App URL here.
+  // See DEPLOY.md for how to create it. Leave the placeholder to see a
+  // warning banner reminding you it's not wired up yet.
+  // ======================================================================
+  var APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz_9rXK-9Mm21U9Q1zwJGBJvbICXJZjZtIdtc11QXIIV8gAkKa1nP53o0d8ROqEPKzU/exec";
+
+  var I18N = {
+    en: {
+      brand: "Pickup Story",
+      welcomeTitle: "Your Uber pickup experience",
+      welcomeBody: "This is Praveen Veera's academic assignment for a product management course — not run by or affiliated with Uber. Your answers will help Praveen solve a real assignment problem: understanding why finding your driver or rider after a booking can be confusing. Takes about 5 minutes. Your answers are anonymous unless you choose to leave contact details at the end.",
+      consentLabel: "I agree that my anonymous answers may be used as research quotes in Praveen's academic assignment. My name will not be published.",
+      roleTitle: "Are you answering as a...",
+      roleRider: "Rider — someone who books rides",
+      roleDriver: "Driver — someone who drives for Uber/Ola",
+      cityTitle: "Which city are your answers about?",
+      cityHyd: "Hyderabad",
+      cityOther: "Other",
+      cityOtherPlaceholder: "Type the city name",
+      scopeTitle: "In the last 3 months, have you taken or driven a regular 4-seater cab (not Auto or Bike)?",
+      yes: "Yes",
+      no: "No",
+      notSure: "Not sure",
+      difficultyTitleRider: "Have you ever had a confusing moment trying to find your driver after booking?",
+      difficultyTitleDriver: "Have you ever had a confusing moment trying to reach or identify your rider?",
+      difficultyNotSureLabel: "Not sure, but let me try to describe something",
+      mainStoryTitleRider: "Tell us about the most recent time this happened — from booking until you met your driver, or the ride was cancelled.",
+      mainStoryTitleDriver: "Tell us about the most recent time this happened — from accepting the ride until you met your rider, or it was cancelled.",
+      confusionStartTitle: "Where exactly did the confusion begin, and what did you expect to happen at that point?",
+      actionsReasoningTitleRider: "What did you and the driver do or say to each other? Why did you choose to do that?",
+      actionsReasoningTitleDriver: "What did you and the rider do or say to each other? Why did you choose to do that?",
+      frustrationTitle: "What was the most frustrating or worrying part? What information or help was missing at that moment?",
+      openTextPlaceholder: "Type here, or tap the mic to speak...",
+      whatHappenedTitle: "What happened? (choose all that apply)",
+      whR_pin: "The pin showed the wrong spot",
+      whR_gates: "Too many similar gates or entrances",
+      whR_stop: "Driver couldn't stop where I was",
+      whR_signal: "Phone signal was poor",
+      whR_walk: "Had to walk a long way",
+      whR_cancelled: "Ride got cancelled",
+      whD_pin: "Pin was inside a building or restricted area",
+      whD_gates: "Too many similar gates or entrances",
+      whD_stop: "Not allowed to stop at the pinned spot",
+      whD_unsure: "Rider wasn't sure where to wait",
+      whD_signal: "Phone signal was poor",
+      whD_circle: "Had to circle around or wait a long time",
+      whD_cancelled: "Ride got cancelled",
+      whOther: "Something else",
+      locationTitle: "Where were you? (choose all that apply)",
+      locAirport: "Airport", locMall: "Shopping mall", locOffice: "Office or tech campus",
+      locStation: "Metro or railway station", locHospital: "Hospital", locHotel: "Hotel or event venue",
+      locStreet: "Busy street", locResidential: "Residential complex / gated community", locOther: "Other",
+      actionsTitle: "What did you do about it? (choose all that apply)",
+      actCall: "Called", actMessage: "Messaged", actMove: "Moved to a different spot",
+      actWait: "Waited", actCancel: "Cancelled the ride", actOther: "Something else",
+      actionsOtherPlaceholder: "Describe briefly",
+      timeTitle: "Roughly how much extra time did it cost?",
+      timeOpt1: "Less than 2 minutes", timeOpt2: "2–5 minutes", timeOpt3: "5–15 minutes", timeOpt4: "More than 15 minutes",
+      helpedTitle: "What finally helped, if anything? (choose all that apply)",
+      helpR_call: "Calling or messaging each other",
+      helpR_landmark: "Walking to a shared landmark",
+      helpR_moved: "Driver moved closer to me",
+      helpD_moved: "I moved closer to the rider",
+      helpBoth_staff: "Security or staff helped",
+      helpBoth_nothing: "Nothing helped — had to cancel",
+      repeatTitle: "Has this kind of thing happened to you more than once?",
+      moreTitle: "Anything else you'd like to add?",
+      moreHint: "Optional",
+      morePlaceholder: "Type here...",
+      followupTitle: "Would you be open to a short 10-minute follow-up call?",
+      followupContactPlaceholder: "Phone or email (optional)",
+      required: "Please answer to continue.",
+      back: "Back",
+      next: "Next",
+      submit: "Submit",
+      submitting: "Sending...",
+      thankyouTitle: "Thank you!",
+      thankyouBody: "Your answers were recorded. If you shared contact details, we may reach out for a short follow-up.",
+      errorSubmit: "Something went wrong sending your answers. Please check your connection and try again.",
+      micHint: "Tap the mic to speak your answer instead of typing.",
+      micDenied: "Microphone permission was denied — you can still type your answer."
+    },
+    te: {
+      brand: "పికప్ కథ",
+      welcomeTitle: "మీ ఉబర్ పికప్ అనుభవం",
+      welcomeBody: "ఇది ప్రొడక్ట్ మేనేజ్‌మెంట్ కోర్సు కోసం ప్రవీణ్ వీర యొక్క అకడమిక్ అసైన్‌మెంట్ — ఇది ఉబర్ ద్వారా నిర్వహించబడదు లేదా దానితో సంబంధం కలిగి ఉండదు. బుకింగ్ తర్వాత మీ డ్రైవర్‌ను లేదా రైడర్‌ను కనుక్కోవడం ఎందుకు గందరగోళంగా ఉంటుందో అర్థం చేసుకోవడంలో మీ సమాధానాలు ప్రవీణ్‌కు ఈ అసైన్‌మెంట్ సమస్యను పరిష్కరించడంలో సహాయపడతాయి. దాదాపు 5 నిమిషాలు పడుతుంది. చివర్లో కాంటాక్ట్ వివరాలు ఇవ్వకపోతే, మీ సమాధానాలు అనామకంగా ఉంటాయి.",
+      consentLabel: "నా అనామక సమాధానాలను ప్రవీణ్ యొక్క అకడమిక్ అసైన్‌మెంట్‌లో పరిశోధన కోట్‌లుగా ఉపయోగించవచ్చని నేను అంగీకరిస్తున్నాను. నా పేరు ప్రచురించబడదు.",
+      roleTitle: "మీరు దేని కోసం సమాధానం ఇస్తున్నారు...",
+      roleRider: "రైడర్ — రైడ్ బుక్ చేసుకునే వ్యక్తి",
+      roleDriver: "డ్రైవర్ — ఉబర్/ఓలా కోసం నడిపే వ్యక్తి",
+      cityTitle: "మీ సమాధానాలు ఏ నగరానికి సంబంధించినవి?",
+      cityHyd: "హైదరాబాద్",
+      cityOther: "ఇతర",
+      cityOtherPlaceholder: "నగరం పేరు టైప్ చేయండి",
+      scopeTitle: "గత 3 నెలల్లో, మీరు సాధారణ 4-సీట్ల కారులో (ఆటో లేదా బైక్ కాదు) ప్రయాణించారా లేదా నడిపారా?",
+      yes: "అవును",
+      no: "లేదు",
+      notSure: "ఖచ్చితంగా తెలియదు",
+      difficultyTitleRider: "బుక్ చేసిన తర్వాత మీ డ్రైవర్‌ను కనుక్కోవడంలో మీకు ఎప్పుడైనా గందరగోళం ఎదురైందా?",
+      difficultyTitleDriver: "రైడర్‌ను చేరుకోవడంలో లేదా గుర్తించడంలో మీకు ఎప్పుడైనా గందరగోళం ఎదురైందా?",
+      difficultyNotSureLabel: "ఖచ్చితంగా తెలియదు, కానీ ప్రయత్నిస్తాను",
+      mainStoryTitleRider: "ఇది ఇటీవల జరిగిన సంఘటన గురించి చెప్పండి — బుక్ చేసినప్పటి నుండి మీ డ్రైవర్‌ను కలిసే వరకు లేదా రైడ్ క్యాన్సిల్ అయ్యే వరకు ఏం జరిగింది?",
+      mainStoryTitleDriver: "ఇది ఇటీవల జరిగిన సంఘటన గురించి చెప్పండి — రైడ్ అంగీకరించినప్పటి నుండి మీ రైడర్‌ను కలిసే వరకు లేదా రైడ్ క్యాన్సిల్ అయ్యే వరకు ఏం జరిగింది?",
+      confusionStartTitle: "గందరగోళం సరిగ్గా ఎక్కడ మొదలైంది, ఆ సమయంలో మీరు ఏమి జరుగుతుందని అనుకున్నారు?",
+      actionsReasoningTitleRider: "మీరు మరియు డ్రైవర్ ఒకరికొకరు ఏమి చేశారు లేదా చెప్పారు? మీరు అలా ఎందుకు చేశారు?",
+      actionsReasoningTitleDriver: "మీరు మరియు రైడర్ ఒకరికొకరు ఏమి చేశారు లేదా చెప్పారు? మీరు అలా ఎందుకు చేశారు?",
+      frustrationTitle: "అత్యంత విసుగు కలిగించిన లేదా ఆందోళనకరమైన విషయం ఏమిటి? ఆ సమయంలో ఏ సమాచారం లేదా సహాయం లేకపోయింది?",
+      openTextPlaceholder: "ఇక్కడ టైప్ చేయండి, లేదా మాట్లాడటానికి మైక్‌ని నొక్కండి...",
+      whatHappenedTitle: "ఏం జరిగింది? (వర్తించే అన్నింటినీ ఎంచుకోండి)",
+      whR_pin: "పిన్ తప్పు స్థలాన్ని చూపించింది",
+      whR_gates: "ఒకేలా ఉండే గేట్లు లేదా ప్రవేశాలు చాలా ఉన్నాయి",
+      whR_stop: "నేను ఉన్న చోట డ్రైవర్ ఆగలేకపోయారు",
+      whR_signal: "ఫోన్ సిగ్నల్ సరిగా లేదు",
+      whR_walk: "చాలా దూరం నడవాల్సి వచ్చింది",
+      whR_cancelled: "రైడ్ క్యాన్సిల్ అయింది",
+      whD_pin: "పిన్ భవనం లోపల లేదా నిషేధిత ప్రాంతంలో ఉంది",
+      whD_gates: "ఒకేలా ఉండే గేట్లు లేదా ప్రవేశాలు చాలా ఉన్నాయి",
+      whD_stop: "పిన్ చేసిన స్థలంలో ఆగడానికి అనుమతి లేదు",
+      whD_unsure: "రైడర్‌కు ఎక్కడ వేచి ఉండాలో తెలియలేదు",
+      whD_signal: "ఫోన్ సిగ్నల్ సరిగా లేదు",
+      whD_circle: "చుట్టూ తిరగాల్సి వచ్చింది లేదా చాలాసేపు వేచి ఉండాల్సి వచ్చింది",
+      whD_cancelled: "రైడ్ క్యాన్సిల్ అయింది",
+      whOther: "ఇంకేదో",
+      locationTitle: "మీరు ఎక్కడ ఉన్నారు? (వర్తించే అన్నింటినీ ఎంచుకోండి)",
+      locAirport: "విమానాశ్రయం", locMall: "షాపింగ్ మాల్", locOffice: "ఆఫీస్ లేదా టెక్ క్యాంపస్",
+      locStation: "మెట్రో లేదా రైల్వే స్టేషన్", locHospital: "ఆసుపత్రి", locHotel: "హోటల్ లేదా ఈవెంట్ వేదిక",
+      locStreet: "రద్దీ రోడ్డు", locResidential: "నివాస సముదాయం / గేటెడ్ కమ్యూనిటీ", locOther: "ఇతర",
+      actionsTitle: "మీరు దాని గురించి ఏమి చేశారు? (వర్తించే అన్నింటినీ ఎంచుకోండి)",
+      actCall: "కాల్ చేశారు", actMessage: "మెసేజ్ చేశారు", actMove: "వేరే స్థలానికి వెళ్లారు",
+      actWait: "వేచి ఉన్నారు", actCancel: "రైడ్ క్యాన్సిల్ చేశారు", actOther: "ఇంకేదో",
+      actionsOtherPlaceholder: "క్లుప్తంగా వివరించండి",
+      timeTitle: "దాదాపు ఎంత అదనపు సమయం వృథా అయింది?",
+      timeOpt1: "2 నిమిషాల కంటే తక్కువ", timeOpt2: "2–5 నిమిషాలు", timeOpt3: "5–15 నిమిషాలు", timeOpt4: "15 నిమిషాల కంటే ఎక్కువ",
+      helpedTitle: "చివరికి ఏది సహాయపడింది, ఏదైనా ఉంటే? (వర్తించే అన్నింటినీ ఎంచుకోండి)",
+      helpR_call: "ఒకరికొకరు కాల్ లేదా మెసేజ్ చేయడం",
+      helpR_landmark: "ఉమ్మడి గుర్తుకు నడవడం",
+      helpR_moved: "డ్రైవర్ నా దగ్గరికి వచ్చారు",
+      helpD_moved: "నేను రైడర్ దగ్గరికి వెళ్లాను",
+      helpBoth_staff: "సెక్యూరిటీ లేదా సిబ్బంది సహాయం చేశారు",
+      helpBoth_nothing: "ఏదీ సహాయపడలేదు — క్యాన్సిల్ చేయాల్సి వచ్చింది",
+      repeatTitle: "ఇలాంటిది మీకు ఒకటి కంటే ఎక్కువసార్లు జరిగిందా?",
+      moreTitle: "మీరు ఇంకేమైనా జోడించాలనుకుంటున్నారా?",
+      moreHint: "ఐచ్ఛికం",
+      morePlaceholder: "ఇక్కడ టైప్ చేయండి...",
+      followupTitle: "10 నిమిషాల ఫాలో-అప్ కాల్‌కు మీరు సిద్ధంగా ఉన్నారా?",
+      followupContactPlaceholder: "ఫోన్ లేదా ఇమెయిల్ (ఐచ్ఛికం)",
+      required: "కొనసాగించడానికి దయచేసి సమాధానం ఇవ్వండి.",
+      back: "వెనక్కి",
+      next: "తదుపరి",
+      submit: "సమర్పించండి",
+      submitting: "పంపుతోంది...",
+      thankyouTitle: "ధన్యవాదాలు!",
+      thankyouBody: "మీ సమాధానాలు నమోదు చేయబడ్డాయి. మీరు కాంటాక్ట్ వివరాలు ఇచ్చి ఉంటే, ఫాలో-అప్ కోసం మేము సంప్రదించవచ్చు.",
+      errorSubmit: "మీ సమాధానాలను పంపడంలో ఏదో తప్పు జరిగింది. దయచేసి మీ కనెక్షన్‌ను తనిఖీ చేసి మళ్లీ ప్రయత్నించండి.",
+      micHint: "టైప్ చేయడానికి బదులుగా మీ సమాధానం చెప్పడానికి మైక్‌ని నొక్కండి.",
+      micDenied: "మైక్రోఫోన్ అనుమతి తిరస్కరించబడింది — మీరు ఇప్పటికీ టైప్ చేయవచ్చు."
+    },
+    hi: {
+      brand: "पिकअप कहानी",
+      welcomeTitle: "आपका उबर पिकअप अनुभव",
+      welcomeBody: "यह प्रोडक्ट मैनेजमेंट कोर्स के लिए प्रवीण वीरा का अकादमिक असाइनमेंट है — यह उबर द्वारा संचालित या उससे संबद्ध नहीं है। बुकिंग के बाद अपने ड्राइवर या राइडर को ढूंढना क्यों उलझन भरा हो सकता है, यह समझने में आपके जवाब प्रवीण को इस असाइनमेंट की समस्या हल करने में मदद करेंगे। इसमें लगभग 5 मिनट लगेंगे। अंत में संपर्क जानकारी न देने पर आपके जवाब गुमनाम रहेंगे।",
+      consentLabel: "मैं सहमत हूं कि मेरे गुमनाम जवाबों का उपयोग प्रवीण के अकादमिक असाइनमेंट में रिसर्च कोट के रूप में किया जा सकता है। मेरा नाम प्रकाशित नहीं किया जाएगा।",
+      roleTitle: "आप किसकी तरफ से जवाब दे रहे हैं...",
+      roleRider: "राइडर — जो राइड बुक करता है",
+      roleDriver: "ड्राइवर — जो उबर/ओला चलाता है",
+      cityTitle: "आपके जवाब किस शहर से संबंधित हैं?",
+      cityHyd: "हैदराबाद",
+      cityOther: "अन्य",
+      cityOtherPlaceholder: "शहर का नाम टाइप करें",
+      scopeTitle: "पिछले 3 महीनों में, क्या आपने सामान्य 4-सीटर कार (ऑटो या बाइक नहीं) में सफर किया या चलाई है?",
+      yes: "हां",
+      no: "नहीं",
+      notSure: "पक्का नहीं",
+      difficultyTitleRider: "बुकिंग के बाद अपने ड्राइवर को ढूंढने में कभी उलझन हुई है?",
+      difficultyTitleDriver: "राइडर तक पहुंचने या उसे पहचानने में कभी उलझन हुई है?",
+      difficultyNotSureLabel: "पक्का नहीं, पर मैं बताने की कोशिश करता/करती हूं",
+      mainStoryTitleRider: "हाल ही में हुई ऐसी घटना के बारे में बताएं — बुकिंग से लेकर अपने ड्राइवर से मिलने तक, या राइड कैंसिल होने तक क्या हुआ?",
+      mainStoryTitleDriver: "हाल ही में हुई ऐसी घटना के बारे में बताएं — राइड स्वीकार करने से लेकर अपने राइडर से मिलने तक, या राइड कैंसिल होने तक क्या हुआ?",
+      confusionStartTitle: "उलझन ठीक कहां से शुरू हुई, और उस समय आपको क्या होने की उम्मीद थी?",
+      actionsReasoningTitleRider: "आपने और ड्राइवर ने एक-दूसरे से क्या किया या कहा? आपने ऐसा करना क्यों चुना?",
+      actionsReasoningTitleDriver: "आपने और राइडर ने एक-दूसरे से क्या किया या कहा? आपने ऐसा करना क्यों चुना?",
+      frustrationTitle: "सबसे परेशान करने वाली या चिंताजनक बात क्या थी? उस समय कौन सी जानकारी या मदद की कमी थी?",
+      openTextPlaceholder: "यहां टाइप करें, या बोलने के लिए माइक दबाएं...",
+      whatHappenedTitle: "क्या हुआ? (जो लागू हो वह चुनें)",
+      whR_pin: "पिन ने गलत जगह दिखाई",
+      whR_gates: "एक जैसे कई गेट या प्रवेश द्वार थे",
+      whR_stop: "मैं जहां था वहां ड्राइवर रुक नहीं सका",
+      whR_signal: "फोन सिग्नल ठीक नहीं था",
+      whR_walk: "काफी दूर पैदल जाना पड़ा",
+      whR_cancelled: "राइड कैंसिल हो गई",
+      whD_pin: "पिन किसी इमारत के अंदर या प्रतिबंधित इलाके में था",
+      whD_gates: "एक जैसे कई गेट या प्रवेश द्वार थे",
+      whD_stop: "पिन की गई जगह पर रुकने की अनुमति नहीं थी",
+      whD_unsure: "राइडर को नहीं पता था कि कहां इंतज़ार करना है",
+      whD_signal: "फोन सिग्नल ठीक नहीं था",
+      whD_circle: "आसपास चक्कर लगाना पड़ा या काफी देर इंतज़ार करना पड़ा",
+      whD_cancelled: "राइड कैंसिल हो गई",
+      whOther: "कुछ और",
+      locationTitle: "आप कहां थे? (जो लागू हो वह चुनें)",
+      locAirport: "हवाई अड्डा", locMall: "शॉपिंग मॉल", locOffice: "ऑफिस या टेक कैंपस",
+      locStation: "मेट्रो या रेलवे स्टेशन", locHospital: "अस्पताल", locHotel: "होटल या इवेंट वेन्यू",
+      locStreet: "व्यस्त सड़क", locResidential: "रिहायशी परिसर / गेटेड कम्युनिटी", locOther: "अन्य",
+      actionsTitle: "आपने इसके बारे में क्या किया? (जो लागू हो वह चुनें)",
+      actCall: "कॉल किया", actMessage: "मैसेज किया", actMove: "दूसरी जगह चले गए",
+      actWait: "इंतजार किया", actCancel: "राइड कैंसिल की", actOther: "कुछ और",
+      actionsOtherPlaceholder: "संक्षेप में बताएं",
+      timeTitle: "लगभग कितना अतिरिक्त समय बर्बाद हुआ?",
+      timeOpt1: "2 मिनट से कम", timeOpt2: "2–5 मिनट", timeOpt3: "5–15 मिनट", timeOpt4: "15 मिनट से ज़्यादा",
+      helpedTitle: "आखिर में किस चीज़ से मदद मिली, अगर कुछ मिली हो? (जो लागू हो वह चुनें)",
+      helpR_call: "एक-दूसरे को कॉल या मैसेज करना",
+      helpR_landmark: "किसी साझा पहचान की जगह तक पैदल जाना",
+      helpR_moved: "ड्राइवर मेरे पास आ गया",
+      helpD_moved: "मैं राइडर के पास चला/चली गया/गई",
+      helpBoth_staff: "सिक्योरिटी या स्टाफ ने मदद की",
+      helpBoth_nothing: "कुछ भी मदद नहीं मिली — कैंसिल करना पड़ा",
+      repeatTitle: "क्या ऐसा आपके साथ एक से ज़्यादा बार हुआ है?",
+      moreTitle: "क्या आप कुछ और जोड़ना चाहेंगे?",
+      moreHint: "वैकल्पिक",
+      morePlaceholder: "यहां लिखें...",
+      followupTitle: "क्या आप 10 मिनट की फॉलो-अप कॉल के लिए तैयार होंगे?",
+      followupContactPlaceholder: "फोन या ईमेल (वैकल्पिक)",
+      required: "जारी रखने के लिए कृपया जवाब दें।",
+      back: "वापस",
+      next: "आगे",
+      submit: "जमा करें",
+      submitting: "भेजा जा रहा है...",
+      thankyouTitle: "धन्यवाद!",
+      thankyouBody: "आपके जवाब दर्ज कर लिए गए हैं। अगर आपने संपर्क जानकारी दी है, तो हम फॉलो-अप के लिए संपर्क कर सकते हैं।",
+      errorSubmit: "आपके जवाब भेजने में कुछ गड़बड़ हुई। कृपया अपना कनेक्शन जांचें और फिर से कोशिश करें।",
+      micHint: "टाइप करने के बजाय बोलकर जवाब देने के लिए माइक दबाएं।",
+      micDenied: "माइक्रोफ़ोन की अनुमति नहीं मिली — आप फिर भी टाइप कर सकते हैं।"
+    }
+  };
+
+  var LOCATIONS = ["locAirport","locMall","locOffice","locStation","locHospital","locHotel","locStreet","locResidential","locOther"];
+  var LOCATION_IDS = ["airport","mall","office","station","hospital","hotel","street","residential","other"];
+  var ACTIONS = ["actCall","actMessage","actMove","actWait","actCancel","actOther"];
+  var ACTION_IDS = ["called","messaged","moved","waited","cancelled","other"];
+
+  var WHAT_HAPPENED_RIDER = ["whR_pin","whR_gates","whR_stop","whR_signal","whR_walk","whR_cancelled","whOther"];
+  var WHAT_HAPPENED_RIDER_IDS = ["wrong_pin","similar_gates","driver_no_stop","poor_signal","long_walk","cancelled","other"];
+  var WHAT_HAPPENED_DRIVER = ["whD_pin","whD_gates","whD_stop","whD_unsure","whD_signal","whD_circle","whD_cancelled","whOther"];
+  var WHAT_HAPPENED_DRIVER_IDS = ["pin_restricted","similar_gates","not_allowed_stop","rider_unsure","poor_signal","circled_waited","cancelled","other"];
+
+  var TIME_OPTS = ["timeOpt1","timeOpt2","timeOpt3","timeOpt4","notSure"];
+  var TIME_IDS = ["lt2","2to5","5to15","gt15","notsure"];
+
+  var HELPED_RIDER = ["helpR_call","helpR_landmark","helpR_moved","helpBoth_staff","helpBoth_nothing","whOther"];
+  var HELPED_RIDER_IDS = ["called_messaged","landmark","driver_moved","staff","nothing","other"];
+  var HELPED_DRIVER = ["helpR_call","helpR_landmark","helpD_moved","helpBoth_staff","helpBoth_nothing","whOther"];
+  var HELPED_DRIVER_IDS = ["called_messaged","landmark","i_moved","staff","nothing","other"];
+
+  var STEP_ORDER = ["welcome","role","city","scope","difficulty","mainStory","confusionStart","actionsReasoning","frustration","whatHappened","location","actions","time","helped","repeat","more","followup"];
+
+  var state = { lang: "en", langChosen: false, index: 0, answers: {}, submitting: false, done: false };
+
+  var LANGUAGE_OPTIONS = [
+    { code: "en", native: "English", sub: "Continue in English" },
+    { code: "te", native: "తెలుగు", sub: "తెలుగులో కొనసాగించండి" },
+    { code: "hi", native: "हिन्दी", sub: "हिन्दी में जारी रखें" }
+  ];
+
+  function renderLanguageGate() {
+    document.getElementById("chrome").hidden = true;
+    document.getElementById("navbar").style.display = "none";
+    var card = document.getElementById("card");
+    card.innerHTML = "";
+    var page = el("div", { class: "lang-gate-page" });
+    var inner = el("div", { class: "lang-gate-inner" });
+    inner.appendChild(svgWrap(HERO_ILLUSTRATION, "lang-gate-hero"));
+    inner.appendChild(el("div", { class: "lang-gate-brand", text: "Pickup Story · పికప్ కథ · पिकअप कहानी" }));
+    inner.appendChild(el("p", { class: "lang-gate-byline", text: "by Praveen Veera · ప్రవీణ్ వీర ద్వారా · प्रवीण वीरा द्वारा" }));
+    inner.appendChild(el("p", { class: "lang-gate-heading", text: "Choose your language" }));
+    inner.appendChild(el("p", { class: "lang-gate-heading", text: "మీ భాషను ఎంచుకోండి" }));
+    inner.appendChild(el("p", { class: "lang-gate-heading", text: "अपनी भाषा चुनें" }));
+    var opts = el("div", { class: "lang-gate-options" });
+    LANGUAGE_OPTIONS.forEach(function (opt) {
+      var c = el("div", { class: "lang-gate-card", tabindex: "0", role: "button" }, [
+        el("span", { class: "lang-gate-native", text: opt.native }),
+        el("span", { class: "lang-gate-sub", text: opt.sub })
+      ]);
+      c.addEventListener("click", function () { chooseLanguage(opt.code); });
+      c.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); chooseLanguage(opt.code); }
+      });
+      opts.appendChild(c);
+    });
+    inner.appendChild(opts);
+    page.appendChild(inner);
+    card.appendChild(page);
+  }
+
+  function chooseLanguage(code) {
+    state.langChosen = true;
+    document.getElementById("chrome").hidden = false;
+    document.getElementById("navbar").style.display = "";
+    setLang(code);
+  }
+
+  function t(key) { return I18N[state.lang][key] || key; }
+
+  // ---- voice-to-text (Web Speech API; feature-detected, silently absent
+  // on browsers that don't support it, e.g. desktop Firefox, iOS Safari) ----
+  var SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition;
+  var SPEECH_LANG = { en: "en-IN", te: "te-IN", hi: "hi-IN" };
+
+  function attachMic(wrap, textareaEl, field) {
+    if (!SpeechRecognitionCtor) return;
+    var micBtn = el("button", { type: "button", class: "mic-btn", "aria-label": "Voice input", title: "Voice input" });
+    micBtn.textContent = "🎤";
+    var recognition = null;
+    var listening = false;
+    var baseValue = "";
+
+    function stopListening() {
+      listening = false;
+      micBtn.classList.remove("listening");
+      if (recognition) { try { recognition.stop(); } catch (e) {} }
+    }
+
+    micBtn.addEventListener("click", function () {
+      if (listening) { stopListening(); return; }
+      recognition = new SpeechRecognitionCtor();
+      recognition.lang = SPEECH_LANG[state.lang] || "en-IN";
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      baseValue = textareaEl.value ? textareaEl.value.replace(/\s+$/, "") + " " : "";
+      listening = true;
+      micBtn.classList.add("listening");
+
+      recognition.onresult = function (event) {
+        var finalChunk = "", interimChunk = "";
+        for (var i = event.resultIndex; i < event.results.length; i++) {
+          var transcript = event.results[i][0].transcript;
+          if (event.results[i].isFinal) finalChunk += transcript;
+          else interimChunk += transcript;
+        }
+        if (finalChunk) baseValue = baseValue + finalChunk + " ";
+        textareaEl.value = baseValue + interimChunk;
+        state.answers[field] = textareaEl.value;
+      };
+      recognition.onerror = function (event) {
+        stopListening();
+        if (event.error === "not-allowed" || event.error === "service-not-allowed") {
+          micBtn.title = t("micDenied");
+        }
+      };
+      recognition.onend = function () { stopListening(); };
+
+      try { recognition.start(); } catch (e) { stopListening(); }
+    });
+
+    wrap.appendChild(micBtn);
+  }
+
+  function isStorySection(id) {
+    return ["mainStory","confusionStart","actionsReasoning","frustration","whatHappened","location","actions","time","helped","repeat"].indexOf(id) !== -1;
+  }
+
+  function visibleSteps() {
+    return STEP_ORDER.filter(function (id) {
+      if (isStorySection(id) && state.answers.difficulty === "no") return false;
+      return true;
+    });
+  }
+
+  function currentStepId() {
+    return visibleSteps()[state.index];
+  }
+
+  function isRider() { return state.answers.role === "rider"; }
+
+  // ---- rendering ----
+
+  function el(tag, attrs, children) {
+    var node = document.createElement(tag);
+    attrs = attrs || {};
+    Object.keys(attrs).forEach(function (k) {
+      if (k === "class") node.className = attrs[k];
+      else if (k === "text") node.textContent = attrs[k];
+      else node.setAttribute(k, attrs[k]);
+    });
+    (children || []).forEach(function (c) { if (c) node.appendChild(c); });
+    return node;
+  }
+
+  function svgWrap(markup, className) {
+    var wrap = document.createElement("div");
+    if (className) wrap.className = className;
+    wrap.innerHTML = markup;
+    return wrap;
+  }
+
+  // ---- hand-built pixel-art icons: a grid of characters, one per "pixel",
+  // rendered as crisp-edged <rect> blocks — genuine 8-bit sprites rather
+  // than smooth vector illustrations, matching the retro-arcade theme. ----
+  function pixelIcon(grid, unit, colors) {
+    var rows = grid.length, cols = grid[0].length, rects = "";
+    for (var r = 0; r < rows; r++) {
+      for (var c = 0; c < cols; c++) {
+        var ch = grid[r].charAt(c);
+        if (ch === ".") continue;
+        rects += '<rect x="' + (c * unit) + '" y="' + (r * unit) + '" width="' + unit + '" height="' + unit + '" fill="' + (colors[ch] || "#000") + '"/>';
+      }
+    }
+    return '<svg viewBox="0 0 ' + (cols * unit) + ' ' + (rows * unit) + '" width="' + (cols * unit) + '" height="' + (rows * unit) + '" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg" role="presentation">' + rects + "</svg>";
+  }
+
+  var CAR_GRID = ["..BBBBBB..", ".BBBBBBBB.", "BBBBBBBBBB", "BBWWBBWWBB", ".K......K.", ".K......K."];
+  var PIN_GRID = ["..TTT..", ".TTTTT.", "TTTTTTT", "TTTWWTT", "TTTWWTT", ".TTTTT.", "..TTT..", "...T..."];
+  var CHECK_GRID = ["......X", ".....X.", "X...X..", ".X.X...", "..X...."];
+
+  var CAR_ICON = pixelIcon(CAR_GRID, 8, { B: "var(--accent)", W: "var(--paper)", K: "var(--ink)" });
+  var PIN_ICON = pixelIcon(PIN_GRID, 8, { T: "var(--teal)", W: "var(--paper-raised)" });
+  var PIN_ICON_SMALL = pixelIcon(PIN_GRID, 6, { T: "var(--accent)", W: "var(--paper-raised)" });
+  var CHECK_ICON = pixelIcon(CHECK_GRID, 11, { X: "var(--teal)" });
+
+  var HERO_ILLUSTRATION =
+    '<div style="display:flex;align-items:center;justify-content:center;gap:12px;">' +
+    CAR_ICON +
+    '<div style="flex:1;max-width:44px;border-top:4px dashed var(--teal);margin-top:22px;"></div>' +
+    PIN_ICON +
+    "</div>";
+
+  var WELCOME_BADGE = '<div class="pixel-badge">' + PIN_ICON_SMALL + "</div>";
+
+  var THANKYOU_BADGE =
+    '<div style="position:relative;display:inline-block;">' +
+    '<div class="pixel-badge">' + CHECK_ICON + "</div>" +
+    '<span class="confetti-dot" style="position:absolute;top:-10px;left:-16px;width:10px;height:10px;background:var(--accent);animation-delay:0s;"></span>' +
+    '<span class="confetti-dot" style="position:absolute;top:-14px;right:-16px;width:12px;height:12px;background:var(--teal);animation-delay:0.15s;"></span>' +
+    '<span class="confetti-dot" style="position:absolute;bottom:-10px;left:-18px;width:8px;height:8px;background:var(--yellow);animation-delay:0.3s;"></span>' +
+    '<span class="confetti-dot" style="position:absolute;bottom:-12px;right:-14px;width:10px;height:10px;background:var(--accent);animation-delay:0.2s;"></span>' +
+    "</div>";
+
+  var ROLE_ICONS = { rider: "🙋", driver: "🚗" };
+  var LOCATION_ICONS = ["✈️", "🛍️", "🏢", "🚉", "🏥", "🏨", "🚦", "🏘️", "📍"];
+
+  function optionCard(kind, selected, label, onClick, icon) {
+    var children = [el("span", { class: "box", text: selected ? "✓" : "" })];
+    if (icon) children.push(el("span", { class: "option-icon", text: icon }));
+    children.push(el("span", { text: label }));
+    var card = el("div", {
+      class: "option-card " + kind + (selected ? " selected" : ""),
+      tabindex: "0",
+      role: kind === "radio" ? "radio" : "checkbox",
+      "aria-checked": selected ? "true" : "false"
+    }, children);
+    card.addEventListener("click", onClick);
+    card.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onClick(); }
+    });
+    return card;
+  }
+
+  function renderStep() {
+    var card = document.getElementById("card");
+    card.innerHTML = "";
+    var id = currentStepId();
+
+    if (!id) { renderThankYou(); return; }
+
+    updateProgress();
+
+    var title, hint;
+
+    switch (id) {
+      case "welcome": {
+        card.appendChild(svgWrap(WELCOME_BADGE, "welcome-badge"));
+        card.appendChild(el("div", { class: "eyebrow", text: "1 / " + visibleSteps().length }));
+        card.appendChild(el("h1", { class: "step-title", text: t("welcomeTitle") }));
+        card.appendChild(el("div", { class: "welcome-block", text: t("welcomeBody") }));
+        var box = optionCard("checkbox", state.answers.consent === true, t("consentLabel"), function () {
+          state.answers.consent = !state.answers.consent;
+          renderStep();
+        });
+        card.appendChild(el("div", { class: "options" }, [box]));
+        break;
+      }
+      case "role": {
+        title = t("roleTitle");
+        card.appendChild(stepHeader(title));
+        var opts = el("div", { class: "options" }, [
+          optionCard("radio", state.answers.role === "rider", t("roleRider"), function () { state.answers.role = "rider"; renderStep(); }, ROLE_ICONS.rider),
+          optionCard("radio", state.answers.role === "driver", t("roleDriver"), function () { state.answers.role = "driver"; renderStep(); }, ROLE_ICONS.driver)
+        ]);
+        card.appendChild(opts);
+        break;
+      }
+      case "city": {
+        card.appendChild(stepHeader(t("cityTitle")));
+        card.appendChild(el("div", { class: "options" }, [
+          optionCard("radio", state.answers.city === "hyderabad", t("cityHyd"), function () { state.answers.city = "hyderabad"; renderStep(); }),
+          optionCard("radio", state.answers.city === "other", t("cityOther"), function () { state.answers.city = "other"; renderStep(); })
+        ]));
+        if (state.answers.city === "other") {
+          var input = el("input", { type: "text", placeholder: t("cityOtherPlaceholder"), class: "other-field" });
+          input.value = state.answers.cityOther || "";
+          input.addEventListener("input", function (e) { state.answers.cityOther = e.target.value; });
+          card.appendChild(input);
+        }
+        break;
+      }
+      case "scope": {
+        card.appendChild(stepHeader(t("scopeTitle")));
+        card.appendChild(yesNoNotSure("scope"));
+        break;
+      }
+      case "difficulty": {
+        var dTitle = isRider() ? t("difficultyTitleRider") : t("difficultyTitleDriver");
+        card.appendChild(stepHeader(dTitle));
+        card.appendChild(el("div", { class: "options" }, [
+          optionCard("radio", state.answers.difficulty === "yes", t("yes"), function () { state.answers.difficulty = "yes"; renderStep(); }),
+          optionCard("radio", state.answers.difficulty === "notsure", t("difficultyNotSureLabel"), function () { state.answers.difficulty = "notsure"; renderStep(); }),
+          optionCard("radio", state.answers.difficulty === "no", t("no"), function () { state.answers.difficulty = "no"; renderStep(); })
+        ]));
+        break;
+      }
+      case "mainStory": {
+        var mainStoryTitle = isRider() ? t("mainStoryTitleRider") : t("mainStoryTitleDriver");
+        card.appendChild(stepHeader(mainStoryTitle, t("moreHint")));
+        card.appendChild(textArea("mainStory", t("openTextPlaceholder")));
+        break;
+      }
+      case "confusionStart": {
+        card.appendChild(stepHeader(t("confusionStartTitle"), t("moreHint")));
+        card.appendChild(textArea("confusionStart", t("openTextPlaceholder")));
+        break;
+      }
+      case "actionsReasoning": {
+        var actionsReasoningTitle = isRider() ? t("actionsReasoningTitleRider") : t("actionsReasoningTitleDriver");
+        card.appendChild(stepHeader(actionsReasoningTitle, t("moreHint")));
+        card.appendChild(textArea("actionsReasoning", t("openTextPlaceholder")));
+        break;
+      }
+      case "frustration": {
+        card.appendChild(stepHeader(t("frustrationTitle"), t("moreHint")));
+        card.appendChild(textArea("frustration", t("openTextPlaceholder")));
+        break;
+      }
+      case "whatHappened": {
+        card.appendChild(stepHeader(t("whatHappenedTitle")));
+        var whKeys = isRider() ? WHAT_HAPPENED_RIDER : WHAT_HAPPENED_DRIVER;
+        var whIds = isRider() ? WHAT_HAPPENED_RIDER_IDS : WHAT_HAPPENED_DRIVER_IDS;
+        var whOpts = el("div", { class: "options" });
+        if (!state.answers.whatHappened) state.answers.whatHappened = [];
+        whKeys.forEach(function (key, i) {
+          var wid = whIds[i];
+          var selected = state.answers.whatHappened.indexOf(wid) !== -1;
+          whOpts.appendChild(optionCard("checkbox", selected, t(key), function () {
+            var idx = state.answers.whatHappened.indexOf(wid);
+            if (idx === -1) state.answers.whatHappened.push(wid); else state.answers.whatHappened.splice(idx, 1);
+            renderStep();
+          }));
+        });
+        card.appendChild(whOpts);
+        if (state.answers.whatHappened.indexOf("other") !== -1) {
+          var whOtherInput = el("input", { type: "text", placeholder: t("actionsOtherPlaceholder"), class: "other-field" });
+          whOtherInput.value = state.answers.whatHappenedOther || "";
+          whOtherInput.addEventListener("input", function (e) { state.answers.whatHappenedOther = e.target.value; });
+          card.appendChild(whOtherInput);
+        }
+        break;
+      }
+      case "location": {
+        card.appendChild(stepHeader(t("locationTitle")));
+        var locOpts = el("div", { class: "options" });
+        if (!state.answers.location) state.answers.location = [];
+        LOCATIONS.forEach(function (key, i) {
+          var lid = LOCATION_IDS[i];
+          var selected = state.answers.location.indexOf(lid) !== -1;
+          locOpts.appendChild(optionCard("checkbox", selected, t(key), function () {
+            var idx = state.answers.location.indexOf(lid);
+            if (idx === -1) state.answers.location.push(lid); else state.answers.location.splice(idx, 1);
+            renderStep();
+          }, LOCATION_ICONS[i]));
+        });
+        card.appendChild(locOpts);
+        if (state.answers.location.indexOf("other") !== -1) {
+          var locOtherInput = el("input", { type: "text", placeholder: t("actionsOtherPlaceholder"), class: "other-field" });
+          locOtherInput.value = state.answers.locationOther || "";
+          locOtherInput.addEventListener("input", function (e) { state.answers.locationOther = e.target.value; });
+          card.appendChild(locOtherInput);
+        }
+        break;
+      }
+      case "actions": {
+        card.appendChild(stepHeader(t("actionsTitle")));
+        var actOpts = el("div", { class: "options" });
+        if (!state.answers.actions) state.answers.actions = [];
+        ACTIONS.forEach(function (key, i) {
+          var aid = ACTION_IDS[i];
+          var selected = state.answers.actions.indexOf(aid) !== -1;
+          actOpts.appendChild(optionCard("checkbox", selected, t(key), function () {
+            var idx = state.answers.actions.indexOf(aid);
+            if (idx === -1) state.answers.actions.push(aid); else state.answers.actions.splice(idx, 1);
+            renderStep();
+          }));
+        });
+        card.appendChild(actOpts);
+        if (state.answers.actions.indexOf("other") !== -1) {
+          var otherInput = el("input", { type: "text", placeholder: t("actionsOtherPlaceholder"), class: "other-field" });
+          otherInput.value = state.answers.actionsOther || "";
+          otherInput.addEventListener("input", function (e) { state.answers.actionsOther = e.target.value; });
+          card.appendChild(otherInput);
+        }
+        break;
+      }
+      case "time": {
+        card.appendChild(stepHeader(t("timeTitle")));
+        var timeOpts = el("div", { class: "options" });
+        TIME_OPTS.forEach(function (key, i) {
+          var tid = TIME_IDS[i];
+          timeOpts.appendChild(optionCard("radio", state.answers.timeRange === tid, t(key), function () { state.answers.timeRange = tid; renderStep(); }));
+        });
+        card.appendChild(timeOpts);
+        break;
+      }
+      case "helped": {
+        card.appendChild(stepHeader(t("helpedTitle")));
+        var helpKeys = isRider() ? HELPED_RIDER : HELPED_DRIVER;
+        var helpIds = isRider() ? HELPED_RIDER_IDS : HELPED_DRIVER_IDS;
+        var helpOpts = el("div", { class: "options" });
+        if (!state.answers.helped) state.answers.helped = [];
+        helpKeys.forEach(function (key, i) {
+          var hid = helpIds[i];
+          var selected = state.answers.helped.indexOf(hid) !== -1;
+          helpOpts.appendChild(optionCard("checkbox", selected, t(key), function () {
+            var idx = state.answers.helped.indexOf(hid);
+            if (idx === -1) state.answers.helped.push(hid); else state.answers.helped.splice(idx, 1);
+            renderStep();
+          }));
+        });
+        card.appendChild(helpOpts);
+        if (state.answers.helped.indexOf("other") !== -1) {
+          var helpOtherInput = el("input", { type: "text", placeholder: t("actionsOtherPlaceholder"), class: "other-field" });
+          helpOtherInput.value = state.answers.helpedOther || "";
+          helpOtherInput.addEventListener("input", function (e) { state.answers.helpedOther = e.target.value; });
+          card.appendChild(helpOtherInput);
+        }
+        break;
+      }
+      case "repeat": {
+        card.appendChild(stepHeader(t("repeatTitle")));
+        card.appendChild(el("div", { class: "options" }, [
+          optionCard("radio", state.answers.repeat === "yes", t("yes"), function () { state.answers.repeat = "yes"; renderStep(); }),
+          optionCard("radio", state.answers.repeat === "no", t("no"), function () { state.answers.repeat = "no"; renderStep(); })
+        ]));
+        break;
+      }
+      case "more": {
+        card.appendChild(stepHeader(t("moreTitle"), t("moreHint")));
+        card.appendChild(textArea("more", t("morePlaceholder")));
+        break;
+      }
+      case "followup": {
+        card.appendChild(stepHeader(t("followupTitle")));
+        card.appendChild(el("div", { class: "options" }, [
+          optionCard("radio", state.answers.followup === "yes", t("yes"), function () { state.answers.followup = "yes"; renderStep(); }),
+          optionCard("radio", state.answers.followup === "no", t("no"), function () { state.answers.followup = "no"; renderStep(); })
+        ]));
+        if (state.answers.followup === "yes") {
+          var contactInput = el("input", { type: "text", placeholder: t("followupContactPlaceholder"), class: "other-field" });
+          contactInput.value = state.answers.contact || "";
+          contactInput.addEventListener("input", function (e) { state.answers.contact = e.target.value; });
+          card.appendChild(contactInput);
+        }
+        break;
+      }
+    }
+
+    card.appendChild(el("div", { class: "error-note", id: "errorNote" }));
+    updateNavButtons();
+  }
+
+  function stepHeader(title, hint) {
+    var wrap = document.createDocumentFragment();
+    wrap.appendChild(el("div", { class: "eyebrow", text: (state.index + 1) + " / " + visibleSteps().length }));
+    wrap.appendChild(el("h1", { class: "step-title", text: title }));
+    if (hint) wrap.appendChild(el("p", { class: "step-hint", text: hint }));
+    return wrap;
+  }
+
+  function yesNoNotSure(field) {
+    return el("div", { class: "options" }, [
+      optionCard("radio", state.answers[field] === "yes", t("yes"), function () { state.answers[field] = "yes"; renderStep(); }),
+      optionCard("radio", state.answers[field] === "no", t("no"), function () { state.answers[field] = "no"; renderStep(); }),
+      optionCard("radio", state.answers[field] === "notsure", t("notSure"), function () { state.answers[field] = "notsure"; renderStep(); })
+    ]);
+  }
+
+  function textArea(field, placeholder) {
+    var ta = el("textarea", { placeholder: placeholder });
+    ta.value = state.answers[field] || "";
+    ta.addEventListener("input", function (e) { state.answers[field] = e.target.value; clearError(); });
+
+    var wrap = el("div", { class: "textarea-wrap" }, [ta]);
+    attachMic(wrap, ta, field);
+
+    var frag = document.createDocumentFragment();
+    frag.appendChild(wrap);
+    if (SpeechRecognitionCtor) frag.appendChild(el("p", { class: "mic-hint", text: t("micHint") }));
+    return frag;
+  }
+
+  function renderThankYou() {
+    document.getElementById("navbar").style.display = "none";
+    document.getElementById("progressFill").style.width = "100%";
+    var card = document.getElementById("card");
+    card.innerHTML = "";
+    var thankyou = el("div", { class: "thankyou" }, [
+      el("h1", { text: t("thankyouTitle") }),
+      el("p", { text: t("thankyouBody") })
+    ]);
+    thankyou.insertBefore(svgWrap(THANKYOU_BADGE, "badge"), thankyou.firstChild);
+    card.appendChild(thankyou);
+  }
+
+  function updateProgress() {
+    var total = visibleSteps().length;
+    var pct = Math.round(((state.index + 1) / total) * 100);
+    document.getElementById("progressFill").style.width = pct + "%";
+  }
+
+  function updateNavButtons() {
+    document.getElementById("backBtn").style.visibility = state.index === 0 ? "hidden" : "visible";
+    var isLast = state.index === visibleSteps().length - 1;
+    var nextBtn = document.getElementById("nextBtn");
+    nextBtn.textContent = isLast ? t("submit") : t("next");
+    nextBtn.disabled = state.submitting;
+  }
+
+  function validateCurrent() {
+    var id = currentStepId();
+    var a = state.answers;
+    switch (id) {
+      case "welcome": return a.consent === true;
+      case "role": return !!a.role;
+      case "city": return !!a.city;
+      case "scope": return !!a.scope;
+      case "difficulty": return !!a.difficulty;
+      case "mainStory": return true;
+      case "confusionStart": return true;
+      case "actionsReasoning": return true;
+      case "frustration": return true;
+      case "whatHappened": return a.whatHappened && a.whatHappened.length > 0;
+      case "location": return a.location && a.location.length > 0;
+      case "actions": return a.actions && a.actions.length > 0;
+      case "time": return !!a.timeRange;
+      case "helped": return a.helped && a.helped.length > 0;
+      case "repeat": return !!a.repeat;
+      case "more": return true;
+      case "followup": return !!a.followup;
+      default: return true;
+    }
+  }
+
+  function showError() {
+    var note = document.getElementById("errorNote");
+    if (note) note.textContent = t("required");
+  }
+
+  function clearError() {
+    var note = document.getElementById("errorNote");
+    if (note) note.textContent = "";
+  }
+
+  function goNext() {
+    if (!validateCurrent()) { showError(); return; }
+    clearError();
+    var steps = visibleSteps();
+    if (state.index === steps.length - 1) {
+      submit();
+      return;
+    }
+    state.index += 1;
+    renderStep();
+    window.scrollTo(0, 0);
+  }
+
+  function goBack() {
+    if (state.index === 0) return;
+    state.index -= 1;
+    renderStep();
+    window.scrollTo(0, 0);
+  }
+
+  function submit() {
+    state.submitting = true;
+    updateNavButtons();
+    document.getElementById("nextBtn").textContent = t("submitting");
+
+    var payload = {
+      timestamp: new Date().toISOString(),
+      language: state.lang,
+      role: state.answers.role || "",
+      city: state.answers.city || "",
+      cityOther: state.answers.cityOther || "",
+      scope4wheeler: state.answers.scope || "",
+      difficulty: state.answers.difficulty || "",
+      mainStory: state.answers.mainStory || "",
+      confusionStart: state.answers.confusionStart || "",
+      actionsReasoning: state.answers.actionsReasoning || "",
+      frustration: state.answers.frustration || "",
+      whatHappened: (state.answers.whatHappened || []).join(", "),
+      whatHappenedOther: state.answers.whatHappenedOther || "",
+      location: (state.answers.location || []).join(", "),
+      locationOther: state.answers.locationOther || "",
+      actions: (state.answers.actions || []).join(", "),
+      actionsOther: state.answers.actionsOther || "",
+      timeRange: state.answers.timeRange || "",
+      helped: (state.answers.helped || []).join(", "),
+      helpedOther: state.answers.helpedOther || "",
+      repeatOccurrence: state.answers.repeat || "",
+      more: state.answers.more || "",
+      followupOk: state.answers.followup || "",
+      contact: state.answers.contact || ""
+    };
+
+    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.indexOf("PASTE_YOUR") === 0) {
+      // No backend configured — still show thank-you locally so you can test
+      // the flow, but nothing is actually saved. See the red banner.
+      state.index += 1;
+      renderStep();
+      return;
+    }
+
+    fetch(APPS_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    }).then(function () {
+      state.index += 1;
+      renderStep();
+    }).catch(function () {
+      state.submitting = false;
+      var note = document.getElementById("errorNote");
+      if (note) note.textContent = t("errorSubmit");
+      updateNavButtons();
+    });
+  }
+
+  function setLang(lang) {
+    state.lang = lang;
+    document.body.className = "lang-" + lang;
+    document.querySelectorAll(".lang-toggle button").forEach(function (btn) {
+      btn.setAttribute("aria-pressed", btn.getAttribute("data-lang") === lang ? "true" : "false");
+    });
+    document.getElementById("brandText").textContent = t("brand");
+    renderStep();
+  }
+
+  document.querySelectorAll(".lang-toggle button").forEach(function (btn) {
+    btn.addEventListener("click", function () { setLang(btn.getAttribute("data-lang")); });
+  });
+  document.getElementById("nextBtn").addEventListener("click", goNext);
+  document.getElementById("backBtn").addEventListener("click", goBack);
+
+  if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.indexOf("PASTE_YOUR") === 0) {
+    document.getElementById("configWarning").hidden = false;
+  }
+
+  renderLanguageGate();
+})();
+</script>
+</body>
+</html>

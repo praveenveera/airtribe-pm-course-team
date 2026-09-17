@@ -87,7 +87,8 @@ The `Matched queries` column in the workbook uses the query number plus order. F
 
 - A Telugu/Hindi query pack should be run in a new quota window to reduce English-query bias.
 - Video viewing is still required; metadata screening is not content validation.
-- Captions or transcripts were not downloaded. That requires a separate authorised workflow and content-use review.
+- The full caption audit found 11 captioned videos and 742 without captions. None of the captioned records provides a useful Hyderabad non-airport pickup journey. See [`youtube-caption-coverage-analysis.md`](youtube-caption-coverage-analysis.md).
+- Transcript-led expansion is closed. Speech-to-text should be considered only for a specifically valuable video after visual relevance screening and a content-use review.
 - YouTube results are ranked and self-selected; they cannot estimate problem prevalence or substitute for interviews.
 
 ## Manual-review rule

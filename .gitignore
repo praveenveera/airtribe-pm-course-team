@@ -21,6 +21,9 @@ __pycache__/
 **/.tmp/
 **/tmp/
 
+# Local speech-to-text runtime, media, models, and provisional transcripts
+projects/uber-find-my-ride/.local-transcription/
+
 # Editor-local state
 .vscode/
 **/.vscode/

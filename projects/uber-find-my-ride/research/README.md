@@ -44,6 +44,9 @@ Vendor pages remain vendor evidence even when they are primary sources for the v
 | [`search-plan.md`](search-plan.md) | Search universe, queries, exclusions, and stopping rule |
 | [`non-api-search-log.md`](non-api-search-log.md) | Reproducible non-API query families, outcomes, and saturation record |
 | [`youtube-api-search-log.md`](youtube-api-search-log.md) | YouTube API method, query-code register, coverage, and evidence limits |
+| [`youtube-caption-coverage-analysis.md`](youtube-caption-coverage-analysis.md) | Caption availability across all 753 videos and the transcript-expansion decision |
+| [`youtube-manual-review-log.md`](youtube-manual-review-log.md) | Timestamped human review of the 21 priority airport videos |
+| [`local-transcription-workflow.md`](local-transcription-workflow.md) | Verified local MLX Whisper setup, operating steps, and evidence safeguards |
 | [`osm-overpass-search-log.md`](osm-overpass-search-log.md) | OpenStreetMap method, six bounded location inventories, map signals, and evidence limits |
 | [`api-requirements.md`](api-requirements.md) | Data still worth collecting through APIs or approved exports |
 
@@ -57,7 +60,9 @@ The completed broad non-API sweep contains:
 - 55 records with Hyderabad-specific geography; and
 - explicit Grade A–D evidence labels and limitations.
 
-The separate YouTube API inventory contains 1,547 search-result appearances and 753 unique videos. Manual title-and-description screening retained 21 high-priority pickup-video candidates and 80 possible-relevance videos. Comment retrieval across the 26 initially automated candidates returned 45 top-level comments and 42 replies; after manual screening, the workbook retains 31 top-level comments and 30 replies belonging to the strict 21-video set. Two strict videos had comments disabled. These remain unreviewed Grade C leads in the `YouTube Videos` and `YouTube Comments` sheets and have not been added to the 94 curated evidence records.
+The separate YouTube API inventory contains 1,547 search-result appearances and 753 unique videos. Manual title-and-description screening retained 21 high-priority pickup-video candidates and 80 possible-relevance videos. Comment retrieval across the 26 initially automated candidates returned 45 top-level comments and 42 replies; after manual screening, the workbook retains 31 top-level comments and 30 replies belonging to the strict 21-video set. Two strict videos had comments disabled.
+
+The full caption audit found 11 captioned videos and 742 without captions. None of the captioned records provides a useful Hyderabad non-airport pickup journey, so bulk transcript-led expansion is closed. A project-local MLX Whisper workflow is installed and technically verified for selective transcription of authorised local media; no real video has been processed because no authorised local media file is present. Three priority videos have been visually reviewed with timestamps; 18 remain pending. This material remains Grade C or historical product evidence and is not treated as interview evidence or prevalence data.
 
 The OpenStreetMap collection covers six candidate Hyderabad environments: RGIA, Secunderabad Railway Station, Raidurg Metro area, Inorbit Mall Cyberabad, Apollo Hospitals Jubilee Hills, and DLF Cybercity. It retains 1,180 raw mapped elements and 96 focused feature rows in the `Location Maps` sheet. These map features identify gates, parking, transit, crossings, and other details to verify; they do not establish pickup-problem frequency, venue ownership, current access rules, or ride-hailing demand.
 

@@ -88,9 +88,10 @@ Research findings, interview evidence, interpretations, and product ideas must r
 | [`scope.md`](scope.md) | Phase 0 decisions, open scope questions, and completion rule |
 | [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Factual progress, blockers, and next actions |
 | [`NEXT_PHASE_PLAN.md`](NEXT_PHASE_PLAN.md) | Reviewed execution plan from manual validation through interviews, synthesis, and submission QA |
+| [`data/survey/`](data/survey/) | Contact-safe survey snapshot, normalized data, analytics tables, and editable dashboard workbook |
 | [`research/`](research/) | Internet research report, source register, and search plan |
 | [`research/Uber_Find_My_Ride_Internet_Evidence.xlsx`](research/Uber_Find_My_Ride_Internet_Evidence.xlsx) | Structured internet-evidence tracker |
 
 ## Current status
 
-**Broad internet collection is documented; the reviewed execution plan now covers manual validation, interviews, synthesis, and submission QA.** See [`PROJECT_STATUS.md`](PROJECT_STATUS.md) for the active tracker and [`NEXT_PHASE_PLAN.md`](NEXT_PHASE_PLAN.md) for the gated sequence.
+**Broad internet collection and the first survey-analysis snapshot are documented.** The current snapshot contains 63 likely non-test submissions and an evidence-led analytics dashboard. See [`PROJECT_STATUS.md`](PROJECT_STATUS.md) for the active tracker, [`data/survey/README.md`](data/survey/README.md) for the data boundary, and [`NEXT_PHASE_PLAN.md`](NEXT_PHASE_PLAN.md) for the remaining sequence.

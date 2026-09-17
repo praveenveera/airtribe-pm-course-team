@@ -1,0 +1,89 @@
+
+Uber Pickup Survey Analytics
+Survey snapshot: 17 September 2026 | Test submissions excluded | Contact details omitted
+
+Valid submissions		Recent four-wheel users		Difficulty among recent users		Hyderabad recent difficulty		Repeated among issue cases		Driver responses
+63		52		24		11		23		4
+Likely non-test records		Relevant to defined scope		24 of 52 | 46.2%		11 of 27 | 40.7%		23 of 28 | 82.1%		4 of 63 | 6.3%
+
+
+Scope and prevalence
+Response stage	Count							City group	Issue / unsure	No difficulty	Issue rate (all)
+Valid submissions	63							Hyderabad	12	21	0.36363636363636365
+Recent four-wheel users	52							Other cities	16	14	0.5333333333333333
+Recent users reporting difficulty	24							Overall	28	35	0.4444444444444444
+Hyderabad recent users	27
+Hyderabad recent users reporting difficulty	11
+
+
+
+
+
+
+
+
+Problem locations among 28 issue-reporting responses
+Location	Mentions
+Airport	10
+Residential / gated community	7
+Shopping mall	6
+Office / tech campus	6
+Metro / railway station	5
+Hotel / event venue	2
+Busy street	3
+Hospital	1
+
+
+
+
+
+
+
+
+Actions, recovery and time lost
+Action taken	Mentions							What helped	Mentions	Extra time (current issue cases)	Count
+Called	17							Calling or messaging	20	Less than 2 minutes	2
+Moved	8							Nothing helped	6	2–5 minutes	1
+Waited	9							Shared landmark	4	5–15 minutes	3
+Messaged	5							Driver moved closer	3	More than 15 minutes	4
+Cancelled	4							Security or staff	1	Over five minutes	7
+Other	1							Other	1
+
+
+
+
+
+
+
+
+
+
+
+Qualitative evidence and assignment use
+Current-schema issue evidence	Count		Research interpretation
+Issue-reporting records	10		1	Pickup difficulty is meaningful but situational; most respondents reported no difficulty.
+Contains a story	8		2	Complex locations and access conditions are recurring contexts, led by airports and gated communities.
+Answered all four open questions	4		3	Calling and messaging form the main recovery layer when the app does not resolve the meeting point.
+All four answers detailed	3		4	Cancellations may reflect destination, fare or payment preferences, not only location confusion.
+			5	Driver evidence is weak because only four of 63 submissions came from drivers.
+			Note	Directional convenience sample. Do not use these percentages as Hyderabad-wide prevalence.
+
+
+Best responses for interview context
+Rank	Sheet row	City	Theme		Evidence use	Quote / summary
+1	64	Lucknow	Driver no-show, cancellation and no redressal		Primary	The driver kept the rider waiting, said not to cancel, then did not arrive; no immediate help was available.
+2	67	Ernakulam	App said arrived but rider and driver could not meet		Primary	The app said the driver had arrived, but it still took almost ten minutes to locate each other.
+3	47	Hyderabad	Rain and destination-based cancellation		Primary	During rains it would be very difficult to book a cab... cancellations based on the drop point.
+4	53	Hyderabad	Driver unable to identify location		Primary	Some drivers are unable to identify the location and ask the rider to cancel.
+5	60	Other / not specified	Drop, fare and payment questions		Primary	Drivers ask about drop location, displayed fare and payment mode before proceeding.
+6	55	Mumbai	Expected versus actual wait		Primary	Expected 2–3 minutes; experienced 10–15 minutes in a busy area.
+7	14	Hyderabad	Late and peak-hour cancellation		Supporting	Driver asked the destination and then cancelled; respondent said this happened many times.
+8	49	Hyderabad	Driver accepted but did not move		Supporting	Driver remained stationary, later cancelled or waited for the rider to cancel.
+9	63	Hyderabad	Airport delay and missing clarity		Supporting	Recent airport case with a 5–15 minute delay; most frustrating part was no clarity.
+10	61	Hyderabad	Proactive standing-location message		Supporting	I always place a message on where I would stand with details.
+
+
+Method and limitations
+Method	63 likely non-test submissions were normalized across the legacy and current survey schemas. Contact fields were excluded.
+Limitations	Convenience sample; 59 riders and four drivers; one possible duplicate; no unique participant identifier; qualitative depth varies.
+Refresh	This dashboard is a snapshot. Re-run normalization after collecting additional responses.
