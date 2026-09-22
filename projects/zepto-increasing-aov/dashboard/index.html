@@ -262,9 +262,37 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
     }
+    body.auth-locked { overflow: hidden; }
+    body.auth-locked .shell { display: none; }
+    .auth-gate { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: radial-gradient(circle at 20% 10%, #dbeafe, transparent 42%), var(--bg); }
+    .auth-card { width: min(440px, 100%); background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 30px; }
+    .auth-card h1 { font-size: 1.65rem; }
+    .auth-card p { color: #475569; }
+    .auth-card label { display: block; color: var(--muted); font-size: .8rem; font-weight: 600; margin: 18px 0 6px; }
+    .auth-card input { width: 100%; padding: 12px 13px; border: 1px solid var(--border); border-radius: 10px; }
+    .auth-card .btn { margin-top: 12px; width: 100%; }
+    .auth-error { color: var(--red); font-size: .78rem; min-height: 1.2em; margin: 9px 0 0; }
+    .auth-note { color: var(--muted) !important; font-size: .72rem; margin: 18px 0 0; }
+    .auth-badge { display: inline-flex; border-radius: 999px; padding: 5px 9px; background: var(--blue-3); color: var(--blue); font: 600 .7rem "Fira Code", monospace; }
   </style>
 </head>
-<body>
+<body class="auth-locked">
+  <main class="auth-gate" id="authGate" aria-labelledby="authTitle">
+    <section class="auth-card">
+      <span class="auth-badge">sample research dashboard</span>
+      <h1 id="authTitle">Project 4 · Zepto AOV</h1>
+      <p>Enter the shared credentials to view the evidence-led research command center.</p>
+      <form id="authForm">
+        <label for="authUsername">Username</label>
+        <input id="authUsername" type="text" autocomplete="username" required>
+        <label for="authPassword">Password</label>
+        <input id="authPassword" type="password" autocomplete="current-password" required>
+        <button class="btn primary" type="submit">Unlock dashboard</button>
+        <div class="auth-error" id="authError" role="alert" aria-live="polite"></div>
+      </form>
+      <p class="auth-note">This is a lightweight client-side gate for sample data. It is not suitable for confidential information.</p>
+    </section>
+  </main>
   <main class="shell">
     <header class="topbar">
       <a class="brand" href="#top" aria-label="Project 4 dashboard home">
@@ -536,6 +564,24 @@
   </main>
 
   <script>
+    const AUTH_HASH = 'f2edef0a47246007e450c11c0a1aeafb5bd42e32f326df0d4dbb99c07b02ef72';
+    const AUTH_KEY = 'zepto-aov-dashboard-unlocked';
+    const digest = async value => {
+      const bytes = new TextEncoder().encode(value);
+      const hash = await crypto.subtle.digest('SHA-256', bytes);
+      return [...new Uint8Array(hash)].map(byte => byte.toString(16).padStart(2, '0')).join('');
+    };
+    const unlock = () => { document.body.classList.remove('auth-locked'); document.getElementById('authGate').remove(); };
+    if (localStorage.getItem(AUTH_KEY) === 'true') unlock();
+    document.getElementById('authForm').addEventListener('submit', async event => {
+      event.preventDefault();
+      const username = document.getElementById('authUsername').value;
+      const password = document.getElementById('authPassword').value;
+      const valid = (await digest(`${username}|${password}`)) === AUTH_HASH;
+      if (valid) { localStorage.setItem(AUTH_KEY, 'true'); unlock(); }
+      else { document.getElementById('authError').textContent = 'The username or password did not match.'; }
+    });
+
     const progressData = [
       {name:'Problem framing', value:100, meta:'complete', group:'secondary', tone:'green'},
       {name:'Industry + market', value:88, meta:'documented', group:'secondary', tone:'green'},
