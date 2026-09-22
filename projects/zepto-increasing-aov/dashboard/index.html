@@ -96,6 +96,17 @@
     .competitor-table th { color: var(--muted); text-align: left; font-size: .68rem; font-weight: 600; padding: 8px 7px; border-bottom: 1px solid var(--border); }
     .competitor-table td { vertical-align: top; padding: 10px 7px; border-bottom: 1px solid #edf2f7; color: #475569; }
     .competitor-table td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+    .trace-table { width: 100%; border-collapse: collapse; font-size: .76rem; }
+    .trace-table th { color: var(--muted); text-align: left; font-size: .68rem; font-weight: 600; padding: 8px 7px; border-bottom: 1px solid var(--border); }
+    .trace-table td { vertical-align: top; padding: 12px 7px; border-bottom: 1px solid #edf2f7; color: #475569; }
+    .trace-table td:first-child { color: var(--ink); font-weight: 700; min-width: 150px; }
+    .trace-table td:nth-child(2) { min-width: 175px; }
+    .trace-table td:nth-child(3) { min-width: 185px; }
+    .trace-links { display: flex; flex-wrap: wrap; gap: 5px; }
+    .trace-links a { background: var(--soft); border-radius: 6px; padding: 3px 6px; font: 600 .66rem "Fira Code", monospace; }
+    .direction { display: inline-block; border-radius: 7px; padding: 3px 7px; background: var(--amber-bg); color: var(--amber); font-weight: 600; font-size: .68rem; }
+    .direction.green { background: var(--green-bg); color: var(--green); }
+    .direction.blue { background: var(--blue-3); color: var(--blue); }
     .layout { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(340px, .82fr); gap: 18px; }
     .panel { padding: 20px; margin-bottom: 18px; }
     .panel-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
@@ -229,6 +240,46 @@
         <article class="readout-card"><span class="readout-kicker">03 · product gap</span><h3>Mission-aware help beats generic upsell</h3><p>The strongest working hypothesis is to complete the user’s current need, then offer a few relevant additions or replenishment cues—not a broad carousel.</p><div class="readout-bottom"><span class="tag">mission / basket</span><span class="confidence">hypothesis</span></div></article>
         <article class="readout-card green"><span class="readout-kicker">04 · research design</span><h3>Bengaluru is the learning lab</h3><p>Locality changes assortment, freshness, delivery, and fees. Bengaluru has the strongest public-feedback coverage, so it is the right controlled observation location.</p><div class="readout-bottom"><span class="tag">observation decision</span><span class="confidence">selected</span></div></article>
       </div>
+    </section>
+
+    <section class="panel" id="traceability">
+      <div class="panel-head"><div><h2>How we derived these insights</h2><p class="panel-subtitle">Evidence → direction → product interpretation. Links open the underlying source or repository artifact.</p></div><span class="pill">traceability</span></div>
+      <div style="overflow-x:auto">
+        <table class="trace-table">
+          <thead><tr><th>Derived insight</th><th>Citations</th><th>Direction of evidence</th><th>Reasoning chain</th><th>Boundary</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Trust comes before basket expansion</td>
+              <td><div class="trace-links"><a href="https://play.google.com/store/apps/details?hl=en&id=com.zeptoconsumerapp" target="_blank" rel="noreferrer">U01 Zepto</a><a href="https://www.consumercomplaints.in/zepto-private-limited-non-delivery-of-some-products-c3541025" target="_blank" rel="noreferrer">U08 complaint</a><a href="https://www.reddit.com/r/bangalore/comments/1m4jqk2/fyi-swiggys-instamart-in-bangalore-has-terrible/" target="_blank" rel="noreferrer">U06 locality</a><a href="https://www.trustpilot.com/review/www.zepto.com" target="_blank" rel="noreferrer">U16 Trustpilot</a></div></td>
+              <td><span class="direction">negative friction repeats</span><br><small>Quality, missing-item, stock, and recovery concerns appear across review, complaint, and community surfaces.</small></td>
+              <td>Uncertainty about receiving the right, usable item can discourage adding more—especially fresh items. Therefore, trust/recovery is treated as a prerequisite to AOV expansion.</td>
+              <td>Directional only; no defect rate or causal AOV evidence.</td>
+            </tr>
+            <tr>
+              <td>The basket is priced at checkout</td>
+              <td><div class="trace-links"><a href="https://www.linkedin.com/posts/tusharjejani_same-cart-65-difference-no-its-not-a-activity-7448010738838958080-E5tV" target="_blank" rel="noreferrer">PB01 same cart</a><a href="https://www.linkedin.com/posts/aditya-kondawar_just-see-the-pricing-difference-for-same-activity-7448993472491210-2eZI" target="_blank" rel="noreferrer">PB02 fees</a><a href="https://www.zepto.com/s/terms-of-service" target="_blank" rel="noreferrer">C01 Zepto terms</a><a href="https://blinkit.com/terms-of-use" target="_blank" rel="noreferrer">C03 Blinkit terms</a></div></td>
+              <td><span class="direction">item price → total price</span><br><small>Public comparisons show fees can reverse the apparent cheapest basket.</small></td>
+              <td>Users decide on the payable total, not the shelf price alone. A threshold nudge may raise gross AOV, but it can also create distrust, switching, or low-value additions.</td>
+              <td>Uncontrolled public snapshots; no margin or conversion data.</td>
+            </tr>
+            <tr>
+              <td>Mission-aware help beats generic upsell</td>
+              <td><div class="trace-links"><a href="https://www.reddit.com/r/Bengaluru/comments/1myt3q2/do_you_guys_do_monthly_grocery_shopping_on_apps/" target="_blank" rel="noreferrer">U05 monthly</a><a href="../research/product-teardown.md">teardown</a><a href="../research/secondary-research.md">secondary pack</a><a href="https://nielseniq.com/global/en/insights/report/2026/commerce-trends-intelligence/" target="_blank" rel="noreferrer">M03 NIQ</a></div></td>
+              <td><span class="direction blue">need completion → relevant addition</span><br><small>Planned and urgent missions have different stopping points.</small></td>
+              <td>The product should first understand the job already underway, then suggest a small number of complementary or replenishment items. This is more defensible than assuming more catalogue equals more AOV.</td>
+              <td>Working hypothesis; recommendation-to-add conversion is unknown.</td>
+            </tr>
+            <tr>
+              <td>Bengaluru is the learning lab</td>
+              <td><div class="trace-links"><a href="https://www.reddit.com/r/Bengaluru/comments/1myt3q2/do_you_guys_do_monthly_grocery_shopping_on_apps/" target="_blank" rel="noreferrer">Bengaluru mission</a><a href="https://www.reddit.com/r/bangalore/comments/1m4jqk2/fyi-swiggys-instamart-in-bangalore-has-terrible/" target="_blank" rel="noreferrer">Bengaluru quality</a><a href="https://www.reddit.com/r/bangalore/comments/1m6z71q/i_made_an_app_to_compare_prices_between_blinkit_instamart_and_zepto/" target="_blank" rel="noreferrer">Bengaluru price</a><a href="../research/matched-basket-benchmark.md">benchmark protocol</a></div></td>
+              <td><span class="direction green">coverage concentration</span><br><small>Existing public sources give the clearest locality-specific signals here.</small></td>
+              <td>Because quick-commerce outcomes vary by pin, store, inventory, and time, Bengaluru gives us a coherent place to run the first controlled basket comparison.</td>
+              <td>Selection decision, not proof that Bengaluru represents India.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:13px;padding:12px;border-radius:11px;background:var(--soft);color:#334155;font-size:.77rem"><strong>Interpretation rule:</strong> a repeated public signal becomes a product hypothesis only after we explain the mechanism and name the missing validation. It does not become a finding merely because it appears in several links.</div>
     </section>
 
     <section class="panel" id="opportunities">
