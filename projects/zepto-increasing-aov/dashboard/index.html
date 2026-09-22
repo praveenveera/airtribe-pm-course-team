@@ -274,6 +274,16 @@
     .auth-error { color: var(--red); font-size: .78rem; min-height: 1.2em; margin: 9px 0 0; }
     .auth-note { color: var(--muted) !important; font-size: .72rem; margin: 18px 0 0; }
     .auth-badge { display: inline-flex; border-radius: 999px; padding: 5px 9px; background: var(--blue-3); color: var(--blue); font: 600 .7rem "Fira Code", monospace; }
+    .explain { margin: 12px 0 16px; border: 1px dashed #93c5fd; border-radius: 12px; background: #f8fbff; }
+    .explain summary { cursor: pointer; padding: 11px 13px; color: var(--blue); font-weight: 700; font-size: .82rem; }
+    .explain-body { padding: 0 13px 13px; color: #475569; font-size: .78rem; }
+    .visual-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 10px; }
+    .visual-step { position: relative; padding: 10px; min-height: 78px; border-radius: 10px; background: white; border: 1px solid var(--border); }
+    .visual-step:not(:last-child)::after { content: "→"; position: absolute; right: -9px; top: 25px; color: var(--blue-2); font-weight: 700; z-index: 1; }
+    .visual-step b { display: block; color: var(--blue); font: 700 .7rem "Fira Code", monospace; margin-bottom: 3px; }
+    .visual-step span { display: block; font-size: .72rem; line-height: 1.35; }
+    .plain-rule { margin: 8px 0 0; color: var(--ink); font-weight: 600; }
+    @media (max-width: 720px) { .visual-steps { grid-template-columns: 1fr 1fr; } .visual-step:nth-child(2)::after { display: none; } }
   </style>
 </head>
 <body class="auth-locked">
@@ -381,6 +391,7 @@
 
     <section class="panel" id="visual-evidence">
       <div class="panel-head"><div><h2>Visual evidence map</h2><p class="panel-subtitle">The heatmap shows where a theme is visible in the current source pack. It is coverage, not frequency or severity.</p></div><span class="pill">source coverage</span></div>
+      <details class="explain"><summary>In simple terms: what is this visual telling me?</summary><div class="explain-body"><p>This is a map of <strong>where we saw a signal</strong>. It does not tell us how many customers have the problem.</p><div class="visual-steps"><div class="visual-step"><b>1 · Collect</b><span>Reviews, Reddit, complaints, comparisons</span></div><div class="visual-step"><b>2 · Group</b><span>Fees, trust, stock, recovery, mission</span></div><div class="visual-step"><b>3 · Compare</b><span>See whether different surfaces repeat it</span></div><div class="visual-step"><b>4 · Qualify</b><span>Ask for primary or live validation</span></div></div><p class="plain-rule">Dark cells mean “represented in our sources”, not “most common in the market”.</p></div></details>
       <div class="visual-board">
         <div class="visual-card">
           <h3>Theme × source surface</h3>
@@ -397,6 +408,7 @@
         <div class="visual-card">
           <h3>Evidence → decision flow</h3>
           <p>Every direction in the dashboard follows this sequence. If a step is missing, it remains an open hypothesis.</p>
+          <details class="explain"><summary>In simple terms: what does each arrow mean?</summary><div class="explain-body"><p>Each arrow is a check against overclaiming.</p><div class="visual-steps"><div class="visual-step"><b>Observe</b><span>Something appears in a source</span></div><div class="visual-step"><b>Triangulate</b><span>Another source shows a similar signal</span></div><div class="visual-step"><b>Explain</b><span>We connect it to a product mechanism</span></div><div class="visual-step"><b>Test</b><span>We define the next evidence needed</span></div></div></div></details>
           <div class="flow">
             <div class="flow-step"><span class="flow-index">01</span><div><strong>Observe</strong><small>Reviews, complaints, official surfaces, and public comparisons.</small></div></div>
             <div class="flow-step"><span class="flow-index">02</span><div><strong>Triangulate</strong><small>Check whether the signal repeats across different source types.</small></div></div>
@@ -410,6 +422,7 @@
 
     <section class="panel" id="opportunities">
       <div class="panel-head"><div><h2>Research → AOV opportunity map</h2><p class="panel-subtitle">The product implication is shown with its commercial guardrail so we do not optimise gross AOV alone.</p></div></div>
+      <details class="explain"><summary>In simple terms: how did research become these opportunities?</summary><div class="explain-body"><p>We move from a customer friction to a product idea only when we can name what should improve and what could go wrong.</p><div class="visual-steps"><div class="visual-step"><b>Friction</b><span>What makes the basket harder to complete?</span></div><div class="visual-step"><b>Mechanism</b><span>What product behaviour could help?</span></div><div class="visual-step"><b>Guardrail</b><span>Could it hurt trust, margin, or checkout?</span></div><div class="visual-step"><b>Test</b><span>What metric would prove or disprove it?</span></div></div><p class="plain-rule">Example: fee anxiety → show final payable value → watch abandonment and contribution margin.</p></div></details>
       <div class="opportunity-grid">
         <article class="opportunity"><span class="status active">P0 · validate first</span><h3>Need-complete additions</h3><p>After the first item is understood, show 2–4 complementary items that finish the mission. <a href="#traceability">Evidence: U05 · M03</a></p><div class="guardrail"><strong>Measure:</strong> relevant add rate, removal rate, checkout completion, contribution margin.</div></article>
         <article class="opportunity"><span class="status active">P0 · benchmark</span><h3>Value-transparent basket</h3><p>Make product total, fees, threshold gap, and final payable amount easy to compare before checkout. <a href="#traceability">Evidence: PB01 · PB02 · C01 · C03</a></p><div class="guardrail"><strong>Measure:</strong> fee abandonment, threshold additions, switching, final basket margin.</div></article>
@@ -419,6 +432,7 @@
 
     <section class="panel decision-lab" id="decision-lab">
       <div class="panel-head"><div><h2>Decision lab</h2><p class="panel-subtitle">Use scenarios and controlled inputs to test decisions. These tools do not create evidence by themselves.</p></div><span class="pill">interactive · local only</span></div>
+      <details class="explain"><summary>In simple terms: what is the decision lab for?</summary><div class="explain-body"><p>It is a sandbox for asking “what if?” questions before we recommend a product change.</p><div class="visual-steps"><div class="visual-step"><b>Assume</b><span>Set an add rate, order volume, or margin</span></div><div class="visual-step"><b>Calculate</b><span>See possible revenue and contribution</span></div><div class="visual-step"><b>Compare</b><span>Check fees and basket totals across apps</span></div><div class="visual-step"><b>Validate</b><span>Replace assumptions with Bengaluru or user data</span></div></div><p class="plain-rule">The lab helps defend a decision; it does not turn assumptions into facts.</p></div></details>
       <div class="lab-grid">
         <div class="lab-card" id="aov-simulator">
           <h3>AOV scenario simulator</h3>
@@ -446,6 +460,7 @@
         <div class="lab-card" id="evidence-scorecard">
           <h3>Evidence quality scorecard</h3>
           <p>Use the source type to decide how strongly a statement can be used. This is a governance visual, not a statistical score.</p>
+          <details class="explain"><summary>In simple terms: how much should I trust each row?</summary><div class="explain-body"><p>Read the bars as a writing rule, not a truth percentage.</p><div class="visual-steps"><div class="visual-step"><b>Fact</b><span>We can see or verify it directly</span></div><div class="visual-step"><b>Claim</b><span>The company says it is true</span></div><div class="visual-step"><b>Feedback</b><span>A self-selected person reports it</span></div><div class="visual-step"><b>Inference → unknown</b><span>Our interpretation still needs testing</span></div></div></div></details>
           <div class="scorecard">
             <div class="score"><div class="score-top"><h4>Product fact</h4><span class="status done">strongest</span></div><p>Visible capability or official product surface.</p><div class="score-bar"><i style="width:92%"></i></div></div>
             <div class="score"><div class="score-top"><h4>Company claim</h4><span class="status active">bounded</span></div><p>Scale, promise, or metric stated by the company.</p><div class="score-bar"><i class="amber" style="width:68%"></i></div></div>
@@ -467,6 +482,7 @@
       <div class="lab-card" style="margin-top:12px" id="timeline">
         <h3>Research timeline</h3>
         <p>Decision history that explains why the work moved from broad research to a Bengaluru benchmark.</p>
+        <details class="explain"><summary>In simple terms: why is the timeline useful?</summary><div class="explain-body"><p>It shows how the question narrowed. We did not jump from market growth straight to a feature.</p><div class="visual-steps"><div class="visual-step"><b>Market</b><span>Is the category worth studying?</span></div><div class="visual-step"><b>Friction</b><span>What stops customers from adding?</span></div><div class="visual-step"><b>Mechanics</b><span>How do products shape the basket?</span></div><div class="visual-step"><b>Next</b><span>What must Bengaluru and primary research answer?</span></div></div></div></details>
         <div class="timeline">
           <div class="timeline-item"><span>PHASE 01</span><strong>Market + scale</strong><small>Industry reports and competitor scale framed the expanding category.</small></div>
           <div class="timeline-item"><span>PHASE 02</span><strong>Friction surfaces</strong><small>App reviews, Reddit, complaint forums, and creator comparisons expanded the signal set.</small></div>
@@ -537,6 +553,7 @@
 
         <section class="panel" id="basket">
           <div class="panel-head"><div><h2>Matched-basket readiness</h2><p class="panel-subtitle">Public snapshots seed the questions; Bengaluru will provide the controlled observation.</p></div><span class="status active">next</span></div>
+          <details class="explain"><summary>In simple terms: what is a matched basket?</summary><div class="explain-body"><p>We put the same products into each app at the same time and location, then compare the amount the customer would actually pay.</p><div class="visual-steps"><div class="visual-step"><b>Same items</b><span>One fixed product list</span></div><div class="visual-step"><b>Same pin</b><span>One Bengaluru delivery location</span></div><div class="visual-step"><b>Same moment</b><span>Capture time and availability</span></div><div class="visual-step"><b>Final total</b><span>Products + fees − discounts + ETA</span></div></div><p class="plain-rule">This reduces apples-to-oranges comparisons; it still does not prove customer preference.</p></div></details>
           <div class="source-pills"><span class="source-pill">Bengaluru pin</span><span class="source-pill">same basket</span><span class="source-pill">same time window</span><span class="source-pill">same account state</span></div>
           <div style="margin-top:15px;padding:12px;border-radius:12px;background:var(--amber-bg);color:#78350f;font-size:.79rem"><strong>Watch:</strong> product price is not final payable price. Capture fees, thresholds, discounts, and ETA separately.</div>
         </section>
