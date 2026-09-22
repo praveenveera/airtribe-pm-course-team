@@ -1,6 +1,21 @@
 # Project 4 — Matched-Basket Benchmark
 
-**Status:** Secondary-research capture template. No current basket prices have been populated.
+**Status:** Public-evidence benchmark populated with uncontrolled same-cart snapshots; controlled city/pin/account capture remains pending.
+
+## Public evidence captured so far
+
+These are user-published comparisons, not controlled research. They are useful for identifying what must be measured in the live benchmark.
+
+| Snapshot | Platforms | Publicly reported comparison | What it suggests | Limitation |
+|---|---|---|---|---|
+| PB01 | Zepto, Instamart, Blinkit | A public same-grocery comparison reported approximately: Zepto product total ₹134, fees ₹0, payable ₹134; Instamart product total ₹153, fees ₹46, payable about ₹199; Blinkit product total ₹157, fees ₹41, payable about ₹198. | Fees can reverse the item-price ranking; total payable value is the relevant customer comparison. | Single basket, unknown city/pin/account/time, and self-reported figures. [Source](https://www.linkedin.com/posts/tusharjejani_same-cart-65-difference-no-its-not-a-activity-7448010738838958080-E5tV) |
+| PB02 | Zepto, Instamart, Blinkit | A public comparison of the same snack items reported approximately: Instamart ₹108 to ₹189, Blinkit ₹114 to ₹186, and Zepto ₹108 to ₹108 after fees/checkout. | Fee and checkout presentation may materially affect perceived value and switching. | Basket composition, location, account state, and timing are not independently verified. [Source](https://www.linkedin.com/posts/aditya-kondawar_just-see-the-pricing-difference-for-same-activity-7448993472491210-2eZI) |
+
+### Safe interpretation
+
+- These snapshots support the need to record product total, fees, discounts, thresholds, and final payable amount separately.
+- They do not establish that Zepto is consistently cheapest or that fees caused a particular user decision.
+- The second snapshot URL may change or become unavailable; preserve a screenshot or export if this evidence is used in a final presentation.
 
 ## Purpose
 

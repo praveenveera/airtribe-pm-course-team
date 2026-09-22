@@ -15,6 +15,7 @@
 | Public customer feedback | Expanded and coded | App stores, Reddit, complaint forums, creator videos, social posts, consumer forums, and operational context captured. | Extract individual feedback units if prevalence estimates are needed. |
 | Behavioural assumptions | Documented as hypotheses | Fee, trust, availability, reorder, switching, and planned-shopping assumptions mapped. | Test with recent-purchase interviews/survey responses. |
 | Market sizing and AOV model | Framework complete | Scenario model and economics tree documented. | Populate Zepto order, baseline AOV, margin, and retention inputs. |
+| Matched-basket benchmark | Public evidence started | Two uncontrolled same-cart public snapshots now identify fee and final-payable-price fields to measure. | Run a controlled city/pin/account/time capture across platforms. |
 | Survey instrument and web app | Pilot build complete | English, Hindi, and Telugu local pilot assets exist. | Fluent-language review, deployment, and end-to-end row reconciliation. |
 | Primary research | Deferred | No participant data is treated as current evidence. | User decision required to restart collection. |
 | Final synthesis/submission | Not assembled | Conclusion and walkthrough draft exist. | Reconcile evidence, validate hypotheses, then assemble final deliverable. |
