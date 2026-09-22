@@ -75,6 +75,27 @@
     .metric-label { color: var(--muted); font-size: .76rem; }
     .metric-value { font: 700 1.8rem "Fira Code", monospace; margin: 7px 0 3px; color: var(--ink); }
     .metric-note { color: var(--muted); font-size: .72rem; }
+    .research-readout { margin-bottom: 18px; }
+    .readout-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .readout-card { border: 1px solid var(--border); border-radius: 13px; padding: 16px; background: #fff; min-height: 188px; position: relative; overflow: hidden; }
+    .readout-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--blue-2); }
+    .readout-card.amber::before { background: #f59e0b; }
+    .readout-card.green::before { background: #10b981; }
+    .readout-card.red::before { background: #ef4444; }
+    .readout-kicker { color: var(--muted); font: 600 .68rem "Fira Code", monospace; text-transform: uppercase; letter-spacing: .04em; }
+    .readout-card h3 { margin: 10px 0 8px; font-size: .98rem; }
+    .readout-card p { color: #475569; font-size: .78rem; margin-bottom: 12px; }
+    .readout-bottom { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: auto; }
+    .confidence { color: var(--muted); font: 600 .66rem "Fira Code", monospace; }
+    .opportunity-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+    .opportunity { border: 1px solid var(--border); background: #fbfdff; border-radius: 12px; padding: 14px; }
+    .opportunity h3 { margin-top: 9px; }
+    .opportunity p { color: #475569; font-size: .77rem; margin-bottom: 10px; }
+    .opportunity .guardrail { color: var(--muted); font-size: .7rem; border-top: 1px solid var(--border); padding-top: 9px; }
+    .competitor-table { width: 100%; border-collapse: collapse; font-size: .76rem; }
+    .competitor-table th { color: var(--muted); text-align: left; font-size: .68rem; font-weight: 600; padding: 8px 7px; border-bottom: 1px solid var(--border); }
+    .competitor-table td { vertical-align: top; padding: 10px 7px; border-bottom: 1px solid #edf2f7; color: #475569; }
+    .competitor-table td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
     .layout { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(340px, .82fr); gap: 18px; }
     .panel { padding: 20px; margin-bottom: 18px; }
     .panel-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
@@ -138,6 +159,7 @@
 
     @media (max-width: 1080px) {
       .metrics { grid-template-columns: repeat(3, 1fr); }
+      .readout-grid { grid-template-columns: repeat(2, 1fr); }
       .hero, .layout { grid-template-columns: 1fr; }
     }
     @media (max-width: 720px) {
@@ -145,6 +167,7 @@
       .topbar { align-items: flex-start; flex-direction: column; }
       .top-actions { width: 100%; justify-content: space-between; }
       .metrics { grid-template-columns: repeat(2, 1fr); }
+      .readout-grid, .opportunity-grid { grid-template-columns: 1fr; }
       .metric { min-height: 100px; }
       .metric-value { font-size: 1.45rem; }
       .hero-card, .bengaluru-card, .panel { padding: 16px; }
@@ -196,6 +219,40 @@
       <article class="metric"><div class="metric-label">Public cart snapshots</div><div class="metric-value">02</div><div class="metric-note">uncontrolled comparisons</div></article>
       <article class="metric"><div class="metric-label">Validation questions</div><div class="metric-value">05</div><div class="metric-note">primary/live research backlog</div></article>
       <article class="metric"><div class="metric-label">Evidence boundary</div><div class="metric-value" style="font-size:1.15rem;color:var(--amber)">Directional</div><div class="metric-note">no causal AOV proof yet</div></article>
+    </section>
+
+    <section class="panel research-readout" id="readout">
+      <div class="panel-head"><div><h2>What the research says now</h2><p class="panel-subtitle">Four derived insights from industry research, competitor mechanics, public feedback, and the product teardown.</p></div><span class="pill">readout · not final findings</span></div>
+      <div class="readout-grid">
+        <article class="readout-card red"><span class="readout-kicker">01 · growth gate</span><h3>Trust comes before basket expansion</h3><p>Freshness, missing items, stock instability, and recovery friction can make users hesitate to add more—especially in perishable categories.</p><div class="readout-bottom"><span class="tag">trust / quality</span><span class="confidence">directional</span></div></article>
+        <article class="readout-card amber"><span class="readout-kicker">02 · value mechanic</span><h3>The basket is priced at checkout</h3><p>Public same-cart snapshots show that fees and thresholds can reverse the item-price ranking. A higher AOV is not automatically a better customer or margin outcome.</p><div class="readout-bottom"><span class="tag">price / fees</span><span class="confidence">directional</span></div></article>
+        <article class="readout-card"><span class="readout-kicker">03 · product gap</span><h3>Mission-aware help beats generic upsell</h3><p>The strongest working hypothesis is to complete the user’s current need, then offer a few relevant additions or replenishment cues—not a broad carousel.</p><div class="readout-bottom"><span class="tag">mission / basket</span><span class="confidence">hypothesis</span></div></article>
+        <article class="readout-card green"><span class="readout-kicker">04 · research design</span><h3>Bengaluru is the learning lab</h3><p>Locality changes assortment, freshness, delivery, and fees. Bengaluru has the strongest public-feedback coverage, so it is the right controlled observation location.</p><div class="readout-bottom"><span class="tag">observation decision</span><span class="confidence">selected</span></div></article>
+      </div>
+    </section>
+
+    <section class="panel" id="opportunities">
+      <div class="panel-head"><div><h2>Research → AOV opportunity map</h2><p class="panel-subtitle">The product implication is shown with its commercial guardrail so we do not optimise gross AOV alone.</p></div></div>
+      <div class="opportunity-grid">
+        <article class="opportunity"><span class="status active">P0 · validate first</span><h3>Need-complete additions</h3><p>After the first item is understood, show 2–4 complementary items that finish the mission.</p><div class="guardrail"><strong>Measure:</strong> relevant add rate, removal rate, checkout completion, contribution margin.</div></article>
+        <article class="opportunity"><span class="status active">P0 · benchmark</span><h3>Value-transparent basket</h3><p>Make product total, fees, threshold gap, and final payable amount easy to compare before checkout.</p><div class="guardrail"><strong>Measure:</strong> fee abandonment, threshold additions, switching, final basket margin.</div></article>
+        <article class="opportunity"><span class="status pending">P1 · validate later</span><h3>Editable recurring list</h3><p>Support planned replenishment without copying irrelevant snacks or one-off items from a previous order.</p><div class="guardrail"><strong>Measure:</strong> list reuse, planned-basket AOV, item relevance, repeat rate.</div></article>
+      </div>
+    </section>
+
+    <section class="panel" id="competitors">
+      <div class="panel-head"><div><h2>Competitor mechanics: what each teaches us</h2><p class="panel-subtitle">This is a pattern comparison, not a national quality ranking.</p></div></div>
+      <div style="overflow-x:auto">
+        <table class="competitor-table">
+          <thead><tr><th>Platform</th><th>Public strength / position</th><th>Friction signal to watch</th><th>AOV lesson</th></tr></thead>
+          <tbody>
+            <tr><td>Zepto</td><td>Fast, category-led discovery with visible offers and add-to-cart cues.</td><td>Fees, stock stability, freshness, recovery, and quality vary by locality.</td><td>Improve guidance and trust before adding more generic merchandising.</td></tr>
+            <tr><td>Blinkit</td><td>Neighbourhood assortment and broad quick-commerce category promise.</td><td>Public feedback discusses fees, missing/damaged items, and support.</td><td>Local assortment can make the next item relevant, but reliability protects expansion.</td></tr>
+            <tr><td>Instamart</td><td>Swiggy ecosystem, broad categories, and membership/offer mechanics.</td><td>Public feedback discusses threshold, availability, delivery, and support issues.</td><td>Cross-category breadth helps only when it stays tied to the current mission.</td></tr>
+            <tr><td>BigBasket / bbnow</td><td>Bridge between instant top-ups and planned, broader-value shopping.</td><td>Speed, stock, quality, and recovery are still locality and order dependent.</td><td>Planned baskets and pack economics are a meaningful alternative to urgent ordering.</td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <div class="layout">
