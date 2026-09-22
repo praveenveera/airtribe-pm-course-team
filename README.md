@@ -10,8 +10,9 @@ The work is shared for peer learning. Each project keeps its evidence limits vis
 |---|---|
 | [`projects/`](projects/) | Assignment workspaces, research, drafts, and submission artifacts |
 | [`breakout-room/`](breakout-room/) | Time-boxed cohort exercises and decision packs |
+| [`learning/class-notes/`](learning/class-notes/) | Structured class notes, frameworks, examples, and practical PM reminders |
 
-Course-wide learning and repository guidance remain available as root documents: [`LEARNING.md`](LEARNING.md), [`DOCUMENTATION.md`](DOCUMENTATION.md), and [`PUBLIC_SHARING_CHECKLIST.md`](PUBLIC_SHARING_CHECKLIST.md).
+Course-wide learning and repository guidance remain available through the [learning index](LEARNING.md), [`DOCUMENTATION.md`](DOCUMENTATION.md), and [`PUBLIC_SHARING_CHECKLIST.md`](PUBLIC_SHARING_CHECKLIST.md).
 
 ## Assignment projects
 

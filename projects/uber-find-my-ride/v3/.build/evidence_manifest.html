@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Find My Ride — Evidence Manifest</title>
+  <style>
+    @page { size: A4; margin: 16mm 14mm 15mm; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #233248; background: #fff; font-family: Arial, sans-serif; font-size: 10.5pt; line-height: 1.35; }
+    h1, h2, h3 { color: #1b2b45; margin: 0; }
+    h1 { font-size: 28pt; line-height: 1.05; }
+    h2 { font-size: 18pt; margin-bottom: 5mm; }
+    h3 { font-size: 12pt; color: #f47a22; margin-bottom: 2mm; }
+    p { margin: 0 0 3mm; }
+    a { color: #2d4672; word-break: break-all; }
+    .cover { min-height: 255mm; background: #1b2b45; color: white; padding: 24mm 18mm; display: flex; flex-direction: column; justify-content: space-between; }
+    .cover h1 { color: white; margin-top: 16mm; }
+    .cover .eyebrow { color: #f47a22; font-weight: 700; letter-spacing: .6px; }
+    .cover .subtitle { color: #d8e0ec; font-size: 15pt; max-width: 145mm; }
+    .cover .warning { background: #fbe7d8; color: #1b2b45; border-left: 5px solid #f47a22; padding: 6mm; font-size: 12pt; }
+    .page { page-break-before: always; }
+    .rule { height: 2px; background: #f47a22; margin: 3mm 0 6mm; }
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; margin: 5mm 0 7mm; }
+    .kpi { background: #2d4672; color: white; padding: 4mm; min-height: 28mm; }
+    .kpi strong { display: block; font-size: 21pt; line-height: 1; margin-bottom: 2mm; }
+    .kpi span { font-size: 8.5pt; }
+    .note { background: #fbe7d8; border-left: 4px solid #f47a22; padding: 4mm; margin: 4mm 0; }
+    .blue { background: #e2f4f6; border-left-color: #1bb5c8; }
+    table { width: 100%; border-collapse: collapse; margin: 3mm 0 6mm; }
+    th { background: #1b2b45; color: #fff; text-align: left; padding: 2.4mm; font-size: 9pt; }
+    td { padding: 2.4mm; border-bottom: 1px solid #dfe4eb; vertical-align: top; font-size: 8.8pt; }
+    tr:nth-child(even) td { background: #f6f8fa; }
+    .screens { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6mm; }
+    .shot { border: 1px solid #cfd6e0; padding: 3mm; break-inside: avoid; }
+    .shot img { width: 100%; max-height: 210mm; object-fit: contain; display: block; }
+    .shot p { font-weight: 700; margin-top: 2mm; }
+    ul { margin: 2mm 0 5mm 5mm; padding-left: 4mm; }
+    li { margin-bottom: 2mm; }
+    .inventory code { font-family: Menlo, monospace; font-size: 8pt; }
+    footer { margin-top: 8mm; color: #687489; font-size: 8pt; }
+  </style>
+</head>
+<body>
+  <section class="cover">
+    <div>
+      <div class="eyebrow">AIRTRIBE · PROJECT 3 · EVIDENCE PACKAGE</div>
+      <h1>Uber Find My Ride<br>Evidence Manifest</h1>
+      <p class="subtitle">App details, screenshots, online survey evidence, internet research, analysis, and explicit limitations.</p>
+    </div>
+    <div class="warning"><strong>Method deviation:</strong> the required 10 synchronous in-depth interviews were not completed. The primary research is an online self-serve survey and is presented as directional evidence, not as interview completion.</div>
+    <div>Snapshot: 18 September 2026</div>
+  </section>
+
+  <section class="page">
+    <h2>1. Evidence base</h2><div class="rule"></div>
+    <div class="kpis">
+      <div class="kpi"><strong>62</strong><span>unique submissions after one confirmed duplicate was removed</span></div>
+      <div class="kpi"><strong>24 / 51</strong><span>recent four-wheel users reporting difficulty</span></div>
+      <div class="kpi"><strong>33 / 29</strong><span>Hyderabad / other-city responses</span></div>
+      <div class="kpi"><strong>4</strong><span>driver responses — major evidence gap</span></div>
+    </div>
+    <h3>Research method</h3>
+    <p>A mobile-first online survey with rider and driver branches, a consent gate, optional qualitative prompts, and structured tags for problem type, location, action, delay, recovery, and recurrence.</p>
+    <div class="note blue"><strong>Live app:</strong> <a href="https://praveenveera.github.io/uber-pickup-survey/">https://praveenveera.github.io/uber-pickup-survey/</a></div>
+    <h3>Controls applied</h3>
+    <ul>
+      <li>Confirmed duplicate R032 excluded from final analysis.</li>
+      <li>Contact details and raw API payload excluded.</li>
+      <li>Participant references reduced to anonymous response IDs.</li>
+      <li>Counts distinguish 51 recent four-wheel users from 62 total unique responses.</li>
+      <li>Multi-select counts are treated as mentions, not unique people.</li>
+    </ul>
+    <h3>Critical limitations</h3>
+    <ul>
+      <li>No live follow-up probing; answer depth varies.</li>
+      <li>Four narrative prompts were optional in the live interface.</li>
+      <li>Only four responses came from drivers.</li>
+      <li>Twenty-nine responses came from other cities, so this is not a Hyderabad-only sample.</li>
+      <li>Consent was required in the interface but not stored as a separate backend response field.</li>
+      <li>No reliable Hyderabad trip-volume or issue-rate denominator was found.</li>
+    </ul>
+  </section>
+
+  <section class="page">
+    <h2>2. Survey app evidence</h2><div class="rule"></div>
+    <div class="screens">
+      <div class="shot"><img src="../submission-ready/evidence/02-Survey-Method/Screenshots/01-language-and-consent.png"><p>Three-language entry screen</p></div>
+      <div class="shot"><img src="../submission-ready/evidence/02-Survey-Method/Screenshots/02-consent-selected.png"><p>Consent gate selected before continuing</p></div>
+    </div>
+  </section>
+
+  <section class="page">
+    <h2>3. Question-flow evidence</h2><div class="rule"></div>
+    <div class="screens">
+      <div class="shot"><img src="../submission-ready/evidence/02-Survey-Method/Screenshots/03-open-story-question.png"><p>Optional open-ended story prompt</p></div>
+      <div class="shot"><img src="../submission-ready/evidence/02-Survey-Method/Screenshots/04-location-question.png"><p>Complex-location tags</p></div>
+    </div>
+  </section>
+
+  <section class="page">
+    <h2>4. Recovery evidence</h2><div class="rule"></div>
+    <div class="screens" style="grid-template-columns: 1fr 1fr; align-items:start">
+      <div class="shot"><img src="../submission-ready/evidence/02-Survey-Method/Screenshots/05-recovery-question.png"><p>Question: what finally helped?</p></div>
+      <div>
+        <h3>Observed recovery pattern</h3>
+        <table>
+          <tr><th>Action</th><th>Mentions</th></tr>
+          <tr><td>Called</td><td>17</td></tr>
+          <tr><td>Waited</td><td>9</td></tr>
+          <tr><td>Moved</td><td>8</td></tr>
+          <tr><td>Messaged</td><td>5</td></tr>
+          <tr><td>Cancelled</td><td>4</td></tr>
+        </table>
+        <div class="note">Calling or messaging was reported as helpful in 20 of 28 issue cases, while 6 of 28 said nothing helped.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page">
+    <h2>5. Top 10 insight traceability</h2><div class="rule"></div>
+    <table>
+      <tr><th>#</th><th>Insight</th><th>Evidence</th><th>Strength</th></tr>
+      <tr><td>1</td><td>Difficulty is meaningful, not universal</td><td>24/51 recent users; 34/62 reported no issue</td><td>Strong, directional</td></tr>
+      <tr><td>2</td><td>For affected respondents, the problem often recurs</td><td>23/28 issue cases reported prior occurrence</td><td>Strong within subgroup</td></tr>
+      <tr><td>3</td><td>Complex environments concentrate problems</td><td>Airport 10; residential 7; mall 6; office 6</td><td>Strong pattern</td></tr>
+      <tr><td>4</td><td>Arrived does not mean rider and driver can meet</td><td>Wrong-pin and similar-gate reports; one detailed cross-road case</td><td>Moderate</td></tr>
+      <tr><td>5</td><td>Calling and messaging are the main recovery layer</td><td>Calling 17; messaging 5; helpful in 20/28 cases</td><td>Strong</td></tr>
+      <tr><td>6</td><td>The rider often absorbs recovery effort</td><td>Waited 9; moved 8; driver moved helped 3</td><td>Moderate–strong</td></tr>
+      <tr><td>7</td><td>Failures can create material delay</td><td>7/10 time-tagged cases exceeded five minutes</td><td>Moderate</td></tr>
+      <tr><td>8</td><td>Cancellation is multi-causal</td><td>Location overlaps with destination, fare, payment, and rain</td><td>Moderate</td></tr>
+      <tr><td>9</td><td>Some respondents found no effective recovery</td><td>6/28 selected nothing helped</td><td>Moderate</td></tr>
+      <tr><td>10</td><td>Finding the ride includes vehicle identification</td><td>One vehicle-number mismatch report</td><td>Weak edge case</td></tr>
+    </table>
+    <div class="note"><strong>Interpretation boundary:</strong> 23 of 28 means the issue happened before; it does not prove recurrence at the same venue. Sample percentages are not Hyderabad prevalence.</div>
+  </section>
+
+  <section class="page inventory">
+    <h2>6. Package inventory and privacy check</h2><div class="rule"></div>
+    <h3>Internet research</h3>
+    <p><code>01-Internet-Research/Competitor-Analysis.md</code><br><code>Desk-Research-Report.md</code><br><code>Source-Register.md</code></p>
+    <h3>Survey method</h3>
+    <p><code>02-Survey-Method/Survey-App-Details.md</code><br><code>Live-URL.txt</code><br><code>Screenshots/*.png</code></p>
+    <h3>Anonymized responses</h3>
+    <p><code>03-Anonymized-Responses/Sanitized-Survey-Evidence.xlsx</code></p>
+    <h3>Analysis</h3>
+    <p><code>04-Analysis/Survey-Dashboard.png</code><br><code>Insight-Traceability.md</code></p>
+    <div class="note blue"><strong>Excluded:</strong> participant contact details, raw API payload, mixed-schema source workbook, test rows, local transcription artifacts, old submission drafts, temporary build files, and the raw internet workbook containing public creator contacts. Curated reports and the source register remain included.</div>
+    <h3>Submission gate</h3>
+    <p>The presenter-visible video and working link remain pending. Record under five minutes, upload, enable evaluator access, and add the link before submission.</p>
+    <footer>This manifest documents evidence packaging and limitations; it does not convert the online survey into interview completion.</footer>
+  </section>
+</body>
+</html>

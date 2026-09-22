@@ -1,0 +1,7 @@
+Live survey app:
+https://praveenveera.github.io/uber-pickup-survey/
+
+Public source repository:
+https://github.com/praveenveera/uber-pickup-survey
+
+Verified in the project record on 17 September 2026.

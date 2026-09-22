@@ -2,6 +2,10 @@
 
 This Airtribe assignment explores pickup coordination after an Uber ride is booked. The goal is to understand why riders and drivers struggle to find each other in complex locations before proposing solutions.
 
+**`v2/` holds a senior-PM reframe of the requirement, approach, and solution** — a fresh-eyes pass that names the driver-evidence gap directly and collapses two overlapping product ideas into one phased bet. It does not redo the research; v1 remains on disk, superseded, not deleted. See [`v2/README.md`](v2/README.md).
+
+**`v3/submission-ready/` is the active corrected submission package.** It contains the final recording deck, PPT-to-PDF export, final script, app screenshots and URL, anonymized survey evidence, and the privacy-sanitized evidence ZIP. See [`v3/README.md`](v3/README.md).
+
 ## Problem in plain language
 
 ```text
@@ -65,7 +69,7 @@ At project creation:
 
 - The assignment brief is captured.
 - A broad public-web sweep, a separate YouTube API collection, and six OpenStreetMap location inventories have been completed; manual content review and targeted local verification remain.
-- No interviews have been conducted or logged.
+- The required ten synchronous interviews were not completed. The available primary evidence is a self-serve online survey and must not be represented as interviews.
 - No direct quotes, participant pictures, or message screenshots have been collected.
 - No target-market estimate or product idea has been validated.
 
@@ -76,7 +80,7 @@ Research findings, interview evidence, interpretations, and product ideas must r
 1. Geographic scope for market sizing and regulation: India, selected Indian cities, or another market.
 2. Which Uber ride categories are in scope.
 3. Whether riders, drivers, or both count toward the minimum 10 interviews.
-4. Required submission format, word/page limit, deadline, and video requirements.
+4. Required word/page limit and deadline.
 5. Whether internal Uber trip data is available; the assignment currently provides none.
 
 ## Project files
@@ -88,10 +92,13 @@ Research findings, interview evidence, interpretations, and product ideas must r
 | [`scope.md`](scope.md) | Phase 0 decisions, open scope questions, and completion rule |
 | [`PROJECT_STATUS.md`](PROJECT_STATUS.md) | Factual progress, blockers, and next actions |
 | [`NEXT_PHASE_PLAN.md`](NEXT_PHASE_PLAN.md) | Reviewed execution plan from manual validation through interviews, synthesis, and submission QA |
+| [`submission-requirements.md`](submission-requirements.md) | Mandatory PDF, video, duration, presenter-visibility, and evidence-integrity checklist |
 | [`data/survey/`](data/survey/) | Contact-safe survey snapshot, normalized data, analytics tables, and editable dashboard workbook |
+| [`synthesis/01-survey-insights.md`](synthesis/01-survey-insights.md) | Evidence-traceable research goal, interview questions, top ten insights, quotes, contradictions, and limitations |
 | [`research/`](research/) | Internet research report, source register, and search plan |
+| [`research/competitor-analysis.md`](research/competitor-analysis.md) | Quick, official-source competitor and alternatives comparison for pickup coordination |
 | [`research/Uber_Find_My_Ride_Internet_Evidence.xlsx`](research/Uber_Find_My_Ride_Internet_Evidence.xlsx) | Structured internet-evidence tracker |
 
 ## Current status
 
-**Broad internet collection and the first survey-analysis snapshot are documented.** The current snapshot contains 63 likely non-test submissions and an evidence-led analytics dashboard. See [`PROJECT_STATUS.md`](PROJECT_STATUS.md) for the active tracker, [`data/survey/README.md`](data/survey/README.md) for the data boundary, and [`NEXT_PHASE_PLAN.md`](NEXT_PHASE_PLAN.md) for the remaining sequence.
+**Broad internet collection and the corrected survey-analysis snapshot are documented.** The final evidence base contains 62 unique submissions after one confirmed duplicate was removed. See [`PROJECT_STATUS.md`](PROJECT_STATUS.md), [`data/survey/README.md`](data/survey/README.md), and [`v3/submission-ready/`](v3/submission-ready/).

@@ -1,21 +1,42 @@
 # Learning notes
 
-This area is reserved for reusable course learning that is broader than one assignment or breakout-room activity.
+This area contains reusable course learning that is broader than one assignment or breakout-room activity.
+
+## Class notes
+
+The structured session notes are indexed in [`learning/class-notes/`](learning/class-notes/).
+
+The current modules cover:
+
+- Fundamentals of Product Management
+- Product Strategy and Strategic Thinking
+- Problem Discovery, Market Research, and User Research
+- Problem Framing and Prioritization
 
 ## Suggested note format
 
 ```markdown
 # Concept
 
-## In plain language
+> Source boundary
 
-## When it is useful
+## Session at a glance
 
-## Example from coursework
+## Learning objectives
 
-## Limitation or common mistake
+## Core concepts
 
-## What I will try next
+## Frameworks and decision tools
+
+## Examples from class
+
+## Practical application
+
+## Common mistakes
+
+## Quick reference
+
+## Questions or claims to verify
 ```
 
-No existing learning notes have been moved here yet. Project-specific reasoning remains with each assignment until it is deliberately consolidated.
+Class notes summarize course discussions. Project-specific evidence and decisions remain with each assignment until they are deliberately consolidated.

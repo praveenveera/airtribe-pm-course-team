@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2B174F">
+  <title>Basket Stories — Grocery Research</title>
+  <meta name="description" content="Independent academic research about grocery and household shopping behaviour.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Crimson+Pro:wght@600;700&family=Hind:wght@400;600;700&family=Noto+Sans+Telugu:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #241A2D; --plum: #2B174F; --plum-2: #43236E; --paper: #FFF8F0;
+      --surface: #FFFFFF; --coral: #D94720; --coral-soft: #FFE1D7; --mint: #1B8076;
+      --mint-soft: #DDF4F0; --gold: #F2C14E; --muted: #5E5467; --line: #D8CCD9;
+      --danger: #9F1D14;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body { background: var(--paper); color: var(--ink); font-family: 'Atkinson Hyperlegible', Arial, sans-serif; font-size: 18px; line-height: 1.5; }
+    button, input, textarea { font: inherit; }
+    .topbar { position: sticky; top: 0; z-index: 10; padding: 14px 16px; background: var(--plum); color: white; box-shadow: 0 3px 0 rgba(36,26,45,.15); }
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; max-width: 620px; margin: 0 auto; }
+    .brand { font-family: 'Crimson Pro', Georgia, serif; font-size: 1.45rem; font-weight: 700; }
+    .lang-toggle { display: flex; gap: 6px; }
+    .lang-toggle button { min-width: 44px; min-height: 44px; padding: 7px 10px; border: 2px solid rgba(255,255,255,.78); border-radius: 999px; background: transparent; color: white; cursor: pointer; font-weight: 700; }
+    .lang-toggle button[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+    body.lang-hi { font-family: 'Hind', 'Atkinson Hyperlegible', Arial, sans-serif; }
+    body.lang-te { font-family: 'Noto Sans Telugu', 'Atkinson Hyperlegible', Arial, sans-serif; }
+    body.lang-hi h1, body.lang-hi h2, body.lang-te h1, body.lang-te h2 { font-family: inherit; font-weight: 700; }
+    .progress-track { height: 5px; background: #E8DDED; }
+    .progress-fill { height: 100%; width: 0; background: var(--coral); transition: width .25s ease-out; }
+    main { display: flex; justify-content: center; padding: 28px 16px 116px; }
+    .card { width: 100%; max-width: 620px; }
+    .kicker { color: var(--plum-2); font-size: .86rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+    h1, h2 { color: var(--plum); font-family: 'Crimson Pro', Georgia, serif; }
+    h1 { margin: 6px 0 12px; font-size: 2.15rem; line-height: 1.08; }
+    h2 { margin: 5px 0 18px; font-size: 1.8rem; line-height: 1.15; }
+    .hint { margin: 0 0 22px; color: var(--muted); }
+    .privacy-note { margin: 18px 0 0; padding: 12px 14px; border-left: 4px solid var(--mint); background: var(--mint-soft); font-size: .94rem; }
+    .intro-mark { display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; margin-bottom: 14px; border-radius: 18px; background: var(--gold); color: var(--plum); font-family: 'Crimson Pro', Georgia, serif; font-size: 2.1rem; font-weight: 700; box-shadow: 6px 6px 0 var(--plum); }
+    .option-list { display: flex; flex-direction: column; gap: 12px; }
+    .option { display: flex; align-items: flex-start; gap: 12px; width: 100%; min-height: 54px; padding: 15px 16px; border: 2px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--ink); text-align: left; cursor: pointer; box-shadow: 0 3px 0 rgba(43,23,79,.08); transition: border-color .18s ease, background .18s ease, transform .18s ease; }
+    .option:hover { border-color: var(--plum-2); transform: translateY(-1px); }
+    .option.selected { border-color: var(--coral); background: var(--coral-soft); box-shadow: 0 3px 0 var(--coral); }
+    .mark { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 24px; width: 24px; height: 24px; margin-top: 1px; border: 2px solid var(--plum); border-radius: 50%; color: white; font-size: .85rem; font-weight: 700; }
+    .option.multi .mark { border-radius: 6px; }
+    .option.selected .mark { background: var(--coral); border-color: var(--coral); }
+    .option-copy { flex: 1; }
+    textarea, input[type="text"] { width: 100%; border: 2px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--ink); padding: 14px 15px; font-size: 1rem; }
+    textarea { min-height: 140px; resize: vertical; }
+    textarea:focus, input:focus, button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+    .field-note { display: block; margin: 16px 0 7px; color: var(--muted); font-size: .92rem; }
+    .error { margin-top: 14px; padding: 10px 12px; border-left: 4px solid var(--danger); background: #FDE8E7; color: var(--danger); }
+    .bottom { position: fixed; right: 0; bottom: 0; left: 0; z-index: 9; display: flex; justify-content: center; padding: 14px 16px calc(14px + env(safe-area-inset-bottom)); background: rgba(255,248,240,.96); border-top: 1px solid var(--line); backdrop-filter: blur(8px); }
+    .bottom-inner { display: flex; justify-content: space-between; gap: 12px; width: 100%; max-width: 620px; }
+    .nav-btn { min-width: 120px; min-height: 48px; padding: 12px 20px; border: 2px solid var(--plum); border-radius: 999px; background: var(--plum); color: white; cursor: pointer; font-weight: 700; box-shadow: 0 3px 0 #160B2A; }
+    .nav-btn.secondary { background: var(--surface); color: var(--plum); box-shadow: none; }
+    .nav-btn:disabled { cursor: wait; opacity: .62; }
+    .success { padding: 26px; border: 2px solid var(--mint); border-radius: 18px; background: var(--mint-soft); }
+    .success h1 { color: #11665E; }
+    .consent { display: flex; align-items: flex-start; gap: 12px; margin-top: 22px; padding: 15px; border: 2px solid var(--line); border-radius: 14px; background: var(--surface); }
+    .consent input { flex: 0 0 22px; width: 22px; height: 22px; margin-top: 3px; accent-color: var(--coral); }
+    .hidden { display: none !important; }
+    @media (min-width: 700px) { main { padding-top: 48px; } h1 { font-size: 2.5rem; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="topbar"><div class="topbar-inner"><div class="brand" id="brand">Basket Stories</div><div class="lang-toggle" id="languageToggle" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="hi" aria-pressed="false">हिं</button><button type="button" data-lang="te" aria-pressed="false">తె</button></div></div></header>
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progress"></div></div>
+  <main><section class="card" id="app" aria-live="polite"></section></main>
+  <div class="bottom"><div class="bottom-inner"><button id="backBtn" class="nav-btn secondary" type="button">Back</button><button id="nextBtn" class="nav-btn" type="button">Start</button></div></div>
+
+  <script>
+    // Add the newly deployed V2 Apps Script URL only after the row-reconciliation test.
+    var APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbymlYxOYzem5BTQ2TeHqgrH-93nRR5eIWYPXTAoaGWTs7dk8uKNRz1MvyMDtMM4rFU/exec";
+    var SURVEY_VERSION = "2.1";
+    var NO_RECENT_PURCHASE = "no_recent_purchase";
+    var state = { lang: "en", index: 0, answers: {}, consent: false, submitting: false, done: false, localOnly: false, responseId: "" };
+
+    function option(code, label) { return { code: code, label: label }; }
+    var sets = {
+      recentMethod: [
+        option("zepto", "Zepto"), option("blinkit", "Blinkit"), option("instamart", "Swiggy Instamart"),
+        option("bigbasket", "BigBasket or BB Now"), option("amazon_fresh", "Amazon Fresh"),
+        option("local_store", "Local grocery or kirana store"), option("supermarket", "Dmart or another supermarket"),
+        option("local_market", "Local market"), option("subscription", "Milk or grocery subscription"),
+        option("bulk_purchase", "Planned bulk purchase from another source"), option("other", "Other"),
+        option(NO_RECENT_PURCHASE, "I have not made this type of purchase in the last 30 days")
+      ],
+      mission: [
+        option("ran_out", "Replace something that ran out"), option("urgent", "Get an urgent item quickly"),
+        option("planned_top_up", "Complete a planned top-up"), option("stock_up", "Stock up for the week or month"),
+        option("meal_or_event", "Buy for a meal, snack, event, or guests"), option("regular_reorder", "Repeat a regular order or subscription"),
+        option("discovery", "Browse or try something new"), option("offer_led", "Use an offer or discount"), option("other", "Other")
+      ],
+      category: [
+        option("fresh_produce", "Fresh fruits and vegetables"), option("dairy_bread_eggs", "Milk, dairy, bread, or eggs"),
+        option("staples_packaged_cooking", "Staples, packaged food, or cooking essentials"), option("snacks_sweets_beverages", "Snacks, sweets, or beverages"),
+        option("meat_seafood_frozen", "Meat, seafood, or frozen food"), option("prepared_food_cafe", "Freshly prepared food or café items, including Zepto Café"),
+        option("beauty_personal_wellness", "Beauty, personal care, health, or pharmacy"), option("household_home_kitchen", "Household cleaning, home, or kitchen items"),
+        option("baby_pet", "Baby or pet products"), option("electronics_mobile", "Electronics, mobiles, or accessories"),
+        option("fashion_toys_lifestyle", "Fashion, toys, stationery, or lifestyle"), option("other", "Other")
+      ],
+      householdSize: [option("one", "Just me"), option("two", "2 people"), option("three_four", "3–4 people"), option("five_plus", "5 or more people"), option("prefer_not", "Prefer not to say")],
+      items: [option("one", "1"), option("two_three", "2–3"), option("four_six", "4–6"), option("seven_ten", "7–10"), option("more_than_ten", "More than 10"), option("do_not_remember", "Do not remember")],
+      spend: [option("below_200", "Below Rs 200"), option("200_399", "Rs 200–399"), option("400_699", "Rs 400–699"), option("700_999", "Rs 700–999"), option("1000_plus", "Rs 1,000 or more"), option("prefer_not", "Prefer not to say")],
+      expansionPattern: [
+        option("planned_items", "Added items already planned"), option("unplanned_browse", "Browsed and added unplanned items"),
+        option("related_search", "Searched for items related to the first need"), option("threshold_add", "Added items to reach an offer or threshold"),
+        option("removed_items", "Removed one or more items before paying"), option("immediate_checkout", "Checked out without adding anything else"),
+        option("do_not_remember", "Do not remember")
+      ],
+      yesNoUnsure: [option("yes", "Yes"), option("no", "No"), option("not_sure", "Not sure")],
+      yesNo: [option("yes", "Yes"), option("no", "No")],
+      stopReason: [
+        option("need_complete", "The original need was already complete"), option("too_expensive", "It felt too expensive"),
+        option("control_spend", "I was controlling my total spend"), option("buy_elsewhere", "I prefer buying that item or quantity elsewhere"),
+        option("unavailable", "The right product, brand, size, or quantity was unavailable"), option("no_time", "I did not have time to browse"),
+        option("irrelevant_suggestions", "The suggestions were not relevant"), option("quality_concern", "I did not trust the quality or freshness"),
+        option("buy_later", "I planned to buy it later"), option("other", "Other")
+      ],
+      thresholdAction: [
+        option("added_useful", "Add another useful item"), option("larger_pack", "Choose a larger pack"),
+        option("added_to_unlock", "Add an item mainly to unlock the offer or threshold"), option("paid_fee", "Pay the fee and continue"),
+        option("removed_or_abandoned", "Remove items or abandon the purchase"), option("waited", "Wait and combine it with a later purchase"),
+        option("no_change", "It did not change my basket"), option("other", "Other")
+      ],
+      zeptoWhy: [
+        option("delivery_speed", "Delivery speed"), option("convenience", "Convenience"), option("availability", "Product availability"),
+        option("price_offer", "Price or offer"), option("habit", "Familiar habit"), option("delivery_reliability", "Confidence in delivery reliability"),
+        option("recommendation", "Recommendation from someone"), option("other", "Other")
+      ]
+    };
+
+    var questionCopy = {
+      recentMethod: "Think about your most recent grocery or household purchase in the last 30 days. Where did you buy it?",
+      mission: "Which description best matches why you made this purchase?",
+      firstNeed: "Which type of item or need started the purchase?",
+      householdSize: "How many people were you shopping for?",
+      items: "Approximately how many items did you buy?",
+      spend: "Approximately how much did you spend?",
+      categories: "Which categories did you buy?",
+      expansionPattern: "After choosing the first item or need, what happened?",
+      considered: "Did you consider another item but decide not to buy it?",
+      consideredCategory: "Which category was that item in?",
+      stopReason: "What was the main reason you did not buy it?",
+      thresholdNoticed: "During this purchase, did you notice a delivery fee, minimum-order rule, free-delivery threshold, coupon, or offer?",
+      thresholdAction: "What did it lead you to do?",
+      zeptoWhy: "What was the main reason you chose Zepto for this purchase?",
+      zeptoCheckoutMoment: "What happened just before you decided your basket was complete?",
+      altWhy: "What was the main reason this shopping method fitted the purchase best?",
+      consideredZepto: "Did you consider Zepto for this purchase?",
+      follow: "Would you be open to a 15-minute follow-up conversation about this purchase?"
+    };
+
+    var uiCopy = {
+      en: {
+        brand: "Basket Stories", language: "Language", shortSurvey: "Short academic survey", title: "Your grocery shopping story",
+        welcomeBody: "Think about one real grocery or household purchase. The survey takes about 4–5 minutes and is not affiliated with Zepto or another retailer.",
+        consent: "I agree to take part in this academic study. My survey answers will be analysed without my name. If I volunteer contact details for a follow-up conversation, those details will be stored separately from my survey answers.",
+        privacy: "Choose English, Hindi, or Telugu. Please do not enter passwords, payment details, or other sensitive information.",
+        question: "Question", selectAll: "Select all that apply.", decisionHint: "Describe the real decision in one or two sentences.",
+        specify: "Please specify", contactAria: "Phone number or email", contactLabel: "Phone number or email. Required only for follow-up.",
+        contactPrivacy: "Your contact will be stored in a separate restricted sheet linked only by response ID.",
+        back: "Back", start: "Start", next: "Next", submit: "Submit", saving: "Saving…",
+        required: "Please answer this question before continuing.", contactRequired: "Add a phone number or email, or choose No.",
+        confirmError: "We could not confirm that your response was saved. Please check your connection and try again.",
+        localTitle: "Test response saved locally", thanks: "Thank you", localBody: "This browser-only test was not sent to the research sheet.",
+        confirmedBody: "Your response has been confirmed in the research sheet.", ineligibleBody: "Thank you. This study currently focuses on purchases made within the last 30 days."
+      },
+      hi: {
+        brand: "बास्केट की कहानी", language: "भाषा", shortSurvey: "छोटा अकादमिक सर्वेक्षण", title: "आपकी किराना खरीदारी की कहानी",
+        welcomeBody: "अपनी किसी एक वास्तविक किराना या घरेलू सामान की खरीदारी के बारे में सोचें। इस सर्वेक्षण में लगभग 4–5 मिनट लगेंगे। इसका Zepto या किसी अन्य विक्रेता से संबंध नहीं है।",
+        consent: "मैं इस अकादमिक अध्ययन में भाग लेने के लिए सहमत हूं। मेरे सर्वेक्षण उत्तरों का विश्लेषण मेरे नाम के बिना किया जाएगा। यदि मैं फॉलो-अप बातचीत के लिए संपर्क विवरण दूं, तो उसे मेरे सर्वेक्षण उत्तरों से अलग रखा जाएगा।",
+        privacy: "अंग्रेज़ी, हिंदी या तेलुगु चुनें। पासवर्ड, भुगतान विवरण या अन्य संवेदनशील जानकारी दर्ज न करें।",
+        question: "प्रश्न", selectAll: "लागू होने वाले सभी विकल्प चुनें।", decisionHint: "वास्तविक निर्णय को एक या दो वाक्यों में बताएं।",
+        specify: "कृपया बताएं", contactAria: "फोन नंबर या ईमेल", contactLabel: "फोन नंबर या ईमेल। केवल फॉलो-अप के लिए आवश्यक।",
+        contactPrivacy: "आपका संपर्क विवरण अलग सुरक्षित शीट में केवल प्रतिक्रिया आईडी से जोड़ा जाएगा।",
+        back: "पीछे", start: "शुरू करें", next: "आगे", submit: "जमा करें", saving: "सहेजा जा रहा है…",
+        required: "आगे बढ़ने से पहले इस प्रश्न का उत्तर दें।", contactRequired: "फोन नंबर या ईमेल जोड़ें, या नहीं चुनें।",
+        confirmError: "हम यह पुष्टि नहीं कर सके कि आपका उत्तर सहेजा गया है। अपना इंटरनेट कनेक्शन जांचें और फिर कोशिश करें।",
+        localTitle: "परीक्षण उत्तर स्थानीय रूप से सहेजा गया", thanks: "धन्यवाद", localBody: "यह ब्राउज़र-केवल परीक्षण शोध शीट में नहीं भेजा गया।",
+        confirmedBody: "आपका उत्तर शोध शीट में दर्ज होने की पुष्टि हो गई है।", ineligibleBody: "धन्यवाद। यह अध्ययन फिलहाल पिछले 30 दिनों में की गई खरीदारी पर केंद्रित है।"
+      },
+      te: {
+        brand: "బాస్కెట్ కథలు", language: "భాష", shortSurvey: "చిన్న అకాడమిక్ సర్వే", title: "మీ కిరాణా కొనుగోలు కథ",
+        welcomeBody: "మీరు నిజంగా చేసిన ఒక కిరాణా లేదా ఇంటి సామానుల కొనుగోలు గురించి ఆలోచించండి. ఈ సర్వేకు సుమారు 4–5 నిమిషాలు పడుతుంది. దీనికి Zepto లేదా ఇతర రిటైలర్‌తో సంబంధం లేదు.",
+        consent: "ఈ అకాడమిక్ అధ్యయనంలో పాల్గొనడానికి నేను అంగీకరిస్తున్నాను. నా పేరును ఉపయోగించకుండా నా సర్వే సమాధానాలను విశ్లేషిస్తారు. ఫాలో-అప్ సంభాషణ కోసం నేను సంప్రదింపు వివరాలు ఇస్తే, వాటిని నా సర్వే సమాధానాల నుంచి వేరుగా ఉంచుతారు.",
+        privacy: "ఇంగ్లీష్, హిందీ లేదా తెలుగు ఎంచుకోండి. పాస్‌వర్డ్‌లు, చెల్లింపు వివరాలు లేదా ఇతర సున్నితమైన సమాచారాన్ని నమోదు చేయవద్దు.",
+        question: "ప్రశ్న", selectAll: "వర్తించే అన్నింటినీ ఎంచుకోండి.", decisionHint: "నిజమైన నిర్ణయాన్ని ఒకటి లేదా రెండు వాక్యాల్లో వివరించండి.",
+        specify: "దయచేసి వివరించండి", contactAria: "ఫోన్ నంబర్ లేదా ఇమెయిల్", contactLabel: "ఫోన్ నంబర్ లేదా ఇమెయిల్. ఫాలో-అప్ కోసం మాత్రమే అవసరం.",
+        contactPrivacy: "మీ సంప్రదింపు వివరాలు ప్రతిస్పందన ఐడితో మాత్రమే అనుసంధానించిన వేరే పరిమిత షీట్‌లో నిల్వ చేయబడతాయి.",
+        back: "వెనుకకు", start: "ప్రారంభించండి", next: "తదుపరి", submit: "సమర్పించండి", saving: "సేవ్ చేస్తోంది…",
+        required: "కొనసాగించే ముందు ఈ ప్రశ్నకు సమాధానం ఇవ్వండి.", contactRequired: "ఫోన్ నంబర్ లేదా ఇమెయిల్ జోడించండి, లేదా కాదు ఎంచుకోండి.",
+        confirmError: "మీ సమాధానం సేవ్ అయిందని నిర్ధారించలేకపోయాము. మీ ఇంటర్నెట్ కనెక్షన్‌ను తనిఖీ చేసి మళ్లీ ప్రయత్నించండి.",
+        localTitle: "పరీక్ష సమాధానం స్థానికంగా సేవ్ అయింది", thanks: "ధన్యవాదాలు", localBody: "ఈ బ్రౌజర్-మాత్రమే పరీక్ష పరిశోధన షీట్‌కు పంపబడలేదు.",
+        confirmedBody: "మీ సమాధానం పరిశోధన షీట్‌లో నమోదైనట్లు నిర్ధారించబడింది.", ineligibleBody: "ధన్యవాదాలు. ఈ అధ్యయనం ప్రస్తుతం గత 30 రోజుల్లో చేసిన కొనుగోళ్లపై దృష్టి పెడుతోంది."
+      }
+    };
+
+    var questionTranslations = {
+      hi: {
+        recentMethod: "पिछले 30 दिनों में की गई अपनी सबसे हाल की किराना या घरेलू सामान की खरीदारी के बारे में सोचें। आपने इसे कहां से खरीदा?",
+        mission: "इस खरीदारी का कारण इनमें से किससे सबसे अच्छी तरह मेल खाता है?", firstNeed: "किस प्रकार की वस्तु या जरूरत से खरीदारी शुरू हुई?",
+        householdSize: "आप कितने लोगों के लिए खरीदारी कर रहे थे?", items: "आपने लगभग कितनी वस्तुएं खरीदीं?", spend: "आपने लगभग कितना खर्च किया?",
+        categories: "आपने किन श्रेणियों की वस्तुएं खरीदीं?", expansionPattern: "पहली वस्तु या जरूरत चुनने के बाद क्या हुआ?",
+        considered: "क्या आपने किसी और वस्तु पर विचार किया, लेकिन उसे नहीं खरीदा?", consideredCategory: "वह वस्तु किस श्रेणी में थी?",
+        stopReason: "उसे न खरीदने का मुख्य कारण क्या था?", thresholdNoticed: "क्या इस खरीदारी के दौरान आपने डिलीवरी शुल्क, न्यूनतम ऑर्डर नियम, मुफ्त डिलीवरी सीमा, कूपन या ऑफर देखा?",
+        thresholdAction: "उसके कारण आपने क्या किया?", zeptoWhy: "इस खरीदारी के लिए Zepto चुनने का मुख्य कारण क्या था?",
+        zeptoCheckoutMoment: "आपने अपनी बास्केट पूरी मानने से ठीक पहले क्या किया या सोचा?", altWhy: "इस खरीदारी के लिए यह तरीका सबसे उपयुक्त क्यों था?",
+        consideredZepto: "क्या आपने इस खरीदारी के लिए Zepto पर विचार किया था?", follow: "क्या आप इस खरीदारी के बारे में 15 मिनट की फॉलो-अप बातचीत के लिए तैयार हैं?"
+      },
+      te: {
+        recentMethod: "గత 30 రోజుల్లో మీరు చేసిన అత్యంత ఇటీవలి కిరాణా లేదా ఇంటి సామానుల కొనుగోలు గురించి ఆలోచించండి. ఎక్కడ కొనుగోలు చేశారు?",
+        mission: "ఈ కొనుగోలు ఎందుకు చేశారో కింది వాటిలో ఏది బాగా వివరిస్తుంది?", firstNeed: "ఏ వస్తువు లేదా అవసరం ఈ కొనుగోలును ప్రారంభించింది?",
+        householdSize: "మీరు ఎంత మంది కోసం కొనుగోలు చేస్తున్నారు?", items: "సుమారుగా ఎన్ని వస్తువులు కొన్నారు?", spend: "సుమారుగా ఎంత ఖర్చు చేశారు?",
+        categories: "ఏ కేటగిరీల వస్తువులు కొన్నారు?", expansionPattern: "మొదటి వస్తువు లేదా అవసరాన్ని ఎంచుకున్న తర్వాత ఏమి జరిగింది?",
+        considered: "మరో వస్తువును కొనాలని ఆలోచించి, చివరకు కొనలేదా?", consideredCategory: "ఆ వస్తువు ఏ కేటగిరీలో ఉంది?",
+        stopReason: "దాన్ని కొనకపోవడానికి ప్రధాన కారణం ఏమిటి?", thresholdNoticed: "ఈ కొనుగోలు సమయంలో డెలివరీ ఫీజు, కనీస ఆర్డర్ నియమం, ఉచిత డెలివరీ పరిమితి, కూపన్ లేదా ఆఫర్ గమనించారా?",
+        thresholdAction: "దాని వల్ల మీరు ఏమి చేశారు?", zeptoWhy: "ఈ కొనుగోలు కోసం Zepto ఎంచుకోవడానికి ప్రధాన కారణం ఏమిటి?",
+        zeptoCheckoutMoment: "మీ బాస్కెట్ పూర్తయిందని నిర్ణయించే ముందు ఏమి జరిగింది?", altWhy: "ఈ కొనుగోలుకు ఈ విధానం ఎందుకు బాగా సరిపోయింది?",
+        consideredZepto: "ఈ కొనుగోలు కోసం Zepto ను పరిగణించారా?", follow: "ఈ కొనుగోలు గురించి 15 నిమిషాల ఫాలో-అప్ సంభాషణకు సిద్ధంగా ఉన్నారా?"
+      }
+    };
+
+    var optionTranslations = {
+      hi: {
+        "Local grocery or kirana store": "स्थानीय किराना दुकान", "Dmart or another supermarket": "डीमार्ट या अन्य सुपरमार्केट", "Local market": "स्थानीय बाजार",
+        "Milk or grocery subscription": "दूध या किराना सब्सक्रिप्शन", "Planned bulk purchase from another source": "किसी अन्य स्रोत से योजनाबद्ध थोक खरीद", "Other": "अन्य",
+        "I have not made this type of purchase in the last 30 days": "मैंने पिछले 30 दिनों में इस प्रकार की खरीदारी नहीं की है",
+        "Replace something that ran out": "खत्म हुई वस्तु को फिर से खरीदना", "Get an urgent item quickly": "जरूरी वस्तु जल्दी पाना", "Complete a planned top-up": "योजनाबद्ध छोटी खरीद पूरी करना",
+        "Stock up for the week or month": "हफ्ते या महीने के लिए स्टॉक करना", "Buy for a meal, snack, event, or guests": "भोजन, नाश्ता, कार्यक्रम या मेहमानों के लिए खरीदना",
+        "Repeat a regular order or subscription": "नियमित ऑर्डर या सब्सक्रिप्शन दोहराना", "Browse or try something new": "नई चीजें देखना या आजमाना", "Use an offer or discount": "ऑफर या छूट का उपयोग करना",
+        "Fresh fruits and vegetables": "ताजे फल और सब्जियां", "Milk, dairy, bread, or eggs": "दूध, डेयरी, ब्रेड या अंडे", "Staples, packaged food, or cooking essentials": "अनाज, पैकेज्ड खाद्य या खाना पकाने की जरूरी चीजें",
+        "Snacks, sweets, or beverages": "स्नैक्स, मिठाइयां या पेय", "Meat, seafood, or frozen food": "मांस, सीफूड या फ्रोजन फूड", "Freshly prepared food or café items, including Zepto Café": "ताजा तैयार भोजन या कैफे आइटम, Zepto Café सहित",
+        "Beauty, personal care, health, or pharmacy": "सौंदर्य, व्यक्तिगत देखभाल, स्वास्थ्य या फार्मेसी", "Household cleaning, home, or kitchen items": "घर की सफाई, घरेलू या रसोई का सामान", "Baby or pet products": "शिशु या पालतू पशु उत्पाद",
+        "Electronics, mobiles, or accessories": "इलेक्ट्रॉनिक्स, मोबाइल या एक्सेसरीज़", "Fashion, toys, stationery, or lifestyle": "फैशन, खिलौने, स्टेशनरी या लाइफस्टाइल", "Just me": "सिर्फ मेरे लिए", "2 people": "2 लोग", "3–4 people": "3–4 लोग", "5 or more people": "5 या अधिक लोग",
+        "Prefer not to say": "बताना नहीं चाहते", "More than 10": "10 से अधिक", "Do not remember": "याद नहीं", "Below Rs 200": "₹200 से कम", "Rs 200–399": "₹200–399",
+        "Rs 400–699": "₹400–699", "Rs 700–999": "₹700–999", "Rs 1,000 or more": "₹1,000 या अधिक",
+        "Added items already planned": "पहले से तय वस्तुएं जोड़ीं", "Browsed and added unplanned items": "देखते हुए बिना योजना की वस्तुएं जोड़ीं",
+        "Searched for items related to the first need": "पहली जरूरत से संबंधित वस्तुएं खोजीं", "Added items to reach an offer or threshold": "ऑफर या सीमा तक पहुंचने के लिए वस्तुएं जोड़ीं",
+        "Removed one or more items before paying": "भुगतान से पहले एक या अधिक वस्तुएं हटाईं", "Checked out without adding anything else": "कुछ और जोड़े बिना भुगतान किया",
+        "Yes": "हां", "No": "नहीं", "Not sure": "पक्का नहीं", "The original need was already complete": "मूल जरूरत पूरी हो चुकी थी", "It felt too expensive": "वस्तु बहुत महंगी लगी",
+        "I was controlling my total spend": "मैं कुल खर्च सीमित रखना चाहता था", "I prefer buying that item or quantity elsewhere": "मैं वह वस्तु या मात्रा कहीं और खरीदना पसंद करता हूं",
+        "The right product, brand, size, or quantity was unavailable": "सही उत्पाद, ब्रांड, आकार या मात्रा उपलब्ध नहीं थी", "I did not have time to browse": "मेरे पास देखने का समय नहीं था",
+        "The suggestions were not relevant": "सुझाव उपयोगी नहीं थे", "I did not trust the quality or freshness": "मुझे गुणवत्ता या ताजगी पर भरोसा नहीं था", "I planned to buy it later": "मैंने इसे बाद में खरीदने की योजना बनाई",
+        "Add another useful item": "एक और उपयोगी वस्तु जोड़ना", "Choose a larger pack": "बड़ा पैक चुनना", "Add an item mainly to unlock the offer or threshold": "मुख्य रूप से ऑफर या सीमा पाने के लिए वस्तु जोड़ना",
+        "Pay the fee and continue": "शुल्क देकर आगे बढ़ना", "Remove items or abandon the purchase": "वस्तुएं हटाना या खरीदारी छोड़ना", "Wait and combine it with a later purchase": "रुककर इसे बाद की खरीदारी से जोड़ना",
+        "It did not change my basket": "इससे मेरी बास्केट नहीं बदली", "Delivery speed": "डिलीवरी की गति", "Convenience": "सुविधा", "Product availability": "उत्पाद उपलब्धता",
+        "Price or offer": "कीमत या ऑफर", "Familiar habit": "परिचित आदत", "Confidence in delivery reliability": "विश्वसनीय डिलीवरी का भरोसा", "Recommendation from someone": "किसी की सिफारिश",
+        "Better value for larger quantities": "बड़ी मात्रा में बेहतर मूल्य", "I already planned to shop or order there": "मैंने वहां खरीदने या ऑर्डर करने की पहले से योजना बनाई थी",
+        "Closer or more convenient": "नजदीक या अधिक सुविधाजनक", "More confidence in quality or freshness": "गुणवत्ता या ताजगी पर अधिक भरोसा", "Better product availability or pack sizes": "बेहतर उत्पाद उपलब्धता या पैक आकार",
+        "Habit or household preference": "आदत या घर की पसंद", "I did not need fast delivery": "मुझे तेज डिलीवरी की जरूरत नहीं थी", "Faster or more reliable delivery": "तेज या अधिक विश्वसनीय डिलीवरी",
+        "Better price or offer": "बेहतर कीमत या ऑफर", "Better product availability": "बेहतर उत्पाद उपलब्धता", "More familiar app or habit": "अधिक परिचित ऐप या आदत",
+        "Better quality or pack sizes": "बेहतर गुणवत्ता या पैक आकार", "More convenient for this purchase": "इस खरीदारी के लिए अधिक सुविधाजनक"
+      },
+      te: {
+        "Local grocery or kirana store": "స్థానిక కిరాణా దుకాణం", "Dmart or another supermarket": "డీమార్ట్ లేదా మరో సూపర్‌మార్కెట్", "Local market": "స్థానిక మార్కెట్",
+        "Milk or grocery subscription": "పాలు లేదా కిరాణా సబ్‌స్క్రిప్షన్", "Planned bulk purchase from another source": "మరో వనరు నుంచి ప్రణాళిక చేసిన పెద్ద మొత్తపు కొనుగోలు", "Other": "ఇతర",
+        "I have not made this type of purchase in the last 30 days": "గత 30 రోజుల్లో నేను ఈ రకమైన కొనుగోలు చేయలేదు",
+        "Replace something that ran out": "అయిపోయిన వస్తువును మళ్లీ కొనడం", "Get an urgent item quickly": "అత్యవసర వస్తువును త్వరగా పొందడం", "Complete a planned top-up": "ప్రణాళిక చేసిన చిన్న కొనుగోలును పూర్తి చేయడం",
+        "Stock up for the week or month": "వారం లేదా నెలకు సరుకులు నిల్వ చేయడం", "Buy for a meal, snack, event, or guests": "భోజనం, స్నాక్, కార్యక్రమం లేదా అతిథుల కోసం కొనడం",
+        "Repeat a regular order or subscription": "సాధారణ ఆర్డర్ లేదా సబ్‌స్క్రిప్షన్‌ను మళ్లీ చేయడం", "Browse or try something new": "కొత్తవి చూడడం లేదా ప్రయత్నించడం", "Use an offer or discount": "ఆఫర్ లేదా డిస్కౌంట్ ఉపయోగించడం",
+        "Fresh fruits and vegetables": "తాజా పండ్లు మరియు కూరగాయలు", "Milk, dairy, bread, or eggs": "పాలు, డైరీ, బ్రెడ్ లేదా గుడ్లు", "Staples, packaged food, or cooking essentials": "నిత్యావసరాలు, ప్యాకేజ్డ్ ఆహారం లేదా వంట సామగ్రి",
+        "Snacks, sweets, or beverages": "స్నాక్స్, స్వీట్లు లేదా పానీయాలు", "Meat, seafood, or frozen food": "మాంసం, సీఫుడ్ లేదా ఫ్రోజెన్ ఫుడ్", "Freshly prepared food or café items, including Zepto Café": "తాజాగా తయారుచేసిన ఆహారం లేదా కేఫే ఐటమ్స్, Zepto Café సహా",
+        "Beauty, personal care, health, or pharmacy": "బ్యూటీ, వ్యక్తిగత సంరక్షణ, ఆరోగ్యం లేదా ఫార్మసీ", "Household cleaning, home, or kitchen items": "ఇంటి శుభ్రత, హోమ్ లేదా కిచెన్ సామగ్రి", "Baby or pet products": "శిశువు లేదా పెంపుడు జంతు ఉత్పత్తులు",
+        "Electronics, mobiles, or accessories": "ఎలక్ట్రానిక్స్, మొబైల్స్ లేదా యాక్సెసరీస్", "Fashion, toys, stationery, or lifestyle": "ఫ్యాషన్, బొమ్మలు, స్టేషనరీ లేదా లైఫ్‌స్టైల్", "Just me": "నా కోసం మాత్రమే", "2 people": "2 మంది", "3–4 people": "3–4 మంది", "5 or more people": "5 మంది లేదా ఎక్కువ",
+        "Prefer not to say": "చెప్పడం ఇష్టం లేదు", "More than 10": "10 కంటే ఎక్కువ", "Do not remember": "గుర్తు లేదు", "Below Rs 200": "₹200 కంటే తక్కువ", "Rs 200–399": "₹200–399",
+        "Rs 400–699": "₹400–699", "Rs 700–999": "₹700–999", "Rs 1,000 or more": "₹1,000 లేదా ఎక్కువ",
+        "Added items already planned": "ముందే నిర్ణయించిన వస్తువులు జోడించాను", "Browsed and added unplanned items": "చూస్తూ ప్రణాళికలో లేని వస్తువులు జోడించాను",
+        "Searched for items related to the first need": "మొదటి అవసరానికి సంబంధించిన వస్తువులు వెతికాను", "Added items to reach an offer or threshold": "ఆఫర్ లేదా పరిమితిని చేరడానికి వస్తువులు జోడించాను",
+        "Removed one or more items before paying": "చెల్లించే ముందు ఒకటి లేదా ఎక్కువ వస్తువులు తొలగించాను", "Checked out without adding anything else": "మరేమీ జోడించకుండా చెల్లించాను",
+        "Yes": "అవును", "No": "కాదు", "Not sure": "ఖచ్చితంగా తెలియదు", "The original need was already complete": "మొదటి అవసరం అప్పటికే పూర్తయింది", "It felt too expensive": "చాలా ఖరీదుగా అనిపించింది",
+        "I was controlling my total spend": "మొత్తం ఖర్చును నియంత్రిస్తున్నాను", "I prefer buying that item or quantity elsewhere": "ఆ వస్తువు లేదా పరిమాణాన్ని వేరే చోట కొనడం ఇష్టం",
+        "The right product, brand, size, or quantity was unavailable": "సరైన ఉత్పత్తి, బ్రాండ్, పరిమాణం లేదా మోతాదు అందుబాటులో లేదు", "I did not have time to browse": "చూడటానికి సమయం లేదు",
+        "The suggestions were not relevant": "సూచనలు సంబంధితంగా లేవు", "I did not trust the quality or freshness": "నాణ్యత లేదా తాజాదనంపై నమ్మకం లేదు", "I planned to buy it later": "తర్వాత కొనాలని అనుకున్నాను",
+        "Add another useful item": "మరో ఉపయోగకరమైన వస్తువు జోడించడం", "Choose a larger pack": "పెద్ద ప్యాక్ ఎంచుకోవడం", "Add an item mainly to unlock the offer or threshold": "ప్రధానంగా ఆఫర్ లేదా పరిమితి కోసం వస్తువు జోడించడం",
+        "Pay the fee and continue": "ఫీజు చెల్లించి కొనసాగడం", "Remove items or abandon the purchase": "వస్తువులు తొలగించడం లేదా కొనుగోలును వదిలేయడం", "Wait and combine it with a later purchase": "వేచి తర్వాతి కొనుగోలుతో కలపడం",
+        "It did not change my basket": "దీంతో నా బాస్కెట్ మారలేదు", "Delivery speed": "డెలివరీ వేగం", "Convenience": "సౌలభ్యం", "Product availability": "ఉత్పత్తుల లభ్యత",
+        "Price or offer": "ధర లేదా ఆఫర్", "Familiar habit": "అలవాటు", "Confidence in delivery reliability": "నమ్మదగిన డెలివరీపై విశ్వాసం", "Recommendation from someone": "ఎవరైనా చేసిన సిఫార్సు",
+        "Better value for larger quantities": "పెద్ద పరిమాణాలకు మెరుగైన విలువ", "I already planned to shop or order there": "అక్కడ కొనాలని లేదా ఆర్డర్ చేయాలని ముందే నిర్ణయించుకున్నాను",
+        "Closer or more convenient": "దగ్గరగా లేదా మరింత సౌకర్యంగా", "More confidence in quality or freshness": "నాణ్యత లేదా తాజాదనంపై ఎక్కువ నమ్మకం", "Better product availability or pack sizes": "మెరుగైన ఉత్పత్తుల లభ్యత లేదా ప్యాక్ పరిమాణాలు",
+        "Habit or household preference": "అలవాటు లేదా ఇంటి వారి ప్రాధాన్యం", "I did not need fast delivery": "నాకు వేగమైన డెలివరీ అవసరం లేదు", "Faster or more reliable delivery": "వేగమైన లేదా మరింత నమ్మదగిన డెలివరీ",
+        "Better price or offer": "మెరుగైన ధర లేదా ఆఫర్", "Better product availability": "మెరుగైన ఉత్పత్తుల లభ్యత", "More familiar app or habit": "బాగా తెలిసిన యాప్ లేదా అలవాటు",
+        "Better quality or pack sizes": "మెరుగైన నాణ్యత లేదా ప్యాక్ పరిమాణాలు", "More convenient for this purchase": "ఈ కొనుగోలుకు మరింత సౌకర్యంగా"
+      }
+    };
+
+    function ui(key) { return (uiCopy[state.lang] && uiCopy[state.lang][key]) || uiCopy.en[key] || key; }
+    function question(id) { return (questionTranslations[state.lang] && questionTranslations[state.lang][id]) || questionCopy[id] || id; }
+    function optionLabel(item) { return (optionTranslations[state.lang] && optionTranslations[state.lang][item.label]) || item.label; }
+
+    function isZepto() { return state.answers.recentMethod === "zepto"; }
+    function isEligible() { return state.answers.recentMethod && state.answers.recentMethod !== NO_RECENT_PURCHASE; }
+    function steps() {
+      var result = ["welcome", "recentMethod"];
+      if (!state.answers.recentMethod || !isEligible()) return result;
+      result = result.concat(["mission", "firstNeed", "householdSize", "items", "spend", "categories", "expansionPattern", "considered"]);
+      if (state.answers.considered === "yes") result = result.concat(["consideredCategory", "stopReason"]);
+      result.push("thresholdNoticed");
+      if (state.answers.thresholdNoticed === "yes") result.push("thresholdAction");
+      result = result.concat(isZepto() ? ["zeptoWhy", "zeptoCheckoutMoment"] : ["altWhy", "consideredZepto"]);
+      result.push("follow");
+      return result;
+    }
+
+    function currentId() { return steps()[state.index]; }
+    function selected(id, code, multi) { var value = state.answers[id]; return multi ? Array.isArray(value) && value.indexOf(code) !== -1 : value === code; }
+    function element(tag, attrs) {
+      var node = document.createElement(tag); attrs = attrs || {};
+      Object.keys(attrs).forEach(function (key) {
+        if (key === "text") node.textContent = attrs[key]; else if (key === "className") node.className = attrs[key]; else node.setAttribute(key, attrs[key]);
+      });
+      return node;
+    }
+
+    function choose(id, code, multi) {
+      if (multi) {
+        var values = Array.isArray(state.answers[id]) ? state.answers[id].slice() : [];
+        var index = values.indexOf(code);
+        if (index === -1) values.push(code); else values.splice(index, 1);
+        state.answers[id] = values;
+      } else {
+        state.answers[id] = code;
+        if (id === "recentMethod" && code === NO_RECENT_PURCHASE) state.answers.follow = "no";
+      }
+      render(false);
+    }
+
+    function renderOptions(id, options, multi) {
+      var list = element("div", { className: "option-list", role: multi ? "group" : "radiogroup", "aria-label": question(id) });
+      options.forEach(function (item) {
+        var active = selected(id, item.code, multi);
+        var button = element("button", { type: "button", className: "option" + (multi ? " multi" : "") + (active ? " selected" : ""), role: multi ? "checkbox" : "radio", "aria-checked": active ? "true" : "false" });
+        button.appendChild(element("span", { className: "mark", text: active ? "✓" : "" }));
+        button.appendChild(element("span", { className: "option-copy", text: optionLabel(item) }));
+        button.addEventListener("click", function () { choose(id, item.code, multi); });
+        list.appendChild(button);
+      });
+      if (hasOther(id)) {
+        list.appendChild(element("label", { className: "field-note", for: id + "Other", text: ui("specify") }));
+        list.appendChild(textField(id + "Other", false));
+      }
+      return list;
+    }
+
+    function hasOther(id) {
+      var value = state.answers[id];
+      return value === "other" || (Array.isArray(value) && value.indexOf("other") !== -1);
+    }
+
+    function textField(id, area) {
+      var field = element(area ? "textarea" : "input", { id: id, name: id, "aria-label": id === "contact" ? ui("contactAria") : question(id.replace("Other", "")) });
+      if (!area) field.setAttribute("type", "text");
+      field.value = state.answers[id] || "";
+      field.addEventListener("input", function (event) { state.answers[id] = event.target.value; });
+      return field;
+    }
+
+    function optionsFor(id) {
+      if (id === "firstNeed" || id === "categories" || id === "consideredCategory") return sets.category;
+      if (id === "considered" || id === "thresholdNoticed" || id === "consideredZepto") return sets.yesNoUnsure;
+      if (id === "follow") return sets.yesNo;
+      if (id === "altWhy") return alternativeReasons(state.answers.recentMethod);
+      return sets[id] || [];
+    }
+
+    function alternativeReasons(method) {
+      if (["supermarket", "local_market", "local_store", "bulk_purchase", "subscription"].indexOf(method) !== -1) {
+        return [option("larger_quantity_value", "Better value for larger quantities"), option("planned_trip", "I already planned to shop or order there"), option("close_convenient", "Closer or more convenient"), option("quality_freshness", "More confidence in quality or freshness"), option("availability", "Better product availability or pack sizes"), option("habit", "Habit or household preference"), option("no_fast_delivery_need", "I did not need fast delivery"), option("other", "Other")];
+      }
+      return [option("delivery_reliability", "Faster or more reliable delivery"), option("price_offer", "Better price or offer"), option("availability", "Better product availability"), option("familiar_app", "More familiar app or habit"), option("quality_pack", "Better quality or pack sizes"), option("convenience", "More convenient for this purchase"), option("other", "Other")];
+    }
+
+    function render(focusHeading) {
+      if (state.done) return renderThankYou();
+      var ids = steps();
+      if (state.index >= ids.length) state.index = ids.length - 1;
+      var id = ids[state.index];
+      var app = document.getElementById("app"); app.innerHTML = "";
+      document.documentElement.lang = state.lang;
+      document.body.className = state.lang === "en" ? "" : "lang-" + state.lang;
+      document.getElementById("brand").textContent = ui("brand");
+      document.getElementById("languageToggle").setAttribute("aria-label", ui("language"));
+      document.title = ui("brand") + " — " + ui("shortSurvey");
+      document.querySelectorAll("[data-lang]").forEach(function (button) { button.setAttribute("aria-pressed", button.getAttribute("data-lang") === state.lang ? "true" : "false"); });
+      document.getElementById("progress").style.width = state.index === 0 ? "0%" : Math.min(94, 6 + state.index * 6) + "%";
+
+      if (id === "welcome") {
+        app.appendChild(element("div", { className: "intro-mark", text: "B" }));
+        app.appendChild(element("div", { className: "kicker", text: ui("shortSurvey") }));
+        app.appendChild(element("h1", { text: ui("title") }));
+        app.appendChild(element("p", { className: "hint", text: ui("welcomeBody") }));
+        var consent = element("label", { className: "consent" });
+        var checkbox = element("input", { type: "checkbox", id: "consent" }); checkbox.checked = state.consent;
+        checkbox.addEventListener("change", function () { state.consent = checkbox.checked; });
+        consent.appendChild(checkbox);
+        consent.appendChild(element("span", { text: ui("consent") }));
+        app.appendChild(consent);
+        app.appendChild(element("p", { className: "privacy-note", text: ui("privacy") }));
+        updateNavigation(); return;
+      }
+
+      app.appendChild(element("div", { className: "kicker", text: ui("question") + " " + state.index }));
+      var heading = element("h2", { id: "questionHeading", tabindex: "-1", text: question(id) }); app.appendChild(heading);
+      if (id === "categories" || id === "expansionPattern") app.appendChild(element("p", { className: "hint", text: ui("selectAll") }));
+
+      if (id === "zeptoCheckoutMoment") {
+        app.appendChild(element("p", { className: "hint", text: ui("decisionHint") }));
+        app.appendChild(textField(id, true));
+      } else {
+        app.appendChild(renderOptions(id, optionsFor(id), id === "categories" || id === "expansionPattern"));
+      }
+
+      if (id === "follow" && state.answers.follow === "yes") {
+        app.appendChild(element("label", { className: "field-note", for: "contact", text: ui("contactLabel") }));
+        app.appendChild(textField("contact", false));
+        app.appendChild(element("p", { className: "privacy-note", text: ui("contactPrivacy") }));
+      }
+      updateNavigation();
+      if (focusHeading !== false) window.requestAnimationFrame(function () { heading.focus(); });
+    }
+
+    function valid() {
+      var id = currentId();
+      if (id === "welcome") return state.consent;
+      if (id === "zeptoCheckoutMoment") return String(state.answers[id] || "").trim().length >= 8;
+      var value = state.answers[id];
+      if (id === "categories" || id === "expansionPattern") {
+        if (!Array.isArray(value) || value.length === 0) return false;
+      } else if (value === undefined || value === null || value === "") return false;
+      if (hasOther(id) && !String(state.answers[id + "Other"] || "").trim()) return false;
+      if (id === "follow" && value === "yes" && !String(state.answers.contact || "").trim()) return false;
+      return true;
+    }
+
+    function updateNavigation() {
+      var ids = steps(); var id = ids[state.index];
+      var last = state.index === ids.length - 1 && !(id === "recentMethod" && !state.answers.recentMethod);
+      document.getElementById("backBtn").classList.toggle("hidden", state.index === 0 || state.done);
+      document.getElementById("backBtn").textContent = ui("back");
+      document.getElementById("nextBtn").textContent = state.submitting ? ui("saving") : (last ? ui("submit") : (state.index === 0 ? ui("start") : ui("next")));
+      document.getElementById("nextBtn").disabled = state.submitting;
+    }
+
+    function buildSubmission() {
+      var a = state.answers; var eligible = isEligible();
+      if (!state.responseId) state.responseId = createResponseId();
+      var research = {
+        responseId: state.responseId, clientTimestamp: new Date().toISOString(), surveyVersion: SURVEY_VERSION,
+        language: state.lang, consent: true, eligible: eligible, recentMethod: a.recentMethod || "", recentMethodOther: a.recentMethodOther || "",
+        mission: eligible ? (a.mission || "") : "", missionOther: eligible ? (a.missionOther || "") : "",
+        firstNeed: eligible ? (a.firstNeed || "") : "", firstNeedOther: eligible ? (a.firstNeedOther || "") : "",
+        householdSize: eligible ? (a.householdSize || "") : "", items: eligible ? (a.items || "") : "", spend: eligible ? (a.spend || "") : "",
+        categories: eligible ? (a.categories || []) : [], categoriesOther: eligible ? (a.categoriesOther || "") : "",
+        expansionPattern: eligible ? (a.expansionPattern || []) : [], considered: eligible ? (a.considered || "") : "",
+        consideredCategory: eligible && a.considered === "yes" ? (a.consideredCategory || "") : "",
+        consideredCategoryOther: eligible && a.considered === "yes" ? (a.consideredCategoryOther || "") : "",
+        stopReason: eligible && a.considered === "yes" ? (a.stopReason || "") : "", stopReasonOther: eligible && a.considered === "yes" ? (a.stopReasonOther || "") : "",
+        thresholdNoticed: eligible ? (a.thresholdNoticed || "") : "", thresholdAction: eligible && a.thresholdNoticed === "yes" ? (a.thresholdAction || "") : "",
+        thresholdActionOther: eligible && a.thresholdNoticed === "yes" ? (a.thresholdActionOther || "") : "",
+        zeptoWhy: eligible && isZepto() ? (a.zeptoWhy || "") : "", zeptoWhyOther: eligible && isZepto() ? (a.zeptoWhyOther || "") : "",
+        zeptoCheckoutMoment: eligible && isZepto() ? (a.zeptoCheckoutMoment || "") : "",
+        altWhy: eligible && !isZepto() ? (a.altWhy || "") : "", altWhyOther: eligible && !isZepto() ? (a.altWhyOther || "") : "",
+        consideredZepto: eligible && !isZepto() ? (a.consideredZepto || "") : "", follow: eligible ? (a.follow || "no") : "no"
+      };
+      return { research: research, followUp: research.follow === "yes" ? { contact: String(a.contact || "").trim() } : {} };
+    }
+
+    function createResponseId() {
+      if (window.crypto && window.crypto.getRandomValues) {
+        var values = new Uint32Array(3); window.crypto.getRandomValues(values);
+        return "BS2-" + Array.prototype.map.call(values, function (value) { return value.toString(16).padStart(8, "0"); }).join("");
+      }
+      return "BS2-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 10);
+    }
+
+    function confirmSubmission(responseId, attempt) {
+      return new Promise(function (resolve, reject) {
+        var callbackName = "basketStoriesConfirm_" + Date.now() + "_" + attempt;
+        var script = document.createElement("script"); var settled = false;
+        function cleanup() { if (script.parentNode) script.parentNode.removeChild(script); delete window[callbackName]; }
+        function retryOrReject() {
+          cleanup();
+          if (attempt < 5) setTimeout(function () { confirmSubmission(responseId, attempt + 1).then(resolve, reject); }, 900);
+          else reject(new Error("The response could not be confirmed in the response sheet."));
+        }
+        window[callbackName] = function (result) {
+          if (settled) return; settled = true;
+          if (result && result.found) { cleanup(); resolve(); } else retryOrReject();
+        };
+        script.onerror = function () { if (!settled) { settled = true; retryOrReject(); } };
+        script.src = APPS_SCRIPT_URL + "?responseId=" + encodeURIComponent(responseId) + "&callback=" + encodeURIComponent(callbackName) + "&_=" + Date.now();
+        document.body.appendChild(script);
+        setTimeout(function () { if (!settled) { settled = true; retryOrReject(); } }, 4000);
+      });
+    }
+
+    function submitSurvey() {
+      state.submitting = true; clearError(); updateNavigation();
+      var payload = buildSubmission();
+      if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.indexOf("PASTE_") === 0) {
+        localStorage.setItem("basketStoriesPilotV2", JSON.stringify(payload.research));
+        state.localOnly = true; state.submitting = false; state.done = true; renderThankYou(); return;
+      }
+      fetch(APPS_SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload) })
+        .then(function () { return confirmSubmission(payload.research.responseId, 1); })
+        .then(function () { state.submitting = false; state.done = true; renderThankYou(); })
+        .catch(function () { state.submitting = false; updateNavigation(); showError(ui("confirmError")); });
+    }
+
+    function clearError() { var old = document.querySelector(".error"); if (old) old.remove(); }
+    function showError(message) { clearError(); document.getElementById("app").appendChild(element("div", { className: "error", role: "alert", text: message })); }
+    function renderThankYou() {
+      var app = document.getElementById("app"); app.innerHTML = "";
+      var box = element("div", { className: "success" });
+      box.appendChild(element("h1", { text: state.localOnly ? ui("localTitle") : ui("thanks") }));
+      box.appendChild(element("p", { text: state.localOnly ? ui("localBody") : (isEligible() ? ui("confirmedBody") : ui("ineligibleBody")) }));
+      app.appendChild(box); document.getElementById("progress").style.width = "100%";
+      document.getElementById("nextBtn").classList.add("hidden"); document.getElementById("backBtn").classList.add("hidden");
+    }
+
+    document.getElementById("nextBtn").addEventListener("click", function () {
+      if (!valid()) { showError(currentId() === "follow" && state.answers.follow === "yes" ? ui("contactRequired") : ui("required")); return; }
+      clearError(); if (state.index === steps().length - 1) { submitSurvey(); return; } state.index++; render(true);
+    });
+    document.getElementById("backBtn").addEventListener("click", function () { if (state.index > 0) { state.index--; render(true); } });
+    document.querySelectorAll("[data-lang]").forEach(function (button) {
+      button.addEventListener("click", function () { state.lang = button.getAttribute("data-lang"); render(false); });
+    });
+    render(false);
+  </script>
+</body>
+</html>

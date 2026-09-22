@@ -1,0 +1,578 @@
+{"kind":"deck","id":"pr/hqwnnp","name":"Deck"}
+{"kind":"layout","layoutId":"80015d6f-15aa-4969-97ac-220daa963183","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"47c5599d-cbd1-497d-8adc-954a7892aa70","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/af4mys","slide":1,"title":"AIRTRIBE · PRODUCT MANAGEMENT COURSEWORK · PROJECT 3","textShapes":12}
+{"kind":"textbox","id":"sh/qtsz6x4r","slide":1,"text":"AIRTRIBE · PRODUCT MANAGEMENT COURSEWORK · PROJECT 3","textPreview":"AIRTRIBE · PRODUCT MANAGEMENT COURSEWORK · PROJECT 3","textChars":52,"textLines":1,"bbox":[54,28,1160,28]}
+{"kind":"textbox","id":"sh/dw3ihs32","slide":1,"text":"Find My Ride","textPreview":"Find My Ride","textChars":12,"textLines":1,"bbox":[54,92,900,74]}
+{"kind":"textbox","id":"sh/cvuh87mh","slide":1,"text":"Reducing uncertainty when riders and drivers cannot convert an app pin into a workable meeting point","textPreview":"Reducing uncertainty when riders and drivers cannot convert an app pin into a workable meeting point","textChars":100,"textLines":1,"bbox":[54,176,1040,74]}
+{"kind":"shape","id":"sh/3q10bil0","slide":1,"bbox":[54,360,260,118]}
+{"kind":"textbox","id":"sh/2psz2d4f","slide":1,"text":"62","textPreview":"62","textChars":2,"textLines":1,"bbox":[70,374,228,48]}
+{"kind":"textbox","id":"sh/psjids36","slide":1,"text":"unique survey submissions","textPreview":"unique survey submissions","textChars":25,"textLines":1,"bbox":[70,428,228,36]}
+{"kind":"shape","id":"sh/4rah4nml","slide":1,"bbox":[334,360,260,118]}
+{"kind":"textbox","id":"sh/nm50nml4","slide":1,"text":"24 / 51","textPreview":"24 / 51","textChars":7,"textLines":1,"bbox":[350,374,228,48]}
+{"kind":"textbox","id":"sh/mlwzeh4z","slide":1,"text":"recent users reporting difficulty","textPreview":"recent users reporting difficulty","textChars":33,"textLines":1,"bbox":[350,428,228,36]}
+{"kind":"shape","id":"sh/43ihs3ut","slide":1,"bbox":[614,360,260,118]}
+{"kind":"textbox","id":"sh/54ryl8ve","slide":1,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[630,374,228,48]}
+{"kind":"textbox","id":"sh/i10zqdc3","slide":1,"text":"driver responses — evidence gap","textPreview":"driver responses — evidence gap","textChars":31,"textLines":1,"bbox":[630,428,228,36]}
+{"kind":"shape","id":"sh/j29gjido","slide":1,"bbox":[894,360,260,118]}
+{"kind":"textbox","id":"sh/wziho3ux","slide":1,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[910,374,228,48]}
+{"kind":"textbox","id":"sh/h0ryh8vi","slide":1,"text":"research-led ideas to test","textPreview":"research-led ideas to test","textChars":26,"textLines":1,"bbox":[910,428,228,36]}
+{"kind":"textbox","id":"sh/uxgfmtcr","slide":1,"text":"Hyderabad primary · India comparison responses · 18 September 2026","textPreview":"Hyderabad primary · India comparison responses · 18 September 2026","textChars":66,"textLines":1,"bbox":[54,645,800,24]}
+{"kind":"notes","id":"nt/af4mys","slide":1,"text":"Presenter script\n\nHello. This project is called Find My Ride. It studies the stressful moment when a driver is nearby, but the rider and driver still cannot find each other. I wanted to understand why pickup coordination breaks and what Uber should test first."}
+{"kind":"slide","id":"sl/fmvht9","slide":2,"title":"RESEARCH METHOD","textShapes":15}
+{"kind":"textbox","id":"sh/qx0ra1s3","slide":2,"text":"RESEARCH METHOD","textPreview":"RESEARCH METHOD","textChars":15,"textLines":1,"bbox":[54,26,1170,26]}
+{"kind":"textbox","id":"sh/dkbalgbu","slide":2,"text":"What we actually researched","textPreview":"What we actually researched","textChars":27,"textLines":1,"bbox":[54,60,1170,52]}
+{"kind":"textbox","id":"sh/szi9cba9","slide":2,"text":"A deliberate method choice under constraint — stated up front, not buried in a footnote.","textPreview":"A deliberate method choice under constraint — stated up front, not buried in a footnote.","textChars":88,"textLines":1,"bbox":[54,111,1140,40]}
+{"kind":"shape","id":"sh/3u9sf6tc","slide":2,"bbox":[54,170,610,130]}
+{"kind":"textbox","id":"sh/it0r61c7","slide":2,"text":"METHOD CHOICE","textPreview":"METHOD CHOICE","textChars":13,"textLines":1,"bbox":[70,182,578,30]}
+{"kind":"textbox","id":"sh/5wrahwbi","slide":2,"text":"Synchronous interviews were not feasible in the available window. I built a multilingual self-serve research app instead: rider/driver branches, structured tags, and four optional open-text or voice prompts.","textPreview":"Synchronous interviews were not feasible in the available window. I built a multilingual self-serve research app instead: rider/driver br...","textChars":207,"textLines":1,"bbox":[70,217,578,72]}
+{"kind":"shape","id":"sh/4vi98rux","slide":2,"bbox":[54,308,610,118]}
+{"kind":"textbox","id":"sh/vqpsbmtg","slide":2,"text":"DEPTH ACHIEVED","textPreview":"DEPTH ACHIEVED","textChars":14,"textLines":1,"bbox":[70,320,578,30]}
+{"kind":"textbox","id":"sh/upgr2hcv","slide":2,"text":"62 unique respondents. 30 answered at least one open-ended narrative prompt, 11 gave extended accounts, and 3 completed all four detailed prompts.","textPreview":"62 unique respondents. 30 answered at least one open-ended narrative prompt, 11 gave extended accounts, and 3 completed all four detailed...","textChars":146,"textLines":1,"bbox":[70,355,578,60]}
+{"kind":"shape","id":"sh/wrqt4j2l","slide":2,"bbox":[54,434,610,126]}
+{"kind":"textbox","id":"sh/hszuxo36","slide":2,"text":"TRADEOFF","textPreview":"TRADEOFF","textChars":8,"textLines":1,"bbox":[70,446,578,30]}
+{"kind":"textbox","id":"sh/up8b2tkv","slide":2,"text":"No live probing and no follow-up on surprising answers. Depth per respondent is lower than a moderated interview; breadth, language coverage and traceability are higher.","textPreview":"No live probing and no follow-up on surprising answers. Depth per respondent is lower than a moderated interview; breadth, language cover...","textChars":169,"textLines":1,"bbox":[70,481,578,68]}
+{"kind":"textbox","id":"sh/vqhcvyl0","slide":2,"text":"62 unique submissions · 58 riders · 4 drivers · 33 Hyderabad / 29 other cities · 30 open-ended responses","textPreview":"62 unique submissions · 58 riders · 4 drivers · 33 Hyderabad / 29 other cities · 30 open-ended responses","textChars":104,"textLines":1,"bbox":[54,570,640,42]}
+{"kind":"shape","id":"sh/8n6t0j2p","slide":2,"bbox":[742,164,274,456]}
+{"kind":"textbox","id":"sh/mloby9kj","slide":2,"text":"https://praveenveera.github.io/uber-pickup-survey/","textPreview":"https://praveenveera.github.io/uber-pickup-survey/","textChars":50,"textLines":1,"bbox":[1030,240,190,110]}
+{"kind":"textbox","id":"sh/7mxcrel4","slide":2,"text":"Live app\nEnglish · Telugu · Hindi","textPreview":"Live app | English · Telugu · Hindi","textChars":33,"textLines":2,"bbox":[1030,174,190,58]}
+{"kind":"textbox","id":"sh/sjadc32t","slide":2,"text":"Full consent, question-flow, and anonymized-response evidence is included in the evidence ZIP.","textPreview":"Full consent, question-flow, and anonymized-response evidence is included in the evidence ZIP.","textChars":94,"textLines":1,"bbox":[1030,372,190,116]}
+{"kind":"textbox","id":"sh/tkju58je","slide":2,"text":"Find My Ride","textPreview":"Find My Ride","textChars":12,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/10fup8bi","slide":2,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"image","id":"im/mh4va1cb","slide":2,"name":"","alt":"Survey app open-ended story prompt","bbox":[752,174,254,436]}
+{"kind":"notes","id":"nt/fmvht9","slide":2,"text":"Presenter script\n\nI could not complete ten live interviews. Instead, I built an online survey app in English, Telugu, and Hindi, with separate rider and driver questions.\n\nAfter removing one duplicate, I had sixty-two responses: fifty-eight riders and four drivers. Thirty people wrote answers, and eleven shared detailed experiences. This gave useful signals, but no live follow-up, so it does not replace interviews.\n\nSources:\nLocal evidence: data/survey/normalized-data.tsv; R032 removed as confirmed duplicate of R031.\nhttps://praveenveera.github.io/uber-pickup-survey/"}
+{"kind":"slide","id":"sl/xpy4cq","slide":3,"title":"MARKET AND ALTERNATIVES","textShapes":14}
+{"kind":"textbox","id":"sh/lsva94vy","slide":3,"text":"MARKET AND ALTERNATIVES","textPreview":"MARKET AND ALTERNATIVES","textChars":23,"textLines":1,"bbox":[54,26,1170,26]}
+{"kind":"textbox","id":"sh/yp4rypc7","slide":3,"text":"Guidance exists — focus on coverage, clarity, and recovery","textPreview":"Guidance exists — focus on coverage, clarity, and recovery","textChars":58,"textLines":1,"bbox":[54,60,1170,52]}
+{"kind":"textbox","id":"sh/jqds7uds","slide":3,"text":"Competitor evidence establishes design precedents, not validated Hyderabad outcomes.","textPreview":"Competitor evidence establishes design precedents, not validated Hyderabad outcomes.","textChars":84,"textLines":1,"bbox":[54,111,1140,40]}
+{"kind":"shape","id":"sh/cnm9wzeh","slide":3,"bbox":[54,174,350,208]}
+{"kind":"textbox","id":"sh/xova54v2","slide":3,"text":"UBER HYDERABAD BASELINE","textPreview":"UBER HYDERABAD BASELINE","textChars":23,"textLines":1,"bbox":[70,186,318,30]}
+{"kind":"textbox","id":"sh/alkrupwb","slide":3,"text":"Uber's HYD guidance points riders to in-app directions and a D1 pickup zone. The case is not “Uber has no pickup guidance.”","textPreview":"Uber's HYD guidance points riders to in-app directions and a D1 pickup zone. The case is not “Uber has no pickup guidance.”","textChars":123,"textLines":1,"bbox":[70,221,318,150]}
+{"kind":"shape","id":"sh/bmts3udw","slide":3,"bbox":[427,174,350,208]}
+{"kind":"textbox","id":"sh/gj698jul","slide":3,"text":"GLOBAL PATTERNS","textPreview":"GLOBAL PATTERNS","textChars":15,"textLines":1,"bbox":[443,186,318,30]}
+{"kind":"textbox","id":"sh/hkfahov6","slide":3,"text":"Grab uses venue visuals and meeting points. Lyft uses pickup notes. Waymo makes accessible stops and walking trade-offs explicit.","textPreview":"Grab uses venue visuals and meeting points. Lyft uses pickup notes. Waymo makes accessible stops and walking trade-offs explicit.","textChars":129,"textLines":1,"bbox":[443,221,318,150]}
+{"kind":"shape","id":"sh/p8fqlkbq","slide":3,"bbox":[800,174,350,208]}
+{"kind":"textbox","id":"sh/4769cfu5","slide":3,"text":"INDIAN ACCESS PATTERN","textPreview":"INDIAN ACCESS PATTERN","textChars":21,"textLines":1,"bbox":[816,186,318,30]}
+{"kind":"textbox","id":"sh/36x8jatk","slide":3,"text":"MyGate shows how a privacy-aware gate handoff can work. Historical Ola evidence shows physical zones or human help, but not a current capability.","textPreview":"MyGate shows how a privacy-aware gate handoff can work. Historical Ola evidence shows physical zones or human help, but not a current cap...","textChars":145,"textLines":1,"bbox":[816,221,318,150]}
+{"kind":"shape","id":"sh/25orapcz","slide":3,"bbox":[54,410,1096,126]}
+{"kind":"textbox","id":"sh/h4fqhkbe","slide":3,"text":"Product implication","textPreview":"Product implication","textChars":19,"textLines":1,"bbox":[74,426,220,28]}
+{"kind":"textbox","id":"sh/g3m98fu9","slide":3,"text":"Test a reusable coordination layer for complex places: valid stopping context, concise handoff information, and one visible recovery step when coordination stalls.","textPreview":"Test a reusable coordination layer for complex places: valid stopping context, concise handoff information, and one visible recovery step...","textChars":163,"textLines":1,"bbox":[74,462,1048,58]}
+{"kind":"shape","id":"sh/v2d8fato","slide":3,"bbox":[54,558,1096,72]}
+{"kind":"textbox","id":"sh/u14r65c3","slide":3,"text":"Restrictions to design around: no-stopping and access rules, venue operations, accessibility, privacy, and data minimization. Exact local rules require venue-level validation.","textPreview":"Restrictions to design around: no-stopping and access rules, venue operations, accessibility, privacy, and data minimization. Exact local...","textChars":175,"textLines":1,"bbox":[74,574,1055,42]}
+{"kind":"textbox","id":"sh/10zat4by","slide":3,"text":"Find My Ride","textPreview":"Find My Ride","textChars":12,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/0zq9kzad","slide":3,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"notes","id":"nt/xpy4cq","slide":3,"text":"Presenter script\n\nI also reviewed how other services handle pickups. Uber already guides Hyderabad airport riders to the D1 pickup zone. Other services use meeting points, pickup notes, pictures, and access information. These are possible approaches, but they do not prove local demand. The opportunity is better guidance when the pickup pin is not enough.\n\nSources:\nhttps://www.uber.com/global/en/r/airports/hyd/pickup/\nhttps://www.grab.com/inside-grab/stories/were-making-pickups-easier-with-video-guides-in-the-grab-app/\nhttps://help.lyft.com/hc/en-us/all/articles/360047353153\nhttps://support.google.com/waymo/answer/9696059?hl=en\nhttps://help.mygate.in/articles/138755-where-will-my-cab-pick-me-up-if-i-am-using-safe-pickup-mode\nhttps://www.htp.gov.in/road_rules.html\nhttps://www.indiacode.nic.in/indiacode/handle/123456789/22037?view_type=browse"}
+{"kind":"slide","id":"sl/nwjhvu","slide":4,"title":"MARKET, SEGMENTS AND TRENDS","textShapes":14}
+{"kind":"textbox","id":"sh/uxobahob","slide":4,"text":"MARKET, SEGMENTS AND TRENDS","textPreview":"MARKET, SEGMENTS AND TRENDS","textChars":27,"textLines":1,"bbox":[54,26,1170,26]}
+{"kind":"textbox","id":"sh/h0fa5w72","slide":4,"text":"A sizing model with a named missing denominator","textPreview":"A sizing model with a named missing denominator","textChars":47,"textLines":1,"bbox":[54,60,1170,52]}
+{"kind":"textbox","id":"sh/wz6tcr6h","slide":4,"text":"Refusing a fabricated TAM is the finding — not an omission.","textPreview":"Refusing a fabricated TAM is the finding — not an omission.","textChars":59,"textLines":1,"bbox":[54,111,1140,40]}
+{"kind":"shape","id":"sh/7udsz2p0","slide":4,"bbox":[54,174,350,200]}
+{"kind":"textbox","id":"sh/mt4r6xof","slide":4,"text":"SIZING MODEL","textPreview":"SIZING MODEL","textChars":12,"textLines":1,"bbox":[70,186,318,30]}
+{"kind":"textbox","id":"sh/9wfa1c76","slide":4,"text":"Annual affected pickups = Hyderabad Uber four-wheel pickups × share beginning at complex locations × share hitting material difficulty. None of the three inputs exists in a reliable public source, so no TAM is claimed.","textPreview":"Annual affected pickups = Hyderabad Uber four-wheel pickups × share beginning at complex locations × share hitting material difficulty. N...","textChars":218,"textLines":1,"bbox":[70,221,318,142]}
+{"kind":"shape","id":"sh/8v69876l","slide":4,"bbox":[427,174,350,200]}
+{"kind":"textbox","id":"sh/zqdsv2po","slide":4,"text":"EXPOSURE POOLS — NOT THE PROBLEM","textPreview":"EXPOSURE POOLS — NOT THE PROBLEM","textChars":32,"textLines":1,"bbox":[443,186,318,30]}
+{"kind":"textbox","id":"sh/y54r2xoj","slide":4,"text":"Hyderabad Airport: 30M+ passengers FY2025-26. Hyderabad Metro: 4.75 lakh+ average daily riders across 57 stations. Secunderabad station: ~1.30 lakh per normal day, 2 lakh+ during festivals.","textPreview":"Hyderabad Airport: 30M+ passengers FY2025-26. Hyderabad Metro: 4.75 lakh+ average daily riders across 57 stations. Secunderabad station: ...","textChars":189,"textLines":1,"bbox":[443,221,318,142]}
+{"kind":"shape","id":"sh/0julgb6h","slide":4,"bbox":[800,174,350,200]}
+{"kind":"textbox","id":"sh/1k329gn2","slide":4,"text":"WHERE DEMAND CONCENTRATES","textPreview":"WHERE DEMAND CONCENTRATES","textChars":25,"textLines":1,"bbox":[816,186,318,30]}
+{"kind":"textbox","id":"sh/ehsjelob","slide":4,"text":"Segment by location type, not demographics. Among 28 issue cases: airport 10, gated residential 7, mall 6, office 6, metro/rail 5, street 3, hotel 2, hospital 1.","textPreview":"Segment by location type, not demographics. Among 28 issue cases: airport 10, gated residential 7, mall 6, office 6, metro/rail 5, street...","textChars":161,"textLines":1,"bbox":[816,221,318,142]}
+{"kind":"shape","id":"sh/fi1k765w","slide":4,"bbox":[54,392,1096,150]}
+{"kind":"textbox","id":"sh/sfa1cb65","slide":4,"text":"Market trends","textPreview":"Market trends","textChars":13,"textLines":1,"bbox":[74,404,260,26]}
+{"kind":"textbox","id":"sh/dgj25gnq","slide":4,"text":"Regulatory tailwind — MV Aggregator Guidelines 2025 mandate in-journey location sharing, accessibility features and language support.\nCategory maturing — Uber already ships HYD airport guidance; Lyft ships pickup notes; Grab ships venue meeting points.\nCurb space tightening — access-control windows now appear at Indian transport hubs, such as Secunderabad's 15-minute pickup/drop rule.\nPrivacy bar rising — the DPDP Act 2023 constrains how venue and location data can be collected and retained.","textPreview":"Regulatory tailwind — MV Aggregator Guidelines 2025 mandate in-journey location sharing, accessibility features and language support. | C...","textChars":496,"textLines":4,"bbox":[74,432,1052,100]}
+{"kind":"shape","id":"sh/qdsja1of","slide":4,"bbox":[54,556,1096,70]}
+{"kind":"textbox","id":"sh/re1k365k","slide":4,"text":"Telangana's adoption of the 2025 central guidelines and venue-level stopping rules both require legal and on-site verification. This is product research, not legal advice.","textPreview":"Telangana's adoption of the 2025 central guidelines and venue-level stopping rules both require legal and on-site verification. This is p...","textChars":171,"textLines":1,"bbox":[74,572,1055,42]}
+{"kind":"textbox","id":"sh/wbelovmp","slide":4,"text":"Find My Ride","textPreview":"Find My Ride","textChars":12,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/xcn2h0na","slide":4,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"notes","id":"nt/nwjhvu","slide":4,"text":"Presenter script\n\nReliable public data was not available for an exact market size. We would need Hyderabad pickup volume, the share from complex places, and the share facing difficulty. So, I show the sizing method instead of making up a number. The survey points to airports, gated communities, malls, offices, and stations.\n\nSources:\nhttps://www.uber.com/in/en/newsroom/how-india-ubered-in-2025-everyday-travel-extraordinary-scale/\nhttps://www.uber.com/in/en/newsroom/how-india-ubered-in-2023-a-year-in-rear-view/\nhttps://www.gmrgroup.com/airports-and-aero-services/airports/hyderabad-airport\nhttps://www.ltmetro.com/wp-content/uploads/2025/01/28-11-2024-Press-Release-Hyderabad-Metro-Rail-Celebrates-its-7th-Anniversary-181-Chief-Guest.pdf\nhttps://morth.nic.in/sites/default/files/circulars_document/MV-Aggregators-Guidelines-2025%20-%20English%20and%20Hindi.pdf\nhttps://www.indiacode.nic.in/indiacode/handle/123456789/22037?view_type=browse\nLocal evidence: research/desk-research-report.md sections 3.1, 3.5, 3.6, 3.7 and 5."}
+{"kind":"slide","id":"sl/qtwxmq","slide":5,"title":"1 · RESEARCH GOAL","textShapes":11}
+{"kind":"textbox","id":"sh/ipsnmtcn","slide":5,"text":"1 · RESEARCH GOAL","textPreview":"1 · RESEARCH GOAL","textChars":17,"textLines":1,"bbox":[54,26,1170,26]}
+{"kind":"textbox","id":"sh/5sjmxoby","slide":5,"text":"One research question grounded in a clear problem frame","textPreview":"One research question grounded in a clear problem frame","textChars":55,"textLines":1,"bbox":[54,60,1170,52]}
+{"kind":"textbox","id":"sh/4ra5ojat","slide":5,"text":"Primary: Hyderabad four-wheel riders at complex pickups. Connected stakeholder: the driver.","textPreview":"Primary: Hyderabad four-wheel riders at complex pickups. Connected stakeholder: the driver.","textChars":91,"textLines":1,"bbox":[54,111,1140,40]}
+{"kind":"shape","id":"sh/vmh4retw","slide":5,"bbox":[54,168,1096,104]}
+{"kind":"textbox","id":"sh/ul8ni9cb","slide":5,"text":"When a pickup becomes difficult, what breaks, and what do riders and drivers do to recover?","textPreview":"When a pickup becomes difficult, what breaks, and what do riders and drivers do to recover?","textChars":91,"textLines":1,"bbox":[82,188,1040,64]}
+{"kind":"shape","id":"sh/hojmtob2","slide":5,"bbox":[54,304,530,216]}
+{"kind":"textbox","id":"sh/gna5kjuh","slide":5,"text":"EVIDENCE-BASED PROBLEM","textPreview":"EVIDENCE-BASED PROBLEM","textChars":22,"textLines":1,"bbox":[70,316,498,30]}
+{"kind":"textbox","id":"sh/filo3itg","slide":5,"text":"At complex pickup locations, an app pin may identify the area without giving rider and driver a shared, workable meeting point. Observed impact: extra calls, waiting, movement, and delay.","textPreview":"At complex pickup locations, an app pin may identify the area without giving rider and driver a shared, workable meeting point. Observed ...","textChars":187,"textLines":1,"bbox":[70,351,498,158]}
+{"kind":"shape","id":"sh/ehcnudsv","slide":5,"bbox":[620,304,530,216]}
+{"kind":"textbox","id":"sh/gbyh4ne9","slide":5,"text":"WORKING JTBD · ASSUMPTION","textPreview":"WORKING JTBD · ASSUMPTION","textChars":25,"textLines":1,"bbox":[636,316,498,30]}
+{"kind":"textbox","id":"sh/hc7ydsvu","slide":5,"text":"When I am waiting at a complex pickup, help my driver and me agree on a legal, easy-to-recognize meeting point so the trip can start with less recovery effort.","textPreview":"When I am waiting at a complex pickup, help my driver and me agree on a legal, easy-to-recognize meeting point so the trip can start with...","textChars":159,"textLines":1,"bbox":[636,351,498,158]}
+{"kind":"shape","id":"sh/u9wz2dw3","slide":5,"bbox":[54,548,1096,72]}
+{"kind":"textbox","id":"sh/fapgbido","slide":5,"text":"Success direction: fewer reactive contacts and lower arrived-to-trip-start dwell. Driver and marketplace impact still requires validation.","textPreview":"Success direction: fewer reactive contacts and lower arrived-to-trip-start dwell. Driver and marketplace impact still requires validation.","textChars":138,"textLines":1,"bbox":[74,564,1056,42]}
+{"kind":"textbox","id":"sh/s7eh03ex","slide":5,"text":"Find My Ride","textPreview":"Find My Ride","textChars":12,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/t8ny98vi","slide":5,"text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"notes","id":"nt/qtwxmq","slide":5,"text":"Presenter script\n\nMy goal was to understand what goes wrong during a difficult pickup and how people recover today. The rider is the main user, and the driver is also affected. Success means fewer calls and a faster trip start.\n\nSources:\nLocal evidence: synthesis/01-survey-insights.md, synthesis/02-strategy-implications.md, and v2/requirement.md."}
+{"kind":"slide","id":"sl/bbhzu7","slide":6,"title":"1 · PROBLEM STATEMENT","textShapes":19}
+{"kind":"textbox","id":"sh/4fm94vqd","slide":6,"text":"1 · PROBLEM STATEMENT","textPreview":"1 · PROBLEM STATEMENT","textChars":21,"textLines":1,"bbox":[54,26,1170,26]}
+{"kind":"textbox","id":"sh/3et8vqps","slide":6,"text":"A specific, evidence-based, and focused statement","textPreview":"A specific, evidence-based, and focused statement","textChars":49,"textLines":1,"bbox":[54,60,1170,62]}
+{"kind":"shape","id":"sh/idkr2l87","slide":6,"bbox":[54,174,42,42]}
+{"kind":"textbox","id":"sh/dkva107u","slide":6,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[60,180,30,28]}
+{"kind":"textbox","id":"sh/sjm98vq9","slide":6,"text":"SPECIFIC USER","textPreview":"SPECIFIC USER","textChars":13,"textLines":1,"bbox":[116,170,380,28]}
+{"kind":"textbox","id":"sh/rid8zap4","slide":6,"text":"Hyderabad four-wheel riders starting from complex pickup locations.","textPreview":"Hyderabad four-wheel riders starting from complex pickup locations.","textChars":67,"textLines":1,"bbox":[116,204,388,48]}
+{"kind":"shape","id":"sh/qh4r658j","slide":6,"bbox":[54,262,450,1]}
+{"kind":"shape","id":"sh/tobqpg7q","slide":6,"bbox":[54,280,42,42]}
+{"kind":"textbox","id":"sh/8ni9wbq5","slide":6,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[60,286,30,28]}
+{"kind":"textbox","id":"sh/6tgn2d87","slide":6,"text":"CLEAR PAIN","textPreview":"CLEAR PAIN","textChars":10,"textLines":1,"bbox":[116,276,380,28]}
+{"kind":"textbox","id":"sh/rupobips","slide":6,"text":"The rider and driver lack one shared, workable meeting point.","textPreview":"The rider and driver lack one shared, workable meeting point.","textChars":61,"textLines":1,"bbox":[116,310,388,48]}
+{"kind":"shape","id":"sh/sfyp4nqd","slide":6,"bbox":[54,368,450,1]}
+{"kind":"shape","id":"sh/tg76ds7y","slide":6,"bbox":[54,386,42,42]}
+{"kind":"textbox","id":"sh/ehg76xoj","slide":6,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[60,392,30,28]}
+{"kind":"textbox","id":"sh/fipof2p4","slide":6,"text":"VISIBLE IMPACT","textPreview":"VISIBLE IMPACT","textChars":14,"textLines":1,"bbox":[116,382,380,28]}
+{"kind":"textbox","id":"sh/gjyp8769","slide":6,"text":"Extra calls, waiting, movement, and delayed trip starts.","textPreview":"Extra calls, waiting, movement, and delayed trip starts.","textChars":56,"textLines":1,"bbox":[116,416,388,48]}
+{"kind":"shape","id":"sh/1k76hc7u","slide":6,"bbox":[54,474,450,1]}
+{"kind":"shape","id":"sh/2l07axof","slide":6,"bbox":[54,492,42,42]}
+{"kind":"textbox","id":"sh/3m9oj2p0","slide":6,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[60,498,30,28]}
+{"kind":"textbox","id":"sh/zq9orm58","slide":6,"text":"DEFINED SCOPE","textPreview":"DEFINED SCOPE","textChars":13,"textLines":1,"bbox":[116,488,380,28]}
+{"kind":"textbox","id":"sh/yp0nyh4n","slide":6,"text":"Airports, gated residences, malls, offices, and stations. Not every ride.","textPreview":"Airports, gated residences, malls, offices, and stations. Not every ride.","textChars":73,"textLines":1,"bbox":[116,522,388,48]}
+{"kind":"shape","id":"sh/lsb6tcne","slide":6,"bbox":[550,170,600,360]}
+{"kind":"textbox","id":"sh/kri507mt","slide":6,"text":"FINAL PROBLEM STATEMENT","textPreview":"FINAL PROBLEM STATEMENT","textChars":23,"textLines":1,"bbox":[584,198,532,26]}
+{"kind":"textbox","id":"sh/bm94n25w","slide":6,"text":"For Hyderabad four-wheel riders starting from complex locations, the pickup pin may show the correct general area but still fail to give the rider and driver one shared, workable meeting point.\n\nThis causes extra calls, waiting, movement, and delayed trip starts.\n\nUber should solve this to reduce recovery effort and improve pickup reliability, while respecting driver access and stopping constraints.","textPreview":"For Hyderabad four-wheel riders starting from complex locations, the pickup pin may show the correct general area but still fail to give ...","textChars":402,"textLines":5,"bbox":[584,242,532,250]}
+{"kind":"shape","id":"sh/ql0nux4r","slide":6,"bbox":[550,554,600,72]}
+{"kind":"textbox","id":"sh/dor6pcn2","slide":6,"text":"Evidence boundary: directional survey evidence. Moderated interviews and stronger driver validation are still pending.","textPreview":"Evidence boundary: directional survey evidence. Moderated interviews and stronger driver validation are still pending.","textChars":118,"textLines":1,"bbox":[576,570,548,42]}
+{"kind":"textbox","id":"sh/cni5w7mh","slide":6,"text":"Find My Ride","textPreview":"Find My Ride","textChars":12,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/3ip4ji50","slide":6,"text":"6","textPreview":"6","textChars":1,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"notes","id":"nt/bbhzu7","slide":6,"text":"Presenter script\n\nThis problem statement has four parts. The user is a four-wheel rider at a complex pickup. The pain is no shared meeting point. The impact is extra calls, waiting, movement, and delay. The scope is selected complex locations, not every ride. The survey supports this frame, but interviews and stronger driver evidence are still needed.\n\nSources:\nLocal evidence: synthesis/01-survey-insights.md, synthesis/02-strategy-implications.md, and Sanitized-Survey-Evidence.xlsx.\nFormat adapted from the user-provided What Makes a Good Problem Statement reference image."}
+{"kind":"slide","id":"sl/k4e08n","slide":7,"title":"1.1 · KEY INTERVIEW QUESTIONS","textShapes":7}
+{"kind":"textbox","id":"sh/m58fet07","slide":7,"text":"1.1 · KEY INTERVIEW QUESTIONS","textPreview":"1.1 · KEY INTERVIEW QUESTIONS","textChars":29,"textLines":1,"bbox":[54,26,1170,26]}
+{"kind":"textbox","id":"sh/98ze98jy","slide":7,"text":"Ten questions adapted for the online instrument","textPreview":"Ten questions adapted for the online instrument","textChars":47,"textLines":1,"bbox":[54,60,1170,52]}
+{"kind":"textbox","id":"sh/o7qxg3id","slide":7,"text":"Required interview prompts used asynchronously; no live follow-up or probing.","textPreview":"Required interview prompts used asynchronously; no live follow-up or probing.","textChars":77,"textLines":1,"bbox":[54,111,1140,40]}
+{"kind":"textbox","id":"sh/buhgby14","slide":7,"text":"Tell me about the last time you had difficulty finding your ride after booking it.\nWhere were you, and what did the app tell you?\nWhen did you first realize the pickup might not work as expected?\nWhat made the rider and driver difficult to locate or identify?\nWhat did you do next: call, message, move, wait, cancel, or seek help?\nHow much extra time or effort did the situation require?\nWhat finally helped, if anything?\nHas the same problem happened at other locations?\nWhat information or support was missing at the most frustrating moment?\nFor drivers: what prevented you from reaching the pin or identifying the rider?","textPreview":"Tell me about the last time you had difficulty finding your ride after booking it. | Where were you, and what did the app tell you? | Whe...","textChars":623,"textLines":10,"bbox":[54,176,1096,396]}
+{"kind":"shape","id":"sh/at8fid0j","slide":7,"bbox":[54,580,1096,62]}
+{"kind":"textbox","id":"sh/xwjyd8ju","slide":7,"text":"Method boundary: the form could not probe vague answers or ask a live follow-up.","textPreview":"Method boundary: the form could not probe vague answers or ask a live follow-up.","textChars":80,"textLines":1,"bbox":[74,594,1055,40]}
+{"kind":"textbox","id":"sh/wvaxk3ip","slide":7,"text":"Find My Ride","textPreview":"Find My Ride","textChars":12,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/ryxwze1k","slide":7,"text":"7","textPreview":"7","textChars":1,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"notes","id":"nt/k4e08n","slide":7,"text":"Presenter script\n\nThese are the main survey questions. People described their latest difficult pickup, where it happened, what the app showed, when confusion started, what they did next, and what helped.\n\nDrivers were also asked what stopped them from reaching the rider. All answers were online, without live follow-up.\n\nSources:\nLocal evidence: synthesis/01-survey-insights.md section 1.1; interviews/survey-form-content.md."}
+{"kind":"slide","id":"sl/a4wy8t","slide":8,"title":"2 · TOP 10 MOST RELEVANT INSIGHTS","textShapes":16}
+{"kind":"textbox","id":"sh/1876lg72","slide":8,"text":"2 · TOP 10 MOST RELEVANT INSIGHTS","textPreview":"2 · TOP 10 MOST RELEVANT INSIGHTS","textChars":33,"textLines":1,"bbox":[54,26,1170,26]}
+{"kind":"textbox","id":"sh/elg7ql8r","slide":8,"text":"Not everyone's problem — but a real, recurring one for affected respondents","textPreview":"Not everyone's problem — but a real, recurring one for affected respondents","textChars":75,"textLines":1,"bbox":[54,60,1170,52]}
+{"kind":"textbox","id":"sh/fmpoj6pc","slide":8,"text":"Headline signals and a direct quote; the complete ten insights appear in the appendix.","textPreview":"Headline signals and a direct quote; the complete ten insights appear in the appendix.","textChars":86,"textLines":1,"bbox":[54,111,1140,40]}
+{"kind":"shape","id":"sh/sjy5obql","slide":8,"bbox":[54,174,248,118]}
+{"kind":"textbox","id":"sh/dk76hg76","slide":8,"text":"47.1%","textPreview":"47.1%","textChars":5,"textLines":1,"bbox":[70,188,216,48]}
+{"kind":"textbox","id":"sh/qhwnm18f","slide":8,"text":"24 of 51 recent users reported difficulty or uncertainty","textPreview":"24 of 51 recent users reported difficulty or uncertainty","textChars":56,"textLines":1,"bbox":[70,242,216,36]}
+{"kind":"shape","id":"sh/ripof6p0","slide":8,"bbox":[322,174,248,118]}
+{"kind":"textbox","id":"sh/4fe5krqp","slide":8,"text":"82.1%","textPreview":"82.1%","textChars":5,"textLines":1,"bbox":[338,188,216,48]}
+{"kind":"textbox","id":"sh/5gn6dw7a","slide":8,"text":"23 of 28 issue cases said it happened before","textPreview":"23 of 28 issue cases said it happened before","textChars":44,"textLines":1,"bbox":[338,242,216,36]}
+{"kind":"shape","id":"sh/t4jel07y","slide":8,"bbox":[590,174,248,118]}
+{"kind":"textbox","id":"sh/83axcv6d","slide":8,"text":"20 / 28","textPreview":"20 / 28","textChars":7,"textLines":1,"bbox":[606,188,216,48]}
+{"kind":"textbox","id":"sh/7i1wjqps","slide":8,"text":"said calling or messaging helped","textPreview":"said calling or messaging helped","textChars":32,"textLines":1,"bbox":[606,242,216,36]}
+{"kind":"shape","id":"sh/6hsfalo7","slide":8,"bbox":[858,174,248,118]}
+{"kind":"textbox","id":"sh/lgjehg72","slide":8,"text":"6 / 28","textPreview":"6 / 28","textChars":6,"textLines":1,"bbox":[874,188,216,48]}
+{"kind":"textbox","id":"sh/kfax8b6h","slide":8,"text":"said nothing helped","textPreview":"said nothing helped","textChars":19,"textLines":1,"bbox":[874,242,216,36]}
+{"kind":"shape","id":"sh/je1wfqpw","slide":8,"bbox":[54,326,1096,164]}
+{"kind":"textbox","id":"sh/yd8f6lob","slide":8,"text":"“The app says he has arrived, but almost 10 minutes to locate each other.”","textPreview":"“The app says he has arrived, but almost 10 minutes to locate each other.”","textChars":74,"textLines":1,"bbox":[84,352,1036,74]}
+{"kind":"textbox","id":"sh/xczedg7q","slide":8,"text":"R067 · rider · anonymized response","textPreview":"R067 · rider · anonymized response","textChars":34,"textLines":1,"bbox":[84,442,1036,26]}
+{"kind":"shape","id":"sh/wbqd4b65","slide":8,"bbox":[54,520,1096,92]}
+{"kind":"textbox","id":"sh/o7e5gf2d","slide":8,"text":"Interpretation boundary: 23 of 28 means the issue occurred before; it does not prove recurrence at the same venue. These sample percentages are not Hyderabad prevalence. The 28 issue cases are the 24 recent four-wheel users plus 3 respondents with no recent four-wheel trip and 1 unsure, all of whom reported a pickup issue.","textPreview":"Interpretation boundary: 23 of 28 means the issue occurred before; it does not prove recurrence at the same venue. These sample percentag...","textChars":324,"textLines":1,"bbox":[74,533,1056,62]}
+{"kind":"textbox","id":"sh/98n69kjy","slide":8,"text":"Find My Ride","textPreview":"Find My Ride","textChars":12,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/m5wne5k7","slide":8,"text":"8","textPreview":"8","textChars":1,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"notes","id":"nt/a4wy8t","slide":8,"text":"Presenter script\n\nThe problem affected many people in the sample, but not everyone. Twenty-four out of fifty-one recent Uber car users reported difficulty or uncertainty.\n\nAmong twenty-eight problem cases, twenty-three had faced it before. Twenty said calling or messaging helped, while six said nothing helped. These numbers describe this sample only, not all Hyderabad users.\n\nSources:\nLocal evidence: v3/submission-ready/evidence/03-Anonymized-Responses/Sanitized-Survey-Evidence.xlsx."}
+{"kind":"slide","id":"sl/q14kx6","slide":9,"title":"2 · TOP 10 MOST RELEVANT INSIGHTS","textShapes":32}
+{"kind":"textbox","id":"sh/hkzqtc3u","slide":9,"text":"2 · TOP 10 MOST RELEVANT INSIGHTS","textPreview":"2 · TOP 10 MOST RELEVANT INSIGHTS","textChars":33,"textLines":1,"bbox":[54,26,1170,26]}
+{"kind":"textbox","id":"sh/uh8rix4j","slide":9,"text":"Where coordination breaks — and how people recover","textPreview":"Where coordination breaks — and how people recover","textChars":50,"textLines":1,"bbox":[54,60,1170,52]}
+{"kind":"textbox","id":"sh/vih8r2l4","slide":9,"text":"Supporting visual for the location and recovery insights.","textPreview":"Supporting visual for the location and recovery insights.","textChars":57,"textLines":1,"bbox":[54,111,1140,40]}
+{"kind":"textbox","id":"sh/8fq9gnmd","slide":9,"text":"Problem locations among 28 issue cases — top 6 of 8 types","textPreview":"Problem locations among 28 issue cases — top 6 of 8 types","textChars":57,"textLines":1,"bbox":[54,166,520,32]}
+{"kind":"textbox","id":"sh/9gzqps3y","slide":9,"text":"Airport","textPreview":"Airport","textChars":7,"textLines":1,"bbox":[54,210,210,26]}
+{"kind":"shape","id":"sh/mdorex47","slide":9,"bbox":[272,214,262,17]}
+{"kind":"shape","id":"sh/7ex8nils","slide":9,"bbox":[272,214,262,17]}
+{"kind":"textbox","id":"sh/sba9sr2h","slide":9,"text":"10","textPreview":"10","textChars":2,"textLines":1,"bbox":[540,208,34,26]}
+{"kind":"textbox","id":"sh/dcja1w32","slide":9,"text":"Residential / gated","textPreview":"Residential / gated","textChars":19,"textLines":1,"bbox":[54,257,210,26]}
+{"kind":"shape","id":"sh/l8valwra","slide":9,"bbox":[272,261,262,17]}
+{"kind":"shape","id":"sh/k7mtcrqp","slide":9,"bbox":[272,261,183.4,17]}
+{"kind":"textbox","id":"sh/z6dsj694","slide":9,"text":"7","textPreview":"7","textChars":1,"textLines":1,"bbox":[540,255,34,26]}
+{"kind":"textbox","id":"sh/y54ba18j","slide":9,"text":"Shopping mall","textPreview":"Shopping mall","textChars":13,"textLines":1,"bbox":[54,304,210,26]}
+{"kind":"shape","id":"sh/x4vahwry","slide":9,"bbox":[272,308,262,17]}
+{"kind":"shape","id":"sh/c32t8rqd","slide":9,"bbox":[272,308,157.2,17]}
+{"kind":"textbox","id":"sh/bitsfm9s","slide":9,"text":"6","textPreview":"6","textChars":1,"textLines":1,"bbox":[540,302,34,26]}
+{"kind":"textbox","id":"sh/ahkb6h87","slide":9,"text":"Office / tech campus","textPreview":"Office / tech campus","textChars":20,"textLines":1,"bbox":[54,351,210,26]}
+{"kind":"shape","id":"sh/h0futgr2","slide":9,"bbox":[272,355,262,17]}
+{"kind":"shape","id":"sh/wz6tkbqx","slide":9,"bbox":[272,355,157.2,17]}
+{"kind":"textbox","id":"sh/gvylcj25","slide":9,"text":"6","textPreview":"6","textChars":1,"textLines":1,"bbox":[540,349,34,26]}
+{"kind":"textbox","id":"sh/1w7m5ojq","slide":9,"text":"Metro / railway","textPreview":"Metro / railway","textChars":15,"textLines":1,"bbox":[54,398,210,26]}
+{"kind":"shape","id":"sh/etg3atkz","slide":9,"bbox":[272,402,262,17]}
+{"kind":"shape","id":"sh/fup43elk","slide":9,"bbox":[272,402,131,17]}
+{"kind":"textbox","id":"sh/srel8j29","slide":9,"text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[540,396,34,26]}
+{"kind":"textbox","id":"sh/ts7m1o3e","slide":9,"text":"Busy street","textPreview":"Busy street","textChars":11,"textLines":1,"bbox":[54,445,210,26]}
+{"kind":"shape","id":"sh/6pw369k3","slide":9,"bbox":[272,449,262,17]}
+{"kind":"shape","id":"sh/rq54zelo","slide":9,"bbox":[272,449,78.6,17]}
+{"kind":"textbox","id":"sh/4nel4z2x","slide":9,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[540,443,34,26]}
+{"kind":"textbox","id":"sh/5onmx43i","slide":9,"text":"Recovery actions","textPreview":"Recovery actions","textChars":16,"textLines":1,"bbox":[650,166,500,32]}
+{"kind":"textbox","id":"sh/7yl47u54","slide":9,"text":"Called","textPreview":"Called","textChars":6,"textLines":1,"bbox":[650,210,210,26]}
+{"kind":"shape","id":"sh/mxcnep4z","slide":9,"bbox":[868,214,242,17]}
+{"kind":"shape","id":"sh/9k3m94na","slide":9,"bbox":[868,214,242,17]}
+{"kind":"textbox","id":"sh/8zu5gzmp","slide":9,"text":"17","textPreview":"17","textChars":2,"textLines":1,"bbox":[1116,208,34,26]}
+{"kind":"textbox","id":"sh/vm54be5g","slide":9,"text":"Waited","textPreview":"Waited","textChars":6,"textLines":1,"bbox":[650,257,210,26]}
+{"kind":"shape","id":"sh/ulwni94v","slide":9,"bbox":[868,261,242,17]}
+{"kind":"shape","id":"sh/honmdonm","slide":9,"bbox":[868,261,128.12,17]}
+{"kind":"textbox","id":"sh/wne5kjm1","slide":9,"text":"9","textPreview":"9","textChars":1,"textLines":1,"bbox":[1116,255,34,26]}
+{"kind":"textbox","id":"sh/jq5ofe5c","slide":9,"text":"Moved","textPreview":"Moved","textChars":5,"textLines":1,"bbox":[650,304,210,26]}
+{"kind":"shape","id":"sh/ipwnm94r","slide":9,"bbox":[868,308,242,17]}
+{"kind":"shape","id":"sh/2t47ixc3","slide":9,"bbox":[868,308,113.88,17]}
+{"kind":"textbox","id":"sh/3udor2do","slide":9,"text":"8","textPreview":"8","textChars":1,"textLines":1,"bbox":[1116,302,34,26]}
+{"kind":"textbox","id":"sh/ovmpknu9","slide":9,"text":"Messaged","textPreview":"Messaged","textChars":8,"textLines":1,"bbox":[650,351,210,26]}
+{"kind":"shape","id":"sh/pwvqtsvu","slide":9,"bbox":[868,355,242,17]}
+{"kind":"shape","id":"sh/qxo7mxcf","slide":9,"bbox":[868,355,71.18,17]}
+{"kind":"textbox","id":"sh/byx8v2dk","slide":9,"text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[1116,349,34,26]}
+{"kind":"textbox","id":"sh/cz6po7u5","slide":9,"text":"Cancelled","textPreview":"Cancelled","textChars":9,"textLines":1,"bbox":[650,398,210,26]}
+{"kind":"shape","id":"sh/d0fqxcbq","slide":9,"bbox":[868,402,242,17]}
+{"kind":"shape","id":"sh/61k7adcv","slide":9,"bbox":[868,402,56.94,17]}
+{"kind":"textbox","id":"sh/72tojydg","slide":9,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[1116,396,34,26]}
+{"kind":"textbox","id":"sh/9sji50ja","slide":9,"text":"Other","textPreview":"Other","textChars":5,"textLines":1,"bbox":[650,445,210,26]}
+{"kind":"shape","id":"sh/87a1cvip","slide":9,"bbox":[868,449,242,17]}
+{"kind":"shape","id":"sh/76103q14","slide":9,"bbox":[868,449,14.24,17]}
+{"kind":"textbox","id":"sh/m5sja50j","slide":9,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[1116,443,34,26]}
+{"kind":"shape","id":"sh/hw329kj6","slide":9,"bbox":[54,516,1096,106]}
+{"kind":"textbox","id":"sh/wvu1gfi1","slide":9,"text":"The app often hands the last physical coordination step back to the rider and driver. Calls work often — but they add effort and do not provide a reliable fallback when coordination still fails.","textPreview":"The app often hands the last physical coordination step back to the rider and driver. Calls work often — but they add effort and do not p...","textChars":194,"textLines":1,"bbox":[78,539,1048,64]}
+{"kind":"textbox","id":"sh/vul07a1g","slide":9,"text":"Find My Ride","textPreview":"Find My Ride","textChars":12,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/utcje50v","slide":9,"text":"9","textPreview":"9","textChars":1,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"notes","id":"nt/q14kx6","slide":9,"text":"Presenter script\n\nMost difficult pickups happened at airports, gated communities, malls, offices, and stations. Calling was the most common solution. People also waited or moved.\n\nThis shows that riders and drivers often solve the final pickup step themselves. The appendix contains all ten insights and their evidence.\n\nSources:\nLocal evidence: Sanitized-Survey-Evidence.xlsx, Summary and Anonymized Responses sheets. Multi-select counts are mentions, not unique people."}
+{"kind":"slide","id":"sl/d4afj9","slide":10,"title":"3 · STRATEGY IMPLICATIONS","textShapes":11}
+{"kind":"textbox","id":"sh/8jy10rit","slide":10,"text":"3 · STRATEGY IMPLICATIONS","textPreview":"3 · STRATEGY IMPLICATIONS","textChars":25,"textLines":1,"bbox":[54,26,1170,26]}
+{"kind":"textbox","id":"sh/7yp07mh8","slide":10,"text":"Make the fallback faster — not the map more complicated","textPreview":"Make the fallback faster — not the map more complicated","textChars":55,"textLines":1,"bbox":[54,60,1170,62]}
+{"kind":"shape","id":"sh/6xgjyh0n","slide":10,"bbox":[54,170,1096,116]}
+{"kind":"textbox","id":"sh/lw7i5cz2","slide":10,"text":"Recommended direction","textPreview":"Recommended direction","textChars":21,"textLines":1,"bbox":[74,186,260,26]}
+{"kind":"textbox","id":"sh/kvy1w7ih","slide":10,"text":"Reduce the effort and uncertainty of manual pickup recovery at a defined set of complex location types.","textPreview":"Reduce the effort and uncertainty of manual pickup recovery at a defined set of complex location types.","textChars":103,"textLines":1,"bbox":[74,222,1048,48]}
+{"kind":"shape","id":"sh/jup032hc","slide":10,"bbox":[54,316,520,212]}
+{"kind":"textbox","id":"sh/ytgjux0r","slide":10,"text":"TEST ORDER","textPreview":"TEST ORDER","textChars":10,"textLines":1,"bbox":[70,328,488,30]}
+{"kind":"textbox","id":"sh/xs7i1sz6","slide":10,"text":"P0 · Structured pre-arrival meeting note\nP1 · Guided stalled-pickup recovery\nP2 · Venue-specific coordination information","textPreview":"P0 · Structured pre-arrival meeting note | P1 · Guided stalled-pickup recovery | P2 · Venue-specific coordination information","textChars":121,"textLines":3,"bbox":[70,363,488,154]}
+{"kind":"shape","id":"sh/wre1s7il","slide":10,"bbox":[610,316,540,212]}
+{"kind":"textbox","id":"sh/21s7i94j","slide":10,"text":"DO NOT","textPreview":"DO NOT","textChars":6,"textLines":1,"bbox":[626,328,508,30]}
+{"kind":"textbox","id":"sh/n21ore54","slide":10,"text":"Do not add friction to every ride, position this as an airport-only problem, or treat all cancellations as map failures.","textPreview":"Do not add friction to every ride, position this as an airport-only problem, or treat all cancellations as map failures.","textChars":120,"textLines":1,"bbox":[626,363,508,154]}
+{"kind":"textbox","id":"sh/o3apkjmp","slide":10,"text":"Biggest open risk: driver evidence and marketplace economics are too thin to support a two-sided rollout decision.","textPreview":"Biggest open risk: driver evidence and marketplace economics are too thin to support a two-sided rollout decision.","textChars":114,"textLines":1,"bbox":[54,558,1096,48]}
+{"kind":"textbox","id":"sh/p436tonu","slide":10,"text":"Find My Ride","textPreview":"Find My Ride","textChars":12,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/exs7e947","slide":10,"text":"10","textPreview":"10","textChars":2,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"notes","id":"nt/d4afj9","slide":10,"text":"Presenter script\n\nThe direction is simple. Help the rider and driver agree on a clear meeting place when pickup becomes difficult.\n\nFirst, test a structured meeting note. Next, test help for a stuck pickup. Finally, test guidance for selected venues. This is a test order, not a roadmap.\n\nSources:\nLocal evidence: synthesis/02-strategy-implications.md."}
+{"kind":"slide","id":"sl/4s8bcb","slide":11,"title":"4 · RESEARCH-LED PRODUCT IDEA · P0","textShapes":14}
+{"kind":"textbox","id":"sh/wbuxwbet","slide":11,"text":"4 · RESEARCH-LED PRODUCT IDEA · P0","textPreview":"4 · RESEARCH-LED PRODUCT IDEA · P0","textChars":34,"textLines":1,"bbox":[54,26,1170,26]}
+{"kind":"textbox","id":"sh/vqlwn6xo","slide":11,"text":"Structured pre-arrival meeting note","textPreview":"Structured pre-arrival meeting note","textChars":35,"textLines":1,"bbox":[54,60,1170,52]}
+{"kind":"textbox","id":"sh/apsfu1w3","slide":11,"text":"Strongest first test because it formalizes an existing user-created workaround.","textPreview":"Strongest first test because it formalizes an existing user-created workaround.","textChars":79,"textLines":1,"bbox":[54,111,1140,40]}
+{"kind":"shape","id":"sh/9ojelwfi","slide":11,"bbox":[54,174,522,150]}
+{"kind":"textbox","id":"sh/8naxsrex","slide":11,"text":"TRIGGER","textPreview":"TRIGGER","textChars":7,"textLines":1,"bbox":[70,186,490,30]}
+{"kind":"textbox","id":"sh/nm1wjmxc","slide":11,"text":"Only at flagged complex pickup locations, a few minutes before driver arrival.","textPreview":"Only at flagged complex pickup locations, a few minutes before driver arrival.","textChars":78,"textLines":1,"bbox":[70,221,490,92]}
+{"kind":"shape","id":"sh/mlsfqhwr","slide":11,"bbox":[54,340,522,150]}
+{"kind":"textbox","id":"sh/lkjehcf6","slide":11,"text":"ACTION","textPreview":"ACTION","textChars":6,"textLines":1,"bbox":[70,352,490,30]}
+{"kind":"textbox","id":"sh/0jaxorel","slide":11,"text":"Prompt one concise handoff: gate or side, landmark, and waiting spot — reusable where appropriate.","textPreview":"Prompt one concise handoff: gate or side, landmark, and waiting spot — reusable where appropriate.","textChars":98,"textLines":1,"bbox":[70,387,490,92]}
+{"kind":"shape","id":"sh/qt4f6tsv","slide":11,"bbox":[612,174,538,150]}
+{"kind":"textbox","id":"sh/budwzytg","slide":11,"text":"WHY THIS FIRST","textPreview":"WHY THIS FIRST","textChars":14,"textLines":1,"bbox":[628,186,506,30]}
+{"kind":"textbox","id":"sh/cv6x83a1","slide":11,"text":"Calls/messages helped in 20 of 28 issue cases. R061 already sends these details manually — and reported no pickup difficulty.","textPreview":"Calls/messages helped in 20 of 28 issue cases. R061 already sends these details manually — and reported no pickup difficulty.","textChars":125,"textLines":1,"bbox":[628,221,506,92]}
+{"kind":"shape","id":"sh/dgfe18bm","slide":11,"bbox":[612,340,538,150]}
+{"kind":"textbox","id":"sh/2p4f2tsz","slide":11,"text":"TEST","textPreview":"TEST","textChars":4,"textLines":1,"bbox":[628,352,506,30]}
+{"kind":"textbox","id":"sh/3qdwvytk","slide":11,"text":"At comparable flagged locations, compare reactive call/message rate, arrived-to-trip-start dwell, location changes, and cancellations.","textPreview":"At comparable flagged locations, compare reactive call/message rate, arrived-to-trip-start dwell, location changes, and cancellations.","textChars":134,"textLines":1,"bbox":[628,387,506,92]}
+{"kind":"shape","id":"sh/ormx4ja5","slide":11,"bbox":[54,522,1096,92]}
+{"kind":"textbox","id":"sh/psvexobq","slide":11,"text":"“I always place a message on where I would stand with details.” — R061","textPreview":"“I always place a message on where I would stand with details.” — R061","textChars":70,"textLines":1,"bbox":[74,543,1056,50]}
+{"kind":"textbox","id":"sh/elkfy9sn","slide":11,"text":"Find My Ride","textPreview":"Find My Ride","textChars":12,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/fmtwret8","slide":11,"text":"11","textPreview":"11","textChars":2,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"notes","id":"nt/4s8bcb","slide":11,"text":"Presenter script\n\nThe first test is a short note before the driver arrives. At a complex location, the rider can share the gate, landmark, road side, or waiting spot.\n\nWe should test whether this reduces calls, waiting, pickup-point changes, and cancellations. It should appear only where useful.\n\nSources:\nLocal evidence: R061 in normalized-data.tsv; 20 of 28 issue cases reported calls/messages as helpful.\nCompetitor precedent: https://help.lyft.com/hc/en-us/all/articles/360047353153"}
+{"kind":"slide","id":"sl/oxbgph","slide":12,"title":"4 · RESEARCH-LED PRODUCT IDEAS · P1 AND P2","textShapes":9}
+{"kind":"textbox","id":"sh/axorq5sn","slide":12,"text":"4 · RESEARCH-LED PRODUCT IDEAS · P1 AND P2","textPreview":"4 · RESEARCH-LED PRODUCT IDEAS · P1 AND P2","textChars":42,"textLines":1,"bbox":[54,26,1170,26]}
+{"kind":"textbox","id":"sh/x0fql0be","slide":12,"text":"Recovery when coordination stalls — then reusable venue context","textPreview":"Recovery when coordination stalls — then reusable venue context","textChars":63,"textLines":1,"bbox":[54,60,1170,62]}
+{"kind":"shape","id":"sh/cz69svat","slide":12,"bbox":[54,170,530,344]}
+{"kind":"textbox","id":"sh/z2x8nat4","slide":12,"text":"P1 · GUIDED STALLED-PICKUP RECOVERY","textPreview":"P1 · GUIDED STALLED-PICKUP RECOVERY","textChars":35,"textLines":1,"bbox":[70,182,498,30]}
+{"kind":"textbox","id":"sh/y1oru5sz","slide":12,"text":"Trigger after an arrived state remains unresolved past a defined threshold. First guide reconnect actions: share live location, confirm a meeting cue, and retry contact. Test reassignment only for unresolved cases, because it carries marketplace and compensation risk.","textPreview":"Trigger after an arrived state remains unresolved past a defined threshold. First guide reconnect actions: share live location, confirm a...","textChars":268,"textLines":1,"bbox":[70,217,498,286]}
+{"kind":"shape","id":"sh/l4zqpkba","slide":12,"bbox":[620,170,530,344]}
+{"kind":"textbox","id":"sh/k369wfap","slide":12,"text":"P2 · VENUE-SPECIFIC COORDINATION INFORMATION","textPreview":"P2 · VENUE-SPECIFIC COORDINATION INFORMATION","textChars":44,"textLines":1,"bbox":[636,182,498,30]}
+{"kind":"textbox","id":"sh/76h8rutg","slide":12,"text":"Pilot at 2–3 validated venues. Show accessible gate or side, legal stopping point, expected walk, and access constraints. Treat repeat-issue evidence as a problem signal — not proof that the same venue failed repeatedly.","textPreview":"Pilot at 2–3 validated venues. Show accessible gate or side, legal stopping point, expected walk, and access constraints. Treat repeat-is...","textChars":220,"textLines":1,"bbox":[636,217,498,286]}
+{"kind":"shape","id":"sh/m58ripsv","slide":12,"bbox":[54,540,1096,84]}
+{"kind":"textbox","id":"sh/kzy9ory1","slide":12,"text":"Guardrails: trigger only on genuine coordination stalls; assign venue-data ownership and expiry; validate driver impact before scaling.","textPreview":"Guardrails: trigger only on genuine coordination stalls; assign venue-data ownership and expiry; validate driver impact before scaling.","textChars":135,"textLines":1,"bbox":[74,560,1056,44]}
+{"kind":"textbox","id":"sh/lk7ahwfm","slide":12,"text":"Find My Ride","textPreview":"Find My Ride","textChars":12,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/yxgrm1gv","slide":12,"text":"12","textPreview":"12","textChars":2,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"notes","id":"nt/oxbgph","slide":12,"text":"Presenter script\n\nThe second idea is guided recovery. If the rider and driver cannot connect, the app can suggest the next step, such as confirming the meeting point or calling.\n\nThe third idea is verified pickup guidance for a few complex venues. Uber would need regular updates, because old venue information could create more confusion.\n\nSources:\nLocal evidence: synthesis/04-product-ideas.md and Sanitized-Survey-Evidence.xlsx."}
+{"kind":"slide","id":"sl/3497gt","slide":13,"title":"DECISION AND NEXT EVIDENCE","textShapes":12}
+{"kind":"textbox","id":"sh/mhg3upov","slide":13,"text":"DECISION AND NEXT EVIDENCE","textPreview":"DECISION AND NEXT EVIDENCE","textChars":26,"textLines":1,"bbox":[54,26,1170,26]}
+{"kind":"textbox","id":"sh/9k7m5kn6","slide":13,"text":"A defensible direction — not a “build it” recommendation","textPreview":"A defensible direction — not a “build it” recommendation","textChars":56,"textLines":1,"bbox":[54,60,1170,62]}
+{"kind":"shape","id":"sh/ojy5wf6l","slide":13,"bbox":[54,170,1096,114]}
+{"kind":"textbox","id":"sh/zup4za54","slide":13,"text":"Test the smallest coordination aid first: a structured note at flagged complex pickups. Move to recovery and venue data only if the evidence supports it.","textPreview":"Test the smallest coordination aid first: a structured note at flagged complex pickups. Move to recovery and venue data only if the evide...","textChars":153,"textLines":1,"bbox":[78,192,1048,70]}
+{"kind":"shape","id":"sh/etg3q5oj","slide":13,"bbox":[54,314,345,226]}
+{"kind":"textbox","id":"sh/1w7m1kna","slide":13,"text":"LIMITS","textPreview":"LIMITS","textChars":6,"textLines":1,"bbox":[70,326,313,30]}
+{"kind":"textbox","id":"sh/0vylsf6p","slide":13,"text":"Convenience sample; interview requirement unmet; 4 drivers; optional open-text depth; 29 other-city responses; no reliable local market denominator.","textPreview":"Convenience sample; interview requirement unmet; 4 drivers; optional open-text depth; 29 other-city responses; no reliable local market d...","textChars":148,"textLines":1,"bbox":[70,361,313,168]}
+{"kind":"shape","id":"sh/rq54va58","slide":13,"bbox":[419,314,345,226]}
+{"kind":"textbox","id":"sh/qpw3m5on","slide":13,"text":"NEXT RESEARCH","textPreview":"NEXT RESEARCH","textChars":13,"textLines":1,"bbox":[435,326,313,30]}
+{"kind":"textbox","id":"sh/czu1wnep","slide":13,"text":"Run 6 moderated rider and 4 driver interviews if feasible; include accessibility and venue-operations perspectives.","textPreview":"Run 6 moderated rider and 4 driver interviews if feasible; include accessibility and venue-operations perspectives.","textChars":115,"textLines":1,"bbox":[435,361,313,168]}
+{"kind":"shape","id":"sh/d0nipsva","slide":13,"bbox":[784,314,366,226]}
+{"kind":"textbox","id":"sh/qdcjudwj","slide":13,"text":"NEXT DATA","textPreview":"NEXT DATA","textChars":9,"textLines":1,"bbox":[800,326,334,30]}
+{"kind":"textbox","id":"sh/rel0nid4","slide":13,"text":"If event logs are trustworthy, baseline arrived-to-trip-start dwell, contacts, location changes, and cancellations at selected venues.","textPreview":"If event logs are trustworthy, baseline arrived-to-trip-start dwell, contacts, location changes, and cancellations at selected venues.","textChars":134,"textLines":1,"bbox":[800,361,334,168]}
+{"kind":"textbox","id":"sh/4bu1sned","slide":13,"text":"Appendix: full method, framing check, top 10 insights, competitor patterns, idea tests, limitations, and source traceability.","textPreview":"Appendix: full method, framing check, top 10 insights, competitor patterns, idea tests, limitations, and source traceability.","textChars":125,"textLines":1,"bbox":[54,570,1096,40]}
+{"kind":"textbox","id":"sh/pc3ilsvy","slide":13,"text":"Find My Ride","textPreview":"Find My Ride","textChars":12,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/29czqdwn","slide":13,"text":"13","textPreview":"13","textChars":2,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"notes","id":"nt/3497gt","slide":13,"text":"Presenter script\n\nMy recommendation is to test the structured meeting note first. It is the smallest idea that directly addresses the problem we observed.\n\nThe research has gaps. I did not complete live interviews, only four drivers responded, and the sample does not represent Hyderabad. Next, interview riders and drivers, then test at a few complex locations using actual pickup-delay data.\n\nThe appendix and evidence ZIP contain the supporting material. Thank you.\n\nSources:\nLocal evidence: submission-requirements.md and synthesis/*.md."}
+{"kind":"slide","id":"sl/ccfagl","slide":14,"title":"APPENDIX","textShapes":5}
+{"kind":"textbox","id":"sh/65wrexcf","slide":14,"text":"APPENDIX","textPreview":"APPENDIX","textChars":8,"textLines":1,"bbox":[54,170,500,36]}
+{"kind":"textbox","id":"sh/tsnqpcb6","slide":14,"text":"The evidence behind every claim","textPreview":"The evidence behind every claim","textChars":31,"textLines":1,"bbox":[54,226,980,70]}
+{"kind":"textbox","id":"sh/sre9g7al","slide":14,"text":"Methodology · Problem-framing check · Top 10 insights · Market and competitor patterns · Strategy reconciliation · Product tests · Limitations · Sources","textPreview":"Methodology · Problem-framing check · Top 10 insights · Market and competitor patterns · Strategy reconciliation · Product tests · Limita...","textChars":152,"textLines":1,"bbox":[54,322,1080,72]}
+{"kind":"textbox","id":"sh/fu5sr2tw","slide":14,"text":"Find My Ride · Appendix","textPreview":"Find My Ride · Appendix","textChars":23,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/utwrixsb","slide":14,"text":"14","textPreview":"14","textChars":2,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"notes","id":"nt/ccfagl","slide":14,"text":"Appendix divider."}
+{"kind":"slide","id":"sl/og0bqx","slide":15,"title":"APPENDIX · METHODOLOGY","textShapes":6}
+{"kind":"textbox","id":"sh/tgvit0zq","slide":15,"text":"APPENDIX · METHODOLOGY","textPreview":"APPENDIX · METHODOLOGY","textChars":22,"textLines":1,"bbox":[54,26,1170,26]}
+{"kind":"textbox","id":"sh/6d4zyl0f","slide":15,"text":"Online survey evidence and the exact requirement gap","textPreview":"Online survey evidence and the exact requirement gap","textChars":52,"textLines":1,"bbox":[54,60,1170,62]}
+{"kind":"textbox","id":"sh/red0rqhk","slide":15,"text":"62 unique submissions after removing confirmed duplicate R032\n58 riders and 4 drivers; driver conclusions remain open\n33 Hyderabad and 29 other-city responses\nSelf-serve, asynchronous, consent-gated interface in English, Telugu, and Hindi\nFour optional open-text or voice prompts plus structured tags\nContact details and raw payload excluded from the sanitized workbook\nAsynchronous online research, not synchronous in-depth interviews: 30 respondents answered open-ended prompts, but no answer could be probed live","textPreview":"62 unique submissions after removing confirmed duplicate R032 | 58 riders and 4 drivers; driver conclusions remain open | 33 Hyderabad an...","textChars":515,"textLines":7,"bbox":[54,176,660,420]}
+{"kind":"shape","id":"sh/4b2hwbi9","slide":15,"bbox":[760,168,188,382]}
+{"kind":"shape","id":"sh/i9kzu103","slide":15,"bbox":[974,168,188,382]}
+{"kind":"textbox","id":"sh/w72hsbix","slide":15,"text":"Live app and full-size screenshots are included in the evidence ZIP.","textPreview":"Live app and full-size screenshots are included in the evidence ZIP.","textChars":68,"textLines":1,"bbox":[760,566,402,44]}
+{"kind":"textbox","id":"sh/h8bylgzi","slide":15,"text":"Find My Ride · Appendix","textPreview":"Find My Ride · Appendix","textChars":23,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/p4nidgvm","slide":15,"text":"15","textPreview":"15","textChars":2,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"image","id":"im/crm50net","slide":15,"name":"","alt":"Survey app location question","bbox":[770,178,168,362]}
+{"kind":"image","id":"im/qp4nydw3","slide":15,"name":"","alt":"Survey app recovery question","bbox":[984,178,168,362]}
+{"kind":"notes","id":"nt/og0bqx","slide":15,"text":"Methodology evidence.\n\nSources:\nhttps://praveenveera.github.io/uber-pickup-survey/\nLocal evidence: webapp/index.html and Sanitized-Survey-Evidence.xlsx."}
+{"kind":"slide","id":"sl/dcrit3","slide":16,"title":"APPENDIX · PROBLEM FRAMING","textShapes":29}
+{"kind":"textbox","id":"sh/h0725g7i","slide":16,"text":"APPENDIX · PROBLEM FRAMING","textPreview":"APPENDIX · PROBLEM FRAMING","textChars":26,"textLines":1,"bbox":[54,26,1170,26]}
+{"kind":"textbox","id":"sh/uxgja18r","slide":16,"text":"Current problem frame and validation status","textPreview":"Current problem frame and validation status","textChars":43,"textLines":1,"bbox":[54,60,1170,62]}
+{"kind":"shape","id":"sh/vypk36pc","slide":16,"bbox":[94,188,250,168]}
+{"kind":"shape","id":"sh/8ve18rq1","slide":16,"bbox":[344,188,250,168]}
+{"kind":"shape","id":"sh/9wn21w76","slide":16,"bbox":[94,356,250,168]}
+{"kind":"shape","id":"sh/m9wj618v","slide":16,"bbox":[344,356,250,168]}
+{"kind":"shape","id":"sh/7a5kzmpg","slide":16,"bbox":[342,188,4,336]}
+{"kind":"shape","id":"sh/srilkv65","slide":16,"bbox":[94,354,500,4]}
+{"kind":"textbox","id":"sh/tsr2d07q","slide":16,"text":"Clear frame, weak evidence","textPreview":"Clear frame, weak evidence","textChars":26,"textLines":1,"bbox":[112,220,214,30]}
+{"kind":"textbox","id":"sh/xczylg72","slide":16,"text":"Specific problem, limited user proof","textPreview":"Specific problem, limited user proof","textChars":36,"textLines":1,"bbox":[120,260,198,42]}
+{"kind":"textbox","id":"sh/wrqhsbqh","slide":16,"text":"Evidence-led frame","textPreview":"Evidence-led frame","textChars":18,"textLines":1,"bbox":[362,220,214,30]}
+{"kind":"textbox","id":"sh/vqhgj6pw","slide":16,"text":"Connects user pain, impact, and success","textPreview":"Connects user pain, impact, and success","textChars":39,"textLines":1,"bbox":[370,260,198,42]}
+{"kind":"textbox","id":"sh/apofq18b","slide":16,"text":"Internal assumption","textPreview":"Internal assumption","textChars":19,"textLines":1,"bbox":[112,398,214,30]}
+{"kind":"textbox","id":"sh/9ofyhg76","slide":16,"text":"Feature chosen before the problem is understood","textPreview":"Feature chosen before the problem is understood","textChars":47,"textLines":1,"bbox":[120,438,198,50]}
+{"kind":"textbox","id":"sh/8n6xobql","slide":16,"text":"User pain, solution jump","textPreview":"User pain, solution jump","textChars":24,"textLines":1,"bbox":[362,398,214,30]}
+{"kind":"textbox","id":"sh/nmxgf6p0","slide":16,"text":"Real pain, but constraints and feasibility are missed","textPreview":"Real pain, but constraints and feasibility are missed","textChars":53,"textLines":1,"bbox":[370,438,198,50]}
+{"kind":"textbox","id":"sh/mlofm18f","slide":16,"text":"PROBLEM FIRST","textPreview":"PROBLEM FIRST","textChars":13,"textLines":1,"bbox":[236,156,216,24]}
+{"kind":"textbox","id":"sh/tkjyt07a","slide":16,"text":"SOLUTION FIRST","textPreview":"SOLUTION FIRST","textChars":14,"textLines":1,"bbox":[236,532,216,24]}
+{"kind":"textbox","id":"sh/sjah0vqp","slide":16,"text":"STAKEHOLDER\nASSUMPTION","textPreview":"STAKEHOLDER | ASSUMPTION","textChars":22,"textLines":2,"bbox":[2,336,88,44]}
+{"kind":"textbox","id":"sh/cz29c3ix","slide":16,"text":"USER\nEVIDENCE","textPreview":"USER | EVIDENCE","textChars":13,"textLines":2,"bbox":[598,336,72,44]}
+{"kind":"shape","id":"sh/d0ba58ji","slide":16,"bbox":[468,270,24,24]}
+{"kind":"textbox","id":"sh/qx0rat07","slide":16,"text":"CURRENT FRAME\nStrong definition\nDirectional validation","textPreview":"CURRENT FRAME | Strong definition | Directional validation","textChars":54,"textLines":3,"bbox":[416,296,128,52]}
+{"kind":"shape","id":"sh/ry9s3y1s","slide":16,"bbox":[684,166,530,424]}
+{"kind":"textbox","id":"sh/4vi983i1","slide":16,"text":"CURRENT CONTEXT","textPreview":"CURRENT CONTEXT","textChars":15,"textLines":1,"bbox":[708,182,474,24]}
+{"kind":"textbox","id":"sh/pwra1ojm","slide":16,"text":"USER AND SETTING","textPreview":"USER AND SETTING","textChars":16,"textLines":1,"bbox":[708,226,128,52]}
+{"kind":"textbox","id":"sh/290r6t0v","slide":16,"text":"Four-wheel riders starting from airports, gated residences, malls, offices, or stations. Drivers are directly affected.","textPreview":"Four-wheel riders starting from airports, gated residences, malls, offices, or stations. Drivers are directly affected.","textChars":119,"textLines":1,"bbox":[842,224,342,54]}
+{"kind":"shape","id":"sh/3u9szy1g","slide":16,"bbox":[706,282,486,1]}
+{"kind":"textbox","id":"sh/g7y94ji5","slide":16,"text":"OBSERVED PROBLEM","textPreview":"OBSERVED PROBLEM","textChars":16,"textLines":1,"bbox":[708,292,128,68]}
+{"kind":"textbox","id":"sh/h8rqdoja","slide":16,"text":"The pin may show the area, but both sides still lack one clear and workable meeting point. Calls, waiting, or movement follow.","textPreview":"The pin may show the area, but both sides still lack one clear and workable meeting point. Calls, waiting, or movement follow.","textChars":126,"textLines":1,"bbox":[842,290,342,70]}
+{"kind":"shape","id":"sh/j2psnelc","slide":16,"bbox":[706,364,486,1]}
+{"kind":"textbox","id":"sh/i1gbe94r","slide":16,"text":"CURRENT EVIDENCE","textPreview":"CURRENT EVIDENCE","textChars":16,"textLines":1,"bbox":[708,374,128,68]}
+{"kind":"textbox","id":"sh/547apo3i","slide":16,"text":"62 unique responses. 24 of 51 recent users reported difficulty or uncertainty. 30 gave open-ended answers. Only 4 drivers responded.","textPreview":"62 unique responses. 24 of 51 recent users reported difficulty or uncertainty. 30 gave open-ended answers. Only 4 drivers responded.","textChars":132,"textLines":1,"bbox":[842,372,342,70]}
+{"kind":"shape","id":"sh/k3ytgjmx","slide":16,"bbox":[706,446,486,1]}
+{"kind":"textbox","id":"sh/76psryl8","slide":16,"text":"SUCCESS SIGNAL","textPreview":"SUCCESS SIGNAL","textChars":14,"textLines":1,"bbox":[708,456,128,46]}
+{"kind":"textbox","id":"sh/65gbit43","slide":16,"text":"Fewer reactive calls or messages and less time between driver arrival and trip start.","textPreview":"Fewer reactive calls or messages and less time between driver arrival and trip start.","textChars":85,"textLines":1,"bbox":[842,454,342,48]}
+{"kind":"shape","id":"sh/tsrato3e","slide":16,"bbox":[706,506,486,1]}
+{"kind":"textbox","id":"sh/s7ytkjmt","slide":16,"text":"REMAINING GAPS","textPreview":"REMAINING GAPS","textChars":14,"textLines":1,"bbox":[708,516,128,70]}
+{"kind":"textbox","id":"sh/fu9svylk","slide":16,"text":"No moderated interviews. Driver evidence is thin. The sample is not representative. Validate with rider and driver interviews plus pickup event data.","textPreview":"No moderated interviews. Driver evidence is thin. The sample is not representative. Validate with rider and driver interviews plus pickup...","textChars":149,"textLines":1,"bbox":[842,514,342,72]}
+{"kind":"shape","id":"sh/ut0bmt4z","slide":16,"bbox":[54,610,1160,50]}
+{"kind":"textbox","id":"sh/ed8vixsb","slide":16,"text":"Assessment: strong problem framing with directional validation. Test the smallest idea while gathering stronger evidence.","textPreview":"Assessment: strong problem framing with directional validation. Test the smallest idea while gathering stronger evidence.","textChars":121,"textLines":1,"bbox":[76,620,1116,30]}
+{"kind":"textbox","id":"sh/zehcr2tg","slide":16,"text":"Find My Ride · Appendix","textPreview":"Find My Ride · Appendix","textChars":23,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/0zqdk7a1","slide":16,"text":"16","textPreview":"16","textChars":2,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"notes","id":"nt/dcrit3","slide":16,"text":"This slide checks whether the project defined a real user problem before choosing a feature. The frame is specific: complex-location riders and their drivers lack one clear meeting point even when the pin shows the general area. The survey supports the pain and recovery behavior, but validation remains directional because there were no moderated interviews, only four driver responses, and no reliable pickup event data.\n\nSources:\nConcept adapted from the user-provided Good & Bad Problem Framing reference image.\nLocal evidence: Sanitized-Survey-Evidence.xlsx, synthesis/01-survey-insights.md, and synthesis/02-strategy-implications.md."}
+{"kind":"slide","id":"sl/yj1gj1","slide":17,"title":"APPENDIX · 2 · TOP 10 MOST RELEVANT INSIGHTS","textShapes":24}
+{"kind":"textbox","id":"sh/o3up4bit","slide":17,"text":"APPENDIX · 2 · TOP 10 MOST RELEVANT INSIGHTS","textPreview":"APPENDIX · 2 · TOP 10 MOST RELEVANT INSIGHTS","textChars":44,"textLines":1,"bbox":[54,26,1170,26]}
+{"kind":"textbox","id":"sh/3ilov618","slide":17,"text":"Insights 1–5: prevalence, recurrence, location, arrived state, and recovery","textPreview":"Insights 1–5: prevalence, recurrence, location, arrived state, and recovery","textChars":75,"textLines":1,"bbox":[54,60,1170,62]}
+{"kind":"shape","id":"sh/2hs72103","slide":17,"bbox":[54,170,1096,76]}
+{"kind":"textbox","id":"sh/x83q1gjq","slide":17,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[68,183,42,44]}
+{"kind":"textbox","id":"sh/c7up8bi5","slide":17,"text":"Difficulty is meaningful, not universal","textPreview":"Difficulty is meaningful, not universal","textChars":39,"textLines":1,"bbox":[126,180,550,28]}
+{"kind":"textbox","id":"sh/b6loz61k","slide":17,"text":"24/51 reported difficulty or uncertainty; 34/62 no issue","textPreview":"24/51 reported difficulty or uncertainty; 34/62 no issue","textChars":56,"textLines":1,"bbox":[126,210,720,24]}
+{"kind":"shape","id":"sh/q5c7610z","slide":17,"bbox":[968,190,150,34]}
+{"kind":"textbox","id":"sh/tcj6pcj6","slide":17,"text":"Strong","textPreview":"Strong","textChars":6,"textLines":1,"bbox":[978,194,130,24]}
+{"kind":"shape","id":"sh/sbapwril","slide":17,"bbox":[54,261,1096,76]}
+{"kind":"textbox","id":"sh/2l8j6x07","slide":17,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[68,274,42,44]}
+{"kind":"textbox","id":"sh/3mh0f2hc","slide":17,"text":"For affected respondents, the issue often recurs","textPreview":"For affected respondents, the issue often recurs","textChars":48,"textLines":1,"bbox":[126,271,550,28]}
+{"kind":"textbox","id":"sh/onq187ix","slide":17,"text":"23/28 said it happened before — not necessarily same venue","textPreview":"23/28 said it happened before — not necessarily same venue","textChars":58,"textLines":1,"bbox":[126,301,720,24]}
+{"kind":"shape","id":"sh/pozihczi","slide":17,"bbox":[968,281,150,34]}
+{"kind":"textbox","id":"sh/qpsjax03","slide":17,"text":"Strong","textPreview":"Strong","textChars":6,"textLines":1,"bbox":[978,285,130,24]}
+{"kind":"shape","id":"sh/bq10j2ho","slide":17,"bbox":[54,352,1096,76]}
+{"kind":"textbox","id":"sh/cra1c7i9","slide":17,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[68,365,42,44]}
+{"kind":"textbox","id":"sh/dsjilczu","slide":17,"text":"Complex environments concentrate coordination failures","textPreview":"Complex environments concentrate coordination failures","textChars":54,"textLines":1,"bbox":[126,362,550,28]}
+{"kind":"textbox","id":"sh/ytsjeh0z","slide":17,"text":"Airport 10; residential 7; mall 6; office 6","textPreview":"Airport 10; residential 7; mall 6; office 6","textChars":43,"textLines":1,"bbox":[126,392,720,24]}
+{"kind":"shape","id":"sh/zu1knmhk","slide":17,"bbox":[968,372,150,34]}
+{"kind":"textbox","id":"sh/vil0bmxs","slide":17,"text":"Strong","textPreview":"Strong","textChars":6,"textLines":1,"bbox":[978,376,130,24]}
+{"kind":"shape","id":"sh/uxcz2hw7","slide":17,"bbox":[54,443,1096,76]}
+{"kind":"textbox","id":"sh/hk3idwfy","slide":17,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[68,456,42,44]}
+{"kind":"textbox","id":"sh/wjuh4red","slide":17,"text":"Arrived does not mean the rider and driver can meet","textPreview":"Arrived does not mean the rider and driver can meet","textChars":51,"textLines":1,"bbox":[126,453,550,28]}
+{"kind":"textbox","id":"sh/7u107mxw","slide":17,"text":"Wrong pin, similar gates, cross-road case","textPreview":"Wrong pin, similar gates, cross-road case","textChars":41,"textLines":1,"bbox":[126,483,720,24]}
+{"kind":"shape","id":"sh/mtszyhwb","slide":17,"bbox":[968,463,150,34]}
+{"kind":"textbox","id":"sh/9w3i9cfm","slide":17,"text":"Moderate","textPreview":"Moderate","textChars":8,"textLines":1,"bbox":[978,467,130,24]}
+{"kind":"shape","id":"sh/8vah07eh","slide":17,"bbox":[54,534,1096,76]}
+{"kind":"textbox","id":"sh/zq1032xk","slide":17,"text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[68,547,42,44]}
+{"kind":"textbox","id":"sh/ypszuxgz","slide":17,"text":"Calling and messaging are the main recovery layer","textPreview":"Calling and messaging are the main recovery layer","textChars":49,"textLines":1,"bbox":[126,544,550,28]}
+{"kind":"textbox","id":"sh/ov6x43ux","slide":17,"text":"20/28 said calling or messaging helped","textPreview":"20/28 said calling or messaging helped","textChars":38,"textLines":1,"bbox":[126,574,720,24]}
+{"kind":"shape","id":"sh/pwfex8vi","slide":17,"bbox":[968,554,150,34]}
+{"kind":"textbox","id":"sh/2tof2tcr","slide":17,"text":"Strong","textPreview":"Strong","textChars":6,"textLines":1,"bbox":[978,558,130,24]}
+{"kind":"textbox","id":"sh/3uxwvydc","slide":17,"text":"Find My Ride · Appendix","textPreview":"Find My Ride · Appendix","textChars":23,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/czqx83ut","slide":17,"text":"17","textPreview":"17","textChars":2,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"notes","id":"nt/yj1gj1","slide":17,"text":"Top insights 1 through 5.\n\nSources:\nLocal evidence: v3/submission-ready/evidence/03-Anonymized-Responses/Sanitized-Survey-Evidence.xlsx, Insight Traceability sheet."}
+{"kind":"slide","id":"sl/5kn47y","slide":18,"title":"APPENDIX · 2 · TOP 10 MOST RELEVANT INSIGHTS","textShapes":24}
+{"kind":"textbox","id":"sh/c3yt4rah","slide":18,"text":"APPENDIX · 2 · TOP 10 MOST RELEVANT INSIGHTS","textPreview":"APPENDIX · 2 · TOP 10 MOST RELEVANT INSIGHTS","textChars":44,"textLines":1,"bbox":[54,26,1170,26]}
+{"kind":"textbox","id":"sh/b2psbm9w","slide":18,"text":"Insights 6–10: recovery burden, delay, cancellation, support, and identification","textPreview":"Insights 6–10: recovery burden, delay, cancellation, support, and identification","textChars":80,"textLines":1,"bbox":[54,60,1170,62]}
+{"kind":"shape","id":"sh/a1wb2hsb","slide":18,"bbox":[54,170,1096,76]}
+{"kind":"textbox","id":"sh/l87ahwry","slide":18,"text":"6","textPreview":"6","textChars":1,"textLines":1,"bbox":[68,183,42,44]}
+{"kind":"textbox","id":"sh/k7yt8bad","slide":18,"text":"The rider often absorbs the recovery effort","textPreview":"The rider often absorbs the recovery effort","textChars":43,"textLines":1,"bbox":[126,180,550,28]}
+{"kind":"textbox","id":"sh/z6psf69s","slide":18,"text":"Waited 9; moved 8; driver moved helped 3","textPreview":"Waited 9; moved 8; driver moved helped 3","textChars":40,"textLines":1,"bbox":[126,210,720,24]}
+{"kind":"shape","id":"sh/y5gb61sn","slide":18,"bbox":[968,190,150,34]}
+{"kind":"textbox","id":"sh/twralgra","slide":18,"text":"Moderate","textPreview":"Moderate","textChars":8,"textLines":1,"bbox":[978,194,130,24]}
+{"kind":"shape","id":"sh/8vitcbqp","slide":18,"bbox":[54,261,1096,76]}
+{"kind":"textbox","id":"sh/ax8vypcr","slide":18,"text":"7","textPreview":"7","textChars":1,"textLines":1,"bbox":[68,274,42,44]}
+{"kind":"textbox","id":"sh/vyhw7utc","slide":18,"text":"Pickup failures can create material delay","textPreview":"Pickup failures can create material delay","textChars":41,"textLines":1,"bbox":[126,271,550,28]}
+{"kind":"textbox","id":"sh/wzqd0fux","slide":18,"text":"7/10 time-tagged cases exceeded five minutes","textPreview":"7/10 time-tagged cases exceeded five minutes","textChars":44,"textLines":1,"bbox":[126,301,720,24]}
+{"kind":"shape","id":"sh/hkze9kb2","slide":18,"bbox":[968,281,150,34]}
+{"kind":"textbox","id":"sh/il8v2pcn","slide":18,"text":"Moderate","textPreview":"Moderate","textChars":8,"textLines":1,"bbox":[978,285,130,24]}
+{"kind":"shape","id":"sh/jmhwbut8","slide":18,"bbox":[54,352,1096,76]}
+{"kind":"textbox","id":"sh/4nad4zut","slide":18,"text":"8","textPreview":"8","textChars":1,"textLines":1,"bbox":[68,365,42,44]}
+{"kind":"textbox","id":"sh/5ojed4be","slide":18,"text":"Cancellation is related but multi-causal","textPreview":"Cancellation is related but multi-causal","textChars":40,"textLines":1,"bbox":[126,362,550,28]}
+{"kind":"textbox","id":"sh/ypovq5cj","slide":18,"text":"Location overlaps with destination, fare, payment, and rain","textPreview":"Location overlaps with destination, fare, payment, and rain","textChars":59,"textLines":1,"bbox":[126,392,720,24]}
+{"kind":"shape","id":"sh/zqxczat4","slide":18,"bbox":[968,372,150,34]}
+{"kind":"textbox","id":"sh/3utsr69w","slide":18,"text":"Moderate","textPreview":"Moderate","textChars":8,"textLines":1,"bbox":[978,376,130,24]}
+{"kind":"shape","id":"sh/29kry1sb","slide":18,"bbox":[54,443,1096,76]}
+{"kind":"textbox","id":"sh/pwvatwr2","slide":18,"text":"9","textPreview":"9","textChars":1,"textLines":1,"bbox":[68,456,42,44]}
+{"kind":"textbox","id":"sh/ov2t0bah","slide":18,"text":"Some respondents found no effective recovery","textPreview":"Some respondents found no effective recovery","textChars":44,"textLines":1,"bbox":[126,453,550,28]}
+{"kind":"textbox","id":"sh/f6tsnm9k","slide":18,"text":"6/28 selected nothing helped","textPreview":"6/28 selected nothing helped","textChars":28,"textLines":1,"bbox":[126,483,720,24]}
+{"kind":"shape","id":"sh/e5kruhsf","slide":18,"bbox":[968,463,150,34]}
+{"kind":"textbox","id":"sh/18bapwrq","slide":18,"text":"Moderate","textPreview":"Moderate","textChars":8,"textLines":1,"bbox":[978,467,130,24]}
+{"kind":"shape","id":"sh/g729wra5","slide":18,"bbox":[54,534,1096,76]}
+{"kind":"textbox","id":"sh/z2dszq94","slide":18,"text":"10","textPreview":"10","textChars":2,"textLines":1,"bbox":[68,547,42,44]}
+{"kind":"textbox","id":"sh/y14b6lsj","slide":18,"text":"Finding the ride includes vehicle identification","textPreview":"Finding the ride includes vehicle identification","textChars":48,"textLines":1,"bbox":[126,544,550,28]}
+{"kind":"textbox","id":"sh/w7yp0nq1","slide":18,"text":"One vehicle-number mismatch report","textPreview":"One vehicle-number mismatch report","textChars":34,"textLines":1,"bbox":[126,574,720,24]}
+{"kind":"shape","id":"sh/h87qt87m","slide":18,"bbox":[968,554,150,34]}
+{"kind":"textbox","id":"sh/u5g7yd8v","slide":18,"text":"Weak","textPreview":"Weak","textChars":4,"textLines":1,"bbox":[978,558,130,24]}
+{"kind":"textbox","id":"sh/v6poripg","slide":18,"text":"Find My Ride · Appendix","textPreview":"Find My Ride · Appendix","textChars":23,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/4byp4nqx","slide":18,"text":"18","textPreview":"18","textChars":2,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"notes","id":"nt/5kn47y","slide":18,"text":"Top insights 6 through 10.\n\nSources:\nLocal evidence: Sanitized-Survey-Evidence.xlsx, Insight Traceability sheet."}
+{"kind":"slide","id":"sl/r5gg6o","slide":19,"title":"APPENDIX · MARKET AND COMPETITOR EVIDENCE","textShapes":28}
+{"kind":"textbox","id":"sh/m5kbap0n","slide":19,"text":"APPENDIX · MARKET AND COMPETITOR EVIDENCE","textPreview":"APPENDIX · MARKET AND COMPETITOR EVIDENCE","textChars":41,"textLines":1,"bbox":[54,26,1170,26]}
+{"kind":"textbox","id":"sh/98vu5kjy","slide":19,"text":"Design patterns — with transferability limits","textPreview":"Design patterns — with transferability limits","textChars":45,"textLines":1,"bbox":[54,60,1170,62]}
+{"kind":"shape","id":"sh/872tcfid","slide":19,"bbox":[54,170,174,52]}
+{"kind":"textbox","id":"sh/z2tsza1w","slide":19,"text":"Reference","textPreview":"Reference","textChars":9,"textLines":1,"bbox":[62,182,158,28]}
+{"kind":"shape","id":"sh/y1kb650b","slide":19,"bbox":[228,170,292,52]}
+{"kind":"textbox","id":"sh/l4ba1kj2","slide":19,"text":"Observed mechanism","textPreview":"Observed mechanism","textChars":18,"textLines":1,"bbox":[236,182,276,28]}
+{"kind":"shape","id":"sh/k32t8fih","slide":19,"bbox":[520,170,342,52]}
+{"kind":"textbox","id":"sh/be9svq10","slide":19,"text":"Lesson for this case","textPreview":"Lesson for this case","textChars":20,"textLines":1,"bbox":[528,182,326,28]}
+{"kind":"shape","id":"sh/ad0b250f","slide":19,"bbox":[862,170,288,52]}
+{"kind":"textbox","id":"sh/o7u5cj69","slide":19,"text":"Boundary","textPreview":"Boundary","textChars":8,"textLines":1,"bbox":[870,182,272,28]}
+{"kind":"shape","id":"sh/p83mlo7u","slide":19,"bbox":[54,222,174,78]}
+{"kind":"textbox","id":"sh/25cnato3","slide":19,"text":"Uber HYD","textPreview":"Uber HYD","textChars":8,"textLines":1,"bbox":[64,232,154,58]}
+{"kind":"shape","id":"sh/n6l4jepo","slide":19,"bbox":[228,222,292,78]}
+{"kind":"textbox","id":"sh/03a58j6d","slide":19,"text":"In-app directions and D1 pickup zone","textPreview":"In-app directions and D1 pickup zone","textChars":36,"textLines":1,"bbox":[238,232,272,58]}
+{"kind":"shape","id":"sh/14jmho7y","slide":19,"bbox":[520,222,342,78]}
+{"kind":"textbox","id":"sh/e1sn69o7","slide":19,"text":"Baseline exists; test coverage and failed coordination","textPreview":"Baseline exists; test coverage and failed coordination","textChars":54,"textLines":1,"bbox":[530,232,322,58]}
+{"kind":"shape","id":"sh/f214feps","slide":19,"bbox":[862,222,288,78]}
+{"kind":"textbox","id":"sh/kze5k36h","slide":19,"text":"Airport-only evidence","textPreview":"Airport-only evidence","textChars":21,"textLines":1,"bbox":[872,232,268,58]}
+{"kind":"shape","id":"sh/l0n6t872","slide":19,"bbox":[54,300,174,78]}
+{"kind":"textbox","id":"sh/9kzeh4vu","slide":19,"text":"Grab","textPreview":"Grab","textChars":4,"textLines":1,"bbox":[64,310,154,58]}
+{"kind":"shape","id":"sh/8jqdoju9","slide":19,"bbox":[228,300,292,78]}
+{"kind":"textbox","id":"sh/7ihwfedo","slide":19,"text":"Venue visuals and curated meeting points","textPreview":"Venue visuals and curated meeting points","textChars":40,"textLines":1,"bbox":[238,310,272,58]}
+{"kind":"shape","id":"sh/mh8vm9cj","slide":19,"bbox":[520,300,342,78]}
+{"kind":"textbox","id":"sh/lgzed4vy","slide":19,"text":"Make landmarks and paths concrete","textPreview":"Make landmarks and paths concrete","textChars":33,"textLines":1,"bbox":[530,310,322,58]}
+{"kind":"shape","id":"sh/kfqdkzud","slide":19,"bbox":[862,300,288,78]}
+{"kind":"textbox","id":"sh/zehwbuds","slide":19,"text":"Global / experimental claims","textPreview":"Global / experimental claims","textChars":28,"textLines":1,"bbox":[872,310,268,58]}
+{"kind":"shape","id":"sh/ydovipc7","slide":19,"bbox":[54,378,174,78]}
+{"kind":"textbox","id":"sh/xcfu9kvm","slide":19,"text":"Lyft","textPreview":"Lyft","textChars":4,"textLines":1,"bbox":[64,388,154,58]}
+{"kind":"shape","id":"sh/cb6dgzu1","slide":19,"bbox":[228,378,292,78]}
+{"kind":"textbox","id":"sh/2h4balsz","slide":19,"text":"Pickup Notes and selective assisted rides","textPreview":"Pickup Notes and selective assisted rides","textChars":41,"textLines":1,"bbox":[238,388,272,58]}
+{"kind":"shape","id":"sh/nidsjqtk","slide":19,"bbox":[520,378,342,78]}
+{"kind":"textbox","id":"sh/ojmtcva5","slide":19,"text":"Structured context and recovery precedent","textPreview":"Structured context and recovery precedent","textChars":41,"textLines":1,"bbox":[530,388,322,58]}
+{"kind":"shape","id":"sh/pkval0bq","slide":19,"bbox":[862,378,288,78]}
+{"kind":"textbox","id":"sh/etkb6ls3","slide":19,"text":"US market","textPreview":"US market","textChars":9,"textLines":1,"bbox":[872,388,268,58]}
+{"kind":"shape","id":"sh/futsfqto","slide":19,"bbox":[54,456,174,78]}
+{"kind":"textbox","id":"sh/0fmt8vat","slide":19,"text":"Waymo","textPreview":"Waymo","textChars":5,"textLines":1,"bbox":[64,466,154,58]}
+{"kind":"shape","id":"sh/1gvahgbe","slide":19,"bbox":[228,456,292,78]}
+{"kind":"textbox","id":"sh/6pkr21sr","slide":19,"text":"Navigable stops; walking preference","textPreview":"Navigable stops; walking preference","textChars":35,"textLines":1,"bbox":[238,466,272,58]}
+{"kind":"shape","id":"sh/rqtsb6tc","slide":19,"bbox":[520,456,342,78]}
+{"kind":"textbox","id":"sh/jidonmd8","slide":19,"text":"Explain vehicle-access vs walking trade-off","textPreview":"Explain vehicle-access vs walking trade-off","textChars":43,"textLines":1,"bbox":[530,466,322,58]}
+{"kind":"shape","id":"sh/ih47ehwn","slide":19,"bbox":[862,456,288,78]}
+{"kind":"textbox","id":"sh/54vqpcve","slide":19,"text":"US autonomous rides","textPreview":"US autonomous rides","textChars":19,"textLines":1,"bbox":[872,466,268,58]}
+{"kind":"shape","id":"sh/k3mpgret","slide":19,"bbox":[54,534,174,78]}
+{"kind":"textbox","id":"sh/vetoj2xw","slide":19,"text":"MyGate","textPreview":"MyGate","textChars":6,"textLines":1,"bbox":[64,544,154,58]}
+{"kind":"shape","id":"sh/adk7axwb","slide":19,"bbox":[228,534,292,78]}
+{"kind":"textbox","id":"sh/xgv6lcf2","slide":19,"text":"Privacy-aware gate handoff","textPreview":"Privacy-aware gate handoff","textChars":26,"textLines":1,"bbox":[238,544,272,58]}
+{"kind":"shape","id":"sh/wf2pc7eh","slide":19,"bbox":[520,534,342,78]}
+{"kind":"textbox","id":"sh/natof2x0","slide":19,"text":"Access-aware residential coordination","textPreview":"Access-aware residential coordination","textChars":37,"textLines":1,"bbox":[530,544,322,58]}
+{"kind":"shape","id":"sh/m9k76xwf","slide":19,"bbox":[862,534,288,78]}
+{"kind":"textbox","id":"sh/cfylg3ud","slide":19,"text":"Adjacent Indian product","textPreview":"Adjacent Indian product","textChars":23,"textLines":1,"bbox":[872,544,268,58]}
+{"kind":"textbox","id":"sh/dg7mpovy","slide":19,"text":"Find My Ride · Appendix","textPreview":"Find My Ride · Appendix","textChars":23,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/qdg3etc7","slide":19,"text":"19","textPreview":"19","textChars":2,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"notes","id":"nt/r5gg6o","slide":19,"text":"Competitor pattern comparison.\n\nSources:\nhttps://www.uber.com/global/en/r/airports/hyd/pickup/\nhttps://www.grab.com/inside-grab/stories/were-making-pickups-easier-with-video-guides-in-the-grab-app/\nhttps://help.lyft.com/hc/en-us/all/articles/360047353153\nhttps://support.google.com/waymo/answer/9696059?hl=en\nhttps://help.mygate.in/articles/138755-where-will-my-cab-pick-me-up-if-i-am-using-safe-pickup-mode"}
+{"kind":"slide","id":"sl/89u0ef","slide":20,"title":"APPENDIX · 3 · STRATEGY IMPLICATIONS","textShapes":14}
+{"kind":"textbox","id":"sh/pg3yh8fu","slide":20,"text":"APPENDIX · 3 · STRATEGY IMPLICATIONS","textPreview":"APPENDIX · 3 · STRATEGY IMPLICATIONS","textChars":36,"textLines":1,"bbox":[54,26,1170,26]}
+{"kind":"textbox","id":"sh/2dsz6tg3","slide":20,"text":"What the evidence changes — and what it does not support","textPreview":"What the evidence changes — and what it does not support","textChars":56,"textLines":1,"bbox":[54,60,1170,62]}
+{"kind":"shape","id":"sh/3elgfyxo","slide":20,"bbox":[54,170,520,124]}
+{"kind":"textbox","id":"sh/c3uhc3y5","slide":20,"text":"PARTIALLY SUPPORTED","textPreview":"PARTIALLY SUPPORTED","textChars":19,"textLines":1,"bbox":[70,182,488,30]}
+{"kind":"textbox","id":"sh/d43yl8fq","slide":20,"text":"Indoor-to-outdoor navigation matters, but gated residences, offices, and streets show a broader shared-reference-point problem.","textPreview":"Indoor-to-outdoor navigation matters, but gated residences, offices, and streets show a broader shared-reference-point problem.","textChars":127,"textLines":1,"bbox":[70,217,488,66]}
+{"kind":"shape","id":"sh/q1czatgz","slide":20,"bbox":[610,170,540,124]}
+{"kind":"textbox","id":"sh/r2lgjyxk","slide":20,"text":"SUPPORTED, THIN","textPreview":"SUPPORTED, THIN","textChars":15,"textLines":1,"bbox":[626,182,508,30]}
+{"kind":"textbox","id":"sh/07ehgneh","slide":20,"text":"Access and stopping constraints matter; driver evidence is only four responses, so desk research carries more weight here.","textPreview":"Access and stopping constraints matter; driver evidence is only four responses, so desk research carries more weight here.","textChars":122,"textLines":1,"bbox":[626,217,508,66]}
+{"kind":"shape","id":"sh/18nipsfm","slide":20,"bbox":[54,314,520,124]}
+{"kind":"textbox","id":"sh/5gbqxk7u","slide":20,"text":"SUPPORTED","textPreview":"SUPPORTED","textChars":9,"textLines":1,"bbox":[70,326,488,30]}
+{"kind":"textbox","id":"sh/4f294f69","slide":20,"text":"“Pickup failure” combines location confusion, recovery effort, destination preference, fare, payment, and driver behavior.","textPreview":"“Pickup failure” combines location confusion, recovery effort, destination preference, fare, payment, and driver behavior.","textChars":122,"textLines":1,"bbox":[70,361,488,66]}
+{"kind":"shape","id":"sh/3et8vapo","slide":20,"bbox":[610,314,540,124]}
+{"kind":"textbox","id":"sh/idkr25o3","slide":20,"text":"NOT SUPPORTED","textPreview":"NOT SUPPORTED","textChars":13,"textLines":1,"bbox":[626,326,508,30]}
+{"kind":"textbox","id":"sh/dkvq147q","slide":20,"text":"A universal prompt, airport-only strategy, precise Hyderabad prevalence, or a driver-specific solution cannot be justified from this evidence.","textPreview":"A universal prompt, airport-only strategy, precise Hyderabad prevalence, or a driver-specific solution cannot be justified from this evid...","textChars":142,"textLines":1,"bbox":[626,361,508,66]}
+{"kind":"shape","id":"sh/sjm98z65","slide":20,"bbox":[54,458,1096,132]}
+{"kind":"textbox","id":"sh/rit8zup0","slide":20,"text":"DECISION","textPreview":"DECISION","textChars":8,"textLines":1,"bbox":[70,470,1064,30]}
+{"kind":"textbox","id":"sh/qhkr6pof","slide":20,"text":"Use location type and stall signals to target coordination help. Validate rider benefit and driver impact before building a broader venue data operation.","textPreview":"Use location type and stall signals to target coordination help. Validate rider benefit and driver impact before building a broader venue...","textChars":153,"textLines":1,"bbox":[70,505,1064,74]}
+{"kind":"textbox","id":"sh/torqp07m","slide":20,"text":"Find My Ride · Appendix","textPreview":"Find My Ride · Appendix","textChars":23,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/8nipwv61","slide":20,"text":"20","textPreview":"20","textChars":2,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"notes","id":"nt/89u0ef","slide":20,"text":"Strategy reconciliation.\n\nSources:\nLocal evidence: synthesis/02-strategy-implications.md."}
+{"kind":"slide","id":"sl/0z5m26","slide":21,"title":"APPENDIX · 4 · RESEARCH-LED PRODUCT IDEAS","textShapes":25}
+{"kind":"textbox","id":"sh/ih8val8v","slide":21,"text":"APPENDIX · 4 · RESEARCH-LED PRODUCT IDEAS","textPreview":"APPENDIX · 4 · RESEARCH-LED PRODUCT IDEAS","textChars":41,"textLines":1,"bbox":[54,26,1170,26]}
+{"kind":"textbox","id":"sh/54ze507m","slide":21,"text":"Three ideas, sequenced by evidence strength and operating risk","textPreview":"Three ideas, sequenced by evidence strength and operating risk","textChars":62,"textLines":1,"bbox":[54,60,1170,62]}
+{"kind":"shape","id":"sh/43qdcvq1","slide":21,"bbox":[54,174,70,54]}
+{"kind":"textbox","id":"sh/vehczqp4","slide":21,"text":"#","textPreview":"#","textChars":1,"textLines":1,"bbox":[62,186,54,30]}
+{"kind":"shape","id":"sh/udov6l8z","slide":21,"bbox":[124,174,286,54]}
+{"kind":"textbox","id":"sh/hgzu1g7a","slide":21,"text":"Idea","textPreview":"Idea","textChars":4,"textLines":1,"bbox":[132,186,270,30]}
+{"kind":"shape","id":"sh/gfqd8vqp","slide":21,"bbox":[410,174,310,54]}
+{"kind":"textbox","id":"sh/za1wbapo","slide":21,"text":"Trigger / scope","textPreview":"Trigger / scope","textChars":15,"textLines":1,"bbox":[418,186,294,30]}
+{"kind":"shape","id":"sh/e9svi583","slide":21,"bbox":[720,174,266,54]}
+{"kind":"textbox","id":"sh/03elofe1","slide":21,"text":"Primary measures","textPreview":"Primary measures","textChars":16,"textLines":1,"bbox":[728,186,250,30]}
+{"kind":"shape","id":"sh/14n2h0fm","slide":21,"bbox":[986,174,164,54]}
+{"kind":"textbox","id":"sh/e1w3m5wb","slide":21,"text":"Main risk","textPreview":"Main risk","textChars":9,"textLines":1,"bbox":[994,186,148,30]}
+{"kind":"shape","id":"sh/z25kfaxg","slide":21,"bbox":[54,228,70,124]}
+{"kind":"textbox","id":"sh/czulkve5","slide":21,"text":"P0","textPreview":"P0","textChars":2,"textLines":1,"bbox":[64,242,50,96]}
+{"kind":"shape","id":"sh/d032d0fq","slide":21,"bbox":[124,228,286,124]}
+{"kind":"textbox","id":"sh/qdcjilwz","slide":21,"text":"Pre-arrival meeting note","textPreview":"Pre-arrival meeting note","textChars":24,"textLines":1,"bbox":[134,242,266,96]}
+{"kind":"shape","id":"sh/rylkbqxk","slide":21,"bbox":[410,228,310,124]}
+{"kind":"textbox","id":"sh/4bu1gvet","slide":21,"text":"Flagged complex location; before arrival","textPreview":"Flagged complex location; before arrival","textChars":40,"textLines":1,"bbox":[420,242,290,96]}
+{"kind":"shape","id":"sh/pc329gfe","slide":21,"bbox":[720,228,266,124]}
+{"kind":"textbox","id":"sh/5gbaxs36","slide":21,"text":"Calls/messages, dwell, location changes","textPreview":"Calls/messages, dwell, location changes","textChars":39,"textLines":1,"bbox":[730,242,246,96]}
+{"kind":"shape","id":"sh/kv29on2l","slide":21,"bbox":[986,228,164,124]}
+{"kind":"textbox","id":"sh/jut8vil0","slide":21,"text":"Added friction if over-triggered","textPreview":"Added friction if over-triggered","textChars":32,"textLines":1,"bbox":[996,242,144,96]}
+{"kind":"shape","id":"sh/itkrmd4f","slide":21,"bbox":[54,352,70,124]}
+{"kind":"textbox","id":"sh/xsrqt83u","slide":21,"text":"P1","textPreview":"P1","textChars":2,"textLines":1,"bbox":[64,366,50,96]}
+{"kind":"shape","id":"sh/wri9k3mp","slide":21,"bbox":[124,352,286,124]}
+{"kind":"textbox","id":"sh/vq98ryl4","slide":21,"text":"Guided stalled-pickup recovery","textPreview":"Guided stalled-pickup recovery","textChars":30,"textLines":1,"bbox":[134,366,266,96]}
+{"kind":"shape","id":"sh/ap0rit4j","slide":21,"bbox":[410,352,310,124]}
+{"kind":"textbox","id":"sh/hova5c3e","slide":21,"text":"Arrived state unresolved past threshold","textPreview":"Arrived state unresolved past threshold","textChars":39,"textLines":1,"bbox":[420,366,290,96]}
+{"kind":"shape","id":"sh/gnm9w72t","slide":21,"bbox":[720,352,266,124]}
+{"kind":"textbox","id":"sh/etg7q9kb","slide":21,"text":"Resolution and unresolved-cancellation rate","textPreview":"Resolution and unresolved-cancellation rate","textChars":43,"textLines":1,"bbox":[730,366,246,96]}
+{"kind":"shape","id":"sh/zupoju1w","slide":21,"bbox":[986,352,164,124]}
+{"kind":"textbox","id":"sh/0vypszih","slide":21,"text":"False triggers; driver compensation","textPreview":"False triggers; driver compensation","textChars":35,"textLines":1,"bbox":[996,366,144,96]}
+{"kind":"shape","id":"sh/1w76l4jm","slide":21,"bbox":[54,476,70,124]}
+{"kind":"textbox","id":"sh/q5wnmpkz","slide":21,"text":"P2","textPreview":"P2","textChars":2,"textLines":1,"bbox":[64,490,50,96]}
+{"kind":"shape","id":"sh/rq5ofu1k","slide":21,"bbox":[124,476,286,124]}
+{"kind":"textbox","id":"sh/cre5oz25","slide":21,"text":"Venue-specific coordination info","textPreview":"Venue-specific coordination info","textChars":32,"textLines":1,"bbox":[134,490,266,96]}
+{"kind":"shape","id":"sh/dsn6h4jq","slide":21,"bbox":[410,476,310,124]}
+{"kind":"textbox","id":"sh/a107yt0j","slide":21,"text":"2–3 validated venues","textPreview":"2–3 validated venues","textChars":20,"textLines":1,"bbox":[420,490,290,96]}
+{"kind":"shape","id":"sh/vm9ore14","slide":21,"bbox":[720,476,266,124]}
+{"kind":"textbox","id":"sh/ve5knq54","slide":21,"text":"Calls/messages and dwell vs matched venues","textPreview":"Calls/messages and dwell vs matched venues","textChars":42,"textLines":1,"bbox":[730,490,246,96]}
+{"kind":"shape","id":"sh/utw3ul4z","slide":21,"bbox":[986,476,164,124]}
+{"kind":"textbox","id":"sh/hg72p0na","slide":21,"text":"Stale rules; ownership cost","textPreview":"Stale rules; ownership cost","textChars":27,"textLines":1,"bbox":[996,490,144,96]}
+{"kind":"shape","id":"sh/gfylwvmp","slide":21,"bbox":[54,618,1096,40]}
+{"kind":"textbox","id":"sh/7q5kj658","slide":21,"text":"Sequence is a test order, not a committed build roadmap.","textPreview":"Sequence is a test order, not a committed build roadmap.","textChars":56,"textLines":1,"bbox":[74,626,1056,24]}
+{"kind":"textbox","id":"sh/6pw3q14n","slide":21,"text":"Find My Ride · Appendix","textPreview":"Find My Ride · Appendix","textChars":23,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/tsn2lgne","slide":21,"text":"21","textPreview":"21","textChars":2,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"notes","id":"nt/0z5m26","slide":21,"text":"Product test plan.\n\nSources:\nLocal evidence: synthesis/04-product-ideas.md."}
+{"kind":"slide","id":"sl/l3chqo","slide":22,"title":"APPENDIX · EVIDENCE BOUNDARY","textShapes":5}
+{"kind":"textbox","id":"sh/0fq5kvqh","slide":22,"text":"APPENDIX · EVIDENCE BOUNDARY","textPreview":"APPENDIX · EVIDENCE BOUNDARY","textChars":28,"textLines":1,"bbox":[54,26,1170,26]}
+{"kind":"textbox","id":"sh/zeh4rqpc","slide":22,"text":"What kind of evidence this is","textPreview":"What kind of evidence this is","textChars":29,"textLines":1,"bbox":[54,60,1170,62]}
+{"kind":"textbox","id":"sh/ed83il8r","slide":22,"text":"Convenience sample recruited through available networks; not representative of Hyderabad riders\nOnline survey with interview-style prompts; 30 open-ended responses but no live probing, so qualitative depth is shallower than a moderated interview\nFour driver responses; two-sided product and marketplace conclusions remain premature\nOpen prompts were optional and the schema changed during collection, so qualitative depth varies\nTwenty-nine of 62 responses came from other cities; they are comparison evidence, not a small side sample\nConsent was required in the interface but not stored as a separate backend field\nMulti-select location and action counts are mentions, not mutually exclusive people\nNo reliable Hyderabad trip-volume or issue-rate denominator was found; no market-size figure is claimed","textPreview":"Convenience sample recruited through available networks; not representative of Hyderabad riders | Online survey with interview-style prom...","textChars":803,"textLines":8,"bbox":[72,170,1080,454]}
+{"kind":"textbox","id":"sh/9kjmx07e","slide":22,"text":"Find My Ride · Appendix","textPreview":"Find My Ride · Appendix","textChars":23,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/oja5ovqt","slide":22,"text":"22","textPreview":"22","textChars":2,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"notes","id":"nt/l3chqo","slide":22,"text":"Evidence limitations.\n\nSources:\nLocal evidence: submission-requirements.md and Sanitized-Survey-Evidence.xlsx, Method & Limitations sheet."}
+{"kind":"slide","id":"sl/h10vbv","slide":23,"title":"APPENDIX · SOURCE TRACEABILITY","textShapes":13}
+{"kind":"textbox","id":"sh/lkre5obq","slide":23,"text":"APPENDIX · SOURCE TRACEABILITY","textPreview":"APPENDIX · SOURCE TRACEABILITY","textChars":30,"textLines":1,"bbox":[54,28,1160,28]}
+{"kind":"textbox","id":"sh/yh0vu9cz","slide":23,"text":"Every claim traces to a source or an explicit limitation","textPreview":"Every claim traces to a source or an explicit limitation","textChars":56,"textLines":1,"bbox":[54,66,1100,58]}
+{"kind":"shape","id":"sh/zi9w3etk","slide":23,"bbox":[54,154,540,176]}
+{"kind":"textbox","id":"sh/cfydszut","slide":23,"text":"PRIMARY EVIDENCE","textPreview":"PRIMARY EVIDENCE","textChars":16,"textLines":1,"bbox":[70,166,508,30]}
+{"kind":"textbox","id":"sh/xg7u14be","slide":23,"text":"Sanitized-Survey-Evidence.xlsx\nSurvey-Dashboard.png\nScreenshots/\nLive-URL.txt","textPreview":"Sanitized-Survey-Evidence.xlsx | Survey-Dashboard.png | Screenshots/ | Live-URL.txt","textChars":77,"textLines":4,"bbox":[70,201,508,118]}
+{"kind":"shape","id":"sh/adgvq9c3","slide":23,"bbox":[610,154,540,176]}
+{"kind":"textbox","id":"sh/bepczet8","slide":23,"text":"DESK AND COMPETITOR EVIDENCE","textPreview":"DESK AND COMPETITOR EVIDENCE","textChars":28,"textLines":1,"bbox":[626,166,508,30]}
+{"kind":"textbox","id":"sh/orydozux","slide":23,"text":"Competitor-Analysis.md\nDesk-Research-Report.md\nSource-Register.md\nRaw internet workbook retained privately","textPreview":"Competitor-Analysis.md | Desk-Research-Report.md | Source-Register.md | Raw internet workbook retained privately","textChars":106,"textLines":4,"bbox":[626,201,508,118]}
+{"kind":"shape","id":"sh/pc7ux4bi","slide":23,"bbox":[54,354,540,156]}
+{"kind":"textbox","id":"sh/tovmhgnm","slide":23,"text":"SYNTHESIS","textPreview":"SYNTHESIS","textChars":9,"textLines":1,"bbox":[70,366,508,30]}
+{"kind":"textbox","id":"sh/snml8b61","slide":23,"text":"01-survey-insights.md\n02-strategy-implications.md\n04-product-ideas.md","textPreview":"01-survey-insights.md | 02-strategy-implications.md | 04-product-ideas.md","textChars":69,"textLines":3,"bbox":[70,401,508,98]}
+{"kind":"shape","id":"sh/7md4fq5g","slide":23,"bbox":[610,354,540,156]}
+{"kind":"textbox","id":"sh/6l436lob","slide":23,"text":"HARD SUBMISSION GATE","textPreview":"HARD SUBMISSION GATE","textChars":20,"textLines":1,"bbox":[626,366,508,30]}
+{"kind":"textbox","id":"sh/5kvmdgnq","slide":23,"text":"Video link is pending. Before submission: record presenter-visible video under 5 minutes, upload it, add the working link, and verify access.","textPreview":"Video link is pending. Before submission: record presenter-visible video under 5 minutes, upload it, add the working link, and verify acc...","textChars":141,"textLines":1,"bbox":[626,401,508,98]}
+{"kind":"textbox","id":"sh/kj2l4b65","slide":23,"text":"Evidence ZIP excludes participant contacts, raw API payloads, test rows, internal artifacts, and the raw internet workbook containing public creator contacts.","textPreview":"Evidence ZIP excludes participant contacts, raw API payloads, test rows, internal artifacts, and the raw internet workbook containing pub...","textChars":158,"textLines":1,"bbox":[54,550,1096,42]}
+{"kind":"textbox","id":"sh/jytkb65k","slide":23,"text":"Find My Ride · Appendix","textPreview":"Find My Ride · Appendix","textChars":23,"textLines":1,"bbox":[54,684,300,20]}
+{"kind":"textbox","id":"sh/yxk321oz","slide":23,"text":"23","textPreview":"23","textChars":2,"textLines":1,"bbox":[1194,684,32,20]}
+{"kind":"notes","id":"nt/h10vbv","slide":23,"text":"Source traceability and final submission gate."}

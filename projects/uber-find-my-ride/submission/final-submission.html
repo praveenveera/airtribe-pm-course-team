@@ -1,0 +1,615 @@
+<title>Find My Ride Research</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper: #FAF8F3;
+    --paper-raised: #F1EAD9;
+    --quote-bg: #FBF3E6;
+    --ink: #221D17;
+    --ink-soft: #6B5F4F;
+    --accent: #B4501E;
+    --line: #DED2BC;
+    --strength-strong: #3F6B4A;
+    --strength-moderate: #A9762C;
+    --strength-weak: #A34432;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #17140F;
+      --paper-raised: #221C14;
+      --quote-bg: #201A12;
+      --ink: #F1E9DC;
+      --ink-soft: #B8AC98;
+      --accent: #E2864A;
+      --line: #3A3226;
+      --strength-strong: #7FB88C;
+      --strength-moderate: #D9A857;
+      --strength-weak: #E08A72;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #17140F;
+    --paper-raised: #221C14;
+    --quote-bg: #201A12;
+    --ink: #F1E9DC;
+    --ink-soft: #B8AC98;
+    --accent: #E2864A;
+    --line: #3A3226;
+    --strength-strong: #7FB88C;
+    --strength-moderate: #D9A857;
+    --strength-weak: #E08A72;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+  h1, h2, h3 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    text-wrap: balance;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+
+  /* Cover */
+  .cover {
+    padding-top: 32px;
+    padding-bottom: 40px;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 40px;
+  }
+  .cover h1 {
+    font-size: 40px;
+    line-height: 1.1;
+    margin: 12px 0 8px;
+  }
+  .cover .subtitle {
+    font-size: 18px;
+    color: var(--ink-soft);
+    max-width: 46ch;
+  }
+  .cover-meta {
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 10px 32px;
+    font-size: 14px;
+  }
+  .cover-meta dt { color: var(--ink-soft); font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: .05em; }
+  .cover-meta dd { margin: 2px 0 0; }
+  .format-note {
+    margin-top: 24px;
+    padding: 14px 16px;
+    background: var(--paper-raised);
+    border-left: 3px solid var(--accent);
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .format-note strong { color: var(--ink); }
+
+  /* Sections */
+  section { margin-top: 56px; }
+  section.page-break { break-before: page; padding-top: 4px; }
+  .section-num {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--accent);
+    font-size: 15px;
+    margin-right: 4px;
+  }
+  h2 { font-size: 27px; margin-bottom: 4px; }
+  h2 .section-num { display: block; margin-bottom: 2px; }
+  h3 { font-size: 19px; margin: 28px 0 8px; }
+  .section-intro { color: var(--ink-soft); font-size: 15px; max-width: 62ch; margin-bottom: 24px; }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 66ch; padding-left: 1.3em; }
+  li { margin-bottom: 4px; }
+
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 14.5px; }
+  caption { text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-soft); margin-bottom: 6px; caption-side: top; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); font-weight: 500; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .table-wrap { overflow-x: auto; }
+
+  /* Evidence base strip */
+  .evidence-strip {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin: 20px 0 8px;
+  }
+  .evidence-tile { background: var(--paper); padding: 14px 12px; }
+  .evidence-tile .n { font-family: 'IBM Plex Mono', monospace; font-size: 24px; font-weight: 500; font-variant-numeric: tabular-nums; }
+  .evidence-tile .l { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+
+  figure { margin: 20px 0; }
+  figure img { width: 100%; border: 1px solid var(--line); display: block; }
+  figcaption { font-size: 13px; color: var(--ink-soft); margin-top: 6px; }
+
+  /* Insight cards */
+  .insight {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    padding: 18px 20px;
+    margin: 18px 0;
+    break-inside: avoid;
+  }
+  .insight-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .insight-num { font-family: 'IBM Plex Mono', monospace; color: var(--accent); font-size: 13px; }
+  .insight h4 { font-family: 'Source Serif 4', serif; font-size: 17px; margin: 2px 0 10px; font-weight: 600; }
+  .strength {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid currentColor;
+    white-space: nowrap;
+    align-self: flex-start;
+  }
+  .strength.strong { color: var(--strength-strong); }
+  .strength.moderate { color: var(--strength-moderate); }
+  .strength.weak { color: var(--strength-weak); }
+  .insight .label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); margin: 12px 0 4px; }
+  .insight ul { margin: 4px 0; }
+  blockquote {
+    margin: 10px 0;
+    padding: 8px 14px;
+    background: var(--quote-bg);
+    border-left: 3px solid var(--accent);
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 15px;
+  }
+  blockquote cite { display: block; font-family: 'IBM Plex Mono', monospace; font-style: normal; font-size: 11.5px; color: var(--ink-soft); margin-top: 4px; }
+  .interpretation { font-size: 14.5px; margin-top: 8px; }
+
+  /* Strategy */
+  .direction-box {
+    background: var(--paper-raised);
+    border: 1px solid var(--accent);
+    padding: 18px 20px;
+    margin: 18px 0;
+    font-size: 15.5px;
+  }
+  .direction-box strong { color: var(--accent); }
+  ol.reasons li { margin-bottom: 8px; }
+
+  /* Product ideas */
+  .idea { border: 1px solid var(--line); margin: 20px 0; break-inside: avoid; }
+  .idea-head { background: var(--paper-raised); padding: 12px 18px; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  .idea-head .rank { font-family: 'IBM Plex Mono', monospace; color: var(--accent); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+  .idea-head h4 { font-family: 'Source Serif 4', serif; font-size: 18px; margin: 2px 0 0; font-weight: 600; }
+  .idea-body { padding: 4px 18px 14px; }
+  .field-row { display: grid; grid-template-columns: 110px 1fr; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .field-row:last-child { border-bottom: none; }
+  .field-row dt { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); }
+  .field-row dd { margin: 0; font-size: 14.5px; }
+
+  .excludes { margin-top: 20px; }
+  .excludes li { font-size: 14.5px; }
+
+  /* Evidence boundary */
+  .limit-list li { font-size: 14.5px; margin-bottom: 8px; }
+  .source-list { font-size: 14px; }
+  .source-list a { color: var(--accent); }
+
+  .footer-note {
+    margin-top: 64px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .video-slot {
+    margin-top: 16px;
+    padding: 14px 16px;
+    border: 1px dashed var(--ink-soft);
+    color: var(--ink-soft);
+    font-size: 14px;
+  }
+
+  .print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    padding: 10px 16px;
+    cursor: pointer;
+    z-index: 10;
+  }
+  .print-btn:hover { background: var(--accent); }
+
+  @media print {
+    .print-btn { display: none; }
+    body { background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { padding: 0; max-width: none; }
+    .insight, .idea { break-inside: avoid; }
+    a { color: inherit; text-decoration: none; }
+  }
+  @media (max-width: 600px) {
+    .cover-meta { grid-template-columns: 1fr; }
+    .evidence-strip { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .field-row { grid-template-columns: 1fr; }
+  }
+</style>
+
+<button class="print-btn no-print" onclick="window.print()">Print / Save as PDF</button>
+
+<div class="page">
+
+  <div class="cover">
+    <div class="eyebrow">Airtribe · Product Management Coursework · Project 3</div>
+    <h1>Find My Ride</h1>
+    <div class="subtitle">Understanding why post-booking pickup coordination breaks down for Uber riders and drivers in Hyderabad, and what to do about it.</div>
+    <dl class="cover-meta">
+      <div><dt>Prepared by</dt><dd>Praveen Veera</dd></div>
+      <div><dt>Date</dt><dd>18 September 2026</dd></div>
+      <div><dt>Primary market</dt><dd>Hyderabad, India (four-wheel app-cab rides)</dd></div>
+      <div><dt>Evidence base</dt><dd>62 unique survey responses, functioning as self-serve interviews</dd></div>
+    </dl>
+    <div class="format-note">
+      <strong>On research format:</strong> Scheduling synchronous interviews was not feasible for this project. Ten or more participants were instead reached through a trilingual (English / Telugu / Hindi), self-serve, consent-gated online survey that asked the same open-ended questions a live interview would. This submission treats those responses as asynchronous interviews throughout, and states that limitation explicitly rather than presenting them as live interviews. Full detail in Section 5.
+    </div>
+  </div>
+
+  <section>
+    <h2><span class="section-num">1</span>Research Goal</h2>
+    <p>Understand when and why post-booking four-wheel pickups become difficult, how riders and drivers recover today, and which failures most reduce pickup reliability.</p>
+    <p>Candidate outcome metric — a proposed measurement direction, not a confirmed Uber metric:</p>
+    <blockquote>Pickups completed without avoidable calls, location changes, extended waiting, or cancellation.</blockquote>
+
+    <h3 id="questions"><span class="section-num">1.1</span>Key Interview Questions</h3>
+    <p class="section-intro">Asked asynchronously through the survey. The format could not probe a vague answer with a live follow-up — a limitation carried into Section 5.</p>
+    <ol>
+      <li>Tell me about the last time you had difficulty finding your ride after booking it.</li>
+      <li>Where were you, and what did the app tell you?</li>
+      <li>When did you first realize the pickup might not work as expected?</li>
+      <li>What made the rider and driver difficult to locate or identify?</li>
+      <li>What did you do next: call, message, move, wait, cancel, or seek help?</li>
+      <li>How much extra time or effort did the situation require?</li>
+      <li>What finally helped, if anything?</li>
+      <li>Has the same problem happened at other locations?</li>
+      <li>What information or support was missing at the most frustrating moment?</li>
+      <li>For drivers: what prevented you from reaching the pin or identifying the rider?</li>
+    </ol>
+  </section>
+
+  <section class="page-break">
+    <h2><span class="section-num">2</span>Top 10 Most Relevant Insights</h2>
+    <p class="section-intro">Do not read the percentages below as Hyderabad-wide prevalence — this is a convenience sample, not a random one. They describe this response set only.</p>
+
+    <div class="evidence-strip">
+      <div class="evidence-tile"><div class="n">62</div><div class="l">unique responses (63 submitted, 1 confirmed duplicate removed)</div></div>
+      <div class="evidence-tile"><div class="n">51</div><div class="l">recent four-wheel users</div></div>
+      <div class="evidence-tile"><div class="n">24 / 52</div><div class="l">recent users reporting difficulty or uncertainty</div></div>
+      <div class="evidence-tile"><div class="n">23 / 28</div><div class="l">issue cases that had happened before (repeat)</div></div>
+    </div>
+
+    <figure>
+      <img src="analytics-dashboard.png" alt="Survey analytics dashboard showing response breakdowns by city, role, location type, and outcome" />
+      <figcaption>Contact-safe analytics dashboard generated from the normalized survey dataset. Source: <span class="mono">data/survey/analytics-dashboard.png</span>.</figcaption>
+    </figure>
+
+    <div class="insight">
+      <div class="insight-head"><span class="insight-num">Insight 1</span><span class="strength strong">Strong directional, sample not representative</span></div>
+      <h4>Pickup difficulty is meaningful, but it is not universal</h4>
+      <div class="label">What the evidence shows</div>
+      <ul>
+        <li>24 of 52 recent four-wheel users reported difficulty or uncertainty.</li>
+        <li>11 of 27 recent Hyderabad four-wheel users reported difficulty or uncertainty.</li>
+        <li>35 of all 63 records did not report a pickup issue.</li>
+      </ul>
+      <blockquote>"On the whole the experience is good. Exceptions will always be there."<cite>R030, rider</cite></blockquote>
+      <div class="interpretation">The opportunity is not to add more steps to every pickup. It's to identify the locations and conditions where coordination risk is actually high.</div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-head"><span class="insight-num">Insight 2</span><span class="strength strong">Strong within the issue-reporting subgroup</span></div>
+      <h4>For affected respondents, the problem is usually recurring</h4>
+      <div class="label">What the evidence shows</div>
+      <ul>
+        <li>23 of 28 issue cases said the problem had happened before.</li>
+        <li>Repetition appeared across Hyderabad and comparison cities.</li>
+      </ul>
+      <blockquote>"During rains it would be very difficult to book a cab and even after booking there are many cancellations based on the drop point."<cite>R047, Hyderabad rider</cite></blockquote>
+      <div class="interpretation">This isn't a rare first-time mistake for the affected group. Weather, time, destination, and location conditions can repeatedly recreate the problem.</div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-head"><span class="insight-num">Insight 3</span><span class="strength strong">Strong location pattern, not a prevalence estimate</span></div>
+      <h4>Complex environments concentrate pickup problems</h4>
+      <div class="label">What the evidence shows — mentions, not people (multi-select)</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Location</th><th class="num">Mentions</th></tr>
+          <tr><td>Airport</td><td class="num">10</td></tr>
+          <tr><td>Residential / gated community</td><td class="num">7</td></tr>
+          <tr><td>Shopping mall</td><td class="num">6</td></tr>
+          <tr><td>Office / technology campus</td><td class="num">6</td></tr>
+          <tr><td>Metro / railway station</td><td class="num">5</td></tr>
+          <tr><td>Busy street</td><td class="num">3</td></tr>
+          <tr><td>Hotel / event venue</td><td class="num">2</td></tr>
+          <tr><td>Hospital</td><td class="num">1</td></tr>
+        </table>
+      </div>
+      <blockquote>"No clarity"<cite>R063, Hyderabad rider describing an airport pickup</cite></blockquote>
+      <div class="interpretation">Large or controlled locations create a translation problem between the map pin and the physical place: gate, side, road, level, access rule, or stopping point.</div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-head"><span class="insight-num">Insight 4</span><span class="strength moderate">Moderate — clearest support from a small number of detailed records</span></div>
+      <h4>"Driver arrived" does not mean the rider and driver can meet</h4>
+      <div class="label">What the evidence shows</div>
+      <ul>
+        <li>Similar-gate conditions were selected in three current-schema issue cases.</li>
+        <li>Wrong-pin conditions were selected in four cases.</li>
+        <li>R067 describes the driver moving around a road junction while the app showed an arrived state.</li>
+      </ul>
+      <blockquote>"The app says he has arrived, but almost 10 minutes to locate each other"<cite>R067, Ernakulam rider</cite></blockquote>
+      <div class="interpretation">The app can be technically correct at area level while failing at the last physical step — exact side, landmark, accessible route, or stopping position.</div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-head"><span class="insight-num">Insight 5</span><span class="strength strong">Strong behavioral pattern in the sample</span></div>
+      <h4>Calling and messaging are the main recovery layer</h4>
+      <div class="label">What the evidence shows</div>
+      <ul>
+        <li>Calling was selected in 17 issue cases; messaging in 5.</li>
+        <li>Calling or messaging was marked helpful in 20 of 28 issue cases.</li>
+        <li>A landmark was marked helpful in 4 cases.</li>
+      </ul>
+      <blockquote>"Driver calls and asks for drop location."<cite>R047, Hyderabad rider</cite></blockquote>
+      <div class="interpretation">The app frequently hands the final coordination job back to the rider and driver. Communication works, but it adds effort and can trigger a separate cancellation decision.</div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-head"><span class="insight-num">Insight 6</span><span class="strength moderate">Moderate to strong within issue cases</span></div>
+      <h4>The rider often absorbs the recovery effort</h4>
+      <div class="label">What the evidence shows</div>
+      <ul>
+        <li>9 issue respondents waited; 8 moved from their initial position.</li>
+        <li>Only 3 said the driver moving closer helped; only 1 selected staff or security as helpful.</li>
+      </ul>
+      <blockquote>"I thought he will come but he kept on keeping me waiting"<cite>R064, Lucknow rider</cite></blockquote>
+      <div class="interpretation">Recovery is not just a communication cost — riders may have to move, wait, or monitor the vehicle without knowing which action will actually solve the problem.</div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-head"><span class="insight-num">Insight 7</span><span class="strength moderate">Moderate — time question answered by only 10 issue records</span></div>
+      <h4>Pickup failures can create material delay</h4>
+      <div class="label">What the evidence shows</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Additional time</th><th class="num">Cases</th></tr>
+          <tr><td>Less than 2 minutes</td><td class="num">2</td></tr>
+          <tr><td>2–5 minutes</td><td class="num">1</td></tr>
+          <tr><td>5–15 minutes</td><td class="num">3</td></tr>
+          <tr><td>More than 15 minutes</td><td class="num">4</td></tr>
+        </table>
+      </div>
+      <blockquote>"At times it takes unusually long time and we book uber under normal belief that the ride will be available within 2-3 minutes but at times it takes 10-15 minutes"<cite>R055, Mumbai rider</cite></blockquote>
+      <div class="interpretation">Part of the reliability gap is an expectation gap. An ETA or arrived state can create confidence the real pickup time doesn't match.</div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-head"><span class="insight-num">Insight 8</span><span class="strength moderate">Moderate — overlap shown, causal weight not isolated</span></div>
+      <h4>Cancellation is related to pickup coordination, but not always caused by location confusion</h4>
+      <div class="label">What the evidence shows</div>
+      <ul>
+        <li>Cancellation was coded as the outcome in 5 current-schema issue cases; 4 respondents selected cancellation as an action.</li>
+        <li>Detailed records also mention destination, displayed fare, payment mode, rain, and slow approach.</li>
+      </ul>
+      <blockquote>"Every time they asking about drop location how much amount shows in app and your payment mode cash or Uber cash"<cite>R060, rider</cite></blockquote>
+      <div class="interpretation">Not every cancellation is a map or pickup-point failure. Coordination, destination preference, fare, and payment mode can overlap in the same journey.</div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-head"><span class="insight-num">Insight 9</span><span class="strength moderate">Moderate — 6 structured selections plus one detailed account</span></div>
+      <h4>Some respondents found no effective recovery or support</h4>
+      <div class="label">What the evidence shows</div>
+      <ul>
+        <li>6 issue respondents selected "nothing helped."</li>
+        <li>R045 reported a wrong pin, inability to stop, cancellation, over 15 minutes of delay, and no effective help.</li>
+      </ul>
+      <blockquote>"No one to seek redressal or help... Grievance redressal has to be immediate"<cite>R064, Lucknow rider</cite></blockquote>
+      <div class="interpretation">When communication fails, the journey may offer no clear recovery path. The unmet need isn't only better location information — it may include timely escalation.</div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-head"><span class="insight-num">Insight 10</span><span class="strength weak">Weak — single-mention edge case, needs validation</span></div>
+      <h4>Finding the ride includes vehicle identification, not only reaching the pin</h4>
+      <div class="label">What the evidence shows</div>
+      <ul>
+        <li>One respondent reported a mismatch between the vehicle number in the app and the vehicle carrying them.</li>
+      </ul>
+      <blockquote>"The number of the vehicle mentioned in the app is different from the vehicle carrying us."<cite>R018, Visakhapatnam rider</cite></blockquote>
+      <div class="interpretation">The pickup job ends only when rider and driver confidently identify each other and the correct vehicle. A safety-relevant edge case — not a common pattern on this evidence.</div>
+    </div>
+
+    <h3>Contradictions worth holding onto</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Evidence tension</th><th>What it means</th></tr>
+        <tr><td>24 of 52 recent users reported difficulty, while most total respondents did not</td><td>The problem is important for a segment, not universal</td></tr>
+        <tr><td>Calling/messaging helped 20 of 28 issue cases, but 6 said nothing helped</td><td>Communication often recovers the pickup, but it's not a complete safety net</td></tr>
+        <tr><td>Airport led location mentions, but residential, mall, office, station, and street also appeared</td><td>The opportunity may be a reusable model with location-specific rules, not an airport-only fix</td></tr>
+        <tr><td>Detailed rider evidence exists, but driver evidence is thin</td><td>Two-sided product decisions remain premature</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="page-break">
+    <h2><span class="section-num">3</span>Strategy Implications</h2>
+    <p class="section-intro">This reconciles the desk-research hypotheses formed before the survey against what the survey actually showed, then names one direction with a stated reason.</p>
+
+    <div class="direction-box">
+      <strong>Recommended direction:</strong> reduce the effort and uncertainty of the manual recovery step — calling, messaging, waiting, moving — at a defined set of complex location types. Not a pickup-pin redesign. Not an airport-only fix.
+    </div>
+
+    <h3>Why this direction, not another</h3>
+    <ol class="reasons">
+      <li>Pickup "failure" is multi-causal (Insight 8). A single root-cause fix like better GPS won't touch destination-, fare-, or payment-driven cancellations that get coded the same way.</li>
+      <li>Airport is the single largest location by mention, but not a majority — residential, mall, office, station, and street combined outnumber it (Insight 3). An airport-only fix leaves most reported cases unaddressed.</li>
+      <li>Insights 5 and 9 together are the strongest, most-repeated pattern in the data: communication is the de facto fallback, it mostly works, and when it doesn't, there's no floor. That's the best-supported place to focus — not because it's the most severe failure, but because it's the one the data actually supports at volume.</li>
+    </ol>
+
+    <h3>What the evidence adds beyond the original desk-research hypotheses</h3>
+    <ul>
+      <li><strong>Communication is the default recovery layer, and it works more often than not</strong> — but it's effortful, and for 6 respondents nothing helped at all. The gap isn't "no recovery path exists," it's that the recovery path is manual, unbounded effort with no guaranteed floor.</li>
+      <li><strong>Identification, not just location, can fail</strong> (Insight 10) — a low-frequency but safety-relevant edge case the original hypotheses didn't cover.</li>
+    </ul>
+
+    <h3>What not to pursue yet, and why</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Do not pursue yet</th><th>Reason</th></tr>
+        <tr><td>A driver-side product direction</td><td>Only 4 driver responses, 1 reporting difficulty — not enough evidence for driver-specific claims</td></tr>
+        <tr><td>An airport-specific solution</td><td>Airport is the largest single location by mention but not a majority; no reliable Hyderabad airport-specific volume data exists either</td></tr>
+        <tr><td>Any claim about luggage, age, disability, or accessibility burden</td><td>No survey evidence collected on this beyond one weather data point</td></tr>
+        <tr><td>A precise "X% of Hyderabad pickups fail" market-sizing claim</td><td>No reliable internal trip-volume or issue-rate data exists publicly; the 40.7% Hyderabad-issue-rate figure is a convenience-sample statistic, not a citywide number</td></tr>
+        <tr><td>A single-feature commitment (e.g. AR navigation)</td><td>No insight supports a specific technical mechanism yet</td></tr>
+      </table>
+    </div>
+
+    <h3>Open gaps before this direction can harden further</h3>
+    <ul>
+      <li><strong>Driver perspective</strong> — needs targeted recruitment or an explicit acknowledged research gap.</li>
+      <li><strong>What "communication effort" actually costs</strong> — time-loss data exists for only 10 records.</li>
+      <li><strong>Location-type-specific rules</strong> — still resting on desk research and a handful of quotes, not field-verified per location.</li>
+    </ul>
+  </section>
+
+  <section class="page-break">
+    <h2><span class="section-num">4</span>Research-Led Product Ideas</h2>
+    <p class="section-intro">All three stay inside the direction above: reduce the effort and uncertainty of manual recovery at a defined set of complex locations. None redesign the pickup pin, none are airport-exclusive, none make driver-specific claims. Ordered by evidence strength, which is also the recommended build sequence.</p>
+
+    <div class="idea">
+      <div class="idea-head"><span class="rank">Priority 1 of 3</span><h4>Structured pre-arrival meeting note</h4></div>
+      <div class="idea-body">
+        <dl>
+          <div class="field-row"><dt>User</dt><dd>Riders and drivers together, for pickups at a defined list of complex location types — not every ride</dd></div>
+          <div class="field-row"><dt>Moment</dt><dd>After booking is confirmed, a few minutes before estimated driver arrival — before confusion starts, not after</dd></div>
+          <div class="field-row"><dt>Problem</dt><dd>Calling/messaging is already the default recovery layer (Insight 5) but it's unstructured and reactive. "Driver arrived" can still mean lost (Insight 4). One respondent (R061) already does this manually and unprompted: "I always place a message on where I would stand with details."</dd></div>
+          <div class="field-row"><dt>Action</dt><dd>For pickups at complex location types, prompt both sides to exchange one short structured note — landmark, gate/side, waiting spot — shortly before arrival. Formalizes what a rider is already doing by hand.</dd></div>
+          <div class="field-row"><dt>Outcome</dt><dd>Fewer reactive calls/messages at the moment of arrival; less of the "arrived but can't find each other" gap</dd></div>
+          <div class="field-row"><dt>Risk</dt><dd>Shown on every ride, it adds friction to pickups that were never going to be difficult (only 24 of 52 recent users report any issue at all). Must be scoped to flagged location types only.</dd></div>
+          <div class="field-row"><dt>Test</dt><dd>A/B test: show the prompt only for bookings at top-mentioned location types (airport, mall, office, residential); measure call/message rate and self-reported wait time against a control group.</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="idea">
+      <div class="idea-head"><span class="rank">Priority 2 of 3</span><h4>A guaranteed next step when coordination stalls</h4></div>
+      <div class="idea-body">
+        <dl>
+          <div class="field-row"><dt>User</dt><dd>Riders primarily — the ones left with no recourse when recovery fails</dd></div>
+          <div class="field-row"><dt>Moment</dt><dd>After the app shows "driver arrived" but the trip hasn't started within a defined time window</dd></div>
+          <div class="field-row"><dt>Problem</dt><dd>6 of 28 issue respondents selected "nothing helped" (Insight 9). R064: "No one to seek redressal or help... Grievance redressal has to be immediate." A distinct failure mode from Idea 1 — this is what happens after communication has already failed, not before.</dd></div>
+          <div class="field-row"><dt>Action</dt><dd>If a trip stalls in "arrived" state past a threshold at a flagged location, surface an explicit next step beyond "keep waiting or cancel" — e.g. guided live-location-share-and-call, or an active reassignment offer.</dd></div>
+          <div class="field-row"><dt>Outcome</dt><dd>Fewer unresolved cancellations with no recourse; a measurable floor under the worst-case coordination failures</dd></div>
+          <div class="field-row"><dt>Risk</dt><dd>Cancellation is multi-causal (Insight 8) — this must trigger only on genuine coordination stalls, or it becomes a general complaint channel that invites misuse.</dd></div>
+          <div class="field-row"><dt>Test</dt><dd>Instrument stalled "arrived" states at flagged locations; offer the guided escalation to a sample; measure resolution rate against a control group.</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="idea">
+      <div class="idea-head"><span class="rank">Priority 3 of 3</span><h4>Reusable, venue-specific coordination notes for recurring locations</h4></div>
+      <div class="idea-body">
+        <dl>
+          <div class="field-row"><dt>User</dt><dd>Riders and drivers, at a small starting shortlist of the highest-mention venues — not a general rollout</dd></div>
+          <div class="field-row"><dt>Moment</dt><dd>Before departure, once a booking's pickup point matches a venue on the shortlist</dd></div>
+          <div class="field-row"><dt>Problem</dt><dd>23 of 28 issue cases said the problem had happened before (Insight 2) — recurring, at the same kind of place. Desk research found a concrete example of why generic map data isn't enough: Secunderabad Station's real, current 15-minute pickup/drop access rule, invisible from the pin alone.</dd></div>
+          <div class="field-row"><dt>Action</dt><dd>For 2–3 highest-mention venues, invest once in a structured coordination note — accessible gate/side, legal stopping point, known access constraints — that every rider and driver pulls from.</dd></div>
+          <div class="field-row"><dt>Outcome</dt><dd>A one-time venue-level data investment pays off across many repeat pickups at that place, targeting the recurrence pattern directly</dd></div>
+          <div class="field-row"><dt>Risk</dt><dd>Venue rules change (Secunderabad's own rules changed with 2026 redevelopment) — a stale note is worse than no note. Needs real update ownership. Also the most resource-intensive of the three.</dd></div>
+          <div class="field-row"><dt>Test</dt><dd>Pilot at 2–3 venues only; compare call/message rate and reported wait time for repeat pickups against comparable non-piloted venues of the same type.</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="excludes">
+      <h3>What this set deliberately leaves out</h3>
+      <ul>
+        <li>Any driver-specific feature — the 4-response driver sample isn't enough to support one.</li>
+        <li>An airport-only solution — explicitly ruled out; airport is the largest single location by mention but not a majority.</li>
+        <li>A precise ROI or market-size claim for any idea — no reliable Hyderabad trip-volume data exists to size against.</li>
+        <li>The vehicle-identification mismatch from Insight 10 — real but single-mention edge-case evidence, not enough yet to support a dedicated idea. Worth flagging as a safety-relevant follow-up question if more interviews happen.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="page-break">
+    <h2><span class="section-num">5</span>Evidence Boundary, Limitations, and Source Traceability</h2>
+
+    <h3>What kind of evidence this is</h3>
+    <ul class="limit-list">
+      <li>This is a convenience sample recruited through the researcher's own network and distribution channels, not a random or representative sample of Hyderabad riders.</li>
+      <li>The interview format is a self-serve, trilingual (English / Telugu / Hindi), consent-gated online survey — asynchronous, not live. It could not probe a vague or contradictory answer the way a synchronous interview could.</li>
+      <li><strong>Proof of participation:</strong> each analyzed response is a timestamped, consent-recorded survey submission — the consent checkbox ("I agree that my anonymous answers may be used as research quotes...") is required before any other question can be answered. That timestamped, consented record is the proof format for this project, in place of photos, videos, or message screenshots of individually identified participants.</li>
+      <li>63 total submissions were reviewed; one confirmed duplicate (identical text, same city, submitted 9 seconds apart) was removed, leaving 62 unique responses used throughout this document.</li>
+      <li>Only 4 of 63 submissions came from drivers, and only 1 of those 4 reported difficulty. Driver-side claims are treated as an open gap throughout, not as evidence.</li>
+      <li>Language coverage skewed heavily English: 60 English, 3 Telugu, 0 Hindi responses, despite a Hindi-language distribution message going out. The Telugu and Hindi survey translations have not yet been reviewed by a native speaker — flagged as outstanding.</li>
+      <li>Multi-select questions (location, actions, what helped) produce mention counts, not mutually exclusive person counts — noted wherever those figures appear.</li>
+      <li>Open-text responses are participant evidence and are quoted anonymously by response ID only; attribution would require separate explicit permission not collected here.</li>
+    </ul>
+
+    <h3>What was deliberately not pursued, and why</h3>
+    <ul class="limit-list">
+      <li>Further manual review of the remaining 18 (of 21) priority YouTube videos was stopped once primary survey data existed — public video material is Grade C evidence at best, and mattered more before the survey than after.</li>
+      <li>Live field verification at Rajiv Gandhi International Airport, Secunderabad Railway Station, and Raidurg Metro was substituted with a desk-only public-source check given an unconfirmed deadline. That check surfaced one genuinely new fact — Secunderabad's 15-minute pickup/drop access-control window — and otherwise confirmed the original verification gaps remain open.</li>
+      <li>A reliable Hyderabad-specific trip-volume or pickup-failure rate could not be established from public sources. This document does not present a fabricated market-size number in its place.</li>
+    </ul>
+
+    <h3>How this document was produced</h3>
+    <p>AI assistance (Claude) was used to organize, structure, and synthesize evidence already collected by the researcher — normalizing survey data, cross-referencing quotes against source records, and drafting this document's structure. Every quote, count, and claim in this document traces to a specific survey response or a cited public source; none were generated or invented in the process.</p>
+
+    <h3>Source traceability</h3>
+    <p class="source-list">Full supporting detail, beyond what's reproduced above, is documented in the project repository:</p>
+    <ul class="source-list">
+      <li><span class="mono">synthesis/01-survey-insights.md</span> — full insight synthesis with additional cross-tab addenda</li>
+      <li><span class="mono">synthesis/02-strategy-implications.md</span> — full hypothesis-by-hypothesis reconciliation (H1–H6)</li>
+      <li><span class="mono">research/desk-research-report.md</span> — the underlying market and competitive research (72 sources, 94 evidence records)</li>
+      <li><span class="mono">research/competitor-analysis.md</span> — Uber, Grab, Ola, Lyft, Waymo, MyGate, Rapido comparison</li>
+      <li><span class="mono">research/product-teardown.md</span> — stage-by-stage journey teardown mapping each product idea to a specific breakdown point</li>
+      <li><span class="mono">research/swot-analysis.md</span> — Strengths / Weaknesses / Opportunities / Threats on the pickup-coordination position specifically</li>
+      <li><span class="mono">research/location-validation-desk-only.md</span> — the desk-only substitute for field verification</li>
+      <li><span class="mono">data/survey/</span> — the normalized dataset and analytics workbook underlying every count in Section 2</li>
+    </ul>
+
+    <div class="video-slot">Video walkthrough (under 5 minutes, presenter visible): <em>[insert Loom or Google Drive link before final export]</em></div>
+  </section>
+
+  <div class="footer-note">Find My Ride — Airtribe PM Project 3 — Praveen Veera — draft for review, not yet finalized for submission</div>
+
+</div>

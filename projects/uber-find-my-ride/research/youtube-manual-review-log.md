@@ -6,6 +6,8 @@
 
 **Progress:** 3 reviewed, 18 pending
 
+**Closed 17 September 2026 — deliberate stop, not an oversight.** With 62 real survey responses now collected (see [`../synthesis/01-survey-insights.md`](../synthesis/01-survey-insights.md)), the marginal value of watching 18 more Grade C, airport-only videos is low relative to the time cost: this evidence tier "can improve interview questions but cannot establish prevalence" per the project's own evidence rules, and primary survey evidence now exists to serve that purpose instead. The 3 reviewed videos and their classifications below remain valid Grade C context for the RGIA airport case specifically; the 18 unreviewed rows are left `Pending` rather than backfilled, so the gap stays visible.
+
 ## Review rule
 
 A reviewer must watch the content before using it as evidence. For every reviewed video, this log separates visible observations from creator claims, records useful timestamps, and states the limitation. Comments are interpreted only with the source video.

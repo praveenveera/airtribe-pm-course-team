@@ -1,0 +1,13 @@
+{"kind":"formula","sheet":"Summary","address":"B5","formula":"=COUNTA('Anonymized Responses'!A2:A63)"}
+{"kind":"formula","sheet":"Summary","address":"F5","formula":"=COUNTIF('Anonymized Responses'!J2:J63,1)"}
+{"kind":"formula","sheet":"Summary","address":"B6","formula":"=COUNTIF('Anonymized Responses'!E2:E63,\"rider\")"}
+{"kind":"formula","sheet":"Summary","address":"F6","formula":"=COUNTIF('Anonymized Responses'!J2:J63,0)"}
+{"kind":"formula","sheet":"Summary","address":"B7","formula":"=COUNTIF('Anonymized Responses'!E2:E63,\"driver\")"}
+{"kind":"formula","sheet":"Summary","address":"B8","formula":"=COUNTIF('Anonymized Responses'!H2:H63,\"yes\")"}
+{"kind":"formula","sheet":"Summary","address":"B9","formula":"=COUNTIFS('Anonymized Responses'!H2:H63,\"yes\",'Anonymized Responses'!J2:J63,1)"}
+{"kind":"formula","sheet":"Summary","address":"B10","formula":"=B9/B8"}
+{"kind":"formula","sheet":"Summary","address":"B11","formula":"=COUNTIF('Anonymized Responses'!J2:J63,1)"}
+{"kind":"formula","sheet":"Summary","address":"B12","formula":"=COUNTIFS('Anonymized Responses'!J2:J63,1,'Anonymized Responses'!U2:U63,\"yes\")"}
+{"kind":"formula","sheet":"Summary","address":"B13","formula":"=COUNTIF('Anonymized Responses'!F2:F63,\"Hyderabad\")"}
+{"kind":"formula","sheet":"Summary","address":"B14","formula":"=COUNTIF('Anonymized Responses'!F2:F63,\"Other\")"}
+{"kind":"formula","sheet":"Summary","address":"B15","formula":"=COUNTIFS('Anonymized Responses'!F2:F63,\"Hyderabad\",'Anonymized Responses'!H2:H63,\"yes\",'Anonymized Responses'!J2:J63,1)"}
