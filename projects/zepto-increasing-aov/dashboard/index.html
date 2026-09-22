@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project 4 · Zepto AOV Research Command Center</title>
+  <meta name="description" content="Evidence-controlled research dashboard for Project 4: increasing AOV at Zepto.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --panel: #ffffff;
+      --ink: #172554;
+      --muted: #64748b;
+      --soft: #eef4ff;
+      --border: #dbe5f3;
+      --blue: #1e40af;
+      --blue-2: #3b82f6;
+      --blue-3: #dbeafe;
+      --amber: #b45309;
+      --amber-bg: #fff7ed;
+      --green: #047857;
+      --green-bg: #ecfdf5;
+      --red: #b91c1c;
+      --red-bg: #fef2f2;
+      --shadow: 0 12px 32px rgba(30, 64, 175, .07);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.55 "Fira Sans", system-ui, sans-serif; }
+    button, input, textarea, select { font: inherit; }
+    button, select { cursor: pointer; }
+    button:focus-visible, select:focus-visible, textarea:focus-visible, input:focus-visible { outline: 3px solid rgba(59, 130, 246, .35); outline-offset: 2px; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { letter-spacing: -.02em; }
+    h1 { font-size: clamp(1.7rem, 3vw, 2.65rem); line-height: 1.08; margin-bottom: 12px; }
+    h2 { font-size: 1.1rem; margin-bottom: 4px; }
+    h3 { font-size: .98rem; margin-bottom: 5px; }
+    .mono { font-family: "Fira Code", monospace; }
+    .shell { max-width: 1480px; margin: 0 auto; padding: 24px; }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 22px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 700; color: var(--ink); }
+    .mark { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: var(--blue); color: white; box-shadow: 0 8px 18px rgba(30, 64, 175, .2); }
+    .mark svg { width: 19px; height: 19px; }
+    .top-actions { display: flex; align-items: center; gap: 10px; color: var(--muted); }
+    .date { font-size: .78rem; }
+    .pill, .status, .tag { display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; padding: 5px 10px; font-size: .73rem; font-weight: 600; white-space: nowrap; }
+    .pill { background: var(--blue-3); color: var(--blue); }
+    .status.done { background: var(--green-bg); color: var(--green); }
+    .status.active { background: var(--amber-bg); color: var(--amber); }
+    .status.pending { background: var(--soft); color: var(--muted); }
+    .hero { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(300px, .8fr); gap: 18px; margin-bottom: 18px; }
+    .hero-card, .panel, .metric { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .hero-card { padding: 28px; position: relative; overflow: hidden; }
+    .hero-card::after { content: ""; position: absolute; right: -60px; bottom: -90px; width: 260px; height: 260px; border-radius: 50%; border: 34px solid rgba(59, 130, 246, .08); }
+    .eyebrow { color: var(--blue); font: 600 .72rem "Fira Code", monospace; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px; }
+    .hero-copy { max-width: 800px; color: #475569; font-size: 1.02rem; }
+    .hero-copy strong { color: var(--ink); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .btn { border: 1px solid var(--border); background: white; color: var(--ink); padding: 10px 14px; border-radius: 10px; font-weight: 600; font-size: .84rem; transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+    .btn:hover { transform: translateY(-1px); border-color: var(--blue-2); box-shadow: 0 6px 14px rgba(30, 64, 175, .1); }
+    .btn.primary { background: var(--blue); border-color: var(--blue); color: white; }
+    .bengaluru-card { padding: 22px; background: linear-gradient(140deg, #172554, #1e40af); color: white; border-radius: var(--radius); box-shadow: var(--shadow); }
+    .bengaluru-card .eyebrow { color: #bfdbfe; }
+    .bengaluru-card p { color: #dbeafe; margin-bottom: 13px; }
+    .bengaluru-card .tag { background: rgba(255,255,255,.13); color: white; }
+    .metrics { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 18px; }
+    .metric { padding: 17px; min-height: 116px; }
+    .metric-label { color: var(--muted); font-size: .76rem; }
+    .metric-value { font: 700 1.8rem "Fira Code", monospace; margin: 7px 0 3px; color: var(--ink); }
+    .metric-note { color: var(--muted); font-size: .72rem; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(340px, .82fr); gap: 18px; }
+    .panel { padding: 20px; margin-bottom: 18px; }
+    .panel-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+    .panel-subtitle { color: var(--muted); font-size: .81rem; margin: 0; }
+    .filter-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 15px; }
+    .filter { border: 1px solid var(--border); color: var(--muted); background: #fff; border-radius: 999px; padding: 7px 11px; font-size: .76rem; }
+    .filter[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); color: #fff; }
+    .progress-list { display: grid; gap: 14px; }
+    .progress-item { display: grid; grid-template-columns: 145px minmax(100px, 1fr) 78px; align-items: center; gap: 12px; font-size: .8rem; }
+    .progress-name { font-weight: 600; }
+    .progress-track { height: 8px; background: #edf2f7; border-radius: 99px; overflow: hidden; }
+    .progress-fill { height: 100%; border-radius: inherit; background: var(--blue-2); }
+    .progress-fill.green { background: #10b981; }
+    .progress-fill.amber { background: #f59e0b; }
+    .progress-meta { color: var(--muted); text-align: right; font: 600 .72rem "Fira Code", monospace; }
+    .chain { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; align-items: stretch; }
+    .chain-step { border: 1px solid var(--border); border-radius: 12px; padding: 13px 11px; background: #fbfdff; position: relative; }
+    .chain-step:not(:last-child)::after { content: "→"; position: absolute; right: -14px; top: 38%; color: #94a3b8; z-index: 1; }
+    .chain-number { color: var(--blue); font: 700 .7rem "Fira Code", monospace; }
+    .chain-step strong { display: block; font-size: .78rem; line-height: 1.25; margin-top: 6px; }
+    .chain-step small { display: block; color: var(--muted); line-height: 1.35; margin-top: 7px; font-size: .7rem; }
+    .bars { display: grid; gap: 14px; }
+    .bar-row { display: grid; grid-template-columns: 130px 1fr 50px; gap: 10px; align-items: center; font-size: .78rem; }
+    .bar-track { height: 10px; background: #edf2f7; border-radius: 99px; overflow: hidden; }
+    .bar-fill { height: 100%; background: var(--blue-2); border-radius: inherit; }
+    .bar-fill.amber { background: #f59e0b; }
+    .bar-fill.green { background: #10b981; }
+    .bar-value { font: 600 .7rem "Fira Code", monospace; color: var(--muted); text-align: right; }
+    .insights-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .insight { border: 1px solid var(--border); border-radius: 12px; padding: 14px; background: #fff; transition: transform .18s ease, box-shadow .18s ease; }
+    .insight:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(30, 64, 175, .08); }
+    .insight-top { display: flex; justify-content: space-between; gap: 8px; align-items: center; margin-bottom: 8px; }
+    .insight p { color: #475569; font-size: .79rem; margin: 8px 0 0; }
+    .insight .tag { background: var(--soft); color: var(--blue); padding: 4px 8px; }
+    .ledger-empty { padding: 24px; border: 1px dashed var(--border); color: var(--muted); text-align: center; border-radius: 12px; }
+    .queue { display: grid; gap: 10px; }
+    .queue-item { display: grid; grid-template-columns: 32px 1fr auto; gap: 11px; align-items: start; padding: 12px; border: 1px solid var(--border); border-radius: 12px; }
+    .queue-num { width: 28px; height: 28px; display: grid; place-items: center; color: white; background: var(--blue); border-radius: 9px; font: 600 .75rem "Fira Code", monospace; }
+    .queue-item p { margin: 2px 0 0; color: var(--muted); font-size: .77rem; }
+    .queue-item .status { align-self: start; }
+    .source-pills { display: flex; flex-wrap: wrap; gap: 7px; }
+    .source-pill { padding: 8px 10px; border-radius: 10px; background: var(--soft); color: var(--blue); font-size: .75rem; font-weight: 600; }
+    .explorer { background: linear-gradient(180deg, #f8fbff, #fff); }
+    .explorer textarea { width: 100%; min-height: 130px; resize: vertical; border: 1px solid var(--border); border-radius: 12px; padding: 12px; color: var(--ink); background: white; }
+    .explorer-controls { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 10px; }
+    .sample-buttons { display: flex; flex-wrap: wrap; gap: 6px; }
+    .sample { border: 0; background: var(--blue-3); color: var(--blue); padding: 6px 8px; border-radius: 8px; font-size: .7rem; }
+    .analysis-result { margin-top: 15px; display: none; }
+    .analysis-result.show { display: block; }
+    .analysis-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 10px; }
+    .analysis-chip { border: 1px solid var(--border); border-radius: 10px; padding: 10px; background: white; }
+    .analysis-chip span { display: block; color: var(--muted); font-size: .68rem; }
+    .analysis-chip strong { display: block; margin-top: 3px; font-size: .8rem; }
+    .analysis-output { padding: 13px; border-left: 3px solid var(--amber); background: var(--amber-bg); border-radius: 0 10px 10px 0; color: #78350f; font-size: .8rem; }
+    .legend { display: flex; flex-wrap: wrap; gap: 12px; color: var(--muted); font-size: .72rem; }
+    .legend span { display: inline-flex; align-items: center; gap: 5px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue-2); }
+    .dot.amber { background: #f59e0b; }
+    .dot.green { background: #10b981; }
+    footer { color: var(--muted); font-size: .74rem; padding: 4px 0 18px; }
+
+    @media (max-width: 1080px) {
+      .metrics { grid-template-columns: repeat(3, 1fr); }
+      .hero, .layout { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      .shell { padding: 14px; }
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .top-actions { width: 100%; justify-content: space-between; }
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+      .metric { min-height: 100px; }
+      .metric-value { font-size: 1.45rem; }
+      .hero-card, .bengaluru-card, .panel { padding: 16px; }
+      .chain { grid-template-columns: 1fr; }
+      .chain-step:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -18px; }
+      .progress-item { grid-template-columns: 112px minmax(70px, 1fr) 68px; gap: 8px; }
+      .insights-grid { grid-template-columns: 1fr; }
+      .analysis-summary { grid-template-columns: 1fr; }
+      .queue-item { grid-template-columns: 29px 1fr; }
+      .queue-item .status { grid-column: 2; justify-self: start; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Project 4 dashboard home">
+        <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17V7m5 10V4m6 13V9m5 8V5"/><path d="M3 20h18"/></svg></span>
+        <span>Project 4 <span style="color:var(--muted);font-weight:500">/ Zepto AOV research</span></span>
+      </a>
+      <div class="top-actions"><span class="pill">secondary research mode</span><span class="date mono">updated 22 Sep 2026</span></div>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="hero-card">
+        <div class="eyebrow">research command center</div>
+        <h1>From market growth to a profitable basket.</h1>
+        <p class="hero-copy">A visual view of what we know, what we think, and what still needs validation for increasing Zepto’s AOV. <strong>Public evidence is directional; primary research remains deferred.</strong></p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#queue">View next queue</a>
+          <a class="btn" href="#explorer">Explore user input</a>
+          <a class="btn" href="../PROJECT_STATUS.md">Open status tracker</a>
+        </div>
+      </div>
+      <aside class="bengaluru-card" aria-label="Bengaluru observation decision">
+        <div class="eyebrow">observation decision</div>
+        <h2 style="font-size:1.35rem;margin-bottom:8px">Proceed with Bengaluru</h2>
+        <p>Our public-feedback coverage is strongest here. Use one Bengaluru pin for the matched-basket comparison so price, fee, ETA, and availability are comparable.</p>
+        <span class="tag">next benchmark location</span>
+      </aside>
+    </section>
+
+    <section class="metrics" aria-label="Research metrics">
+      <article class="metric"><div class="metric-label">Workstreams tracked</div><div class="metric-value">11</div><div class="metric-note">status tracker coverage</div></article>
+      <article class="metric"><div class="metric-label">Public themes coded</div><div class="metric-value">10</div><div class="metric-note">not customer prevalence</div></article>
+      <article class="metric"><div class="metric-label">Public cart snapshots</div><div class="metric-value">02</div><div class="metric-note">uncontrolled comparisons</div></article>
+      <article class="metric"><div class="metric-label">Validation questions</div><div class="metric-value">05</div><div class="metric-note">primary/live research backlog</div></article>
+      <article class="metric"><div class="metric-label">Evidence boundary</div><div class="metric-value" style="font-size:1.15rem;color:var(--amber)">Directional</div><div class="metric-note">no causal AOV proof yet</div></article>
+    </section>
+
+    <div class="layout">
+      <div>
+        <section class="panel" id="progress">
+          <div class="panel-head"><div><h2>Research progress</h2><p class="panel-subtitle">A planning view of workstream readiness—not a customer metric.</p></div><span class="status active">in progress</span></div>
+          <div class="filter-row" aria-label="Filter progress workstreams">
+            <button class="filter" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter" data-filter="secondary" aria-pressed="false">Secondary</button>
+            <button class="filter" data-filter="validation" aria-pressed="false">Validation</button>
+            <button class="filter" data-filter="submission" aria-pressed="false">Submission</button>
+          </div>
+          <div class="progress-list" id="progressList"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head"><div><h2>The decision chain</h2><p class="panel-subtitle">How evidence should connect before we recommend a product bet.</p></div></div>
+          <div class="chain">
+            <div class="chain-step"><span class="chain-number">01</span><strong>Market growth</strong><small>Is the category expanding?</small></div>
+            <div class="chain-step"><span class="chain-number">02</span><strong>Competitor scale</strong><small>Where is spend moving?</small></div>
+            <div class="chain-step"><span class="chain-number">03</span><strong>Customer friction</strong><small>What stops the basket?</small></div>
+            <div class="chain-step"><span class="chain-number">04</span><strong>Product mechanics</strong><small>What does each app do?</small></div>
+            <div class="chain-step"><span class="chain-number">05</span><strong>Profitable AOV</strong><small>What is worth testing?</small></div>
+          </div>
+        </section>
+
+        <section class="panel" id="insights">
+          <div class="panel-head"><div><h2>Evidence-led insight ledger</h2><p class="panel-subtitle">Repeated signals translated into testable product hypotheses.</p></div><select id="themeFilter" aria-label="Filter insight themes"><option value="all">All themes</option><option value="trust">Trust & quality</option><option value="price">Price & fees</option><option value="mission">Mission & basket</option><option value="operations">Operations</option></select></div>
+          <div class="insights-grid" id="insightGrid"></div>
+        </section>
+      </div>
+
+      <aside>
+        <section class="panel">
+          <div class="panel-head"><div><h2>Public evidence mix</h2><p class="panel-subtitle">Coverage by source surface. Counts are source surfaces, not users.</p></div></div>
+          <div class="bars">
+            <div class="bar-row"><span>Reddit</span><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div><span class="bar-value">16</span></div>
+            <div class="bar-row"><span>Complaints</span><div class="bar-track"><div class="bar-fill amber" style="width:50%"></div></div><span class="bar-value">10</span></div>
+            <div class="bar-row"><span>App stores</span><div class="bar-track"><div class="bar-fill green" style="width:25%"></div></div><span class="bar-value">05</span></div>
+            <div class="bar-row"><span>Videos</span><div class="bar-track"><div class="bar-fill" style="width:10%"></div></div><span class="bar-value">02</span></div>
+          </div>
+          <div class="legend" style="margin-top:15px"><span><i class="dot"></i>community</span><span><i class="dot amber"></i>failure reports</span><span><i class="dot green"></i>reviews</span></div>
+        </section>
+
+        <section class="panel" id="basket">
+          <div class="panel-head"><div><h2>Matched-basket readiness</h2><p class="panel-subtitle">Public snapshots seed the questions; Bengaluru will provide the controlled observation.</p></div><span class="status active">next</span></div>
+          <div class="source-pills"><span class="source-pill">Bengaluru pin</span><span class="source-pill">same basket</span><span class="source-pill">same time window</span><span class="source-pill">same account state</span></div>
+          <div style="margin-top:15px;padding:12px;border-radius:12px;background:var(--amber-bg);color:#78350f;font-size:.79rem"><strong>Watch:</strong> product price is not final payable price. Capture fees, thresholds, discounts, and ETA separately.</div>
+        </section>
+
+        <section class="panel" id="queue">
+          <div class="panel-head"><div><h2>Next queue</h2><p class="panel-subtitle">Order of work from the current evidence boundary.</p></div></div>
+          <div class="queue">
+            <div class="queue-item"><span class="queue-num">01</span><div><h3>Run Bengaluru matched basket</h3><p>Choose a pin and compare Zepto, Blinkit, Instamart, and BigBasket/bbnow.</p></div><span class="status active">next</span></div>
+            <div class="queue-item"><span class="queue-num">02</span><div><h3>Code individual public feedback</h3><p>Move from source-level themes to review/comment-level evidence.</p></div><span class="status pending">queued</span></div>
+            <div class="queue-item"><span class="queue-num">03</span><div><h3>Populate AOV scenario model</h3><p>Add verified baseline, margin, order, and retention inputs.</p></div><span class="status pending">blocked</span></div>
+            <div class="queue-item"><span class="queue-num">04</span><div><h3>Restart primary validation</h3><p>Use recent-purchase interviews and the neutral survey after the secondary pack is frozen.</p></div><span class="status pending">later</span></div>
+          </div>
+        </section>
+
+        <section class="panel explorer" id="explorer">
+          <div class="panel-head"><div><h2>User input explorer</h2><p class="panel-subtitle">Paste a review, interview note, or survey response to classify directional themes locally in your browser.</p></div><span class="pill">local only</span></div>
+          <textarea id="userInput" aria-label="Paste user input" placeholder="Example: I used Zepto for milk and bread, but the handling fee made me add snacks. The vegetables were not fresh, so I use BigBasket for monthly shopping."></textarea>
+          <div class="explorer-controls"><div class="sample-buttons"><button class="sample" data-sample="fee">Fee example</button><button class="sample" data-sample="fresh">Freshness example</button><button class="sample" data-sample="monthly">Monthly example</button></div><button class="btn primary" id="analyzeBtn">Extract insight</button></div>
+          <div class="analysis-result" id="analysisResult" aria-live="polite"></div>
+        </section>
+      </aside>
+    </div>
+
+    <footer>Evidence rule: public feedback is self-selected and directional. The dashboard does not estimate issue frequency, prove causality, or replace primary research. <a href="../PROJECT_STATUS.md">Read the full status tracker →</a></footer>
+  </main>
+
+  <script>
+    const progressData = [
+      {name:'Problem framing', value:100, meta:'complete', group:'secondary', tone:'green'},
+      {name:'Industry + market', value:88, meta:'documented', group:'secondary', tone:'green'},
+      {name:'Competitor analysis', value:82, meta:'documented', group:'secondary', tone:'green'},
+      {name:'Product teardown', value:78, meta:'desk done', group:'secondary', tone:'green'},
+      {name:'Public feedback', value:78, meta:'coded themes', group:'secondary', tone:'green'},
+      {name:'Matched basket', value:28, meta:'public seed', group:'validation', tone:'amber'},
+      {name:'AOV model inputs', value:38, meta:'framework', group:'validation', tone:'amber'},
+      {name:'Primary research', value:0, meta:'deferred', group:'validation', tone:''},
+      {name:'Final synthesis', value:30, meta:'draft', group:'submission', tone:'amber'}
+    ];
+
+    const insights = [
+      {theme:'price', tag:'Directional', title:'Final payable price beats item price', body:'Public comparisons show that delivery, handling, and surge charges can reverse the apparent cheapest-app decision.', source:'U12 · U17 · U18'},
+      {theme:'trust', tag:'Directional', title:'Freshness is category-specific', body:'Fresh produce, dairy, bakery, and packaged goods appear to carry different trust expectations and failure concerns.', source:'U02 · U06 · U09 · U16'},
+      {theme:'operations', tag:'Directional', title:'Locality changes the winner', body:'Users describe different app preferences by city, neighbourhood, store proximity, time, and delivery operation.', source:'U06 · U11 · U19 · U20'},
+      {theme:'mission', tag:'Hypothesis', title:'Reorder is not a monthly basket', body:'A copied past order may include irrelevant one-offs; an editable recurring list could better support planned shopping.', source:'U05'},
+      {theme:'price', tag:'Hypothesis', title:'Threshold additions need a value guardrail', body:'Users may add items to avoid a fee, but a forced addition is not automatically profitable or trust-building.', source:'U01 · U15'},
+      {theme:'operations', tag:'Unknown', title:'Recovery may affect future basket size', body:'Complaint surfaces show recovery friction, but the effect on repeat use or higher-value orders is not established.', source:'U07 · U08 · U10'}
+    ];
+
+    const progressList = document.getElementById('progressList');
+    const renderProgress = (filter='all') => {
+      progressList.innerHTML = progressData.filter(item => filter === 'all' || item.group === filter).map(item => `
+        <div class="progress-item"><span class="progress-name">${item.name}</span><div class="progress-track"><div class="progress-fill ${item.tone}" style="width:${item.value}%"></div></div><span class="progress-meta">${item.value}% · ${item.meta}</span></div>`).join('');
+    };
+    renderProgress();
+    document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => {
+      document.querySelectorAll('.filter').forEach(item => item.setAttribute('aria-pressed', 'false'));
+      button.setAttribute('aria-pressed', 'true');
+      renderProgress(button.dataset.filter);
+    }));
+
+    const insightGrid = document.getElementById('insightGrid');
+    const renderInsights = (filter='all') => {
+      const filtered = insights.filter(item => filter === 'all' || item.theme === filter);
+      insightGrid.innerHTML = filtered.length ? filtered.map(item => `
+        <article class="insight"><div class="insight-top"><span class="tag">${item.tag}</span><span class="mono" style="font-size:.66rem;color:var(--muted)">${item.source}</span></div><h3>${item.title}</h3><p>${item.body}</p></article>`).join('') : '<div class="ledger-empty">No insights in this filter.</div>';
+    };
+    renderInsights();
+    document.getElementById('themeFilter').addEventListener('change', event => renderInsights(event.target.value));
+
+    const samples = {
+      fee: 'I used Zepto for milk and bread, but the handling fee made me add snacks. The final amount was still higher than Instamart, so I switched.',
+      fresh: 'The vegetables were not fresh and support took time to resolve it. I still use the app for packaged items but avoid adding produce.',
+      monthly: 'Reorder brought back old snacks and one-off items. For monthly shopping I prefer BigBasket or my local store because I can plan the full list.'
+    };
+    document.querySelectorAll('.sample').forEach(button => button.addEventListener('click', () => { document.getElementById('userInput').value = samples[button.dataset.sample]; analyze(); }));
+    document.getElementById('analyzeBtn').addEventListener('click', analyze);
+
+    function analyze() {
+      const text = document.getElementById('userInput').value.trim();
+      const result = document.getElementById('analysisResult');
+      if (!text) { result.innerHTML = '<div class="analysis-output">Paste a review, interview note, or survey response first.</div>'; result.classList.add('show'); return; }
+      const lower = text.toLowerCase();
+      const rules = [
+        ['Fee / final price', ['fee','charge','handling','surge','price','cost','threshold','expensive']],
+        ['Freshness / quality', ['fresh','rotten','expired','quality','vegetable','fruit','milk','dairy','damaged']],
+        ['Availability', ['stock','available','unavailable','missing','out of stock','substitut']],
+        ['Recovery / support', ['refund','support','chatbot','complaint','resolved','replacement']],
+        ['Mission / repeat', ['monthly','weekly','reorder','top-up','emergency','planned','bulk','late night']],
+        ['Switching / offline', ['switched','switch','bigbasket','blinkit','instamart','kirana','local store','dmart']]
+      ];
+      const found = rules.filter(([, words]) => words.some(word => lower.includes(word))).map(([name]) => name);
+      const mission = lower.includes('monthly') || lower.includes('weekly') || lower.includes('bulk') || lower.includes('planned') ? 'Planned / stock-up' : lower.includes('emergency') || lower.includes('late night') ? 'Urgent / top-up' : 'Unclear — ask a follow-up';
+      const tone = /bad|poor|rotten|expired|frustrat|issue|problem|higher|avoid|switched|missing|late/.test(lower) ? 'Friction signal' : 'Mixed / positive signal';
+      const implication = found.includes('Fee / final price') ? 'Test total payable price and threshold behaviour.' : found.includes('Freshness / quality') ? 'Test category-specific trust before recommending more items.' : found.includes('Mission / repeat') ? 'Test an editable mission list rather than full-order reorder.' : 'Convert this signal into a recent-purchase follow-up question.';
+      result.innerHTML = `<div class="analysis-summary"><div class="analysis-chip"><span>Detected themes</span><strong>${found.length ? found.join(' · ') : 'No mapped theme'}</strong></div><div class="analysis-chip"><span>Likely mission</span><strong>${mission}</strong></div><div class="analysis-chip"><span>Signal type</span><strong>${tone}</strong></div></div><div class="analysis-output"><strong>Research implication:</strong> ${implication}<br><span style="font-size:.72rem">Local heuristic only. Save the original input and validate with primary research before treating it as a finding.</span></div>`;
+      result.classList.add('show');
+    }
+  </script>
+</body>
+</html>
