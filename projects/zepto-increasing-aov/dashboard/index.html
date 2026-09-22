@@ -85,6 +85,8 @@
     .readout-kicker { color: var(--muted); font: 600 .68rem "Fira Code", monospace; text-transform: uppercase; letter-spacing: .04em; }
     .readout-card h3 { margin: 10px 0 8px; font-size: .98rem; }
     .readout-card p { color: #475569; font-size: .78rem; margin-bottom: 12px; }
+    .readout-evidence { color: var(--muted); font-size: .68rem; line-height: 1.4; margin: 8px 0 12px; }
+    .readout-evidence a { font: 600 .66rem "Fira Code", monospace; }
     .readout-bottom { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: auto; }
     .confidence { color: var(--muted); font: 600 .66rem "Fira Code", monospace; }
     .opportunity-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
@@ -107,6 +109,28 @@
     .direction { display: inline-block; border-radius: 7px; padding: 3px 7px; background: var(--amber-bg); color: var(--amber); font-weight: 600; font-size: .68rem; }
     .direction.green { background: var(--green-bg); color: var(--green); }
     .direction.blue { background: var(--blue-3); color: var(--blue); }
+    .visual-board { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(320px, .88fr); gap: 12px; }
+    .visual-card { border: 1px solid var(--border); border-radius: 13px; padding: 15px; background: #fbfdff; }
+    .visual-card h3 { margin-bottom: 4px; }
+    .visual-card p { color: var(--muted); font-size: .73rem; margin-bottom: 12px; }
+    .heatmap { display: grid; grid-template-columns: 112px repeat(6, 1fr); gap: 5px; align-items: center; font-size: .67rem; }
+    .heatmap .head { color: var(--muted); text-align: center; font: 600 .6rem "Fira Code", monospace; writing-mode: vertical-rl; transform: rotate(180deg); height: 55px; justify-self: center; }
+    .heatmap .row-label { color: var(--ink); font-weight: 600; }
+    .heat-cell { min-height: 26px; border-radius: 6px; background: #f1f5f9; display: grid; place-items: center; color: #94a3b8; }
+    .heat-cell.yes { background: var(--blue-3); color: var(--blue); font-weight: 700; }
+    .heat-cell.strong { background: #bfdbfe; color: #1e3a8a; font-weight: 700; }
+    .heat-legend { display: flex; gap: 10px; color: var(--muted); font-size: .67rem; margin-top: 12px; }
+    .heat-legend span { display: inline-flex; align-items: center; gap: 5px; }
+    .heat-key { width: 12px; height: 12px; border-radius: 4px; background: var(--blue-3); }
+    .heat-key.strong { background: #bfdbfe; }
+    .flow { display: grid; gap: 7px; }
+    .flow-step { display: grid; grid-template-columns: 28px 1fr; gap: 10px; padding: 10px; border-radius: 10px; background: white; border: 1px solid var(--border); position: relative; }
+    .flow-step:not(:last-child)::after { content: "↓"; position: absolute; left: 14px; bottom: -17px; color: #94a3b8; z-index: 1; }
+    .flow-index { width: 25px; height: 25px; display: grid; place-items: center; border-radius: 8px; background: var(--blue); color: white; font: 600 .7rem "Fira Code", monospace; }
+    .flow-step strong { font-size: .78rem; }
+    .flow-step small { display: block; color: var(--muted); font-size: .69rem; line-height: 1.35; margin-top: 2px; }
+    .guardrail-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 12px; }
+    .guardrail-chip { padding: 8px 7px; text-align: center; background: var(--amber-bg); color: #92400e; border-radius: 8px; font-size: .67rem; font-weight: 600; }
     .layout { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(340px, .82fr); gap: 18px; }
     .panel { padding: 20px; margin-bottom: 18px; }
     .panel-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
@@ -171,6 +195,7 @@
     @media (max-width: 1080px) {
       .metrics { grid-template-columns: repeat(3, 1fr); }
       .readout-grid { grid-template-columns: repeat(2, 1fr); }
+      .visual-board { grid-template-columns: 1fr; }
       .hero, .layout { grid-template-columns: 1fr; }
     }
     @media (max-width: 720px) {
@@ -235,10 +260,10 @@
     <section class="panel research-readout" id="readout">
       <div class="panel-head"><div><h2>What the research says now</h2><p class="panel-subtitle">Four derived insights from industry research, competitor mechanics, public feedback, and the product teardown.</p></div><span class="pill">readout · not final findings</span></div>
       <div class="readout-grid">
-        <article class="readout-card red"><span class="readout-kicker">01 · growth gate</span><h3>Trust comes before basket expansion</h3><p>Freshness, missing items, stock instability, and recovery friction can make users hesitate to add more—especially in perishable categories.</p><div class="readout-bottom"><span class="tag">trust / quality</span><span class="confidence">directional</span></div></article>
-        <article class="readout-card amber"><span class="readout-kicker">02 · value mechanic</span><h3>The basket is priced at checkout</h3><p>Public same-cart snapshots show that fees and thresholds can reverse the item-price ranking. A higher AOV is not automatically a better customer or margin outcome.</p><div class="readout-bottom"><span class="tag">price / fees</span><span class="confidence">directional</span></div></article>
-        <article class="readout-card"><span class="readout-kicker">03 · product gap</span><h3>Mission-aware help beats generic upsell</h3><p>The strongest working hypothesis is to complete the user’s current need, then offer a few relevant additions or replenishment cues—not a broad carousel.</p><div class="readout-bottom"><span class="tag">mission / basket</span><span class="confidence">hypothesis</span></div></article>
-        <article class="readout-card green"><span class="readout-kicker">04 · research design</span><h3>Bengaluru is the learning lab</h3><p>Locality changes assortment, freshness, delivery, and fees. Bengaluru has the strongest public-feedback coverage, so it is the right controlled observation location.</p><div class="readout-bottom"><span class="tag">observation decision</span><span class="confidence">selected</span></div></article>
+        <article class="readout-card red"><span class="readout-kicker">01 · growth gate</span><h3>Trust comes before basket expansion</h3><p>Freshness, missing items, stock instability, and recovery friction can make users hesitate to add more—especially in perishable categories.</p><div class="readout-evidence">Evidence: <a href="#traceability">U01 · U06 · U08 · U16</a> · direction: repeated friction across public surfaces</div><div class="readout-bottom"><span class="tag">trust / quality</span><span class="confidence">directional</span></div></article>
+        <article class="readout-card amber"><span class="readout-kicker">02 · value mechanic</span><h3>The basket is priced at checkout</h3><p>Public same-cart snapshots show that fees and thresholds can reverse the item-price ranking. A higher AOV is not automatically a better customer or margin outcome.</p><div class="readout-evidence">Evidence: <a href="#traceability">PB01 · PB02 · C01 · C03</a> · direction: item price becomes total payable price</div><div class="readout-bottom"><span class="tag">price / fees</span><span class="confidence">directional</span></div></article>
+        <article class="readout-card"><span class="readout-kicker">03 · product gap</span><h3>Mission-aware help beats generic upsell</h3><p>The strongest working hypothesis is to complete the user’s current need, then offer a few relevant additions or replenishment cues—not a broad carousel.</p><div class="readout-evidence">Evidence: <a href="#traceability">U05 · M03 · teardown</a> · direction: need completion before addition</div><div class="readout-bottom"><span class="tag">mission / basket</span><span class="confidence">hypothesis</span></div></article>
+        <article class="readout-card green"><span class="readout-kicker">04 · research design</span><h3>Bengaluru is the learning lab</h3><p>Locality changes assortment, freshness, delivery, and fees. Bengaluru has the strongest public-feedback coverage, so it is the right controlled observation location.</p><div class="readout-evidence">Evidence: <a href="#traceability">Bengaluru U05 · U06 · U12</a> · direction: coverage concentration, not representativeness</div><div class="readout-bottom"><span class="tag">observation decision</span><span class="confidence">selected</span></div></article>
       </div>
     </section>
 
@@ -282,12 +307,41 @@
       <div style="margin-top:13px;padding:12px;border-radius:11px;background:var(--soft);color:#334155;font-size:.77rem"><strong>Interpretation rule:</strong> a repeated public signal becomes a product hypothesis only after we explain the mechanism and name the missing validation. It does not become a finding merely because it appears in several links.</div>
     </section>
 
+    <section class="panel" id="visual-evidence">
+      <div class="panel-head"><div><h2>Visual evidence map</h2><p class="panel-subtitle">The heatmap shows where a theme is visible in the current source pack. It is coverage, not frequency or severity.</p></div><span class="pill">source coverage</span></div>
+      <div class="visual-board">
+        <div class="visual-card">
+          <h3>Theme × source surface</h3>
+          <p>Filled cells mean the theme appears in that source type. Darker cells mean the theme is explicitly represented in the current traceability set.</p>
+          <div class="heatmap" role="table" aria-label="Theme by source surface evidence map">
+            <span></span><span class="head">fees</span><span class="head">trust</span><span class="head">stock</span><span class="head">recovery</span><span class="head">mission</span><span class="head">locality</span>
+            <span class="row-label">App reviews</span><span class="heat-cell yes">●</span><span class="heat-cell strong">●</span><span class="heat-cell yes">●</span><span class="heat-cell yes">●</span><span class="heat-cell">—</span><span class="heat-cell">—</span>
+            <span class="row-label">Reddit</span><span class="heat-cell strong">●</span><span class="heat-cell strong">●</span><span class="heat-cell yes">●</span><span class="heat-cell yes">●</span><span class="heat-cell strong">●</span><span class="heat-cell strong">●</span>
+            <span class="row-label">Complaints</span><span class="heat-cell yes">●</span><span class="heat-cell strong">●</span><span class="heat-cell strong">●</span><span class="heat-cell strong">●</span><span class="heat-cell">—</span><span class="heat-cell">—</span>
+            <span class="row-label">Comparisons</span><span class="heat-cell strong">●</span><span class="heat-cell yes">●</span><span class="heat-cell yes">●</span><span class="heat-cell yes">●</span><span class="heat-cell yes">●</span><span class="heat-cell yes">●</span>
+          </div>
+          <div class="heat-legend"><span><i class="heat-key"></i>theme cited</span><span><i class="heat-key strong"></i>theme central to trace</span><span>— not used for this theme</span></div>
+        </div>
+        <div class="visual-card">
+          <h3>Evidence → decision flow</h3>
+          <p>Every direction in the dashboard follows this sequence. If a step is missing, it remains an open hypothesis.</p>
+          <div class="flow">
+            <div class="flow-step"><span class="flow-index">01</span><div><strong>Observe</strong><small>Reviews, complaints, official surfaces, and public comparisons.</small></div></div>
+            <div class="flow-step"><span class="flow-index">02</span><div><strong>Triangulate</strong><small>Check whether the signal repeats across different source types.</small></div></div>
+            <div class="flow-step"><span class="flow-index">03</span><div><strong>Explain</strong><small>Connect the friction to a basket or trust mechanism.</small></div></div>
+            <div class="flow-step"><span class="flow-index">04</span><div><strong>Test</strong><small>Name the Bengaluru benchmark, user question, or metric needed.</small></div></div>
+          </div>
+          <div class="guardrail-strip"><span class="guardrail-chip">add rate</span><span class="guardrail-chip">margin</span><span class="guardrail-chip">repeat trust</span></div>
+        </div>
+      </div>
+    </section>
+
     <section class="panel" id="opportunities">
       <div class="panel-head"><div><h2>Research → AOV opportunity map</h2><p class="panel-subtitle">The product implication is shown with its commercial guardrail so we do not optimise gross AOV alone.</p></div></div>
       <div class="opportunity-grid">
-        <article class="opportunity"><span class="status active">P0 · validate first</span><h3>Need-complete additions</h3><p>After the first item is understood, show 2–4 complementary items that finish the mission.</p><div class="guardrail"><strong>Measure:</strong> relevant add rate, removal rate, checkout completion, contribution margin.</div></article>
-        <article class="opportunity"><span class="status active">P0 · benchmark</span><h3>Value-transparent basket</h3><p>Make product total, fees, threshold gap, and final payable amount easy to compare before checkout.</p><div class="guardrail"><strong>Measure:</strong> fee abandonment, threshold additions, switching, final basket margin.</div></article>
-        <article class="opportunity"><span class="status pending">P1 · validate later</span><h3>Editable recurring list</h3><p>Support planned replenishment without copying irrelevant snacks or one-off items from a previous order.</p><div class="guardrail"><strong>Measure:</strong> list reuse, planned-basket AOV, item relevance, repeat rate.</div></article>
+        <article class="opportunity"><span class="status active">P0 · validate first</span><h3>Need-complete additions</h3><p>After the first item is understood, show 2–4 complementary items that finish the mission. <a href="#traceability">Evidence: U05 · M03</a></p><div class="guardrail"><strong>Measure:</strong> relevant add rate, removal rate, checkout completion, contribution margin.</div></article>
+        <article class="opportunity"><span class="status active">P0 · benchmark</span><h3>Value-transparent basket</h3><p>Make product total, fees, threshold gap, and final payable amount easy to compare before checkout. <a href="#traceability">Evidence: PB01 · PB02 · C01 · C03</a></p><div class="guardrail"><strong>Measure:</strong> fee abandonment, threshold additions, switching, final basket margin.</div></article>
+        <article class="opportunity"><span class="status pending">P1 · validate later</span><h3>Editable recurring list</h3><p>Support planned replenishment without copying irrelevant snacks or one-off items from a previous order. <a href="#traceability">Evidence: U05</a></p><div class="guardrail"><strong>Measure:</strong> list reuse, planned-basket AOV, item relevance, repeat rate.</div></article>
       </div>
     </section>
 
@@ -297,10 +351,10 @@
         <table class="competitor-table">
           <thead><tr><th>Platform</th><th>Public strength / position</th><th>Friction signal to watch</th><th>AOV lesson</th></tr></thead>
           <tbody>
-            <tr><td>Zepto</td><td>Fast, category-led discovery with visible offers and add-to-cart cues.</td><td>Fees, stock stability, freshness, recovery, and quality vary by locality.</td><td>Improve guidance and trust before adding more generic merchandising.</td></tr>
-            <tr><td>Blinkit</td><td>Neighbourhood assortment and broad quick-commerce category promise.</td><td>Public feedback discusses fees, missing/damaged items, and support.</td><td>Local assortment can make the next item relevant, but reliability protects expansion.</td></tr>
-            <tr><td>Instamart</td><td>Swiggy ecosystem, broad categories, and membership/offer mechanics.</td><td>Public feedback discusses threshold, availability, delivery, and support issues.</td><td>Cross-category breadth helps only when it stays tied to the current mission.</td></tr>
-            <tr><td>BigBasket / bbnow</td><td>Bridge between instant top-ups and planned, broader-value shopping.</td><td>Speed, stock, quality, and recovery are still locality and order dependent.</td><td>Planned baskets and pack economics are a meaningful alternative to urgent ordering.</td></tr>
+            <tr><td>Zepto</td><td>Fast, category-led discovery with visible offers and add-to-cart cues. <a href="#traceability">Z01 · Z02</a></td><td>Fees, stock stability, freshness, recovery, and quality vary by locality. <a href="#traceability">U01 · U06 · C01</a></td><td>Improve guidance and trust before adding more generic merchandising. <a href="#traceability">derived</a></td></tr>
+            <tr><td>Blinkit</td><td>Neighbourhood assortment and broad quick-commerce category promise. <a href="#traceability">B01 · B02</a></td><td>Public feedback discusses fees, missing/damaged items, and support. <a href="#traceability">U02 · U10 · C03</a></td><td>Local assortment can make the next item relevant, but reliability protects expansion. <a href="#traceability">derived</a></td></tr>
+            <tr><td>Instamart</td><td>Swiggy ecosystem, broad categories, and membership/offer mechanics. <a href="#traceability">I01 · I02 · C04</a></td><td>Public feedback discusses threshold, availability, delivery, and support issues. <a href="#traceability">U03 · U09</a></td><td>Cross-category breadth helps only when it stays tied to the current mission. <a href="#traceability">derived</a></td></tr>
+            <tr><td>BigBasket / bbnow</td><td>Bridge between instant top-ups and planned, broader-value shopping. <a href="#traceability">BB01 · BB02</a></td><td>Speed, stock, quality, and recovery are still locality and order dependent. <a href="#traceability">U04 · U07</a></td><td>Planned baskets and pack economics are a meaningful alternative to urgent ordering. <a href="#traceability">U05 · S01</a></td></tr>
           </tbody>
         </table>
       </div>
