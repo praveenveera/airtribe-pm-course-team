@@ -38,6 +38,8 @@ Use a neutral grocery and quick-commerce survey. Do not assume that respondents 
 
 ## Current focus
 
+See [`PROJECT_STATUS.md`](PROJECT_STATUS.md) for the current workstream tracker, evidence gaps, and next actions.
+
 Primary research is intentionally deferred: no interviews, survey distribution, or observational user research is being treated as active evidence in this phase.
 
 The current phase is secondary research only: industry reports, market sizing, public competitor benchmarking, public product-surface teardown, and behavioural assumptions to validate later.
