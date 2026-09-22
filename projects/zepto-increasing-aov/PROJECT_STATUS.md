@@ -16,7 +16,8 @@
 | Behavioural assumptions | Documented as hypotheses | Fee, trust, availability, reorder, switching, and planned-shopping assumptions mapped. | Test with recent-purchase interviews/survey responses. |
 | Market sizing and AOV model | Framework complete | Scenario model and economics tree documented. | Populate Zepto order, baseline AOV, margin, and retention inputs. |
 | Matched-basket benchmark | Public evidence started | Two uncontrolled same-cart public snapshots now identify fee and final-payable-price fields to measure. | Run a controlled city/pin/account/time capture across platforms. |
-| Survey instrument and web app | Pilot build complete | English, Hindi, and Telugu local pilot assets exist. | Fluent-language review, deployment, and end-to-end row reconciliation. |
+| Survey instrument and web app | Published pilot | English, Hindi, and Telugu survey app is live on the shared GitHub Pages site and connected to the configured Apps Script endpoint. | Fluent-language review, one end-to-end response reconciliation, and participant collection. |
+| Research dashboard | Published | Evidence-controlled HTML dashboard is live with citations, visual explainers, AOV decision lab, Bengaluru matched-basket calculator, feedback analyzer, timeline, and export tools. | Keep updating evidence and decisions as validation data arrives. |
 | Primary research | Deferred | No participant data is treated as current evidence. | User decision required to restart collection. |
 | Final synthesis/submission | Not assembled | Conclusion and walkthrough draft exist. | Reconcile evidence, validate hypotheses, then assemble final deliverable. |
 
@@ -33,6 +34,18 @@
 - [`synthesis/competitor-and-teardown-conclusion.md`](synthesis/competitor-and-teardown-conclusion.md)
 - [`interviews/survey-form-content.md`](interviews/survey-form-content.md)
 - [`webapp/index.html`](webapp/index.html)
+
+## Published research tools
+
+- [Project 4 research dashboard](https://praveenveera.github.io/airtribe-pm-course-team/)
+- [Basket Stories survey app](https://praveenveera.github.io/airtribe-pm-course-team/survey/)
+- [Shared public repository](https://github.com/praveenveera/airtribe-pm-course-team)
+
+The dashboard is the decision layer for the secondary-research phase. It brings together the market-to-AOV chain, competitor mechanics, Zepto teardown, public-feedback themes, evidence traceability, Bengaluru observation plan, opportunity map, evidence-quality rules, scenario modelling, and the next validation queue. Its visual explainers make the reasoning explicit: observe → triangulate → explain → test.
+
+The survey app is the primary-research collection layer. It uses a neutral grocery/quick-commerce questionnaire in English, Hindi, and Telugu to capture a recent purchase, shopping mission, basket-building behaviour, fees or thresholds, rejected items, alternatives, and optional follow-up interest. Survey responses are not yet treated as findings or reflected in the dashboard until collection and reconciliation are complete.
+
+Both tools are published as lightweight static web assets. The dashboard has a lightweight access gate for team sharing; it is not a security control for confidential data. The repository is public because GitHub Pages was enabled for publication, so no sensitive participant information should be committed or entered into the tools.
 
 ## Current secondary-research conclusion
 
