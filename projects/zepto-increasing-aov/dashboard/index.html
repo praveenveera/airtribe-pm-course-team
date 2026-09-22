@@ -131,6 +131,47 @@
     .flow-step small { display: block; color: var(--muted); font-size: .69rem; line-height: 1.35; margin-top: 2px; }
     .guardrail-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 12px; }
     .guardrail-chip { padding: 8px 7px; text-align: center; background: var(--amber-bg); color: #92400e; border-radius: 8px; font-size: .67rem; font-weight: 600; }
+    .decision-lab { background: linear-gradient(180deg, #f8fbff, #fff); }
+    .lab-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+    .lab-card { border: 1px solid var(--border); border-radius: 13px; padding: 16px; background: #fff; }
+    .lab-card h3 { margin-bottom: 4px; }
+    .lab-card p { color: var(--muted); font-size: .74rem; }
+    .control-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+    .control label { display: flex; justify-content: space-between; gap: 8px; color: var(--muted); font-size: .7rem; margin-bottom: 5px; }
+    .control output { color: var(--ink); font: 600 .7rem "Fira Code", monospace; }
+    input[type="range"] { width: 100%; accent-color: var(--blue); }
+    input[type="number"], input[type="text"] { width: 100%; border: 1px solid var(--border); border-radius: 8px; padding: 8px; color: var(--ink); background: white; }
+    .sim-output { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin-top: 14px; }
+    .sim-value { border-radius: 9px; background: var(--soft); padding: 10px; }
+    .sim-value span { display: block; color: var(--muted); font-size: .65rem; }
+    .sim-value strong { display: block; margin-top: 3px; color: var(--ink); font: 700 1rem "Fira Code", monospace; }
+    .sim-note { margin-top: 10px; color: #92400e; background: var(--amber-bg); border-radius: 8px; padding: 8px; font-size: .68rem; }
+    .basket-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-bottom: 12px; }
+    .basket-table { width: 100%; border-collapse: collapse; font-size: .7rem; }
+    .basket-table th { text-align: left; color: var(--muted); font-size: .63rem; padding: 5px; border-bottom: 1px solid var(--border); }
+    .basket-table td { padding: 6px 5px; border-bottom: 1px solid #edf2f7; vertical-align: middle; }
+    .basket-table input { padding: 6px; font: .7rem "Fira Code", monospace; }
+    .basket-total { font: 600 .7rem "Fira Code", monospace; color: var(--ink); }
+    .scorecard { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .score { border: 1px solid var(--border); border-radius: 10px; padding: 10px; }
+    .score-top { display:flex; justify-content:space-between; gap:8px; align-items:center; }
+    .score h4 { margin: 0; font-size: .74rem; }
+    .score p { margin: 5px 0 0; font-size: .68rem; }
+    .score-bar { height: 6px; border-radius: 99px; background: #edf2f7; overflow: hidden; margin-top: 8px; }
+    .score-bar i { display: block; height: 100%; border-radius: inherit; background: var(--blue-2); }
+    .score-bar i.amber { background: #f59e0b; }
+    .score-bar i.red { background: #ef4444; }
+    .batch-output { margin-top: 12px; display: none; }
+    .batch-output.show { display: block; }
+    .batch-bars { display: grid; gap: 6px; }
+    .batch-row { display: grid; grid-template-columns: 130px 1fr 28px; gap: 7px; align-items: center; color: var(--muted); font-size: .68rem; }
+    .batch-row .bar-track { height: 7px; }
+    .timeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .timeline-item { border-left: 3px solid var(--blue-2); padding: 8px 9px; background: #fbfdff; border-radius: 0 9px 9px 0; }
+    .timeline-item span { color: var(--blue); font: 600 .64rem "Fira Code", monospace; }
+    .timeline-item strong { display:block; font-size:.73rem; margin-top:5px; }
+    .timeline-item small { display:block; color:var(--muted); font-size:.67rem; line-height:1.35; margin-top:4px; }
+    .export-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:13px; }
     .layout { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(340px, .82fr); gap: 18px; }
     .panel { padding: 20px; margin-bottom: 18px; }
     .panel-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
@@ -204,6 +245,9 @@
       .top-actions { width: 100%; justify-content: space-between; }
       .metrics { grid-template-columns: repeat(2, 1fr); }
       .readout-grid, .opportunity-grid { grid-template-columns: 1fr; }
+      .lab-grid, .control-grid, .basket-controls { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: 1fr; }
+      .scorecard { grid-template-columns: 1fr; }
       .metric { min-height: 100px; }
       .metric-value { font-size: 1.45rem; }
       .hero-card, .bengaluru-card, .panel { padding: 16px; }
@@ -345,6 +389,67 @@
       </div>
     </section>
 
+    <section class="panel decision-lab" id="decision-lab">
+      <div class="panel-head"><div><h2>Decision lab</h2><p class="panel-subtitle">Use scenarios and controlled inputs to test decisions. These tools do not create evidence by themselves.</p></div><span class="pill">interactive · local only</span></div>
+      <div class="lab-grid">
+        <div class="lab-card" id="aov-simulator">
+          <h3>AOV scenario simulator</h3>
+          <p>Change the assumptions to see the commercial consequence of an add-on idea. Defaults are planning inputs, not Zepto facts.</p>
+          <div class="control-grid">
+            <div class="control"><label for="baseAov">Baseline AOV <output id="baseAovOut">₹260</output></label><input id="baseAov" type="range" min="100" max="1000" step="10" value="260"></div>
+            <div class="control"><label for="scenarioOrders">Scenario orders <output id="ordersOut">1,000</output></label><input id="scenarioOrders" type="range" min="100" max="10000" step="100" value="1000"></div>
+            <div class="control"><label for="addRate">Relevant add rate <output id="addRateOut">12%</output></label><input id="addRate" type="range" min="0" max="50" step="1" value="12"></div>
+            <div class="control"><label for="addValue">Incremental item value <output id="addValueOut">₹45</output></label><input id="addValue" type="range" min="10" max="300" step="5" value="45"></div>
+            <div class="control"><label for="marginRate">Contribution margin <output id="marginRateOut">25%</output></label><input id="marginRate" type="range" min="0" max="60" step="1" value="25"></div>
+          </div>
+          <div class="sim-output"><div class="sim-value"><span>Incremental orders</span><strong id="simOrders">120</strong></div><div class="sim-value"><span>Incremental revenue</span><strong id="simRevenue">₹5,400</strong></div><div class="sim-value"><span>Incremental contribution</span><strong id="simContribution">₹1,350</strong></div></div>
+          <div class="sim-note">Guardrail: a higher AOV is useful only if the addition is relevant, available, margin-positive, and does not reduce repeat trust. <a href="#traceability">Evidence direction: PB01 · U05 · U07</a></div>
+        </div>
+
+        <div class="lab-card" id="bengaluru-inputs">
+          <h3>Bengaluru matched-basket calculator</h3>
+          <p>Enter the same basket for each platform. Load the public snapshot only as a comparison seed; it is not a Bengaluru observation.</p>
+          <div class="basket-controls"><label class="control">City / pin<input id="basketPin" type="text" value="Bengaluru · pin pending" aria-label="City and pin"></label><label class="control">Account state<input id="basketState" type="text" value="same state required" aria-label="Account state"></label></div>
+          <div style="overflow-x:auto"><table class="basket-table"><thead><tr><th>Platform</th><th>Product ₹</th><th>Fees ₹</th><th>Discount ₹</th><th>Final ₹</th><th>Availability</th></tr></thead><tbody id="basketRows"></tbody></table></div>
+          <div class="export-row"><button class="btn" id="loadSnapshot">Load public snapshot</button><button class="btn primary" id="clearBasket">Clear for Bengaluru</button></div>
+          <div class="sim-note">Direction to test: product total → fees/thresholds → final payable price. <a href="#traceability">Citations: PB01 · PB02 · C01 · C03</a></div>
+        </div>
+
+        <div class="lab-card" id="evidence-scorecard">
+          <h3>Evidence quality scorecard</h3>
+          <p>Use the source type to decide how strongly a statement can be used. This is a governance visual, not a statistical score.</p>
+          <div class="scorecard">
+            <div class="score"><div class="score-top"><h4>Product fact</h4><span class="status done">strongest</span></div><p>Visible capability or official product surface.</p><div class="score-bar"><i style="width:92%"></i></div></div>
+            <div class="score"><div class="score-top"><h4>Company claim</h4><span class="status active">bounded</span></div><p>Scale, promise, or metric stated by the company.</p><div class="score-bar"><i class="amber" style="width:68%"></i></div></div>
+            <div class="score"><div class="score-top"><h4>Public feedback</h4><span class="status active">directional</span></div><p>Self-selected reviews, posts, complaints, or videos.</p><div class="score-bar"><i class="amber" style="width:55%"></i></div></div>
+            <div class="score"><div class="score-top"><h4>Inference</h4><span class="status pending">labelled</span></div><p>Reasoned implication from multiple evidence points.</p><div class="score-bar"><i class="red" style="width:38%"></i></div></div>
+            <div class="score"><div class="score-top"><h4>Unknown</h4><span class="status pending">validate</span></div><p>Needs internal data, live observation, or primary research.</p><div class="score-bar"><i class="red" style="width:22%"></i></div></div>
+          </div>
+          <div class="sim-note">Rule: never upgrade an inference to a finding without the named validation method. <a href="../research/evidence-inventory.md">Open evidence inventory</a></div>
+        </div>
+
+        <div class="lab-card" id="batch-explorer">
+          <h3>Batch user-input analyzer</h3>
+          <p>Paste multiple reviews or notes separated by blank lines. Results show theme coverage in the pasted set—not population prevalence.</p>
+          <textarea id="batchInput" aria-label="Paste multiple user inputs" style="min-height:105px" placeholder="Paste one review or note per paragraph..."></textarea>
+          <div class="export-row"><button class="btn primary" id="analyzeBatch">Analyze batch</button><button class="btn" id="loadBatchSample">Load sample set</button></div>
+          <div class="batch-output" id="batchOutput" aria-live="polite"></div>
+        </div>
+      </div>
+      <div class="lab-card" style="margin-top:12px" id="timeline">
+        <h3>Research timeline</h3>
+        <p>Decision history that explains why the work moved from broad research to a Bengaluru benchmark.</p>
+        <div class="timeline">
+          <div class="timeline-item"><span>PHASE 01</span><strong>Market + scale</strong><small>Industry reports and competitor scale framed the expanding category.</small></div>
+          <div class="timeline-item"><span>PHASE 02</span><strong>Friction surfaces</strong><small>App reviews, Reddit, complaint forums, and creator comparisons expanded the signal set.</small></div>
+          <div class="timeline-item"><span>PHASE 03</span><strong>Product mechanics</strong><small>Zepto teardown and commercial terms connected friction to basket mechanics.</small></div>
+          <div class="timeline-item"><span>PHASE 04</span><strong>Bengaluru selected</strong><small>Locality-specific public evidence concentrated there; use it for controlled comparison.</small></div>
+          <div class="timeline-item"><span>PHASE 05</span><strong>Next decision</strong><small>Run matched basket, then validate mission and trust hypotheses with user inputs.</small></div>
+        </div>
+        <div class="export-row"><button class="btn" id="printDashboard">Print / save PDF</button><button class="btn" id="downloadBrief">Download decision brief</button></div>
+      </div>
+    </section>
+
     <section class="panel" id="competitors">
       <div class="panel-head"><div><h2>Competitor mechanics: what each teaches us</h2><p class="panel-subtitle">This is a pattern comparison, not a national quality ranking.</p></div></div>
       <div style="overflow-x:auto">
@@ -473,6 +578,93 @@
     renderInsights();
     document.getElementById('themeFilter').addEventListener('change', event => renderInsights(event.target.value));
 
+    const money = value => `₹${Number(value || 0).toLocaleString('en-IN')}`;
+    const simulatorFields = [
+      ['baseAov', 'baseAovOut', value => money(value)],
+      ['scenarioOrders', 'ordersOut', value => Number(value).toLocaleString('en-IN')],
+      ['addRate', 'addRateOut', value => `${value}%`],
+      ['addValue', 'addValueOut', value => money(value)],
+      ['marginRate', 'marginRateOut', value => `${value}%`]
+    ];
+    const updateSimulator = () => {
+      const baseAov = Number(document.getElementById('baseAov').value);
+      const orders = Number(document.getElementById('scenarioOrders').value);
+      const addRate = Number(document.getElementById('addRate').value) / 100;
+      const addValue = Number(document.getElementById('addValue').value);
+      const marginRate = Number(document.getElementById('marginRate').value) / 100;
+      const incrementalOrders = Math.round(orders * addRate);
+      const incrementalRevenue = incrementalOrders * addValue;
+      const incrementalContribution = Math.round(incrementalRevenue * marginRate);
+      document.getElementById('simOrders').textContent = incrementalOrders.toLocaleString('en-IN');
+      document.getElementById('simRevenue').textContent = money(incrementalRevenue);
+      document.getElementById('simContribution').textContent = money(incrementalContribution);
+      simulatorFields.forEach(([input, output, format]) => { document.getElementById(output).textContent = format(document.getElementById(input).value); });
+    };
+    simulatorFields.forEach(([input]) => document.getElementById(input).addEventListener('input', updateSimulator));
+    updateSimulator();
+
+    const basketData = [
+      {platform:'Zepto', product:'', fees:'', discount:'', availability:'pending'},
+      {platform:'Blinkit', product:'', fees:'', discount:'', availability:'pending'},
+      {platform:'Instamart', product:'', fees:'', discount:'', availability:'pending'},
+      {platform:'BigBasket / bbnow', product:'', fees:'', discount:'', availability:'pending'}
+    ];
+    const renderBasket = () => {
+      document.getElementById('basketRows').innerHTML = basketData.map((row, index) => {
+        const product = Number(row.product) || 0;
+        const fees = Number(row.fees) || 0;
+        const discount = Number(row.discount) || 0;
+        const total = product + fees - discount;
+        return `<tr><td><strong>${row.platform}</strong></td><td><input type="number" min="0" data-basket="product" data-index="${index}" value="${row.product}" aria-label="${row.platform} product total"></td><td><input type="number" min="0" data-basket="fees" data-index="${index}" value="${row.fees}" aria-label="${row.platform} fees"></td><td><input type="number" min="0" data-basket="discount" data-index="${index}" value="${row.discount}" aria-label="${row.platform} discount"></td><td class="basket-total">${total ? money(total) : '—'}</td><td><select data-basket="availability" data-index="${index}" aria-label="${row.platform} availability"><option ${row.availability === 'pending' ? 'selected' : ''}>pending</option><option ${row.availability === 'available' ? 'selected' : ''}>available</option><option ${row.availability === 'partial' ? 'selected' : ''}>partial</option><option ${row.availability === 'oos' ? 'selected' : ''}>out of stock</option></select></td></tr>`;
+      }).join('');
+      document.querySelectorAll('[data-basket]').forEach(input => input.addEventListener('input', event => { const index = Number(event.target.dataset.index); basketData[index][event.target.dataset.basket] = event.target.value; renderBasket(); }));
+    };
+    renderBasket();
+    document.getElementById('loadSnapshot').addEventListener('click', () => {
+      basketData[0] = {platform:'Zepto', product:134, fees:0, discount:0, availability:'available'};
+      basketData[1] = {platform:'Blinkit', product:157, fees:41, discount:0, availability:'available'};
+      basketData[2] = {platform:'Instamart', product:153, fees:46, discount:0, availability:'available'};
+      basketData[3] = {platform:'BigBasket / bbnow', product:'', fees:'', discount:'', availability:'pending'};
+      document.getElementById('basketPin').value = 'Public snapshot · pin unknown';
+      renderBasket();
+    });
+    document.getElementById('clearBasket').addEventListener('click', () => {
+      basketData.forEach(row => { row.product = ''; row.fees = ''; row.discount = ''; row.availability = 'pending'; });
+      document.getElementById('basketPin').value = 'Bengaluru · pin pending';
+      renderBasket();
+    });
+
+    const themeRules = [
+      ['Fee / final price', ['fee','charge','handling','surge','price','cost','threshold','expensive']],
+      ['Freshness / quality', ['fresh','rotten','expired','quality','vegetable','fruit','milk','dairy','damaged']],
+      ['Availability', ['stock','available','unavailable','missing','out of stock','substitut']],
+      ['Recovery / support', ['refund','support','chatbot','complaint','resolved','replacement']],
+      ['Mission / repeat', ['monthly','weekly','reorder','top-up','emergency','planned','bulk','late night']],
+      ['Switching / offline', ['switched','switch','bigbasket','blinkit','instamart','kirana','local store','dmart']]
+    ];
+    const classifyThemes = text => themeRules.filter(([, words]) => words.some(word => text.toLowerCase().includes(word))).map(([name]) => name);
+    document.getElementById('loadBatchSample').addEventListener('click', () => {
+      document.getElementById('batchInput').value = 'The handling fee made the final basket expensive, so I switched to Instamart.\n\nThe vegetables were not fresh and refund support took too long. I still use the app for packaged items.\n\nReorder brings old snacks back. For monthly shopping I prefer BigBasket or my local store.';
+      analyzeBatch();
+    });
+    document.getElementById('analyzeBatch').addEventListener('click', analyzeBatch);
+    function analyzeBatch() {
+      const entries = document.getElementById('batchInput').value.split(/\n\s*\n/).map(item => item.trim()).filter(Boolean);
+      const output = document.getElementById('batchOutput');
+      if (!entries.length) { output.innerHTML = '<div class="analysis-output">Paste multiple entries first.</div>'; output.classList.add('show'); return; }
+      const counts = themeRules.map(([name]) => [name, entries.filter(entry => classifyThemes(entry).includes(name)).length]).filter(([, count]) => count > 0).sort((a, b) => b[1] - a[1]);
+      const max = Math.max(...counts.map(([, count]) => count), 1);
+      output.innerHTML = `<div class="analysis-summary"><div class="analysis-chip"><span>Inputs analysed</span><strong>${entries.length}</strong></div><div class="analysis-chip"><span>Most repeated theme</span><strong>${counts[0]?.[0] || 'None'}</strong></div><div class="analysis-chip"><span>Evidence status</span><strong>Directional only</strong></div></div><div class="batch-bars">${counts.map(([name, count]) => `<div class="batch-row"><span>${name}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.round(count / max * 100)}%"></div></div><strong>${count}</strong></div>`).join('')}</div><div class="analysis-output" style="margin-top:10px"><strong>Interpretation:</strong> this describes the pasted set only. Do not convert these counts into market prevalence without a defined sample and denominator.</div>`;
+      output.classList.add('show');
+    }
+
+    document.getElementById('printDashboard').addEventListener('click', () => window.print());
+    document.getElementById('downloadBrief').addEventListener('click', () => {
+      const brief = {generatedAt: new Date().toISOString(), locationDecision: 'Bengaluru', evidenceBoundary: 'Directional secondary evidence; primary research deferred', derivedInsights: insights.map(item => ({title:item.title, evidence:item.source, status:item.tag})), aovScenario: {baselineAov:Number(document.getElementById('baseAov').value), scenarioOrders:Number(document.getElementById('scenarioOrders').value), addRatePercent:Number(document.getElementById('addRate').value), incrementalValue:Number(document.getElementById('addValue').value), marginPercent:Number(document.getElementById('marginRate').value)}, basket: basketData};
+      const blob = new Blob([JSON.stringify(brief, null, 2)], {type:'application/json'});
+      const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = 'zepto-aov-decision-brief.json'; link.click(); URL.revokeObjectURL(link.href);
+    });
+
     const samples = {
       fee: 'I used Zepto for milk and bread, but the handling fee made me add snacks. The final amount was still higher than Instamart, so I switched.',
       fresh: 'The vegetables were not fresh and support took time to resolve it. I still use the app for packaged items but avoid adding produce.',
@@ -486,15 +678,7 @@
       const result = document.getElementById('analysisResult');
       if (!text) { result.innerHTML = '<div class="analysis-output">Paste a review, interview note, or survey response first.</div>'; result.classList.add('show'); return; }
       const lower = text.toLowerCase();
-      const rules = [
-        ['Fee / final price', ['fee','charge','handling','surge','price','cost','threshold','expensive']],
-        ['Freshness / quality', ['fresh','rotten','expired','quality','vegetable','fruit','milk','dairy','damaged']],
-        ['Availability', ['stock','available','unavailable','missing','out of stock','substitut']],
-        ['Recovery / support', ['refund','support','chatbot','complaint','resolved','replacement']],
-        ['Mission / repeat', ['monthly','weekly','reorder','top-up','emergency','planned','bulk','late night']],
-        ['Switching / offline', ['switched','switch','bigbasket','blinkit','instamart','kirana','local store','dmart']]
-      ];
-      const found = rules.filter(([, words]) => words.some(word => lower.includes(word))).map(([name]) => name);
+      const found = classifyThemes(lower);
       const mission = lower.includes('monthly') || lower.includes('weekly') || lower.includes('bulk') || lower.includes('planned') ? 'Planned / stock-up' : lower.includes('emergency') || lower.includes('late night') ? 'Urgent / top-up' : 'Unclear — ask a follow-up';
       const tone = /bad|poor|rotten|expired|frustrat|issue|problem|higher|avoid|switched|missing|late/.test(lower) ? 'Friction signal' : 'Mixed / positive signal';
       const implication = found.includes('Fee / final price') ? 'Test total payable price and threshold behaviour.' : found.includes('Freshness / quality') ? 'Test category-specific trust before recommending more items.' : found.includes('Mission / repeat') ? 'Test an editable mission list rather than full-order reorder.' : 'Convert this signal into a recent-purchase follow-up question.';
