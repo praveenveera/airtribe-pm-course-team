@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'projects/zepto-increasing-aov/dashboard/**'
+      - 'projects/zepto-increasing-aov/webapp/**'
       - '.github/workflows/deploy-project4-dashboard.yml'
   workflow_dispatch:
 
@@ -28,10 +29,15 @@ jobs:
         uses: actions/checkout@v4
       - name: Configure Pages
         uses: actions/configure-pages@v5
+      - name: Assemble dashboard and survey site
+        run: |
+          mkdir -p _site/survey
+          cp projects/zepto-increasing-aov/dashboard/index.html _site/index.html
+          cp projects/zepto-increasing-aov/webapp/index.html _site/survey/index.html
       - name: Package dashboard
         uses: actions/upload-pages-artifact@v3
         with:
-          path: projects/zepto-increasing-aov/dashboard
+          path: _site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
