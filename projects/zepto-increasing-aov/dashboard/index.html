@@ -75,6 +75,22 @@
     .metric-label { color: var(--muted); font-size: .76rem; }
     .metric-value { font: 700 1.8rem "Fira Code", monospace; margin: 7px 0 3px; color: var(--ink); }
     .metric-note { color: var(--muted); font-size: .72rem; }
+    .market-sizing { margin-bottom: 18px; }
+    .market-funnel { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 12px 0; }
+    .market-layer { border: 1px solid var(--border); border-radius: 13px; padding: 15px; background: #fbfdff; position: relative; }
+    .market-layer:not(:last-child)::after { content: "→"; position: absolute; right: -11px; top: 46px; color: var(--blue-2); font-size: 1.1rem; font-weight: 700; z-index: 2; }
+    .market-layer h3 { margin: 8px 0 4px; }
+    .market-layer p { color: var(--muted); font-size: .73rem; min-height: 42px; margin-bottom: 8px; }
+    .market-number { font: 700 1.45rem "Fira Code", monospace; color: var(--blue); }
+    .market-label { color: var(--muted); font: 600 .65rem "Fira Code", monospace; text-transform: uppercase; }
+    .market-controls { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; margin-top: 13px; }
+    .market-controls label { color: var(--muted); font-size: .68rem; font-weight: 600; }
+    .market-controls input { width: 100%; margin-top: 5px; padding: 8px; border: 1px solid var(--border); border-radius: 8px; color: var(--ink); }
+    .pm-definitions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 12px; }
+    .pm-definition { padding: 10px; border-radius: 10px; background: var(--soft); }
+    .pm-definition strong { display: block; color: var(--blue); font-size: .75rem; }
+    .pm-definition span { display: block; color: #475569; font-size: .7rem; line-height: 1.35; margin-top: 3px; }
+    .market-sources { color: var(--muted); font-size: .68rem; margin-top: 12px; }
     .research-readout { margin-bottom: 18px; }
     .readout-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
     .readout-card { border: 1px solid var(--border); border-radius: 13px; padding: 16px; background: #fff; min-height: 188px; position: relative; overflow: hidden; }
@@ -246,6 +262,9 @@
       .metrics { grid-template-columns: repeat(2, 1fr); }
       .readout-grid, .opportunity-grid { grid-template-columns: 1fr; }
       .lab-grid, .control-grid, .basket-controls { grid-template-columns: 1fr; }
+      .market-funnel, .pm-definitions { grid-template-columns: 1fr; }
+      .market-layer:not(:last-child)::after { content: "↓"; right: auto; top: auto; bottom: -18px; left: 50%; }
+      .market-controls { grid-template-columns: repeat(2, 1fr); }
       .timeline { grid-template-columns: 1fr; }
       .scorecard { grid-template-columns: 1fr; }
       .metric { min-height: 100px; }
@@ -337,6 +356,27 @@
       <article class="metric"><div class="metric-label">Public cart snapshots</div><div class="metric-value">02</div><div class="metric-note">uncontrolled comparisons</div></article>
       <article class="metric"><div class="metric-label">Validation questions</div><div class="metric-value">05</div><div class="metric-note">primary/live research backlog</div></article>
       <article class="metric"><div class="metric-label">Evidence boundary</div><div class="metric-value" style="font-size:1.15rem;color:var(--amber)">Directional</div><div class="metric-note">no causal AOV proof yet</div></article>
+    </section>
+
+    <section class="panel market-sizing" id="market-sizing">
+      <div class="panel-head"><div><h2>Market sizing & PM basics</h2><p class="panel-subtitle">Secondary-research anchors plus clearly labelled assumptions. Change the inputs to explore a planning scenario; do not read them as verified Zepto numbers.</p></div><span class="pill">estimate · assumption · unknown</span></div>
+      <details class="explain"><summary>In simple terms: what are TAM, SAM, SOM, and AOV?</summary><div class="explain-body"><p>Think of the market as a set of circles. The first circle is the whole category, the second is the part we choose to serve, and the third is the realistic share we might capture.</p><div class="visual-steps"><div class="visual-step"><b>TAM</b><span>Total possible rapid-commerce category opportunity</span></div><div class="visual-step"><b>SAM</b><span>Relevant slice by geography, mission, or category</span></div><div class="visual-step"><b>SOM</b><span>Realistic near-term share of that relevant slice</span></div><div class="visual-step"><b>AOV</b><span>Average order value; not the same as profit</span></div></div><p class="plain-rule">Facts anchor the model; assumptions create a range; primary research and internal data are needed before using it as a forecast.</p></div></details>
+      <div class="market-funnel">
+        <article class="market-layer"><span class="market-label">TAM · category ceiling</span><h3>India rapid commerce</h3><p>Industry forecast for the broader rapid-commerce opportunity by 2030.</p><div class="market-number" id="tamOut">$20.0B</div><div class="market-label">evidence anchor · M01</div></article>
+        <article class="market-layer"><span class="market-label">SAM · chosen scope</span><h3>Relevant target slice</h3><p>TAM multiplied by the share we assume is relevant to our geography/mission.</p><div class="market-number" id="samOut">$2.0B</div><div class="market-label">planning assumption</div></article>
+        <article class="market-layer"><span class="market-label">SOM · attainable share</span><h3>Near-term opportunity</h3><p>SAM multiplied by an explicit attainable-share assumption; not actual Zepto market share.</p><div class="market-number" id="somOut">$100M</div><div class="market-label">planning assumption</div></article>
+      </div>
+      <div class="market-controls">
+        <label>TAM anchor ($B)<input id="tamInput" type="number" min="1" step="1" value="20" aria-label="TAM anchor in billions of dollars"></label>
+        <label>Relevant scope (%)<input id="samShareInput" type="number" min="1" max="100" step="1" value="10" aria-label="Relevant scope share"></label>
+        <label>Attainable share (%)<input id="somShareInput" type="number" min="1" max="100" step="1" value="5" aria-label="Attainable share"></label>
+        <label>Orders/day (M)<input id="ordersDayInput" type="number" min="0.1" step="0.1" value="2.3" aria-label="Orders per day in millions"></label>
+        <label>Eligible orders (%)<input id="eligibleShareInput" type="number" min="1" max="100" step="1" value="30" aria-label="Eligible order share"></label>
+        <label>Incremental value/order ₹<input id="incrementValueInput" type="number" min="1" step="5" value="45" aria-label="Incremental value per order"></label>
+      </div>
+      <div class="sim-output"><div class="sim-value"><span>Implied annual eligible orders</span><strong id="eligibleOrdersOut">251.9M</strong></div><div class="sim-value"><span>Gross AOV opportunity</span><strong id="grossOpportunityOut">₹11.3B</strong></div><div class="sim-value"><span>Market-share status</span><strong>Unknown</strong></div></div>
+      <div class="pm-definitions"><div class="pm-definition"><strong>GMV</strong><span>Total value of goods sold before the business costs that determine profit.</span></div><div class="pm-definition"><strong>AOV</strong><span>Average value of one order; a larger AOV can still be unprofitable.</span></div><div class="pm-definition"><strong>Contribution margin</strong><span>What remains after variable discounts, fulfilment, refunds, and similar costs.</span></div><div class="pm-definition"><strong>Retention</strong><span>Whether the customer returns; the guardrail against one-time basket inflation.</span></div></div>
+      <p class="market-sources">Evidence anchors: <a href="../research/source-register.md">M01 · M02 · M06 source register</a> · <a href="../research/market-sizing-model.md">full model and limitations</a>. M01 is a broad industry forecast; M06 is a company-reported Zepto order-volume claim. The SAM, SOM, eligible-share, and incremental-value inputs are planning assumptions.</p>
     </section>
 
     <section class="panel research-readout" id="readout">
@@ -665,6 +705,26 @@
     };
     simulatorFields.forEach(([input]) => document.getElementById(input).addEventListener('input', updateSimulator));
     updateSimulator();
+
+    const updateMarketSizing = () => {
+      const tam = Number(document.getElementById('tamInput').value) || 0;
+      const samShare = (Number(document.getElementById('samShareInput').value) || 0) / 100;
+      const somShare = (Number(document.getElementById('somShareInput').value) || 0) / 100;
+      const ordersDay = Number(document.getElementById('ordersDayInput').value) || 0;
+      const eligibleShare = (Number(document.getElementById('eligibleShareInput').value) || 0) / 100;
+      const incrementValue = Number(document.getElementById('incrementValueInput').value) || 0;
+      const sam = tam * samShare;
+      const som = sam * somShare;
+      const eligibleOrders = ordersDay * 1000000 * 365 * eligibleShare;
+      const grossOpportunity = eligibleOrders * incrementValue / 1000000000;
+      document.getElementById('tamOut').textContent = `$${tam.toFixed(1)}B`;
+      document.getElementById('samOut').textContent = `$${sam.toFixed(1)}B`;
+      document.getElementById('somOut').textContent = som >= 1 ? `$${som.toFixed(1)}B` : `$${Math.round(som * 1000)}M`;
+      document.getElementById('eligibleOrdersOut').textContent = `${(eligibleOrders / 1000000).toFixed(1)}M`;
+      document.getElementById('grossOpportunityOut').textContent = `₹${grossOpportunity.toFixed(1)}B`;
+    };
+    ['tamInput','samShareInput','somShareInput','ordersDayInput','eligibleShareInput','incrementValueInput'].forEach(id => document.getElementById(id).addEventListener('input', updateMarketSizing));
+    updateMarketSizing();
 
     const basketData = [
       {platform:'Zepto', product:'', fees:'', discount:'', availability:'pending'},

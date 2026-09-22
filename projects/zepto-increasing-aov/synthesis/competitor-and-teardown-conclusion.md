@@ -8,6 +8,17 @@ The working hypothesis is:
 
 > Zepto can increase valuable AOV by helping users complete the specific mission they already started, then offering a small number of relevant, good-value additions or replenishment cues at the moment they are useful.
 
+## Market-size and PM framing
+
+The secondary research gives us a category anchor, not a verified Zepto TAM/SAM/SOM forecast:
+
+- **TAM anchor:** BCG/DTDC describes a `$20B+` rapid-commerce GMV opportunity in India by 2030. This is broader than Zepto's exact operating model. [M01 source register](../research/source-register.md)
+- **SAM scenario:** `$2.0B` base case, calculated as TAM × a 10% relevant-scope assumption. The scope could later be replaced with a verified Bengaluru, mission, category, or customer denominator.
+- **SOM scenario:** `$100M` base case, calculated as SAM × a 5% attainable-share assumption. This is a planning scenario, not Zepto's actual market share.
+- **AOV opportunity scenario:** `₹11.3B` annual gross opportunity, calculated from Zepto's reported 2.3M+ orders/day × 365 × a 30% eligible-order assumption × ₹45 incremental value/order assumption. It excludes discount, fulfilment, refunds, contribution margin, and retention effects.
+
+These estimates are included to make the assumptions visible and testable. They should not be presented as customer findings, Zepto financial facts, or a forecast. The next evidence required is a comparable market denominator, Zepto baseline AOV/GMV, eligible-order segmentation, contribution margin, and primary research on whether the proposed additions are relevant and trusted.
+
 ## Evidence versus judgement
 
 | Layer | Current finding |

@@ -14,7 +14,7 @@
 | Product teardown | Secondary desk teardown complete | Zepto is the primary teardown; competitor public surfaces benchmarked. | Controlled checkout and mission-based live observation. |
 | Public customer feedback | Expanded and coded | App stores, Reddit, complaint forums, creator videos, social posts, consumer forums, and operational context captured. | Extract individual feedback units if prevalence estimates are needed. |
 | Behavioural assumptions | Documented as hypotheses | Fee, trust, availability, reorder, switching, and planned-shopping assumptions mapped. | Test with recent-purchase interviews/survey responses. |
-| Market sizing and AOV model | Framework complete | Scenario model and economics tree documented. | Populate Zepto order, baseline AOV, margin, and retention inputs. |
+| Market sizing and AOV model | Secondary scenarios added | TAM anchor, SAM/SOM planning assumptions, market-share boundary, and AOV sensitivity model documented and added to the dashboard. | Replace assumptions with a comparable denominator, Zepto baseline AOV/GMV, eligible-order share, margin, and retention evidence. |
 | Matched-basket benchmark | Public evidence started | Two uncontrolled same-cart public snapshots now identify fee and final-payable-price fields to measure. | Run a controlled city/pin/account/time capture across platforms. |
 | Survey instrument and web app | Published pilot | English, Hindi, and Telugu survey app is live on the shared GitHub Pages site and connected to the configured Apps Script endpoint. | Fluent-language review, one end-to-end response reconciliation, and participant collection. |
 | Research dashboard | Published | Evidence-controlled HTML dashboard is live with citations, visual explainers, AOV decision lab, Bengaluru matched-basket calculator, feedback analyzer, timeline, and export tools. | Keep updating evidence and decisions as validation data arrives. |
@@ -55,6 +55,7 @@ The strongest working opportunity is not generic upselling. It is helping a user
 
 - No representative customer sample or completed interviews is currently included.
 - No Zepto internal baseline for orders, AOV, contribution margin, item additions, or retention is available in this repository.
+- TAM is anchored to a broad rapid-commerce industry forecast; SAM, SOM, eligible-order share, incremental value, and market share remain labelled planning assumptions or unknowns.
 - Public feedback cannot establish issue prevalence or causal impact on AOV.
 - Matched-cart prices, fees, availability, and delivery outcomes have not been populated.
 - Live checkout, substitution, recovery, and location-specific flows remain unverified.
@@ -65,7 +66,8 @@ The strongest working opportunity is not generic upselling. It is helping a user
 2. Run matched-basket observations across Zepto, Blinkit, Instamart, BigBasket/bbnow, and an offline substitute.
 3. Validate the top hypotheses using recent-purchase interviews and the neutral survey.
 4. Populate the AOV scenario model with verified baseline and margin inputs where available.
-5. Freeze the evidence boundary, then assemble the final conclusion and submission materials.
+5. Replace the initial TAM/SAM/SOM assumptions with defensible geography, mission, category, and customer denominators.
+6. Freeze the evidence boundary, then assemble the final conclusion and submission materials.
 
 ## Evidence rule
 
