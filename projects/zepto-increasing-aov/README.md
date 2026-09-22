@@ -29,6 +29,7 @@ Use a neutral grocery and quick-commerce survey. Do not assume that respondents 
 - [`research/aov-economics-tree.md`](research/aov-economics-tree.md) — AOV growth paths and guardrails
 - [`research/public-customer-signals.md`](research/public-customer-signals.md) — directional app-store, Reddit, complaint-forum, creator-video, social, consumer-forum, and operational-context signals
 - [`research/public-feedback-coding-matrix.md`](research/public-feedback-coding-matrix.md) — coded themes, evidence boundaries, AOV mechanisms, and validation backlog
+- [`dashboard/index.html`](dashboard/index.html) — visual research command center with status, evidence mix, Bengaluru benchmark decision, insight ledger, and local user-input explorer
 - [`research/market-to-aov-chain.md`](research/market-to-aov-chain.md) — integrated market-growth-to-profitable-AOV decision chain
 - [`research/evidence-inventory.md`](research/evidence-inventory.md) — complete inventory of available research and missing evidence
 - [`research/secondary-to-primary-mapping.md`](research/secondary-to-primary-mapping.md) — maps each secondary assumption to future primary validation
