@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Understand how a recent grocery or household basket started, expanded, and stopped so the team can identify responsible ways for Zepto to increase Average Order Value (AOV). This is an independent academic study and is not affiliated with Zepto or another retailer.
+Understand how a recent grocery or household basket started, expanded, and stopped so the team can identify responsible ways for Zepto to increase Average Order Value (AOV). This is an independent academic study and is not affiliated with any retailer.
+
+**Wording note (post-collection-start):** the participant-facing welcome text originally read "...not affiliated with Zepto or another retailer." Changed to "...not affiliated with any retailer" to stop naming Zepto specifically in the intro. Mechanically this shouldn't change Q1 answer selection — Q1 is a factual recall of the respondent's actual last purchase, not an opinion question, and Zepto stays as an ordinary option in that list. This changed after ~36 responses were already collected under the old wording; if the Zepto/non-Zepto split looks different before vs. after this timestamp, check `clientTimestamp` in the response sheet, but treat any difference cautiously since respondent geography (see analysis below) is a more likely explanation than wording.
 
 **Pilot languages:** English, Hindi, and Telugu. All languages store the same stable response codes. Hindi and Telugu wording must receive a fluent-speaker review before participant distribution.
 
