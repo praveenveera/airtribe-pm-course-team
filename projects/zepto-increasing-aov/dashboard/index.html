@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Project 4 · Zepto AOV Research & Strategy Command Center</title>
-  <meta name="description" content="Evidence-controlled research dashboard for Project 4: increasing AOV at Zepto combining primary survey data (N=92) and secondary research.">
+  <title>Project 4 · Zepto AOV Research & Strategy Command Center (V2)</title>
+  <meta name="description" content="Evidence-controlled research dashboard for Project 4: increasing AOV at Zepto combining deep primary survey data (N=92) and secondary research.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -90,7 +90,7 @@
 
     /* Progress bar lists */
     .stat-list { display: grid; gap: 10px; margin-top: 12px; }
-    .stat-row { display: grid; grid-template-columns: 140px 1fr 50px; align-items: center; gap: 10px; font-size: 0.8rem; }
+    .stat-row { display: grid; grid-template-columns: 150px 1fr 50px; align-items: center; gap: 10px; font-size: 0.8rem; }
     .stat-name { font-weight: 600; color: var(--ink); }
     .stat-bar-bg { height: 8px; border-radius: 99px; background: #e2e8f0; overflow: hidden; }
     .stat-bar-fill { height: 100%; border-radius: inherit; background: var(--blue-2); }
@@ -107,6 +107,10 @@
 
     /* Badges & Tags */
     .cite-badge { display: inline-flex; align-items: center; gap: 4px; background: var(--soft); color: var(--blue); padding: 2px 8px; border-radius: 6px; font: 600 0.68rem "Fira Code", monospace; margin-top: 6px; }
+    
+    .section-head { margin: 24px 0 14px; border-bottom: 2px solid var(--border); padding-bottom: 6px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .section-head h2 { font-size: 1.2rem; color: var(--ink); margin: 0; }
+    .section-head span { font-size: 0.8rem; color: var(--muted); }
   </style>
 </head>
 <body>
@@ -119,12 +123,12 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
         <div>
-          <span>Zepto AOV Command Center</span>
-          <div style="font-size: 0.75rem; font-weight: 400; color: var(--muted);">Project 4 · Senior PM Research & Strategy Suite</div>
+          <span>Zepto AOV Command Center (V2)</span>
+          <div style="font-size: 0.75rem; font-weight: 400; color: var(--muted);">Project 4 · Deep Primary & Secondary PM Research Suite</div>
         </div>
       </div>
       <div class="top-actions">
-        <span class="status done">● N=92 Survey Responses Active</span>
+        <span class="status done">● N=92 Deep Primary Data Active</span>
         <span class="pill mono">V2.5 Multi-Tab Platform</span>
         <span class="date mono">Updated: 23 Sep 2026</span>
       </div>
@@ -133,7 +137,7 @@
     <!-- Main Tab Control Navigation Bar -->
     <nav class="main-tabs" role="tablist">
       <button class="tab-btn active" id="tab-btn-primary" onclick="switchTab('primary')">
-        📊 Primary Research Insights <span class="badge">N=92</span>
+        📊 Primary Research Insights <span class="badge">N=92 Deep Breakdown</span>
       </button>
       <button class="tab-btn" id="tab-btn-secondary" onclick="switchTab('secondary')">
         📚 Secondary Research & Benchmark
@@ -146,15 +150,15 @@
       </button>
     </nav>
 
-    <!-- TAB 1: PRIMARY RESEARCH INSIGHTS (N=92) -->
+    <!-- TAB 1: PRIMARY RESEARCH INSIGHTS (N=92 DEEP BREAKDOWN) -->
     <div id="tab-panel-primary" class="tab-panel active">
       
       <div class="hero">
         <div class="hero-card">
-          <div class="eyebrow">Primary Research Synthesis · N=92 Participant Survey</div>
+          <div class="eyebrow">Deep Primary Research Synthesis · N=92 Participant Survey</div>
           <h1>Primary User Behavior & Basket Mechanics</h1>
           <p class="hero-copy">
-            Empirical evidence captured from <strong>92 verified grocery and quick-commerce shoppers</strong> via the Basket Stories survey instrument (V2.5). Evaluates real purchase missions, delivery threshold sensitivity, basket stopping friction, and recommendation receptivity.
+            Detailed empirical evidence captured from <strong>92 verified shoppers</strong>. Includes multi-dimensional cross-tabulations: Overall Behavior, Metro vs. Non-Metro, Zepto vs. Rest, Zepto Metro vs. Non-Metro, Why Not Zepto, Zepto Purchase Patterns, and Online Instant vs. Offline DMart/Supermarket.
           </p>
           <div style="margin-top: 14px; font-size: 0.78rem; color: var(--muted);">
             Dataset Source: <a href="https://docs.google.com/spreadsheets/d/1c050kFbIJe5p6ZH2U25WGrLHITCrwoUQ3G42rBJ346I/edit?usp=sharing" target="_blank">Responses_V2 Google Sheet</a> · Google Apps Script Live Backend
@@ -162,194 +166,259 @@
         </div>
         
         <div class="card" style="background: linear-gradient(135deg, #1e40af, #172554); color: white;">
-          <div class="eyebrow" style="color: #bfdbfe;">Key PM Takeaway</div>
-          <h3 style="color: white; font-size: 1.1rem;">57.6% Urgent & Replenishment Missions</h3>
+          <div class="eyebrow" style="color: #bfdbfe;">Key PM Discovery</div>
+          <h3 style="color: white; font-size: 1.1rem;">Zepto Has Highest Add-On Receptivity (59.3%)</h3>
           <p style="color: #dbeafe; font-size: 0.82rem;">
-            Over half of quick-commerce orders are high-urgency single-item top-ups. <strong>70.7% of users notice delivery thresholds</strong>, and 30.8% add filler items just to unlock free delivery.
+            <strong>59.3% of Zepto shoppers (16/27) added a recommended item</strong> to their basket compared to only 26.2% for non-Zepto platforms. However, Zepto's average basket remains compact (74.0% are 2-6 items).
           </p>
-          <span class="cite-badge" style="background: rgba(255,255,255,0.15); color: white;">N=92 Primary Field Verification</span>
+          <span class="cite-badge" style="background: rgba(255,255,255,0.15); color: white;">Responses_V2 N=92 Cross-Tab</span>
         </div>
       </div>
 
-      <!-- Metrics Row -->
+      <!-- High Level Metrics Bar -->
       <div class="metrics">
         <div class="metric">
-          <div class="metric-label">TOTAL RESPONSES</div>
+          <div class="metric-label">TOTAL SAMPLE</div>
           <div class="metric-value">92</div>
-          <div class="metric-note">Clean V2.5 schema submissions</div>
+          <div class="metric-note">37 Metro / 55 Non-Metro</div>
         </div>
         <div class="metric">
-          <div class="metric-label">ZEPTO MARKET SHARE</div>
+          <div class="metric-label">ZEPTO SHARE</div>
           <div class="metric-value">29.3%</div>
-          <div class="metric-note">Tied with Blinkit (29.3%)</div>
+          <div class="metric-note">N=27 Recent Orders</div>
         </div>
         <div class="metric">
-          <div class="metric-label">URGENT / REPLENISHMENT</div>
-          <div class="metric-value">57.6%</div>
-          <div class="metric-note">High-urgency top-up intent</div>
+          <div class="metric-label">ZEPTO ADD-ON ATTACH</div>
+          <div class="metric-value">59.3%</div>
+          <div class="metric-note">Highest receptivity across apps</div>
         </div>
         <div class="metric">
-          <div class="metric-label">THRESHOLD SENSITIVE</div>
-          <div class="metric-value">70.7%</div>
-          <div class="metric-note">Actively notice fee thresholds</div>
+          <div class="metric-label">NON-ZEPTO CONSIDERATION</div>
+          <div class="metric-value">32.3%</div>
+          <div class="metric-note">Considered Zepto but switched</div>
         </div>
         <div class="metric">
-          <div class="metric-label">ADD-ON RECEPTIVITY</div>
-          <div class="metric-value">35.9%</div>
-          <div class="metric-note">Added item from recommendation</div>
+          <div class="metric-label">OFFLINE DMART / STORE</div>
+          <div class="metric-value">23.9%</div>
+          <div class="metric-note">N=22 (63.6% are 10+ items)</div>
         </div>
       </div>
 
-      <!-- Breakdown Grid 1 -->
-      <div class="grid-2">
-        <!-- Channel Distribution -->
-        <div class="card">
-          <h3>1. Recent Channel Selection Split</h3>
-          <p>Where respondents completed their most recent grocery purchase (last 30 days):</p>
-          <div class="stat-list">
-            <div class="stat-row">
-              <div class="stat-name">Zepto</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 29.3%;"></div></div>
-              <div class="stat-val">29.3%</div>
-            </div>
-            <div class="stat-row">
-              <div class="stat-name">Blinkit</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 29.3%;"></div></div>
-              <div class="stat-val">29.3%</div>
-            </div>
-            <div class="stat-row">
-              <div class="stat-name">Offline / Supermarket</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill green" style="width: 25.0%;"></div></div>
-              <div class="stat-val">25.0%</div>
-            </div>
-            <div class="stat-row">
-              <div class="stat-name">Swiggy Instamart</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 7.6%;"></div></div>
-              <div class="stat-val">7.6%</div>
-            </div>
-            <div class="stat-row">
-              <div class="stat-name">Amazon Fresh</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 5.4%;"></div></div>
-              <div class="stat-val">5.4%</div>
-            </div>
-            <div class="stat-row">
-              <div class="stat-name">BigBasket / bbnow</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 3.3%;"></div></div>
-              <div class="stat-val">3.3%</div>
-            </div>
-          </div>
-          <span class="cite-badge">Source: Responses_V2 (recentMethod) N=92</span>
-        </div>
+      <!-- SECTION 1: METRO VS NON-METRO COMPARISON -->
+      <div class="section-head">
+        <h2>1. Metro City vs Non-Metro City Behavior</h2>
+        <span>Metro (N=37) vs Non-Metro (N=55)</span>
+      </div>
 
-        <!-- Mission Taxonomy -->
+      <div class="grid-2">
         <div class="card">
-          <h3>2. Shopping Mission Taxonomy (JTBD)</h3>
-          <p>Core underlying job-to-be-done for the purchase:</p>
+          <h3>Metro City Shoppers (Bengaluru, Hyd, Kolkata, Pune)</h3>
+          <p>Higher concentration of planned stock-up and large basket spend:</p>
           <div class="stat-list">
             <div class="stat-row">
-              <div class="stat-name">Urgent Need (1-2 items)</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill amber" style="width: 39.1%;"></div></div>
-              <div class="stat-val">39.1%</div>
-            </div>
-            <div class="stat-row">
-              <div class="stat-name">Ran Out of Staple</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill amber" style="width: 18.5%;"></div></div>
-              <div class="stat-val">18.5%</div>
+              <div class="stat-name">Urgent Top-Up (1-2 items)</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill amber" style="width: 32.4%;"></div></div>
+              <div class="stat-val">32.4%</div>
             </div>
             <div class="stat-row">
               <div class="stat-name">Planned Stock-Up</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill green" style="width: 16.3%;"></div></div>
-              <div class="stat-val">16.3%</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill green" style="width: 27.0%;"></div></div>
+              <div class="stat-val">27.0%</div>
             </div>
             <div class="stat-row">
-              <div class="stat-name">Planned Top-Up</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill green" style="width: 9.8%;"></div></div>
-              <div class="stat-val">9.8%</div>
+              <div class="stat-name">Ran Out of Staple</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 13.5%;"></div></div>
+              <div class="stat-val">13.5%</div>
             </div>
             <div class="stat-row">
-              <div class="stat-name">Offer / Discount Led</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 8.7%;"></div></div>
-              <div class="stat-val">8.7%</div>
-            </div>
-            <div class="stat-row">
-              <div class="stat-name">Discovery / Category Browse</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 4.3%;"></div></div>
-              <div class="stat-val">4.3%</div>
+              <div class="stat-name">High Spend (₹1000+)</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill green" style="width: 37.8%;"></div></div>
+              <div class="stat-val">37.8%</div>
             </div>
           </div>
-          <span class="cite-badge">Source: Responses_V2 (mission) N=92</span>
+          <span class="cite-badge">Metro Segment (N=37)</span>
+        </div>
+
+        <div class="card">
+          <h3>Non-Metro City Shoppers (Vizag, Srikakulam, etc.)</h3>
+          <p>Heavily driven by urgent top-up and immediate ran-out replenishment:</p>
+          <div class="stat-list">
+            <div class="stat-row">
+              <div class="stat-name">Urgent Top-Up (1-2 items)</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill amber" style="width: 43.6%;"></div></div>
+              <div class="stat-val">43.6%</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-name">Ran Out of Staple</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill amber" style="width: 21.8%;"></div></div>
+              <div class="stat-val">21.8%</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-name">Planned Stock-Up</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill green" style="width: 9.1%;"></div></div>
+              <div class="stat-val">9.1%</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-name">Medium Spend (₹400-699)</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 27.3%;"></div></div>
+              <div class="stat-val">27.3%</div>
+            </div>
+          </div>
+          <span class="cite-badge">Non-Metro Segment (N=55)</span>
         </div>
       </div>
 
-      <!-- Breakdown Grid 2 -->
+      <!-- SECTION 2: ZEPTO VS REST (NON-ZEPTO) -->
+      <div class="section-head">
+        <h2>2. Zepto Shoppers vs Rest (Non-Zepto)</h2>
+        <span>Zepto (N=27) vs Non-Zepto (N=65)</span>
+      </div>
+
       <div class="grid-2">
-        <!-- Delivery Threshold Behavior -->
         <div class="card">
-          <h3>3. Delivery Threshold Action Mechanics</h3>
-          <p>How respondents behaved when encountering free-delivery fee thresholds (70.7% noticed):</p>
+          <h3>Zepto Buyers Profile & Behavior (N=27)</h3>
           <div class="stat-list">
             <div class="stat-row">
-              <div class="stat-name">Added Useful Item</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill green" style="width: 41.5%;"></div></div>
-              <div class="stat-val">41.5%</div>
+              <div class="stat-name">Ran Out / Urgent Mission</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill amber" style="width: 59.3%;"></div></div>
+              <div class="stat-val">59.3%</div>
             </div>
             <div class="stat-row">
-              <div class="stat-name">Added Filler Item</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill amber" style="width: 30.8%;"></div></div>
+              <div class="stat-name">Added Recommended Item</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill green" style="width: 59.3%;"></div></div>
+              <div class="stat-val">59.3%</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-name">Compact Basket (2-3 items)</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 44.4%;"></div></div>
+              <div class="stat-val">44.4%</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-name">Mid Spend (₹200-699)</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 70.4%;"></div></div>
+              <div class="stat-val">70.4%</div>
+            </div>
+          </div>
+          <span class="cite-badge">Zepto Cohort (N=27)</span>
+        </div>
+
+        <div class="card">
+          <h3>Rest Cohort (Blinkit, Instamart, Supermarkets, N=65)</h3>
+          <div class="stat-list">
+            <div class="stat-row">
+              <div class="stat-name">Urgent / Stock-Up Mission</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 67.7%;"></div></div>
+              <div class="stat-val">67.7%</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-name">Added Recommended Item</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill amber" style="width: 26.2%;"></div></div>
+              <div class="stat-val">26.2%</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-name">Large Basket (10+ items)</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill green" style="width: 30.8%;"></div></div>
               <div class="stat-val">30.8%</div>
             </div>
             <div class="stat-row">
-              <div class="stat-name">Paid Delivery Fee</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill red" style="width: 10.8%;"></div></div>
-              <div class="stat-val">10.8%</div>
-            </div>
-            <div class="stat-row">
-              <div class="stat-name">No Change</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 7.7%;"></div></div>
-              <div class="stat-val">7.7%</div>
-            </div>
-            <div class="stat-row">
-              <div class="stat-name">Abandoned Cart / Waited</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill red" style="width: 7.7%;"></div></div>
-              <div class="stat-val">7.7%</div>
+              <div class="stat-name">High Spend (₹1000+)</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill green" style="width: 38.5%;"></div></div>
+              <div class="stat-val">38.5%</div>
             </div>
           </div>
-          <span class="cite-badge">Source: Responses_V2 (thresholdAction) N=65</span>
+          <span class="cite-badge">Non-Zepto Cohort (N=65)</span>
         </div>
+      </div>
 
-        <!-- Basket Stopping Reasons -->
+      <!-- SECTION 3: WHY NOT ZEPTO & CONSIDERATION GAP -->
+      <div class="section-head">
+        <h2>3. Why Not Zepto & Consideration Switch Gap</h2>
+        <span>Non-Zepto Buyers Analysis (N=65)</span>
+      </div>
+
+      <div class="grid-2">
         <div class="card">
-          <h3>4. Primary Basket Expansion Breakpoints</h3>
-          <p>Why respondents stopped adding items during cart review:</p>
+          <h3>Why Non-Zepto Buyers Chose Alternatives</h3>
+          <p>Primary rationale for selecting Blinkit, Instamart, or Offline Store over Zepto:</p>
           <div class="stat-list">
             <div class="stat-row">
-              <div class="stat-name">Budget Control / Spend Cap</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill red" style="width: 32.6%;"></div></div>
-              <div class="stat-val">32.6%</div>
+              <div class="stat-name">Delivery Reliability</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill amber" style="width: 27.7%;"></div></div>
+              <div class="stat-val">27.7%</div>
             </div>
             <div class="stat-row">
-              <div class="stat-name">Immediate Need Complete</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill amber" style="width: 18.6%;"></div></div>
-              <div class="stat-val">18.6%</div>
+              <div class="stat-name">Local Proximity & Speed</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 16.9%;"></div></div>
+              <div class="stat-val">16.9%</div>
             </div>
             <div class="stat-row">
-              <div class="stat-name">Quality / Prefer Store</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill red" style="width: 18.6%;"></div></div>
-              <div class="stat-val">18.6%</div>
+              <div class="stat-name">Bulk Value in Supermarkets</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill green" style="width: 13.8%;"></div></div>
+              <div class="stat-val">13.8%</div>
             </div>
             <div class="stat-row">
-              <div class="stat-name">Perceived Too Expensive</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill amber" style="width: 14.0%;"></div></div>
-              <div class="stat-val">14.0%</div>
-            </div>
-            <div class="stat-row">
-              <div class="stat-name">Buy Later / Stockout</div>
-              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 14.0%;"></div></div>
-              <div class="stat-val">14.0%</div>
+              <div class="stat-name">Catalog Availability</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 13.8%;"></div></div>
+              <div class="stat-val">13.8%</div>
             </div>
           </div>
-          <span class="cite-badge">Source: Responses_V2 (stopReason) N=43</span>
+          <span class="cite-badge">Source: Responses_V2 (altWhy)</span>
         </div>
+
+        <div class="card">
+          <h3>Zepto Consideration & Switch Breakdown</h3>
+          <p>32.3% of non-Zepto buyers considered Zepto for their purchase but switched:</p>
+          <div style="background: var(--soft); border-radius: 10px; padding: 14px; margin-top: 10px;">
+            <strong style="color: var(--blue); font-size: 0.88rem; display: block; margin-bottom: 6px;">Top Reasons for Switching away from Zepto:</strong>
+            <ul style="color: #334155; font-size: 0.82rem; line-height: 1.5; padding-left: 16px; margin: 0;">
+              <li><strong>Better Offers on Blinkit (38.1%):</strong> User perceived Blinkit's coupon discounts or cart offers as superior.</li>
+              <li><strong>Stock Availability Gaps (28.6%):</strong> Specific brand or SKU was out of stock on Zepto local dark store.</li>
+              <li><strong>Fee Transparency & Habit (33.3%):</strong> User already had free delivery active on Blinkit Gold or Swiggy One.</li>
+            </ul>
+          </div>
+          <span class="cite-badge">Source: Responses_V2 (consideredZepto & altZeptoGap)</span>
+        </div>
+      </div>
+
+      <!-- SECTION 4: ONLINE INSTANT VS OFFLINE DMART/SUPERMARKET -->
+      <div class="section-head">
+        <h2>4. Online Instant Apps vs. Offline DMart & Supermarkets</h2>
+        <span>Instant Apps (N=61) vs Offline Supermarket/Local Store (N=22)</span>
+      </div>
+
+      <div class="card">
+        <h3>AOV Drivers & Behavior Matrix: Instant Apps vs. Offline DMart</h3>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Channel Type</th>
+              <th>Dominant Basket Size</th>
+              <th>Typical Spend Range</th>
+              <th>Primary Mission JTBD</th>
+              <th>How AOV is Built</th>
+              <th>Primary Stopping Reason</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Online Instant Apps</strong><br><small>(Zepto, Blinkit, Instamart)</small></td>
+              <td><span class="pill" style="background: var(--blue-3); color: var(--blue);">2 - 6 Items (75.4%)</span></td>
+              <td>₹200 - ₹699 (55.7%)</td>
+              <td>Urgent Top-Up & Ran-Out Staple (73.8%)</td>
+              <td><strong>Delivery Threshold Nudging</strong> (adding 1-2 items to unlock free delivery at ₹99-199)</td>
+              <td>Budget control / spend cap (38.7%)</td>
+            </tr>
+            <tr>
+              <td><strong>Offline DMart / Supermarkets</strong><br><small>(Supermarkets, Kiranas, Bulk)</small></td>
+              <td><span class="pill" style="background: var(--green-bg); color: var(--green);">10+ Items (63.6%)</span></td>
+              <td>₹1000+ (54.5%)</td>
+              <td>Planned Pantry Stock-Up & Monthly Trips (63.6%)</td>
+              <td><strong>Pack-Size & Per-Unit Value</strong> (volume discounts, bulk packs, multi-category browsing)</td>
+              <td>Need completion / store exit (40.0%)</td>
+            </tr>
+          </tbody>
+        </table>
+        <span class="cite-badge">Cross-Tabulation: recentMethod ⊗ spend ⊗ items ⊗ mission ⊗ stopReason</span>
       </div>
 
     </div>
@@ -526,7 +595,7 @@
             </tr>
             <tr>
               <td><strong>Recommendation Receptivity</strong></td>
-              <td>35.9% added an item when relevant; 28.3% ignored and 6.5% felt pushed.</td>
+              <td>59.3% attach rate on Zepto when relevant; 28.3% ignored across all apps.</td>
               <td>App teardowns warn against generic carousel clutter slowing down checkout.</td>
               <td><span class="status active">▲ Context-Dependent</span></td>
               <td>Limit recommendations to <strong>2-3 need-complete items</strong> directly tied to item #1.</td>
@@ -550,7 +619,7 @@
           <ul style="color: #334155; font-size: 0.85rem; line-height: 1.6; padding-left: 18px;">
             <li>Users shop quick-commerce primarily for speed and mission resolution (57.6% urgent).</li>
             <li>Threshold prompts drive basket expansion, but 30.8% of users resent adding arbitrary fillers.</li>
-            <li>Recommendations work (35.9% attach rate) ONLY when strictly relevant to the current mission.</li>
+            <li>Zepto has highest recommendation attach rate (59.3%) when recommendations feel relevant.</li>
             <li>Zepto & Blinkit hold equal market share (29.3%) among urban quick-commerce users.</li>
           </ul>
         </div>
