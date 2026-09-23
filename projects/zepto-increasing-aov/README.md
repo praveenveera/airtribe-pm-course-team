@@ -11,7 +11,6 @@ Use a neutral grocery and quick-commerce survey. Do not assume that respondents 
 - Do not invent interviews, quotes, numbers, or user behaviour.
 - Label participant evidence, secondary evidence, assumptions, hypotheses, and recommendations separately.
 - Treat self-serve survey responses as survey evidence, not as fully probed interviews.
-- Keep contact details in the restricted follow-up sheet and out of research-response and public synthesis artifacts.
 
 ## Working files
 
@@ -49,14 +48,14 @@ The current phase is secondary research only: industry reports, market sizing, p
 
 Complete the secondary-research pack and market-sizing scenarios. Revisit primary research later to test, revise, or reject the documented assumptions.
 
-The app anchors recall to a purchase within the last 30 days, captures one shopping mission, and then adapts to the selected recent method. Zepto respondents describe their real checkout decision. Non-Zepto respondents explain why the selected method fitted the purchase and whether Zepto was considered. Optional follow-up contact is collected on the final screen but stored in a separate restricted sheet.
+The app anchors recall to a purchase within the last 30 days, captures one shopping mission, and then adapts to the selected recent method. Zepto respondents describe their real checkout decision. Non-Zepto respondents explain why the selected method fitted the purchase and whether Zepto was considered. The survey does not collect follow-up-interview consent or contact details — the team does not expect to have time to run moderated follow-up conversations, so that mechanism was removed from the instrument (V2.4).
 
 ## Submission status
 
 - Survey instrument and adaptive web app: local English, Hindi, and Telugu pilot build complete; fluent-language and deployed end-to-end validation pending.
-- Google Sheets capture: V2 schema implemented; deployed end-to-end row reconciliation pending.
+- Google Sheets capture: V2.4 schema implemented (adds `receptivity`, `altZeptoGap`, `basketStopWhy`, `channelMix`, `cityTier`, `ageBracket`, `lifeStage`; fixes channel-fit branching; removes the follow-up-interview opt-in, contact field, and `FollowUp_V2` sheet entirely); the Apps Script deployment and one end-to-end row reconciliation must be redone against this schema before collection.
 - Academic research framing and consent: documented and published.
-- Sampling and follow-up conversation plan: documented; participant collection pending.
+- Sampling plan: documented; participant collection pending. The team does not expect to have time for moderated follow-up conversations, so the survey no longer collects follow-up consent or contact details; `research/sampling-plan.md` and `research/analysis-and-recommendations.md` still describe follow-up interviews as part of the method and have not yet been updated to match — flag before relying on them for the interview plan.
 - Secondary research: initial industry, market-size, behavioural, and competitor evidence documented; company claims and inferences remain clearly bounded.
 - Segments, blockers, solutions, RICE, and KPIs: documented as hypotheses and planning estimates; revise after evidence collection.
 - Final presentation/PDF: not yet assembled.

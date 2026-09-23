@@ -1,6 +1,6 @@
 # Project 4 — Increasing AOV at Zepto
 
-**Last updated:** 22 September 2026  
+**Last updated:** 23 September 2026  
 **Overall status:** Secondary research substantially documented; primary research intentionally deferred  
 **Current decision:** Define and validate a profitable AOV opportunity without assuming that all users, missions, or competitors behave the same way.
 
@@ -16,7 +16,7 @@
 | Behavioural assumptions | Documented as hypotheses | Fee, trust, availability, reorder, switching, and planned-shopping assumptions mapped. | Test with recent-purchase interviews/survey responses. |
 | Market sizing and AOV model | Secondary scenarios added | TAM anchor, SAM/SOM planning assumptions, market-share boundary, and AOV sensitivity model documented and added to the dashboard. | Replace assumptions with a comparable denominator, Zepto baseline AOV/GMV, eligible-order share, margin, and retention evidence. |
 | Matched-basket benchmark | Public evidence started | Two uncontrolled same-cart public snapshots now identify fee and final-payable-price fields to measure. | Run a controlled city/pin/account/time capture across platforms. |
-| Survey instrument and web app | Published pilot | English, Hindi, and Telugu survey app is live on the shared GitHub Pages site and connected to the configured Apps Script endpoint. | Fluent-language review, one end-to-end response reconciliation, and participant collection. |
+| Survey instrument and web app | Published pilot, V2.4 | English, Hindi, and Telugu survey app is live on the shared GitHub Pages site and connected to the configured Apps Script endpoint. V2.2 fixed a repeated-category question, corrected mismatched channel-fit options for BigBasket/Amazon Fresh, and added a receptivity question plus an optional non-Zepto open response. V2.3 closed a blind spot for the "urgent top-up" segment (a conditional basket-stop-reason question), added a channel-mix question to reveal cross-channel basket splitting, and added a light "about you" block (city tier, age bracket, life stage) for reporting only. V2.4 removed the follow-up-interview opt-in and contact capture entirely — the team does not expect to have time to run moderated follow-up conversations, so the survey no longer collects consent or contact details for that. | Fluent-language review, one end-to-end response reconciliation with the updated schema, and participant collection. `research/sampling-plan.md` and `research/analysis-and-recommendations.md` still describe follow-up interviews as part of the method and have not been updated to match V2.4 — reconcile before relying on them. |
 | Research dashboard | Published | Evidence-controlled HTML dashboard is live with citations, visual explainers, AOV decision lab, Bengaluru matched-basket calculator, feedback analyzer, timeline, and export tools. | Keep updating evidence and decisions as validation data arrives. |
 | Primary research | Deferred | No participant data is treated as current evidence. | User decision required to restart collection. |
 | Final synthesis/submission | Not assembled | Conclusion and walkthrough draft exist. | Reconcile evidence, validate hypotheses, then assemble final deliverable. |
@@ -43,7 +43,7 @@
 
 The dashboard is the decision layer for the secondary-research phase. It brings together the market-to-AOV chain, competitor mechanics, Zepto teardown, public-feedback themes, evidence traceability, Bengaluru observation plan, opportunity map, evidence-quality rules, scenario modelling, and the next validation queue. Its visual explainers make the reasoning explicit: observe → triangulate → explain → test.
 
-The survey app is the primary-research collection layer. It uses a neutral grocery/quick-commerce questionnaire in English, Hindi, and Telugu to capture a recent purchase, shopping mission, basket-building behaviour, fees or thresholds, rejected items, alternatives, and optional follow-up interest. Survey responses are not yet treated as findings or reflected in the dashboard until collection and reconciliation are complete.
+The survey app is the primary-research collection layer. It uses a neutral grocery/quick-commerce questionnaire in English, Hindi, and Telugu to capture a recent purchase, shopping mission, basket-building behaviour, fees or thresholds, rejected items, and alternatives. It does not collect follow-up-interview consent or contact details (removed in V2.4). Survey responses are not yet treated as findings or reflected in the dashboard until collection and reconciliation are complete.
 
 Both tools are published as lightweight static web assets. The dashboard has a lightweight access gate for team sharing; it is not a security control for confidential data. The repository is public because GitHub Pages was enabled for publication, so no sensitive participant information should be committed or entered into the tools.
 

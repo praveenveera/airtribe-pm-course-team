@@ -1,7 +1,6 @@
 /** Backend for Basket Stories Pilot V2. Deploy as a Google Sheets Web App. */
 var RESPONSE_SHEET = "Responses_V2";
-var FOLLOW_UP_SHEET = "FollowUp_V2";
-var SURVEY_VERSION = "2.1";
+var SURVEY_VERSION = "2.4";
 
 var CATEGORY_CODES = [
   "fresh_produce", "dairy_bread_eggs", "staples_packaged_cooking",
@@ -10,18 +9,23 @@ var CATEGORY_CODES = [
   "electronics_mobile", "fashion_toys_lifestyle", "other"
 ];
 
+var RECEPTIVITY_CODES = ["added_item", "looked_no_add", "ignored", "found_pushy", "not_sure"];
+
+var PLANNED_MISSIONS = ["stock_up", "regular_reorder", "meal_or_event"];
+
 var RESPONSE_COLUMNS = [
   "responseId", "serverTimestamp", "clientTimestamp", "surveyVersion",
   "language", "consent", "eligible", "recentMethod", "recentMethodOther",
   "mission", "missionOther", "firstNeed", "firstNeedOther", "householdSize",
   "items", "spend", "categories", "categoriesOther", "expansionPattern",
   "considered", "consideredCategory", "consideredCategoryOther", "stopReason",
-  "stopReasonOther", "thresholdNoticed", "thresholdAction", "thresholdActionOther",
+  "stopReasonOther", "basketStopWhy", "basketStopWhyOther",
+  "thresholdNoticed", "thresholdAction", "thresholdActionOther",
   "zeptoWhy", "zeptoWhyOther", "zeptoCheckoutMoment", "altWhy", "altWhyOther",
-  "consideredZepto", "follow", "rawJson"
+  "consideredZepto", "altZeptoGap", "receptivity",
+  "channelMix", "channelMixOther", "cityTier", "ageBracket", "lifeStage",
+  "rawJson"
 ];
-
-var FOLLOW_UP_COLUMNS = ["responseId", "serverTimestamp", "contact"];
 
 function doPost(e) {
   var lock = LockService.getScriptLock();
@@ -32,20 +36,15 @@ function doPost(e) {
 
     var payload = JSON.parse(e.postData.contents || "{}");
     var research = payload.research || {};
-    var followUp = payload.followUp || {};
-    validateSubmission(research, followUp);
+    validateSubmission(research);
 
     var responseSheet = getOrCreateSheet(RESPONSE_SHEET, RESPONSE_COLUMNS);
-    var followUpSheet = getOrCreateSheet(FOLLOW_UP_SHEET, FOLLOW_UP_COLUMNS);
     var serverTimestamp = new Date();
     var responseRow = RESPONSE_COLUMNS.map(function (key) {
       if (key === "serverTimestamp") return serverTimestamp;
       if (key === "rawJson") return JSON.stringify(research);
       return serializeCell(research[key]);
     });
-    if (research.follow === "yes" && !hasResponseId(followUpSheet, research.responseId)) {
-      followUpSheet.appendRow([research.responseId, serverTimestamp, followUp.contact]);
-    }
     if (!hasResponseId(responseSheet, research.responseId)) responseSheet.appendRow(responseRow);
 
     return jsonOutput({ status: "ok", responseId: research.responseId });
@@ -77,8 +76,8 @@ function doGet(e) {
   return ContentService.createTextOutput(body).setMimeType(ContentService.MimeType.JAVASCRIPT);
 }
 
-function validateSubmission(research, followUp) {
-  var required = ["responseId", "clientTimestamp", "surveyVersion", "language", "consent", "eligible", "recentMethod", "follow"];
+function validateSubmission(research) {
+  var required = ["responseId", "clientTimestamp", "surveyVersion", "language", "consent", "eligible", "recentMethod"];
   required.forEach(function (key) {
     if (research[key] === undefined || research[key] === null || research[key] === "") {
       throw new Error("Missing required field: " + key);
@@ -88,10 +87,9 @@ function validateSubmission(research, followUp) {
   if (research.surveyVersion !== SURVEY_VERSION) throw new Error("Unsupported survey version");
   if (["en", "hi", "te"].indexOf(research.language) === -1) throw new Error("Unsupported survey language");
   if (research.consent !== true) throw new Error("Consent is required");
-  if (research.follow !== "yes" && research.follow !== "no") throw new Error("Invalid follow-up choice");
 
   if (research.eligible === true) {
-    ["mission", "firstNeed", "householdSize", "items", "spend", "categories", "expansionPattern", "considered", "thresholdNoticed"]
+    ["mission", "householdSize", "items", "spend", "categories", "expansionPattern", "considered", "thresholdNoticed", "receptivity", "channelMix", "cityTier", "ageBracket", "lifeStage"]
       .forEach(function (key) {
         if (research[key] === undefined || research[key] === null || research[key] === "" ||
             (Array.isArray(research[key]) && research[key].length === 0)) {
@@ -99,10 +97,22 @@ function validateSubmission(research, followUp) {
         }
       });
 
+    var plannedMission = PLANNED_MISSIONS.indexOf(research.mission) !== -1;
+    if (!plannedMission && !research.firstNeed) {
+      throw new Error("Missing eligible-response field: firstNeed");
+    }
+    if (plannedMission && research.firstNeed) {
+      throw new Error("firstNeed should not be asked for a planned mission");
+    }
+
     if (research.considered === "yes" && (!research.consideredCategory || !research.stopReason)) {
       throw new Error("Missing considered-item detail");
     }
-    validateCategoryCode(research.firstNeed, "firstNeed");
+    var immediateCheckout = Array.isArray(research.expansionPattern) && research.expansionPattern.indexOf("immediate_checkout") !== -1;
+    if (research.considered !== "yes" && immediateCheckout && !research.basketStopWhy) {
+      throw new Error("Missing basket-stop reason");
+    }
+    if (research.firstNeed) validateCategoryCode(research.firstNeed, "firstNeed");
     if (!Array.isArray(research.categories)) throw new Error("categories must be an array");
     research.categories.forEach(function (code) { validateCategoryCode(code, "categories"); });
     if (research.considered === "yes") validateCategoryCode(research.consideredCategory, "consideredCategory");
@@ -115,12 +125,14 @@ function validateSubmission(research, followUp) {
     if (research.recentMethod !== "zepto" && (!research.altWhy || !research.consideredZepto)) {
       throw new Error("Missing alternative-method branch detail");
     }
+    validateReceptivityCode(research.receptivity);
 
     [
       ["recentMethod", "recentMethodOther"], ["mission", "missionOther"],
       ["firstNeed", "firstNeedOther"], ["consideredCategory", "consideredCategoryOther"],
-      ["stopReason", "stopReasonOther"], ["thresholdAction", "thresholdActionOther"],
-      ["zeptoWhy", "zeptoWhyOther"], ["altWhy", "altWhyOther"]
+      ["stopReason", "stopReasonOther"], ["basketStopWhy", "basketStopWhyOther"],
+      ["thresholdAction", "thresholdActionOther"],
+      ["zeptoWhy", "zeptoWhyOther"], ["altWhy", "altWhyOther"], ["channelMix", "channelMixOther"]
     ].forEach(function (pair) {
       if (research[pair[0]] === "other" && !String(research[pair[1]] || "").trim()) {
         throw new Error("Missing Other detail for " + pair[0]);
@@ -130,15 +142,17 @@ function validateSubmission(research, followUp) {
       throw new Error("Missing Other detail for categories");
     }
   }
-
-  if (research.follow === "yes" && !String(followUp.contact || "").trim()) {
-    throw new Error("Follow-up contact is required when follow-up is yes");
-  }
 }
 
 function validateCategoryCode(code, fieldName) {
   if (CATEGORY_CODES.indexOf(code) === -1) {
     throw new Error("Invalid category code for " + fieldName);
+  }
+}
+
+function validateReceptivityCode(code) {
+  if (RECEPTIVITY_CODES.indexOf(code) === -1) {
+    throw new Error("Invalid receptivity code");
   }
 }
 
@@ -178,5 +192,4 @@ function jsonOutput(body) {
 
 function setupCheck() {
   getOrCreateSheet(RESPONSE_SHEET, RESPONSE_COLUMNS);
-  getOrCreateSheet(FOLLOW_UP_SHEET, FOLLOW_UP_COLUMNS);
 }

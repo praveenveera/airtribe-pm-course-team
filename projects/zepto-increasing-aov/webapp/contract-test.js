@@ -61,7 +61,7 @@ function baseResearch(responseId) {
   return {
     responseId,
     clientTimestamp: "2026-09-22T00:00:00.000Z",
-    surveyVersion: "2.1",
+    surveyVersion: "2.4",
     language: "en",
     consent: true,
     eligible: true,
@@ -82,6 +82,8 @@ function baseResearch(responseId) {
     consideredCategoryOther: "",
     stopReason: "",
     stopReasonOther: "",
+    basketStopWhy: "need_complete",
+    basketStopWhyOther: "",
     thresholdNoticed: "no",
     thresholdAction: "",
     thresholdActionOther: "",
@@ -91,31 +93,30 @@ function baseResearch(responseId) {
     altWhy: "",
     altWhyOther: "",
     consideredZepto: "",
-    follow: "yes",
+    altZeptoGap: "",
+    receptivity: "added_item",
+    channelMix: "same_app",
+    channelMixOther: "",
+    cityTier: "metro",
+    ageBracket: "25_34",
+    lifeStage: "working_alone",
   };
 }
 
-function post(research, followUp = {}) {
-  const result = context.doPost({ postData: { contents: JSON.stringify({ research, followUp }) } });
+function post(research) {
+  const result = context.doPost({ postData: { contents: JSON.stringify({ research }) } });
   return JSON.parse(result.text);
 }
 
 const zepto = baseResearch("BS2-ZEPTO");
-assert.equal(post(zepto, { contact: "pilot@example.com" }).status, "ok");
+assert.equal(post(zepto).status, "ok");
 
 const responses = spreadsheet.getSheetByName("Responses_V2");
-const followUps = spreadsheet.getSheetByName("FollowUp_V2");
 assert.equal(JSON.stringify(responses.rows[0]), JSON.stringify(context.RESPONSE_COLUMNS));
-assert.equal(JSON.stringify(followUps.rows[0]), JSON.stringify(context.FOLLOW_UP_COLUMNS));
 assert.equal(responses.rows.length, 2);
-assert.equal(followUps.rows.length, 2);
-assert.equal(followUps.rows[1][2], "pilot@example.com");
-assert.equal(responses.rows[1].includes("pilot@example.com"), false);
-assert.equal(String(responses.rows[1][responses.rows[0].indexOf("rawJson")]).includes("pilot@example.com"), false);
 
-assert.equal(post(zepto, { contact: "pilot@example.com" }).status, "ok");
+assert.equal(post(zepto).status, "ok");
 assert.equal(responses.rows.length, 2, "duplicate research response was appended");
-assert.equal(followUps.rows.length, 2, "duplicate follow-up contact was appended");
 
 const nonZepto = baseResearch("BS2-ALT");
 nonZepto.language = "hi";
@@ -124,18 +125,18 @@ nonZepto.zeptoWhy = "";
 nonZepto.zeptoCheckoutMoment = "";
 nonZepto.altWhy = "larger_quantity_value";
 nonZepto.consideredZepto = "no";
-nonZepto.follow = "no";
+nonZepto.altZeptoGap = "अगर कीमत कम होती तो मैं Zepto इस्तेमाल करता।";
+nonZepto.receptivity = "looked_no_add";
 assert.equal(post(nonZepto).status, "ok");
 
 const ineligible = {
   responseId: "BS2-INELIGIBLE",
   clientTimestamp: "2026-09-22T00:00:00.000Z",
-  surveyVersion: "2.1",
+  surveyVersion: "2.4",
   language: "en",
   consent: true,
   eligible: false,
   recentMethod: "no_recent_purchase",
-  follow: "no",
 };
 assert.equal(post(ineligible).status, "ok");
 
@@ -143,9 +144,35 @@ const invalidCategory = baseResearch("BS2-BAD-CATEGORY");
 invalidCategory.firstNeed = "unknown_category";
 assert.equal(post(invalidCategory).status, "error");
 
+const invalidReceptivity = baseResearch("BS2-BAD-RECEPTIVITY");
+invalidReceptivity.receptivity = "unknown_reaction";
+assert.equal(post(invalidReceptivity).status, "error");
+
+const missingBasketStopWhy = baseResearch("BS2-MISSING-STOP-WHY");
+missingBasketStopWhy.basketStopWhy = "";
+assert.equal(post(missingBasketStopWhy).status, "error");
+
+const plannedCheckout = baseResearch("BS2-PLANNED-CHECKOUT");
+plannedCheckout.expansionPattern = ["planned_items"];
+plannedCheckout.basketStopWhy = "";
+assert.equal(post(plannedCheckout).status, "ok", "basketStopWhy should not be required without immediate_checkout");
+
+const plannedMissionNoFirstNeed = baseResearch("BS2-PLANNED-MISSION");
+plannedMissionNoFirstNeed.mission = "stock_up";
+plannedMissionNoFirstNeed.firstNeed = "";
+plannedMissionNoFirstNeed.firstNeedOther = "";
+assert.equal(post(plannedMissionNoFirstNeed).status, "ok", "firstNeed should not be required for a planned mission");
+
+const emergentMissionMissingFirstNeed = baseResearch("BS2-EMERGENT-MISSING-FIRSTNEED");
+emergentMissionMissingFirstNeed.firstNeed = "";
+assert.equal(post(emergentMissionMissingFirstNeed).status, "error", "firstNeed should still be required for a non-planned mission");
+
+const plannedMissionWithFirstNeed = baseResearch("BS2-PLANNED-WITH-FIRSTNEED");
+plannedMissionWithFirstNeed.mission = "stock_up";
+assert.equal(post(plannedMissionWithFirstNeed).status, "error", "firstNeed should be rejected when sent for a planned mission");
+
 const status = context.doGet({ parameter: { responseId: "BS2-ZEPTO", callback: "confirmResult" } });
 assert.match(status.text, /"found":true/);
-assert.equal(responses.rows.length, 4);
-assert.equal(followUps.rows.length, 2);
+assert.equal(responses.rows.length, 6);
 
-console.log("Basket Stories V2.1 capture contract: PASS");
+console.log("Basket Stories V2.4 capture contract: PASS");
