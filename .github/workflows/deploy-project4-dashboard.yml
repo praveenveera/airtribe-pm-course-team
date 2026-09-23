@@ -27,17 +27,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
+
       - name: Assemble dashboard and survey site
         run: |
           mkdir -p _site/survey
-          cp projects/zepto-increasing-aov/dashboard/index.html _site/index.html
+          cp -r projects/zepto-increasing-aov/dashboard/* _site/
           cp projects/zepto-increasing-aov/webapp/index.html _site/survey/index.html
-      - name: Package dashboard
+
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
