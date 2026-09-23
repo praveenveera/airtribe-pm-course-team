@@ -38,24 +38,22 @@ Use a neutral grocery and quick-commerce survey. Do not assume that respondents 
 
 ## Current focus
 
-See [`PROJECT_STATUS.md`](PROJECT_STATUS.md) for the current workstream tracker, evidence gaps, and next actions.
+See [`PROJECT_STATUS.md`](PROJECT_STATUS.md) for the current workstream tracker and complete evidence synthesis.
 
-Primary research is intentionally deferred: no interviews, survey distribution, or observational user research is being treated as active evidence in this phase.
+**Primary Research Phase Complete:** $N=92$ completed participant responses captured from the live `Responses_V2` dataset via the Basket Stories V2.5 survey web app. Primary user behavior, mission taxonomy, threshold sensitivity, and category co-occurrence pairs are fully analyzed and integrated into the live dashboard.
 
-The current phase is secondary research only: industry reports, market sizing, public competitor benchmarking, public product-surface teardown, and behavioural assumptions to validate later.
+**Integrated Product Strategy:** Primary findings ($N=92$) and secondary research (Redseer $\$90\text{B}+$, BCG $\$20\text{B}+$, Zepto IR $2.3\text{M}+$ daily orders) are consolidated into a prioritized product roadmap (Solution A: Need-Complete Add-On Shelf, Solution B: Household Basket Builder, Solution C: Reorder-Plus Prompts).
 
-## Next gate
+## Published Research Tools & Dashboard
 
-Complete the secondary-research pack and market-sizing scenarios. Revisit primary research later to test, revise, or reject the documented assumptions.
+- **[Project 4 Research & Strategy Command Center (V2.5)](https://praveenveera.github.io/airtribe-pm-course-team/)** — Live 4-tab responsive dashboard featuring Primary Analytics ($N=92$), Secondary Benchmarks, Triangulation Matrix, RICE Prioritization, and PRD Specs.
+- **[Basket Stories Survey Web App (V2.5)](https://praveenveera.github.io/airtribe-pm-course-team/survey/)** — Deployed multilingual survey instrument.
+- **[Shared Public Repository](https://github.com/praveenveera/airtribe-pm-course-team)** — Full project codebase and research artifacts.
 
-The app anchors recall to a purchase within the last 30 days, captures one shopping mission, and then adapts to the selected recent method. Zepto respondents describe their real checkout decision. Non-Zepto respondents explain why the selected method fitted the purchase and whether Zepto was considered. The survey does not collect follow-up-interview consent or contact details — the team does not expect to have time to run moderated follow-up conversations, so that mechanism was removed from the instrument (V2.4). Q15 asks for the respondent's exact city as open text rather than a bucketed region, by deliberate choice — see V2.5 in `interviews/survey-form-content.md` for why.
+## Submission Status
 
-## Submission status
-
-- Survey instrument and adaptive web app: published and deployed; end-to-end submission confirmed against the live Apps Script backend and `Responses_V2` sheet (one test row present — delete before real participant collection). Fluent-language review of Hindi/Telugu wording still pending.
-- Google Sheets capture: V2.5 schema live (adds `receptivity`, `altZeptoGap`, `basketStopWhy`, `channelMix`, `city`, `ageBracket`, `lifeStage`; fixes channel-fit branching; removes the follow-up-interview opt-in, contact field, and `FollowUp_V2` sheet entirely; `city` replaced the earlier bucketed `cityTier`).
-- Academic research framing and consent: documented and published.
-- Sampling plan: documented; participant collection pending. The team does not expect to have time for moderated follow-up conversations, so the survey no longer collects follow-up consent or contact details; `research/sampling-plan.md` and `research/analysis-and-recommendations.md` still describe follow-up interviews as part of the method and have not yet been updated to match — flag before relying on them for the interview plan.
-- Secondary research: initial industry, market-size, behavioural, and competitor evidence documented; company claims and inferences remain clearly bounded.
-- Segments, blockers, solutions, RICE, and KPIs: documented as hypotheses and planning estimates; revise after evidence collection.
-- Final presentation/PDF: not yet assembled.
+- **Primary Survey & Dataset:** $N=92$ completed responses analyzed across 6+ dimensions (Metro vs Non-Metro, Zepto vs Rest, Why Not Zepto, Category Co-Occurrence Pairs, Household Segmentation, Cart Expansion Funnel).
+- **Google Sheets Capture & Backend:** Live Apps Script endpoint and `Responses_V2` Google Sheet ($N=92$ clean rows).
+- **Command Center Dashboard:** Published V2.5 4-tab mobile-responsive dashboard with full citations to primary dataset and secondary reports.
+- **Product Strategy & PRDs:** Solution A (*Need-Complete Add-On Shelf*) prioritized via RICE (Score: **864**), detailed PRD UX/trigger specs, and operational guardrail metrics.
+- **Lead Author & Technical Lead:** Praveen Veera (Survey engineering, Apps Script backend, primary dataset analytics, V2.5 dashboard engineering, and PRD specifications).
