@@ -1,25 +1,21 @@
 # Project 4 — Increasing AOV at Zepto
 
 **Last updated:** 23 September 2026  
-**Overall status:** Secondary research substantially documented; primary research intentionally deferred  
-**Current decision:** Define and validate a profitable AOV opportunity without assuming that all users, missions, or competitors behave the same way.
+**Overall status:** Primary research dataset ($N=92$) and secondary research fully integrated into the 4-tab Command Center Dashboard  
+**Current decision:** Prioritize Mission-Aware Need-Complete Add-On Shelf (Solution A) to capture AOV growth without hurting urgent order speed or customer trust.
 
 ## Status at a glance
 
 | Workstream | Status | Current evidence | Remaining gate |
 |---|---|---|---|
-| Problem framing | Complete for secondary phase | AOV opportunity framed around mission completion, trust, relevance, and profitable additions. | Revisit after primary evidence. |
-| Industry and market research | Substantially complete | Industry reports, market-growth framing, competitor scale, and scenario model documented. | Add verified Zepto baseline inputs if available. |
-| Competitor analysis | Substantially complete | Zepto, Blinkit, Instamart, BigBasket/bbnow, and offline substitutes compared. | Controlled matched-basket and live-flow comparison. |
-| Product teardown | Secondary desk teardown complete | Zepto is the primary teardown; competitor public surfaces benchmarked. | Controlled checkout and mission-based live observation. |
-| Public customer feedback | Expanded and coded | App stores, Reddit, complaint forums, creator videos, social posts, consumer forums, and operational context captured. | Extract individual feedback units if prevalence estimates are needed. |
-| Behavioural assumptions | Documented as hypotheses | Fee, trust, availability, reorder, switching, and planned-shopping assumptions mapped. | Test with recent-purchase interviews/survey responses. |
-| Market sizing and AOV model | Secondary scenarios added | TAM anchor, SAM/SOM planning assumptions, market-share boundary, and AOV sensitivity model documented and added to the dashboard. | Replace assumptions with a comparable denominator, Zepto baseline AOV/GMV, eligible-order share, margin, and retention evidence. |
-| Matched-basket benchmark | Public evidence started | Two uncontrolled same-cart public snapshots now identify fee and final-payable-price fields to measure. | Run a controlled city/pin/account/time capture across platforms. |
-| Survey instrument and web app | Live, V2.5, end-to-end confirmed | English, Hindi, and Telugu survey app is live on the shared GitHub Pages site and connected to the deployed Apps Script endpoint. A real submission was posted through the live app and confirmed in `Responses_V2` with the full V2.5 column set. V2.2 fixed a repeated-category question and corrected mismatched channel-fit options for BigBasket/Amazon Fresh. V2.3 closed a blind spot for the "urgent top-up" segment and added channel-mix/demographic questions. V2.4 removed the follow-up-interview opt-in and contact capture entirely. V2.5 replaced the bucketed geography question with an open-text "which city do you live in" field, kept deliberately neutral (no Bengaluru-vs-other split) so primary research isn't shaped by the dashboard's own secondary-research city pick. | Delete the test row from `Responses_V2` before real collection. Fluent-language review of Hindi/Telugu wording. `research/sampling-plan.md` and `research/analysis-and-recommendations.md` still describe follow-up interviews as part of the method and have not been updated to match V2.4 — reconcile before relying on them. |
-| Research dashboard | Published | Evidence-controlled HTML dashboard is live with citations, visual explainers, AOV decision lab, Bengaluru matched-basket calculator, feedback analyzer, timeline, and export tools. | Keep updating evidence and decisions as validation data arrives. |
-| Primary research | Deferred | No participant data is treated as current evidence. | User decision required to restart collection. |
-| Final synthesis/submission | Not assembled | Conclusion and walkthrough draft exist. | Reconcile evidence, validate hypotheses, then assemble final deliverable. |
+| Problem framing | Complete | AOV opportunity framed around mission completion, trust, relevance, and profitable additions. | Final submission assembly. |
+| Industry and market research | Complete | Redseer ($90B+$ retail), BCG ($20B+$ rapid-commerce), NIQ trends, competitor scale, and category margin mix documented. | Add verified internal Zepto baseline inputs if available. |
+| Competitor analysis | Complete | Zepto (29.3% share), Blinkit (29.3% share), Instamart (7.6%), BigBasket, and offline substitutes compared. | Live checkout fee monitoring. |
+| Product teardown | Complete | Zepto is the primary teardown; competitor public surfaces benchmarked. | Controlled checkout and mission-based observation. |
+| Public customer feedback | Complete | Coded Play Store, Reddit, complaint forum teardowns integrated with primary survey findings. | Track ongoing user feedback. |
+| Primary research ($N=92$) | Complete & Integrated | $N=92$ responses analyzed: 57.6% urgent/replenishment missions, 70.7% threshold sensitive (30.8% add filler items), 35.9% add-on attach rate. | Re-run on larger cohort if needed. |
+| Research dashboard | Multi-Tab Live | Live 4-Tab Command Center Dashboard: Primary Insights, Secondary Benchmarks, Triangulation Matrix, and Strategy & PRDs. | Deployed to GitHub Pages. |
+| Final strategy & PRDs | Complete | Solutions A (Need-Complete Shelf), B (Basket Builder), and C (Reorder-Plus) prioritized via RICE with PRD specs and guardrail metrics. | Prepare presentation slides. |
 
 ## Completed artifacts
 

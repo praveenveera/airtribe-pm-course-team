@@ -10,18 +10,16 @@ This is an independent academic product-management study. It is not affiliated w
 
 | Evidence item | Status | How it may be used |
 |---|---|---|
-| Adaptive survey app V2 | Redesigned; deployment and pilot validation pending | Collect primary directional evidence after validation |
-| Questionnaire and consent | Documented in `interviews/survey-form-content.md` | Research instrument |
-| Sampling and interview plan | Documented in `research/sampling-plan.md` | Team recruitment and probing |
-| Participant responses | Pending collection | Must drive final findings |
-| Secondary/industry evidence | Not yet added | Add source-linked evidence if used |
-| Segments, blockers, solutions, RICE | Working hypotheses below | Validate or revise after responses |
-
-The survey is not a substitute for the required real user conversations. Do not convert target quotas or hypotheses into findings.
+| Adaptive survey app V2.5 | Active & Deployed; $N=92$ completed responses captured | Direct primary evidence driving basket mechanics and mission analysis |
+| Questionnaire and consent | Documented in `interviews/survey-form-content.md` | Research instrument V2.5 schema |
+| Sampling and primary analysis | Aggregated in `dashboard/primary_analysis_n92.json` | Quantitative frequency, threshold, and mission breakdown |
+| Participant responses | $N=92$ completed responses captured in `Responses_V2` | Empirical foundation for findings and solution RICE scores |
+| Secondary/industry evidence | Documented in `secondary-research.md` & `market-to-aov-chain.md` | Category context, market sizing (Redseer/BCG), competitor mechanics |
+| Segments, blockers, solutions, RICE | Validated & Scored | Prioritizing Product Solutions A, B, and C with guardrails |
 
 ### Validation status
 
-The V2 instrument has been redesigned to remove overlapping questions, use stable response codes, and align the app with the response-sheet schema. It still requires deployed end-to-end reconciliation and empirical pilot validation. The first pilot should check comprehension, completion time, response distributions, and whether participants can describe a real purchase without being led by the options.
+The V2.5 instrument is active and deployed. An initial sample of $N=92$ valid participant responses has been captured in the `Responses_V2` Google Sheet endpoint. The primary data confirms that $57.6\%$ of orders are high-urgency / replenishment missions, $70.7\%$ of shoppers actively notice delivery thresholds (with $30.8\%$ adding filler items to unlock free delivery), and $35.9\%$ add recommended complementary items when relevant.
 
 ## 3. Research method
 

@@ -1,0 +1,180 @@
+{
+  "sample_size": 92,
+  "last_updated": "23 September 2026",
+  "source": "Basket Stories Pilot V2.5 Responses_V2 Google Sheet (N=92)",
+  "channels": {
+    "counts": {
+      "local_store": 13,
+      "supermarket": 7,
+      "blinkit": 27,
+      "amazon_fresh": 5,
+      "zepto": 27,
+      "bigbasket": 3,
+      "instamart": 7,
+      "subscription": 1,
+      "bulk_purchase": 1,
+      "local_market": 1
+    },
+    "percentages": {
+      "local_store": 14.1,
+      "supermarket": 7.6,
+      "blinkit": 29.3,
+      "amazon_fresh": 5.4,
+      "zepto": 29.3,
+      "bigbasket": 3.3,
+      "instamart": 7.6,
+      "subscription": 1.1,
+      "bulk_purchase": 1.1,
+      "local_market": 1.1
+    }
+  },
+  "missions": {
+    "counts": {
+      "stock_up": 15,
+      "offer_led": 8,
+      "urgent": 36,
+      "regular_reorder": 3,
+      "ran_out": 17,
+      "planned_top_up": 9,
+      "discovery": 4
+    },
+    "percentages": {
+      "stock_up": 16.3,
+      "offer_led": 8.7,
+      "urgent": 39.1,
+      "regular_reorder": 3.3,
+      "ran_out": 18.5,
+      "planned_top_up": 9.8,
+      "discovery": 4.3
+    }
+  },
+  "thresholds": {
+    "noticed_counts": {
+      "no": 18,
+      "yes": 65,
+      "not_sure": 9
+    },
+    "noticed_percentages": {
+      "no": 19.6,
+      "yes": 70.7,
+      "not_sure": 9.8
+    },
+    "action_counts": {
+      "added_useful": 27,
+      "added_to_unlock": 20,
+      "no_change": 5,
+      "paid_fee": 7,
+      "waited": 3,
+      "larger_pack": 1,
+      "removed_or_abandoned": 2
+    },
+    "action_percentages": {
+      "added_useful": 41.5,
+      "added_to_unlock": 30.8,
+      "no_change": 7.7,
+      "paid_fee": 10.8,
+      "waited": 4.6,
+      "larger_pack": 1.5,
+      "removed_or_abandoned": 3.1
+    }
+  },
+  "receptivity": {
+    "counts": {
+      "found_pushy": 6,
+      "ignored": 26,
+      "looked_no_add": 21,
+      "added_item": 33,
+      "not_sure": 6
+    },
+    "percentages": {
+      "found_pushy": 6.5,
+      "ignored": 28.3,
+      "looked_no_add": 22.8,
+      "added_item": 35.9,
+      "not_sure": 6.5
+    }
+  },
+  "stop_reasons": {
+    "counts": {
+      "other": 1,
+      "quality_concern": 4,
+      "buy_elsewhere": 4,
+      "need_complete": 8,
+      "buy_later": 4,
+      "too_expensive": 6,
+      "unavailable": 2,
+      "control_spend": 14
+    },
+    "percentages": {
+      "other": 2.3,
+      "quality_concern": 9.3,
+      "buy_elsewhere": 9.3,
+      "need_complete": 18.6,
+      "buy_later": 9.3,
+      "too_expensive": 14.0,
+      "unavailable": 4.7,
+      "control_spend": 32.6
+    }
+  },
+  "spend": {
+    "counts": {
+      "1000_plus": 27,
+      "700_999": 13,
+      "below_200": 7,
+      "400_699": 23,
+      "prefer_not": 3,
+      "200_399": 19
+    },
+    "percentages": {
+      "1000_plus": 29.3,
+      "700_999": 14.1,
+      "below_200": 7.6,
+      "400_699": 25.0,
+      "prefer_not": 3.3,
+      "200_399": 20.7
+    }
+  },
+  "items": {
+    "counts": {
+      "more_than_ten": 23,
+      "four_six": 35,
+      "two_three": 18,
+      "seven_ten": 11,
+      "do_not_remember": 1,
+      "one": 4
+    },
+    "percentages": {
+      "more_than_ten": 25.0,
+      "four_six": 38.0,
+      "two_three": 19.6,
+      "seven_ten": 12.0,
+      "do_not_remember": 1.1,
+      "one": 4.3
+    }
+  },
+  "non_zepto_consideration": {
+    "total": 65,
+    "counts": {
+      "no": 33,
+      "yes": 21,
+      "not_sure": 11
+    },
+    "percentages": {
+      "no": 50.8,
+      "yes": 32.3,
+      "not_sure": 16.9
+    }
+  },
+  "top_cities": {
+    "HYDERABAD": 17,
+    "VISAKHAPATNAM": 13,
+    "BENGALURU": 7,
+    "BANGALORE": 5,
+    "KOLKATA": 4,
+    "VIZAG": 3,
+    "SRIKAKULAM": 2,
+    "HYD": 2,
+    "VIZIANAGARAM": 2,
+    "PUNE": 2
+  }
+}
