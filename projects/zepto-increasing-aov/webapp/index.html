@@ -76,7 +76,7 @@
   <script>
     // Add the newly deployed V2 Apps Script URL only after the row-reconciliation test.
     var APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbymlYxOYzem5BTQ2TeHqgrH-93nRR5eIWYPXTAoaGWTs7dk8uKNRz1MvyMDtMM4rFU/exec";
-    var SURVEY_VERSION = "2.4";
+    var SURVEY_VERSION = "2.5";
     var NO_RECENT_PURCHASE = "no_recent_purchase";
     var state = { lang: "en", index: 0, answers: {}, consent: false, submitting: false, done: false, localOnly: false, responseId: "" };
 
@@ -142,11 +142,6 @@
         option("local_bulk", "A local kirana store or market"), option("subscription_bulk", "A subscription service"),
         option("not_sure", "Not sure"), option("other", "Other")
       ],
-      cityTier: [
-        option("metro", "A large metro (Delhi NCR, Mumbai, Bengaluru, Hyderabad, Chennai, Kolkata, Pune, Ahmedabad)"),
-        option("tier2", "Another city or large town"), option("smaller_town_rural", "A smaller town or rural area"),
-        option("prefer_not", "Prefer not to say")
-      ],
       ageBracket: [
         option("18_24", "18–24"), option("25_34", "25–34"), option("35_44", "35–44"),
         option("45_54", "45–54"), option("55_plus", "55 or older"), option("prefer_not", "Prefer not to say")
@@ -180,7 +175,7 @@
       basketStopWhy: "What was the main reason you did not add anything more to this purchase?",
       receptivity: "Imagine that right after you added an item, the app showed you 2-3 related items you might need, clearly priced. What would you most likely have done?",
       channelMix: "Aside from this purchase, where do you usually do your bigger, monthly, or bulk grocery shopping?",
-      cityTier: "Which best describes where you live?",
+      city: "Which city do you live in?",
       ageBracket: "Which age group do you fall into?",
       lifeStage: "Which best describes your current life stage?"
     };
@@ -191,7 +186,7 @@
         welcomeBody: "Think about one real grocery or household purchase. The survey takes about 4–5 minutes and is not affiliated with Zepto or another retailer.",
         consent: "I agree to take part in this academic study. My survey answers will be analysed without my name.",
         privacy: "Choose English, Hindi, or Telugu. Please do not enter passwords, payment details, or other sensitive information.",
-        question: "Question", selectAll: "Select all that apply.", categoriesCarried: "We kept your earlier answer selected below. Add any other categories in this basket.", decisionHint: "Describe the real decision in one or two sentences.", optionalHint: "Optional. One sentence is enough.",
+        question: "Question", selectAll: "Select all that apply.", categoriesCarried: "We kept your earlier answer selected below. Add any other categories in this basket.", decisionHint: "Describe the real decision in one or two sentences.", optionalHint: "Optional. One sentence is enough.", optionalCityHint: "Optional. Just the city name is enough.",
         aboutYouHint: "The next few questions are about you in general, not this purchase. Choose \"Prefer not to say\" for any you would rather skip.",
         specify: "Please specify",
         back: "Back", start: "Start", next: "Next", submit: "Submit", saving: "Saving…",
@@ -205,7 +200,7 @@
         welcomeBody: "अपनी किसी एक वास्तविक किराना या घरेलू सामान की खरीदारी के बारे में सोचें। इस सर्वेक्षण में लगभग 4–5 मिनट लगेंगे। इसका Zepto या किसी अन्य विक्रेता से संबंध नहीं है।",
         consent: "मैं इस अकादमिक अध्ययन में भाग लेने के लिए सहमत हूं। मेरे सर्वेक्षण उत्तरों का विश्लेषण मेरे नाम के बिना किया जाएगा।",
         privacy: "अंग्रेज़ी, हिंदी या तेलुगु चुनें। पासवर्ड, भुगतान विवरण या अन्य संवेदनशील जानकारी दर्ज न करें।",
-        question: "प्रश्न", selectAll: "लागू होने वाले सभी विकल्प चुनें।", categoriesCarried: "आपका पिछला उत्तर नीचे पहले से चुना गया है। इस खरीदारी की अन्य श्रेणियां भी जोड़ें।", decisionHint: "वास्तविक निर्णय को एक या दो वाक्यों में बताएं।", optionalHint: "वैकल्पिक। एक वाक्य काफी है।",
+        question: "प्रश्न", selectAll: "लागू होने वाले सभी विकल्प चुनें।", categoriesCarried: "आपका पिछला उत्तर नीचे पहले से चुना गया है। इस खरीदारी की अन्य श्रेणियां भी जोड़ें।", decisionHint: "वास्तविक निर्णय को एक या दो वाक्यों में बताएं।", optionalHint: "वैकल्पिक। एक वाक्य काफी है।", optionalCityHint: "वैकल्पिक। सिर्फ शहर का नाम काफी है।",
         aboutYouHint: "अगले कुछ सवाल सामान्य रूप से आपके बारे में हैं, इस खरीदारी के बारे में नहीं। जिसे छोड़ना चाहें उसके लिए \"बताना नहीं चाहते\" चुनें।",
         specify: "कृपया बताएं",
         back: "पीछे", start: "शुरू करें", next: "आगे", submit: "जमा करें", saving: "सहेजा जा रहा है…",
@@ -219,7 +214,7 @@
         welcomeBody: "మీరు నిజంగా చేసిన ఒక కిరాణా లేదా ఇంటి సామానుల కొనుగోలు గురించి ఆలోచించండి. ఈ సర్వేకు సుమారు 4–5 నిమిషాలు పడుతుంది. దీనికి Zepto లేదా ఇతర రిటైలర్‌తో సంబంధం లేదు.",
         consent: "ఈ అకాడమిక్ అధ్యయనంలో పాల్గొనడానికి నేను అంగీకరిస్తున్నాను. నా పేరును ఉపయోగించకుండా నా సర్వే సమాధానాలను విశ్లేషిస్తారు.",
         privacy: "ఇంగ్లీష్, హిందీ లేదా తెలుగు ఎంచుకోండి. పాస్‌వర్డ్‌లు, చెల్లింపు వివరాలు లేదా ఇతర సున్నితమైన సమాచారాన్ని నమోదు చేయవద్దు.",
-        question: "ప్రశ్న", selectAll: "వర్తించే అన్నింటినీ ఎంచుకోండి.", categoriesCarried: "మీ మునుపటి సమాధానం కింద ఇప్పటికే ఎంచుకోబడింది. ఈ కొనుగోలులోని ఇతర కేటగిరీలను కూడా జోడించండి.", decisionHint: "నిజమైన నిర్ణయాన్ని ఒకటి లేదా రెండు వాక్యాల్లో వివరించండి.", optionalHint: "ఐచ్ఛికం. ఒక వాక్యం చాలు.",
+        question: "ప్రశ్న", selectAll: "వర్తించే అన్నింటినీ ఎంచుకోండి.", categoriesCarried: "మీ మునుపటి సమాధానం కింద ఇప్పటికే ఎంచుకోబడింది. ఈ కొనుగోలులోని ఇతర కేటగిరీలను కూడా జోడించండి.", decisionHint: "నిజమైన నిర్ణయాన్ని ఒకటి లేదా రెండు వాక్యాల్లో వివరించండి.", optionalHint: "ఐచ్ఛికం. ఒక వాక్యం చాలు.", optionalCityHint: "ఐచ్ఛికం. నగరం పేరు మాత్రమే చాలు.",
         aboutYouHint: "తర్వాతి కొన్ని ప్రశ్నలు సాధారణంగా మీ గురించి, ఈ కొనుగోలు గురించి కాదు. వదిలేయాలనుకుంటే \"చెప్పడం ఇష్టం లేదు\" ఎంచుకోండి.",
         specify: "దయచేసి వివరించండి",
         back: "వెనుకకు", start: "ప్రారంభించండి", next: "తదుపరి", submit: "సమర్పించండి", saving: "సేవ్ చేస్తోంది…",
@@ -245,7 +240,7 @@
         basketStopWhy: "इस खरीदारी में और कुछ न जोड़ने का मुख्य कारण क्या था?",
         receptivity: "कल्पना करें कि कोई वस्तु जोड़ने के ठीक बाद, ऐप ने आपको 2-3 संबंधित वस्तुएं दिखाईं जिनकी आपको जरूरत हो सकती है, साफ कीमत के साथ। आप सबसे अधिक संभावना क्या करते?",
         channelMix: "इस खरीदारी के अलावा, आप आमतौर पर अपनी बड़ी, मासिक, या थोक किराना खरीदारी कहां करते हैं?",
-        cityTier: "आप कहां रहते हैं, इसका सबसे सही वर्णन क्या है?",
+        city: "आप किस शहर में रहते हैं?",
         ageBracket: "आप किस आयु वर्ग में आते हैं?",
         lifeStage: "आपके वर्तमान जीवन चरण का सबसे सही वर्णन क्या है?"
       },
@@ -263,7 +258,7 @@
         basketStopWhy: "ఈ కొనుగోలుకు మరేమీ జోడించకపోవడానికి ప్రధాన కారణం ఏమిటి?",
         receptivity: "మీరు ఒక వస్తువును జోడించిన వెంటనే, యాప్ మీకు అవసరం కావచ్చు అనే 2-3 సంబంధిత వస్తువులను స్పష్టమైన ధరతో చూపించిందని ఊహించండి. మీరు చాలావరకు ఏమి చేసేవారు?",
         channelMix: "ఈ కొనుగోలు కాకుండా, మీరు సాధారణంగా మీ పెద్ద, నెలవారీ లేదా టోకు కిరాణా కొనుగోళ్లు ఎక్కడ చేస్తారు?",
-        cityTier: "మీరు ఎక్కడ నివసిస్తున్నారో దాన్ని ఏది బాగా వివరిస్తుంది?",
+        city: "మీరు ఏ నగరంలో నివసిస్తున్నారు?",
         ageBracket: "మీరు ఏ వయో వర్గంలోకి వస్తారు?",
         lifeStage: "మీ ప్రస్తుత జీవిత దశను ఏది బాగా వివరిస్తుంది?"
       }
@@ -304,8 +299,6 @@
         "I do not do a separate bulk trip": "मैं अलग से थोक खरीदारी नहीं करता/करती", "Same app as this purchase": "इस खरीदारी जैसा ही ऐप",
         "A different quick-commerce app": "कोई दूसरा क्विक-कॉमर्स ऐप", "A supermarket like Dmart or BigBasket": "डीमार्ट या बिगबास्केट जैसा सुपरमार्केट",
         "A local kirana store or market": "स्थानीय किराना दुकान या बाजार", "A subscription service": "सब्सक्रिप्शन सेवा",
-        "A large metro (Delhi NCR, Mumbai, Bengaluru, Hyderabad, Chennai, Kolkata, Pune, Ahmedabad)": "बड़ा महानगर (दिल्ली NCR, मुंबई, बेंगलुरु, हैदराबाद, चेन्नई, कोलकाता, पुणे, अहमदाबाद)",
-        "Another city or large town": "कोई अन्य शहर या बड़ा कस्बा", "A smaller town or rural area": "छोटा कस्बा या ग्रामीण क्षेत्र",
         "Student": "छात्र", "Working, living alone or with roommates": "काम करते हैं, अकेले या रूममेट्स के साथ रहते हैं",
         "Working, married or partnered, no children at home": "काम करते हैं, विवाहित या साथी के साथ, घर में बच्चे नहीं",
         "Family with children at home": "घर में बच्चों वाला परिवार", "Retired or not currently working": "सेवानिवृत्त या फिलहाल काम नहीं कर रहे"
@@ -344,8 +337,6 @@
         "I do not do a separate bulk trip": "నేను వేరుగా టోకు కొనుగోలు చేయను", "Same app as this purchase": "ఈ కొనుగోలు లాంటి అదే యాప్",
         "A different quick-commerce app": "వేరే క్విక్-కామర్స్ యాప్", "A supermarket like Dmart or BigBasket": "డీమార్ట్ లేదా బిగ్‌బాస్కెట్ లాంటి సూపర్‌మార్కెట్",
         "A local kirana store or market": "స్థానిక కిరాణా దుకాణం లేదా మార్కెట్", "A subscription service": "సబ్‌స్క్రిప్షన్ సేవ",
-        "A large metro (Delhi NCR, Mumbai, Bengaluru, Hyderabad, Chennai, Kolkata, Pune, Ahmedabad)": "పెద్ద మెట్రో (ఢిల్లీ NCR, ముంబై, బెంగళూరు, హైదరాబాద్, చెన్నై, కోల్‌కతా, పుణె, అహ్మదాబాద్)",
-        "Another city or large town": "మరో నగరం లేదా పెద్ద పట్టణం", "A smaller town or rural area": "చిన్న పట్టణం లేదా గ్రామీణ ప్రాంతం",
         "Student": "విద్యార్థి", "Working, living alone or with roommates": "పని చేస్తున్నారు, ఒంటరిగా లేదా రూమ్‌మేట్స్‌తో నివసిస్తున్నారు",
         "Working, married or partnered, no children at home": "పని చేస్తున్నారు, వివాహం లేదా భాగస్వామితో, ఇంట్లో పిల్లలు లేరు",
         "Family with children at home": "ఇంట్లో పిల్లలు ఉన్న కుటుంబం", "Retired or not currently working": "పదవీ విరమణ చేసారు లేదా ప్రస్తుతం పని చేయడం లేదు"
@@ -374,7 +365,7 @@
       if (state.answers.thresholdNoticed === "yes") result.push("thresholdAction");
       result = result.concat(isZepto() ? ["zeptoWhy", "zeptoCheckoutMoment"] : ["altWhy", "consideredZepto", "altZeptoGap"]);
       result.push("receptivity");
-      result = result.concat(["channelMix", "cityTier", "ageBracket", "lifeStage"]);
+      result = result.concat(["channelMix", "city", "ageBracket", "lifeStage"]);
       return result;
     }
 
@@ -491,9 +482,9 @@
       if (id === "zeptoCheckoutMoment") {
         app.appendChild(element("p", { className: "hint", text: ui("decisionHint") }));
         app.appendChild(textField(id, true));
-      } else if (id === "altZeptoGap") {
-        app.appendChild(element("p", { className: "hint", text: ui("optionalHint") }));
-        app.appendChild(textField(id, true));
+      } else if (id === "altZeptoGap" || id === "city") {
+        app.appendChild(element("p", { className: "hint", text: ui(id === "city" ? "optionalCityHint" : "optionalHint") }));
+        app.appendChild(textField(id, false));
       } else {
         app.appendChild(renderOptions(id, optionsFor(id), id === "categories" || id === "expansionPattern"));
       }
@@ -506,7 +497,7 @@
       var id = currentId();
       if (id === "welcome") return state.consent;
       if (id === "zeptoCheckoutMoment") return String(state.answers[id] || "").trim().length >= 8;
-      if (id === "altZeptoGap") return true;
+      if (id === "altZeptoGap" || id === "city") return true;
       var value = state.answers[id];
       if (id === "categories" || id === "expansionPattern") {
         if (!Array.isArray(value) || value.length === 0) return false;
@@ -551,7 +542,7 @@
         altZeptoGap: eligible && !isZepto() ? String(a.altZeptoGap || "").trim() : "",
         receptivity: eligible ? (a.receptivity || "") : "",
         channelMix: eligible ? (a.channelMix || "") : "", channelMixOther: eligible ? (a.channelMixOther || "") : "",
-        cityTier: eligible ? (a.cityTier || "") : "", ageBracket: eligible ? (a.ageBracket || "") : "", lifeStage: eligible ? (a.lifeStage || "") : ""
+        city: eligible ? String(a.city || "").trim() : "", ageBracket: eligible ? (a.ageBracket || "") : "", lifeStage: eligible ? (a.lifeStage || "") : ""
       };
       return { research: research };
     }

@@ -61,7 +61,7 @@ function baseResearch(responseId) {
   return {
     responseId,
     clientTimestamp: "2026-09-22T00:00:00.000Z",
-    surveyVersion: "2.4",
+    surveyVersion: "2.5",
     language: "en",
     consent: true,
     eligible: true,
@@ -97,7 +97,7 @@ function baseResearch(responseId) {
     receptivity: "added_item",
     channelMix: "same_app",
     channelMixOther: "",
-    cityTier: "metro",
+    city: "Bengaluru",
     ageBracket: "25_34",
     lifeStage: "working_alone",
   };
@@ -132,7 +132,7 @@ assert.equal(post(nonZepto).status, "ok");
 const ineligible = {
   responseId: "BS2-INELIGIBLE",
   clientTimestamp: "2026-09-22T00:00:00.000Z",
-  surveyVersion: "2.4",
+  surveyVersion: "2.5",
   language: "en",
   consent: true,
   eligible: false,
@@ -171,8 +171,12 @@ const plannedMissionWithFirstNeed = baseResearch("BS2-PLANNED-WITH-FIRSTNEED");
 plannedMissionWithFirstNeed.mission = "stock_up";
 assert.equal(post(plannedMissionWithFirstNeed).status, "error", "firstNeed should be rejected when sent for a planned mission");
 
+const noCity = baseResearch("BS2-NO-CITY");
+noCity.city = "";
+assert.equal(post(noCity).status, "ok", "city should be optional free text, not required");
+
 const status = context.doGet({ parameter: { responseId: "BS2-ZEPTO", callback: "confirmResult" } });
 assert.match(status.text, /"found":true/);
-assert.equal(responses.rows.length, 6);
+assert.equal(responses.rows.length, 7);
 
-console.log("Basket Stories V2.4 capture contract: PASS");
+console.log("Basket Stories V2.5 capture contract: PASS");

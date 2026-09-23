@@ -1,4 +1,4 @@
-# Basket Stories — Pilot Questionnaire V2.4
+# Basket Stories — Pilot Questionnaire V2.5
 
 ## Purpose
 
@@ -17,6 +17,8 @@ Understand how a recent grocery or household basket started, expanded, and stopp
 - **Q8, Q8A, and Q13 were reworded to be narrative-neutral** ("While building this basket, what happened?" instead of "After choosing the first item..."; "Searched for related items" instead of "...related to the first need"; etc.) rather than forked into two parallel question sets. This keeps one set of response codes and avoids doubling the Hindi/Telugu translation surface.
 
 **V2.4 changes:** removed the follow-up-interview opt-in and contact capture from the survey entirely — the team does not expect to have time to run moderated follow-up conversations, so the instrument no longer asks for or stores contact details. `FollowUp_V2` is retired; there is no restricted contact sheet anymore. The survey now ends at Q17 (life stage).
+
+**V2.5 changes:** Q15 changed from a bucketed geography question (metro / other city / rural) to an open-text "Which city do you live in?" field. This was a deliberate call: the earlier bucket was designed for anonymity and a rough metro-vs-not skew check, but the team wants exact city data for primary-research purposes. Note the sequencing decision behind this — the dashboard's "Bengaluru is the learning lab" call came from secondary research; this field was deliberately kept neutral (a plain open city field, not a Bengaluru-vs-other split) so primary research can surface its own geographic patterns rather than being shaped by an unvalidated secondary-research assumption. The field is optional, free text, and — like `altZeptoGap` — not required to submit. The column is renamed `city` in the response sheet (was `cityTier`).
 
 ## Evidence rules
 
@@ -284,14 +286,9 @@ Shown to every eligible respondent, immediately after Q13 and ending the survey.
 
 Reveals whether a respondent's total grocery basket is split across channels — something no single-purchase question can show. Directly serves Solution B's validation target ("pack-size economics, price trust, assortment, trip planning") from `research/analysis-and-recommendations.md`.
 
-**Q15. Which best describes where you live?**
+**Q15. Which city do you live in?**
 
-- A large metro (Delhi NCR, Mumbai, Bengaluru, Hyderabad, Chennai, Kolkata, Pune, Ahmedabad)
-- Another city or large town
-- A smaller town or rural area
-- Prefer not to say
-
-Broad geography bucket, not a named city — ties survey evidence to the dashboard's Bengaluru-benchmark decision without collecting anything identifying.
+Optional open text response (field: `city`). Deliberately not a dropdown or a pre-set city list — this keeps the question neutral so whatever geographic pattern actually exists in the data can surface on its own, rather than the instrument only having eyes for the city the secondary-research dashboard happened to pick.
 
 **Q16. Which age group do you fall into?**
 

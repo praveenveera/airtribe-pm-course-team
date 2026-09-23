@@ -1,6 +1,6 @@
 /** Backend for Basket Stories Pilot V2. Deploy as a Google Sheets Web App. */
 var RESPONSE_SHEET = "Responses_V2";
-var SURVEY_VERSION = "2.4";
+var SURVEY_VERSION = "2.5";
 
 var CATEGORY_CODES = [
   "fresh_produce", "dairy_bread_eggs", "staples_packaged_cooking",
@@ -23,7 +23,7 @@ var RESPONSE_COLUMNS = [
   "thresholdNoticed", "thresholdAction", "thresholdActionOther",
   "zeptoWhy", "zeptoWhyOther", "zeptoCheckoutMoment", "altWhy", "altWhyOther",
   "consideredZepto", "altZeptoGap", "receptivity",
-  "channelMix", "channelMixOther", "cityTier", "ageBracket", "lifeStage",
+  "channelMix", "channelMixOther", "city", "ageBracket", "lifeStage",
   "rawJson"
 ];
 
@@ -89,7 +89,7 @@ function validateSubmission(research) {
   if (research.consent !== true) throw new Error("Consent is required");
 
   if (research.eligible === true) {
-    ["mission", "householdSize", "items", "spend", "categories", "expansionPattern", "considered", "thresholdNoticed", "receptivity", "channelMix", "cityTier", "ageBracket", "lifeStage"]
+    ["mission", "householdSize", "items", "spend", "categories", "expansionPattern", "considered", "thresholdNoticed", "receptivity", "channelMix", "ageBracket", "lifeStage"]
       .forEach(function (key) {
         if (research[key] === undefined || research[key] === null || research[key] === "" ||
             (Array.isArray(research[key]) && research[key].length === 0)) {
