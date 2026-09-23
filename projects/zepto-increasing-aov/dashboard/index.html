@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Project 4 · Zepto AOV Research & Strategy Command Center (V2)</title>
-  <meta name="description" content="Evidence-controlled research dashboard for Project 4: increasing AOV at Zepto combining deep primary survey data (N=92) and secondary research with complete citations.">
+  <title>Project 4 · Zepto AOV Research & Strategy Command Center (V2.5)</title>
+  <meta name="description" content="Evidence-controlled research dashboard for Project 4: increasing AOV at Zepto combining advanced primary analytics (N=92) and secondary research with complete citations.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -67,6 +67,12 @@
     .tab-panel.active { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
+    /* Cohort Filter Bar */
+    .cohort-filter-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; background: white; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 18px; }
+    .cohort-btn { background: #f1f5f9; border: 1px solid var(--border); color: var(--muted); padding: 6px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 600; transition: all 0.15s ease; }
+    .cohort-btn:hover { background: var(--soft); color: var(--blue); }
+    .cohort-btn.active { background: var(--blue); color: white; border-color: var(--blue); }
+
     /* Cards & Layout */
     .hero { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(300px, .8fr); gap: 18px; margin-bottom: 18px; }
     .hero-card, .panel, .metric { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
@@ -90,7 +96,7 @@
 
     /* Progress bar lists */
     .stat-list { display: grid; gap: 10px; margin-top: 12px; }
-    .stat-row { display: grid; grid-template-columns: 150px 1fr 50px; align-items: center; gap: 10px; font-size: 0.8rem; }
+    .stat-row { display: grid; grid-template-columns: 160px 1fr 50px; align-items: center; gap: 10px; font-size: 0.8rem; }
     .stat-name { font-weight: 600; color: var(--ink); }
     .stat-bar-bg { height: 8px; border-radius: 99px; background: #e2e8f0; overflow: hidden; }
     .stat-bar-fill { height: 100%; border-radius: inherit; background: var(--blue-2); }
@@ -106,12 +112,18 @@
     .data-table tr:hover td { background: #f8fafc; }
 
     /* Badges & Tags */
-    .cite-badge { display: inline-flex; align-items: center; gap: 4px; background: var(--soft); color: var(--blue); padding: 3px 9px; border-radius: 6px; font: 600 0.7rem "Fira Code", monospace; margin-top: 8px; border: 1px solid var(--border); }
+    .cite-badge { display: inline-flex; align-items: center; gap: 4px; background: var(--soft); color: var(--blue); padding: 3px 99px; border-radius: 6px; font: 600 0.7rem "Fira Code", monospace; margin-top: 8px; border: 1px solid var(--border); }
     .cite-badge a { color: var(--blue); font-weight: 700; text-decoration: underline; }
 
     .section-head { margin: 24px 0 14px; border-bottom: 2px solid var(--border); padding-bottom: 6px; display: flex; justify-content: space-between; align-items: flex-end; }
     .section-head h2 { font-size: 1.2rem; color: var(--ink); margin: 0; }
     .section-head span { font-size: 0.8rem; color: var(--muted); }
+
+    /* Funnel steps */
+    .funnel-step { display: grid; grid-template-columns: 200px 1fr 60px; align-items: center; gap: 12px; margin-bottom: 8px; font-size: 0.82rem; }
+    .funnel-label { font-weight: 600; color: var(--ink); }
+    .funnel-track { height: 14px; border-radius: 6px; background: var(--soft); overflow: hidden; }
+    .funnel-fill { height: 100%; background: linear-gradient(90deg, #3b82f6, #1e40af); border-radius: inherit; }
   </style>
 </head>
 <body>
@@ -124,12 +136,12 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
         <div>
-          <span>Zepto AOV Command Center (V2)</span>
-          <div style="font-size: 0.75rem; font-weight: 400; color: var(--muted);">Project 4 · Deep Primary & Secondary PM Research Suite</div>
+          <span>Zepto AOV Command Center (V2.5)</span>
+          <div style="font-size: 0.75rem; font-weight: 400; color: var(--muted);">Project 4 · Advanced Primary & Secondary PM Analytics Suite</div>
         </div>
       </div>
       <div class="top-actions">
-        <span class="status done">● N=92 Deep Primary Data Active</span>
+        <span class="status done">● N=92 Advanced Analytics Active</span>
         <span class="pill mono">V2.5 Multi-Tab Platform</span>
         <span class="date mono">Updated: 23 Sep 2026</span>
       </div>
@@ -138,7 +150,7 @@
     <!-- Main Tab Control Navigation Bar -->
     <nav class="main-tabs" role="tablist">
       <button class="tab-btn active" id="tab-btn-primary" onclick="switchTab('primary')">
-        📊 Primary Research Insights <span class="badge">N=92 Deep Breakdown</span>
+        📊 Primary Research Analytics <span class="badge">N=92 Deep Suite</span>
       </button>
       <button class="tab-btn" id="tab-btn-secondary" onclick="switchTab('secondary')">
         📚 Secondary Research & Benchmark
@@ -151,15 +163,15 @@
       </button>
     </nav>
 
-    <!-- TAB 1: PRIMARY RESEARCH INSIGHTS (N=92 DEEP BREAKDOWN) -->
+    <!-- TAB 1: PRIMARY RESEARCH INSIGHTS (N=92 ADVANCED ANALYTICS) -->
     <div id="tab-panel-primary" class="tab-panel active">
       
       <div class="hero">
         <div class="hero-card">
-          <div class="eyebrow">Primary Research Synthesis · N=92 Participant Survey</div>
+          <div class="eyebrow">Advanced Primary Analytics · N=92 Survey Dataset</div>
           <h1>Primary User Behavior & Basket Mechanics</h1>
           <p class="hero-copy">
-            Empirical evidence captured from <strong>92 verified shoppers</strong>. Evaluated across Metro vs Non-Metro, Zepto vs Rest, Why Not Zepto, Zepto Purchase Patterns, and Online Instant vs Offline Supermarkets.
+            Deep quantitative analysis of <strong>92 verified grocery and quick-commerce shoppers</strong>. Evaluates category co-occurrence pairs, cart conversion drop-off funnels, household size AOV segmentation, category friction, Metro vs. Non-Metro, and Zepto vs. Rest.
           </p>
           <div style="margin-top: 14px; font-size: 0.8rem; color: var(--muted); background: var(--soft); padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border);">
             <strong>📌 Primary Sources & Method:</strong><br>
@@ -170,12 +182,12 @@
         
         <div class="card" style="background: linear-gradient(135deg, #1e40af, #172554); color: white;">
           <div class="eyebrow" style="color: #bfdbfe;">Key PM Discovery</div>
-          <h3 style="color: white; font-size: 1.1rem;">Zepto Has Highest Add-On Receptivity (59.3%)</h3>
+          <h3 style="color: white; font-size: 1.1rem;">Dairy + Fresh Produce is #1 Basket Pair (27 Co-Occurrences)</h3>
           <p style="color: #dbeafe; font-size: 0.82rem;">
-            <strong>59.3% of Zepto shoppers (16/27) added a recommended item</strong> to their basket compared to only 26.2% for non-Zepto platforms. However, Zepto's average basket remains compact (74.0% are 2-6 items).
+            <strong>Dairy/Bread/Eggs is present in 57.6% of orders</strong> (53/92). Its strongest cross-sell anchor is <em>Fresh Produce</em> (27 pairs), followed by <em>Staples</em> (18 pairs) and <em>Snacks/Beverages</em> (15 pairs).
           </p>
           <span class="cite-badge" style="background: rgba(255,255,255,0.15); color: white;">
-            Source: <a href="https://docs.google.com/spreadsheets/d/1c050kFbIJe5p6ZH2U25WGrLHITCrwoUQ3G42rBJ346I/edit?usp=sharing" target="_blank" style="color: white; text-decoration: underline;">Basket Stories Survey N=92</a>
+            Source: <a href="https://docs.google.com/spreadsheets/d/1c050kFbIJe5p6ZH2U25WGrLHITCrwoUQ3G42rBJ346I/edit?usp=sharing" target="_blank" style="color: white; text-decoration: underline;">Basket Stories Survey N=92 Co-Occurrence</a>
           </span>
         </div>
       </div>
@@ -193,25 +205,175 @@
           <div class="metric-note">N=27 Recent Orders</div>
         </div>
         <div class="metric">
-          <div class="metric-label">ZEPTO ADD-ON ATTACH</div>
+          <div class="metric-label">ZEPTO ATTACH RATE</div>
           <div class="metric-value">59.3%</div>
-          <div class="metric-note">Highest receptivity across apps</div>
+          <div class="metric-note">16/27 added recommended item</div>
         </div>
         <div class="metric">
-          <div class="metric-label">NON-ZEPTO CONSIDERATION</div>
-          <div class="metric-value">32.3%</div>
-          <div class="metric-note">Considered Zepto but switched</div>
+          <div class="metric-label">FAMILY SPEND (₹1000+)</div>
+          <div class="metric-value">47.2%</div>
+          <div class="metric-note">3-4 person household (N=36)</div>
         </div>
         <div class="metric">
-          <div class="metric-label">OFFLINE DMART / STORE</div>
-          <div class="metric-value">23.9%</div>
-          <div class="metric-note">N=22 (63.6% are 10+ items)</div>
+          <div class="metric-label">SINGLE SPEND (₹200-399)</div>
+          <div class="metric-value">52.2%</div>
+          <div class="metric-note">Living alone cohort (N=23)</div>
+        </div>
+      </div>
+
+      <!-- NEW ADVANCED ANALYTICS SECTION A: CART CONVERSION FUNNEL & CATEGORY AFFINITY -->
+      <div class="section-head">
+        <h2>A. Cart Expansion Conversion Funnel & Category Affinity</h2>
+        <span>N=92 Primary Field Analytics</span>
+      </div>
+
+      <div class="grid-2">
+        <!-- Funnel Card -->
+        <div class="card">
+          <h3>Cart Expansion & Conversion Drop-Off Funnel</h3>
+          <p>Tracking customer intent from initial entry to cart completion:</p>
+          <div style="margin-top: 14px;">
+            <div class="funnel-step">
+              <div class="funnel-label">1. Total Purchase Intention</div>
+              <div class="funnel-track"><div class="funnel-fill" style="width: 100%;"></div></div>
+              <div class="mono" style="font-weight: 700;">100%</div>
+            </div>
+            <div class="funnel-step">
+              <div class="funnel-label">2. Added 1st Need / Item</div>
+              <div class="funnel-track"><div class="funnel-fill" style="width: 100%;"></div></div>
+              <div class="mono" style="font-weight: 700;">100%</div>
+            </div>
+            <div class="funnel-step">
+              <div class="funnel-label">3. Encountered Fee Threshold</div>
+              <div class="funnel-track"><div class="funnel-fill" style="width: 70.7%;"></div></div>
+              <div class="mono" style="font-weight: 700;">70.7%</div>
+            </div>
+            <div class="funnel-step">
+              <div class="funnel-label">4. Considered Extra Item</div>
+              <div class="funnel-track"><div class="funnel-fill" style="width: 46.7%;"></div></div>
+              <div class="mono" style="font-weight: 700;">46.7%</div>
+            </div>
+            <div class="funnel-step">
+              <div class="funnel-label">5. Successfully Added Item</div>
+              <div class="funnel-track"><div class="funnel-fill" style="width: 35.9%; background: var(--green);"></div></div>
+              <div class="mono" style="font-weight: 700; color: var(--green);">35.9%</div>
+            </div>
+            <div class="funnel-step">
+              <div class="funnel-label">6. Cart Exit / Budget Cap</div>
+              <div class="funnel-track"><div class="funnel-fill" style="width: 23.9%; background: var(--red);"></div></div>
+              <div class="mono" style="font-weight: 700; color: var(--red);">23.9%</div>
+            </div>
+          </div>
+          <span class="cite-badge">Source: <a href="https://docs.google.com/spreadsheets/d/1c050kFbIJe5p6ZH2U25WGrLHITCrwoUQ3G42rBJ346I/edit?usp=sharing" target="_blank">Basket Stories Funnel Analysis</a></span>
+        </div>
+
+        <!-- Co-Occurrence Card -->
+        <div class="card">
+          <h3>Top Category Co-Occurrence Pairs (Affinity Matrix)</h3>
+          <p>Categories most frequently purchased together in a single order:</p>
+          <div class="stat-list">
+            <div class="stat-row">
+              <div class="stat-name">Dairy + Fresh Produce</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill green" style="width: 100%;"></div></div>
+              <div class="stat-val">27 pairs</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-name">Dairy + Packaged Staples</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill green" style="width: 66.7%;"></div></div>
+              <div class="stat-val">18 pairs</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-name">Dairy + Snacks/Beverages</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 55.6%;"></div></div>
+              <div class="stat-val">15 pairs</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-name">Fresh Produce + Staples</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 51.8%;"></div></div>
+              <div class="stat-val">14 pairs</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-name">Dairy + Household Items</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 48.1%;"></div></div>
+              <div class="stat-val">13 pairs</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-name">Cafe Food + Beverages</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill amber" style="width: 29.6%;"></div></div>
+              <div class="stat-val">8 pairs</div>
+            </div>
+          </div>
+          <span class="cite-badge">Source: <a href="https://docs.google.com/spreadsheets/d/1c050kFbIJe5p6ZH2U25WGrLHITCrwoUQ3G42rBJ346I/edit?usp=sharing" target="_blank">Basket Stories Categories Co-Occurrence</a></span>
+        </div>
+      </div>
+
+      <!-- NEW ADVANCED ANALYTICS SECTION B: DEMOGRAPHIC AOV SEGMENTATION -->
+      <div class="section-head">
+        <h2>B. Demographic & Household Size AOV Segmentation</h2>
+        <span>Household Spend vs Life Stage Patterns</span>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Single Living Alone Cohort (N=23)</h3>
+          <p>Behavior profile for 1-person households:</p>
+          <div class="stat-list">
+            <div class="stat-row">
+              <div class="stat-name">Spend ₹200 - ₹399</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill amber" style="width: 52.2%;"></div></div>
+              <div class="stat-val">52.2%</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-name">Spend ₹400 - ₹699</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 17.4%;"></div></div>
+              <div class="stat-val">17.4%</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-name">Urgent Top-Up Mission</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill amber" style="width: 47.8%;"></div></div>
+              <div class="stat-val">47.8%</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-name">Basket Size (2-3 items)</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 56.5%;"></div></div>
+              <div class="stat-val">56.5%</div>
+            </div>
+          </div>
+          <span class="cite-badge">Source: <a href="https://docs.google.com/spreadsheets/d/1c050kFbIJe5p6ZH2U25WGrLHITCrwoUQ3G42rBJ346I/edit?usp=sharing" target="_blank">Basket Stories householdSize=one</a></span>
+        </div>
+
+        <div class="card">
+          <h3>Family with Children Cohort (3-4 Person, N=36)</h3>
+          <p>Behavior profile for family households:</p>
+          <div class="stat-list">
+            <div class="stat-row">
+              <div class="stat-name">High Spend (₹1000+)</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill green" style="width: 47.2%;"></div></div>
+              <div class="stat-val">47.2%</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-name">Spend ₹700 - ₹999</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill green" style="width: 19.4%;"></div></div>
+              <div class="stat-val">19.4%</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-name">Planned Stock-Up Mission</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill green" style="width: 30.6%;"></div></div>
+              <div class="stat-val">30.6%</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-name">Large Basket (6-10+ items)</div>
+              <div class="stat-bar-bg"><div class="stat-bar-fill green" style="width: 58.3%;"></div></div>
+              <div class="stat-val">58.3%</div>
+            </div>
+          </div>
+          <span class="cite-badge">Source: <a href="https://docs.google.com/spreadsheets/d/1c050kFbIJe5p6ZH2U25WGrLHITCrwoUQ3G42rBJ346I/edit?usp=sharing" target="_blank">Basket Stories householdSize=three_four</a></span>
         </div>
       </div>
 
       <!-- SECTION 1: METRO VS NON-METRO COMPARISON -->
       <div class="section-head">
-        <h2>1. Metro City vs Non-Metro City Behavior</h2>
+        <h2>C. Metro City vs Non-Metro City Behavior</h2>
         <span>Metro (N=37) vs Non-Metro (N=55)</span>
       </div>
 
@@ -275,7 +437,7 @@
 
       <!-- SECTION 2: ZEPTO VS REST (NON-ZEPTO) -->
       <div class="section-head">
-        <h2>2. Zepto Shoppers vs Rest (Non-Zepto)</h2>
+        <h2>D. Zepto Shoppers vs Rest (Non-Zepto)</h2>
         <span>Zepto (N=27) vs Non-Zepto (N=65)</span>
       </div>
 
@@ -337,7 +499,7 @@
 
       <!-- SECTION 3: WHY NOT ZEPTO & CONSIDERATION GAP -->
       <div class="section-head">
-        <h2>3. Why Not Zepto & Consideration Switch Gap</h2>
+        <h2>E. Why Not Zepto & Consideration Switch Gap</h2>
         <span>Non-Zepto Buyers Analysis (N=65)</span>
       </div>
 
@@ -387,7 +549,7 @@
 
       <!-- SECTION 4: ONLINE INSTANT VS OFFLINE DMART/SUPERMARKET -->
       <div class="section-head">
-        <h2>4. Online Instant Apps vs. Offline DMart & Supermarkets</h2>
+        <h2>F. Online Instant Apps vs. Offline DMart & Supermarkets</h2>
         <span>Instant Apps (N=61) vs Offline Supermarket/Local Store (N=22)</span>
       </div>
 

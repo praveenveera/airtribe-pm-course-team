@@ -1,0 +1,135 @@
+{
+  "sample_size": 92,
+  "top_categories": {
+    "dairy_bread_eggs": 53,
+    "fresh_produce": 36,
+    "snacks_sweets_beverages": 31,
+    "staples_packaged_cooking": 27,
+    "household_home_kitchen": 26,
+    "beauty_personal_wellness": 10,
+    "prepared_food_cafe": 10,
+    "meat_seafood_frozen": 7,
+    "fashion_toys_lifestyle": 3,
+    "electronics_mobile": 3,
+    "baby_pet": 1
+  },
+  "top_category_pairs": {
+    "dairy_bread_eggs + fresh_produce": 27,
+    "dairy_bread_eggs + staples_packaged_cooking": 18,
+    "dairy_bread_eggs + snacks_sweets_beverages": 15,
+    "fresh_produce + staples_packaged_cooking": 14,
+    "dairy_bread_eggs + household_home_kitchen": 13,
+    "household_home_kitchen + staples_packaged_cooking": 11,
+    "fresh_produce + household_home_kitchen": 9,
+    "fresh_produce + snacks_sweets_beverages": 8,
+    "prepared_food_cafe + snacks_sweets_beverages": 8,
+    "snacks_sweets_beverages + staples_packaged_cooking": 7
+  },
+  "age_brackets": {
+    "55_plus": 9,
+    "45_54": 15,
+    "35_44": 12,
+    "25_34": 48,
+    "prefer_not": 1,
+    "18_24": 7
+  },
+  "life_stages": {
+    "working_partnered": 25,
+    "retired_not_working": 3,
+    "family_with_children": 29,
+    "prefer_not": 6,
+    "working_alone": 26,
+    "student": 3
+  },
+  "household_sizes": {
+    "two": 27,
+    "three_four": 36,
+    "prefer_not": 1,
+    "five_plus": 4,
+    "one": 23,
+    "four_six": 1
+  },
+  "household_spend_matrix": {
+    "two": {
+      "1000_plus": 6,
+      "below_200": 3,
+      "prefer_not": 2,
+      "400_699": 9,
+      "200_399": 4,
+      "700_999": 3
+    },
+    "three_four": {
+      "1000_plus": 17,
+      "700_999": 7,
+      "below_200": 2,
+      "400_699": 7,
+      "200_399": 3
+    },
+    "prefer_not": {
+      "prefer_not": 1
+    },
+    "five_plus": {
+      "400_699": 2,
+      "1000_plus": 2
+    },
+    "one": {
+      "400_699": 4,
+      "200_399": 12,
+      "700_999": 3,
+      "1000_plus": 2,
+      "below_200": 2
+    },
+    "four_six": {
+      "400_699": 1
+    }
+  },
+  "category_rejections": {
+    "beauty_personal_wellness": {
+      "other": 1,
+      "unavailable": 1,
+      "buy_later": 2,
+      "control_spend": 4,
+      "too_expensive": 2
+    },
+    "other": {
+      "quality_concern": 1
+    },
+    "prepared_food_cafe": {
+      "buy_elsewhere": 1,
+      "control_spend": 1,
+      "buy_later": 1
+    },
+    "snacks_sweets_beverages": {
+      "need_complete": 3,
+      "control_spend": 5,
+      "unavailable": 1,
+      "quality_concern": 2
+    },
+    "staples_packaged_cooking": {
+      "need_complete": 2
+    },
+    "dairy_bread_eggs": {
+      "buy_later": 1
+    },
+    "fresh_produce": {
+      "need_complete": 2,
+      "too_expensive": 1
+    },
+    "household_home_kitchen": {
+      "too_expensive": 2,
+      "need_complete": 1,
+      "control_spend": 1,
+      "buy_elsewhere": 1
+    },
+    "meat_seafood_frozen": {
+      "quality_concern": 1,
+      "buy_elsewhere": 2
+    },
+    "fashion_toys_lifestyle": {
+      "control_spend": 3
+    },
+    "electronics_mobile": {
+      "too_expensive": 1
+    }
+  }
+}
