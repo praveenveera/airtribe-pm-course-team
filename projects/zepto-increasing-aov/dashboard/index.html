@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Project 4 · Zepto AOV Research & Strategy Command Center (V2)</title>
-  <meta name="description" content="Evidence-controlled research dashboard for Project 4: increasing AOV at Zepto combining deep primary survey data (N=92) and secondary research.">
+  <meta name="description" content="Evidence-controlled research dashboard for Project 4: increasing AOV at Zepto combining deep primary survey data (N=92) and secondary research with complete citations.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -106,8 +106,9 @@
     .data-table tr:hover td { background: #f8fafc; }
 
     /* Badges & Tags */
-    .cite-badge { display: inline-flex; align-items: center; gap: 4px; background: var(--soft); color: var(--blue); padding: 2px 8px; border-radius: 6px; font: 600 0.68rem "Fira Code", monospace; margin-top: 6px; }
-    
+    .cite-badge { display: inline-flex; align-items: center; gap: 4px; background: var(--soft); color: var(--blue); padding: 3px 9px; border-radius: 6px; font: 600 0.7rem "Fira Code", monospace; margin-top: 8px; border: 1px solid var(--border); }
+    .cite-badge a { color: var(--blue); font-weight: 700; text-decoration: underline; }
+
     .section-head { margin: 24px 0 14px; border-bottom: 2px solid var(--border); padding-bottom: 6px; display: flex; justify-content: space-between; align-items: flex-end; }
     .section-head h2 { font-size: 1.2rem; color: var(--ink); margin: 0; }
     .section-head span { font-size: 0.8rem; color: var(--muted); }
@@ -155,13 +156,15 @@
       
       <div class="hero">
         <div class="hero-card">
-          <div class="eyebrow">Deep Primary Research Synthesis · N=92 Participant Survey</div>
+          <div class="eyebrow">Primary Research Synthesis · N=92 Participant Survey</div>
           <h1>Primary User Behavior & Basket Mechanics</h1>
           <p class="hero-copy">
-            Detailed empirical evidence captured from <strong>92 verified shoppers</strong>. Includes multi-dimensional cross-tabulations: Overall Behavior, Metro vs. Non-Metro, Zepto vs. Rest, Zepto Metro vs. Non-Metro, Why Not Zepto, Zepto Purchase Patterns, and Online Instant vs. Offline DMart/Supermarket.
+            Empirical evidence captured from <strong>92 verified shoppers</strong>. Evaluated across Metro vs Non-Metro, Zepto vs Rest, Why Not Zepto, Zepto Purchase Patterns, and Online Instant vs Offline Supermarkets.
           </p>
-          <div style="margin-top: 14px; font-size: 0.78rem; color: var(--muted);">
-            Dataset Source: <a href="https://docs.google.com/spreadsheets/d/1c050kFbIJe5p6ZH2U25WGrLHITCrwoUQ3G42rBJ346I/edit?usp=sharing" target="_blank">Responses_V2 Google Sheet</a> · Google Apps Script Live Backend
+          <div style="margin-top: 14px; font-size: 0.8rem; color: var(--muted); background: var(--soft); padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border);">
+            <strong>📌 Primary Sources & Method:</strong><br>
+            • <strong>Primary Dataset Source:</strong> <a href="https://docs.google.com/spreadsheets/d/1c050kFbIJe5p6ZH2U25WGrLHITCrwoUQ3G42rBJ346I/edit?usp=sharing" target="_blank" style="text-decoration: underline; font-weight: 700;">Basket Stories Survey (Google Sheet Responses_V2)</a><br>
+            • <strong>Primary Research Method:</strong> <a href="https://praveenveera.github.io/airtribe-pm-course-team/survey/" target="_blank" style="text-decoration: underline; font-weight: 700;">Basket Stories Adaptive Web App (V2.5 Instrument)</a>
           </div>
         </div>
         
@@ -171,7 +174,9 @@
           <p style="color: #dbeafe; font-size: 0.82rem;">
             <strong>59.3% of Zepto shoppers (16/27) added a recommended item</strong> to their basket compared to only 26.2% for non-Zepto platforms. However, Zepto's average basket remains compact (74.0% are 2-6 items).
           </p>
-          <span class="cite-badge" style="background: rgba(255,255,255,0.15); color: white;">Responses_V2 N=92 Cross-Tab</span>
+          <span class="cite-badge" style="background: rgba(255,255,255,0.15); color: white;">
+            Source: <a href="https://docs.google.com/spreadsheets/d/1c050kFbIJe5p6ZH2U25WGrLHITCrwoUQ3G42rBJ346I/edit?usp=sharing" target="_blank" style="color: white; text-decoration: underline;">Basket Stories Survey N=92</a>
+          </span>
         </div>
       </div>
 
@@ -236,7 +241,7 @@
               <div class="stat-val">37.8%</div>
             </div>
           </div>
-          <span class="cite-badge">Metro Segment (N=37)</span>
+          <span class="cite-badge">Source: <a href="https://docs.google.com/spreadsheets/d/1c050kFbIJe5p6ZH2U25WGrLHITCrwoUQ3G42rBJ346I/edit?usp=sharing" target="_blank">Basket Stories Survey N=37 (Metro)</a></span>
         </div>
 
         <div class="card">
@@ -264,7 +269,7 @@
               <div class="stat-val">27.3%</div>
             </div>
           </div>
-          <span class="cite-badge">Non-Metro Segment (N=55)</span>
+          <span class="cite-badge">Source: <a href="https://docs.google.com/spreadsheets/d/1c050kFbIJe5p6ZH2U25WGrLHITCrwoUQ3G42rBJ346I/edit?usp=sharing" target="_blank">Basket Stories Survey N=55 (Non-Metro)</a></span>
         </div>
       </div>
 
@@ -299,7 +304,7 @@
               <div class="stat-val">70.4%</div>
             </div>
           </div>
-          <span class="cite-badge">Zepto Cohort (N=27)</span>
+          <span class="cite-badge">Source: <a href="https://docs.google.com/spreadsheets/d/1c050kFbIJe5p6ZH2U25WGrLHITCrwoUQ3G42rBJ346I/edit?usp=sharing" target="_blank">Basket Stories Survey (recentMethod=zepto)</a></span>
         </div>
 
         <div class="card">
@@ -326,7 +331,7 @@
               <div class="stat-val">38.5%</div>
             </div>
           </div>
-          <span class="cite-badge">Non-Zepto Cohort (N=65)</span>
+          <span class="cite-badge">Source: <a href="https://docs.google.com/spreadsheets/d/1c050kFbIJe5p6ZH2U25WGrLHITCrwoUQ3G42rBJ346I/edit?usp=sharing" target="_blank">Basket Stories Survey (recentMethod!=zepto)</a></span>
         </div>
       </div>
 
@@ -362,7 +367,7 @@
               <div class="stat-val">13.8%</div>
             </div>
           </div>
-          <span class="cite-badge">Source: Responses_V2 (altWhy)</span>
+          <span class="cite-badge">Source: <a href="https://docs.google.com/spreadsheets/d/1c050kFbIJe5p6ZH2U25WGrLHITCrwoUQ3G42rBJ346I/edit?usp=sharing" target="_blank">Basket Stories Survey (altWhy)</a></span>
         </div>
 
         <div class="card">
@@ -376,7 +381,7 @@
               <li><strong>Fee Transparency & Habit (33.3%):</strong> User already had free delivery active on Blinkit Gold or Swiggy One.</li>
             </ul>
           </div>
-          <span class="cite-badge">Source: Responses_V2 (consideredZepto & altZeptoGap)</span>
+          <span class="cite-badge">Source: <a href="https://docs.google.com/spreadsheets/d/1c050kFbIJe5p6ZH2U25WGrLHITCrwoUQ3G42rBJ346I/edit?usp=sharing" target="_blank">Basket Stories Survey (consideredZepto & altZeptoGap)</a></span>
         </div>
       </div>
 
@@ -418,7 +423,7 @@
             </tr>
           </tbody>
         </table>
-        <span class="cite-badge">Cross-Tabulation: recentMethod ⊗ spend ⊗ items ⊗ mission ⊗ stopReason</span>
+        <span class="cite-badge">Source: <a href="https://docs.google.com/spreadsheets/d/1c050kFbIJe5p6ZH2U25WGrLHITCrwoUQ3G42rBJ346I/edit?usp=sharing" target="_blank">Basket Stories Survey N=92 Cross-Tabulation</a></span>
       </div>
 
     </div>
@@ -430,7 +435,7 @@
           <div class="eyebrow">Secondary Industry Research & Public Teardowns</div>
           <h1>Macro Landscape & Competitor Mechanics</h1>
           <p class="hero-copy">
-            Synthesizes industry forecasts (Redseer, BCG/DTDC, NIQ), official filing signals (Zepto IR Q4FY26), and public consumer teardowns across Reddit, Play Store reviews, and complaint forums.
+            Synthesizes industry forecasts (Redseer 2026, BCG/DTDC 2030, NIQ), official filing signals (Zepto IR Q4FY26), and public consumer teardowns across Reddit, Play Store reviews, and complaint forums.
           </p>
         </div>
       </div>
@@ -441,19 +446,19 @@
           <div class="eyebrow">Redseer 2026 Outlook</div>
           <h3>$90B+ Online Retail Market</h3>
           <p>Quick commerce is cited as the single fastest-growing retail channel in India, driven by dark-store density and hyper-local fulfillment.</p>
-          <span class="cite-badge">Redseer Industry Report 2026</span>
+          <span class="cite-badge">Source: <a href="https://redseer.com/reports/india-online-retail-2026-the-fastest-year-in-five-and-the-new-engines-behind-it/" target="_blank">Redseer India Online Retail 2026 Report</a></span>
         </div>
         <div class="card">
           <div class="eyebrow">BCG / DTDC Forecast</div>
           <h3>$20B+ Rapid Commerce by 2030</h3>
           <p>Rapid commerce GMV expanding beyond metro top-up orders into Tier 1 & Tier 2 household pantry replenishment.</p>
-          <span class="cite-badge">BCG/DTDC Industry Analysis</span>
+          <span class="cite-badge">Source: <a href="https://web-assets.bcg.com/02/df/e641ee1a4b42bf67b73f9c116d83/dtdc-report-the-emergence-of-rapid-commerce-in-india.pdf" target="_blank">BCG/DTDC Emergence of Rapid Commerce Report</a></span>
         </div>
         <div class="card">
           <div class="eyebrow">Zepto Scale Signal</div>
           <h3>2.3M+ Daily Orders (Q4FY26)</h3>
           <p>Zepto reports 119%+ order-volume CAGR between FY24-26, driving strong order frequency pressure across hubs.</p>
-          <span class="cite-badge">Zepto IR Q4FY26 Release</span>
+          <span class="cite-badge">Source: <a href="https://investors.zepto.com/" target="_blank">Zepto Investor Relations Q4FY26</a></span>
         </div>
       </div>
 
@@ -468,6 +473,7 @@
               <th>Fee & Threshold Mechanics</th>
               <th>AOV Expansion Strategy</th>
               <th>Primary Friction Point</th>
+              <th>Citation Link</th>
             </tr>
           </thead>
           <tbody>
@@ -477,6 +483,7 @@
               <td>Dynamic surge + handling charges; free delivery threshold at ₹99-199</td>
               <td>Cart upsell carousels, Zepto Pass membership, brand partner banners</td>
               <td>Fee transparency at checkout & stockout refunds</td>
+              <td><a href="https://investors.zepto.com/" target="_blank">Zepto IR Surface</a></td>
             </tr>
             <tr>
               <td><strong>Blinkit</strong></td>
@@ -484,6 +491,7 @@
               <td>Blinkit Gold loyalty free delivery; small order fee below ₹199</td>
               <td>Category bundles, seasonal gift stores, high-margin electronics</td>
               <td>Handling fee surges during peak demand</td>
+              <td><a href="https://blinkit.com/faq" target="_blank">Blinkit FAQ Surface</a></td>
             </tr>
             <tr>
               <td><strong>Swiggy Instamart</strong></td>
@@ -491,6 +499,7 @@
               <td>Free delivery via Swiggy One; tiered delivery pricing</td>
               <td>Food + grocery combined discovery, multi-item rewards</td>
               <td>Catalog noise and recommendation clutter</td>
+              <td><a href="https://www.swiggy.com/corporate/press-release/swiggy-instamart-takes-quick-commerce-to-100-cities-across-india/" target="_blank">Swiggy Press Filings</a></td>
             </tr>
             <tr>
               <td><strong>BigBasket / bbnow</strong></td>
@@ -498,10 +507,37 @@
               <td>Tiered fee waivers for scheduled bulk orders</td>
               <td>Pack size unit pricing, monthly pantry subscription boxes</td>
               <td>Slower instant delivery SLA compared to Zepto</td>
+              <td><a href="https://bbnow.bigbasket.com/" target="_blank">bbnow Official Surface</a></td>
             </tr>
           </tbody>
         </table>
-        <span class="cite-badge">Sources: Zepto IR, Blinkit FAQ, Swiggy Filings, BigBasket Public Surfaces</span>
+        <span class="cite-badge">Secondary Benchmarks: Verified from official platform public surfaces</span>
+      </div>
+
+      <!-- Public Customer Consumer Signals -->
+      <div class="card" style="margin-bottom: 18px;">
+        <h3>Public Customer Signals & Consumer Forum Teardowns</h3>
+        <div class="grid-2" style="margin-top: 10px;">
+          <div style="background: #fff7ed; padding: 14px; border-radius: 10px; border: 1px solid #fed7aa;">
+            <h4 style="color: #92400e; margin-bottom: 6px;">Reddit r/india Consumer Signals</h4>
+            <p style="color: #78350f; font-size: 0.82rem;">
+              Users express active friction around sneaky handling fees, processing charges, and dynamic surge pricing added at the final checkout step.
+            </p>
+            <span class="cite-badge" style="background: white;">
+              Source: <a href="https://www.reddit.com/r/india/comments/1jn78cv/disgusted_by-the-sneaky-way-zepto-adds-charges/" target="_blank">Reddit r/india Zepto Fee Discussion</a>
+            </span>
+          </div>
+
+          <div style="background: #fff7ed; padding: 14px; border-radius: 10px; border: 1px solid #fed7aa;">
+            <h4 style="color: #92400e; margin-bottom: 6px;">Reddit r/bangalore Local Signals</h4>
+            <p style="color: #78350f; font-size: 0.82rem;">
+              Discussions highlight freshness and inventory instability concerns, causing users to restrict online instant baskets to packaged items and buy fresh produce offline.
+            </p>
+            <span class="cite-badge" style="background: white;">
+              Source: <a href="https://www.reddit.com/r/bangalore/comments/1m4jqk2/fyi-swiggys-instamart-in-bangalore-has-terrible/" target="_blank">Reddit r/bangalore Freshness Discussion</a>
+            </span>
+          </div>
+        </div>
       </div>
 
       <!-- Category Gross Margin Matrix -->
