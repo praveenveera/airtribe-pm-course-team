@@ -55,11 +55,13 @@
     .error { margin-top: 14px; padding: 10px 12px; border-left: 4px solid var(--danger); background: #FDE8E7; color: var(--danger); }
     .bottom { position: fixed; right: 0; bottom: 0; left: 0; z-index: 9; display: flex; justify-content: center; padding: 14px 16px calc(14px + env(safe-area-inset-bottom)); background: rgba(255,248,240,.96); border-top: 1px solid var(--line); backdrop-filter: blur(8px); }
     .bottom-inner { display: flex; justify-content: space-between; gap: 12px; width: 100%; max-width: 620px; }
-    .nav-btn { min-width: 120px; min-height: 48px; padding: 12px 20px; border: 2px solid var(--plum); border-radius: 999px; background: var(--plum); color: white; cursor: pointer; font-weight: 700; box-shadow: 0 3px 0 #160B2A; }
+    .nav-btn { display: inline-flex; align-items: center; justify-content: center; min-width: 120px; min-height: 48px; padding: 12px 20px; border: 2px solid var(--plum); border-radius: 999px; background: var(--plum); color: white; cursor: pointer; font-weight: 700; text-decoration: none; box-shadow: 0 3px 0 #160B2A; }
     .nav-btn.secondary { background: var(--surface); color: var(--plum); box-shadow: none; }
     .nav-btn:disabled { cursor: wait; opacity: .62; }
     .success { padding: 26px; border: 2px solid var(--mint); border-radius: 18px; background: var(--mint-soft); }
     .success h1 { color: #11665E; }
+    .share { margin-top: 22px; padding: 22px; border: 2px solid var(--line); border-radius: 18px; background: var(--surface); }
+    .share .hint { margin: 0 0 16px; }
     .consent { display: flex; align-items: flex-start; gap: 12px; margin-top: 22px; padding: 15px; border: 2px solid var(--line); border-radius: 14px; background: var(--surface); }
     .consent input { flex: 0 0 22px; width: 22px; height: 22px; margin-top: 3px; accent-color: var(--coral); }
     .hidden { display: none !important; }
@@ -193,7 +195,9 @@
         required: "Please answer this question before continuing.",
         confirmError: "We could not confirm that your response was saved. Please check your connection and try again.",
         localTitle: "Test response saved locally", thanks: "Thank you", localBody: "This browser-only test was not sent to the research sheet.",
-        confirmedBody: "Your response has been confirmed in the research sheet.", ineligibleBody: "Thank you. This study currently focuses on purchases made within the last 30 days."
+        confirmedBody: "Your response has been confirmed in the research sheet.", ineligibleBody: "Thank you. This study currently focuses on purchases made within the last 30 days.",
+        shareCta: "Know someone who shops for groceries? Every real answer helps.", shareButtonLabel: "Share on WhatsApp",
+        shareMessage: "Hi! Helping me out with a 5-min survey on grocery shopping? Not tied to any brand, just for a course project:"
       },
       hi: {
         brand: "बास्केट की कहानी", language: "भाषा", shortSurvey: "छोटा अकादमिक सर्वेक्षण", title: "आपकी किराना खरीदारी की कहानी",
@@ -207,7 +211,9 @@
         required: "आगे बढ़ने से पहले इस प्रश्न का उत्तर दें।",
         confirmError: "हम यह पुष्टि नहीं कर सके कि आपका उत्तर सहेजा गया है। अपना इंटरनेट कनेक्शन जांचें और फिर कोशिश करें।",
         localTitle: "परीक्षण उत्तर स्थानीय रूप से सहेजा गया", thanks: "धन्यवाद", localBody: "यह ब्राउज़र-केवल परीक्षण शोध शीट में नहीं भेजा गया।",
-        confirmedBody: "आपका उत्तर शोध शीट में दर्ज होने की पुष्टि हो गई है।", ineligibleBody: "धन्यवाद। यह अध्ययन फिलहाल पिछले 30 दिनों में की गई खरीदारी पर केंद्रित है।"
+        confirmedBody: "आपका उत्तर शोध शीट में दर्ज होने की पुष्टि हो गई है।", ineligibleBody: "धन्यवाद। यह अध्ययन फिलहाल पिछले 30 दिनों में की गई खरीदारी पर केंद्रित है।",
+        shareCta: "किराने की खरीदारी करने वाला कोई जानते हैं? हर असली जवाब मदद करता है।", shareButtonLabel: "WhatsApp पर शेयर करें",
+        shareMessage: "नमस्ते! किराने की शॉपिंग पर 5 मिनट का सर्वे भर के मदद कर सकते हो? किसी ब्रांड से जुड़ा नहीं है, बस एक कोर्स प्रोजेक्ट के लिए है:"
       },
       te: {
         brand: "బాస్కెట్ కథలు", language: "భాష", shortSurvey: "చిన్న అకాడమిక్ సర్వే", title: "మీ కిరాణా కొనుగోలు కథ",
@@ -221,7 +227,9 @@
         required: "కొనసాగించే ముందు ఈ ప్రశ్నకు సమాధానం ఇవ్వండి.",
         confirmError: "మీ సమాధానం సేవ్ అయిందని నిర్ధారించలేకపోయాము. మీ ఇంటర్నెట్ కనెక్షన్‌ను తనిఖీ చేసి మళ్లీ ప్రయత్నించండి.",
         localTitle: "పరీక్ష సమాధానం స్థానికంగా సేవ్ అయింది", thanks: "ధన్యవాదాలు", localBody: "ఈ బ్రౌజర్-మాత్రమే పరీక్ష పరిశోధన షీట్‌కు పంపబడలేదు.",
-        confirmedBody: "మీ సమాధానం పరిశోధన షీట్‌లో నమోదైనట్లు నిర్ధారించబడింది.", ineligibleBody: "ధన్యవాదాలు. ఈ అధ్యయనం ప్రస్తుతం గత 30 రోజుల్లో చేసిన కొనుగోళ్లపై దృష్టి పెడుతోంది."
+        confirmedBody: "మీ సమాధానం పరిశోధన షీట్‌లో నమోదైనట్లు నిర్ధారించబడింది.", ineligibleBody: "ధన్యవాదాలు. ఈ అధ్యయనం ప్రస్తుతం గత 30 రోజుల్లో చేసిన కొనుగోళ్లపై దృష్టి పెడుతోంది.",
+        shareCta: "కిరాణా షాపింగ్ చేసే ఎవరైనా తెలుసా? ప్రతి నిజమైన సమాధానం సహాయపడుతుంది.", shareButtonLabel: "WhatsApp లో షేర్ చేయండి",
+        shareMessage: "నమస్తే! కిరాణా షాపింగ్‌పై 5 నిమిషాల సర్వేలో సాయం చేస్తారా? ఏ బ్రాండ్‌తోనూ సంబంధం లేదు, ఒక కోర్స్ ప్రాజెక్ట్ కోసం మాత్రమే:"
       }
     };
 
@@ -591,12 +599,25 @@
 
     function clearError() { var old = document.querySelector(".error"); if (old) old.remove(); }
     function showError(message) { clearError(); document.getElementById("app").appendChild(element("div", { className: "error", role: "alert", text: message })); }
+    function shareUrl() {
+      var link = window.location.origin + window.location.pathname;
+      var text = ui("shareMessage") + " " + link;
+      return "https://wa.me/?text=" + encodeURIComponent(text);
+    }
+
     function renderThankYou() {
       var app = document.getElementById("app"); app.innerHTML = "";
       var box = element("div", { className: "success" });
       box.appendChild(element("h1", { text: state.localOnly ? ui("localTitle") : ui("thanks") }));
       box.appendChild(element("p", { text: state.localOnly ? ui("localBody") : (isEligible() ? ui("confirmedBody") : ui("ineligibleBody")) }));
-      app.appendChild(box); document.getElementById("progress").style.width = "100%";
+      app.appendChild(box);
+      var shareBox = element("div", { className: "share" });
+      shareBox.appendChild(element("p", { className: "hint", text: ui("shareCta") }));
+      var shareLink = element("a", { className: "nav-btn", href: shareUrl(), target: "_blank", rel: "noopener" });
+      shareLink.textContent = ui("shareButtonLabel");
+      shareBox.appendChild(shareLink);
+      app.appendChild(shareBox);
+      document.getElementById("progress").style.width = "100%";
       document.getElementById("nextBtn").classList.add("hidden"); document.getElementById("backBtn").classList.add("hidden");
     }
 
