@@ -27,7 +27,7 @@
 - [`research/public-feedback-coding-matrix.md`](research/public-feedback-coding-matrix.md)
 - [`research/secondary-to-primary-mapping.md`](research/secondary-to-primary-mapping.md)
 - [`research/evidence-inventory.md`](research/evidence-inventory.md)
-- [`synthesis/competitor-and-teardown-conclusion.md`](synthesis/competitor-and-teardown-conclusion.md)
+- [`analysis/competitor-and-teardown-conclusion.md`](analysis/competitor-and-teardown-conclusion.md)
 - [`interviews/survey-form-content.md`](interviews/survey-form-content.md)
 - [`webapp/index.html`](webapp/index.html)
 
@@ -39,7 +39,7 @@
 
 The dashboard is the decision layer for the secondary-research phase. It brings together the market-to-AOV chain, competitor mechanics, Zepto teardown, public-feedback themes, evidence traceability, Bengaluru observation plan, opportunity map, evidence-quality rules, scenario modelling, and the next validation queue. Its visual explainers make the reasoning explicit: observe → triangulate → explain → test.
 
-The survey app is the primary-research collection layer. It uses a neutral grocery/quick-commerce questionnaire in English, Hindi, and Telugu to capture a recent purchase, shopping mission, basket-building behaviour, fees or thresholds, rejected items, alternatives, and the respondent's exact city (open text, kept neutral of any secondary-research city assumption). It does not collect follow-up-interview consent or contact details (removed in V2.4). Survey responses are not yet treated as findings or reflected in the dashboard until real participant collection and reconciliation are complete — the current sheet holds only one end-to-end test row.
+The survey app is the primary-research collection layer. It uses a neutral grocery/quick-commerce questionnaire in English, Hindi, and Telugu to capture a recent purchase, shopping mission, basket-building behaviour, fees or thresholds, rejected items, alternatives, and the respondent's exact city (open text, kept neutral of any secondary-research city assumption). It does not collect follow-up-interview consent or contact details (removed in V2.4). Survey responses are not yet treated as findings or reflected in the dashboard until real participant collection and reconciliation are complete — the current sheet holds only one end-to-end live response row.
 
 Both tools are published as lightweight static web assets. The dashboard has a lightweight access gate for team sharing; it is not a security control for confidential data. The repository is public because GitHub Pages was enabled for publication, so no sensitive participant information should be committed or entered into the tools.
 

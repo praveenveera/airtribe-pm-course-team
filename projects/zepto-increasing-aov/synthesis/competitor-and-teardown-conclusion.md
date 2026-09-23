@@ -1,4 +1,4 @@
-# Project 4 — Competitor and Product-Teardown Synthesis
+# Project 4 — Competitor and Product-Teardown analysis
 
 ## Current conclusion
 
@@ -71,4 +71,4 @@ For users with recurring needs, test reminders, repeat baskets, or lightweight w
 
 ## Deferred validation gate
 
-Primary research is deferred. When restarted, use the four missions in `research/product-teardown.md` and combine them with survey and follow-up evidence. Until then, this conclusion remains a secondary-research synthesis and should not report behavioural assumptions as findings.
+Primary research is deferred. When restarted, use the four missions in `research/product-teardown.md` and combine them with survey and follow-up evidence. Until then, this conclusion remains a secondary-research analysis and should not report behavioural assumptions as findings.

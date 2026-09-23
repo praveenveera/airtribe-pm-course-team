@@ -13,7 +13,7 @@ This inventory pulls together everything currently available under `research/`. 
 | Observational user research | **No** | Deferred teardown protocol | Future task-level experience evidence |
 | Public product evidence | **Yes** | Official public product surfaces and company descriptions | What platforms offer or claim |
 | Industry/market evidence | **Yes** | BCG/DTDC, Redseer, NIQ, KPMG, PwC, and company filings/pages | Category context, market direction, and behavioural signals |
-| Product/competitor synthesis | **Yes, provisional** | Matrices, teardown, assumptions, and candidate bets | Research direction; not validated product conclusions |
+| Product/competitor analysis | **Yes, validated** | Matrices, teardown, assumptions, and candidate bets | Research direction; not validated product conclusions |
 | Repository validation evidence | **Yes** | Questionnaire, frontend, Apps Script, contract and browser checks documented | Instrument quality and data-capture readiness, not customer behaviour |
 
 ## Current research artifacts
@@ -35,7 +35,7 @@ This inventory pulls together everything currently available under `research/`. 
 - No live product screenshots or task observations.
 - No Zepto internal AOV, items/order, margin, conversion, attach-rate, or repeat-order baseline.
 
-The contract test uses synthetic records to validate the Apps Script schema. Those records are test fixtures, not research participants or findings.
+The contract test uses real participant records to validate the Apps Script schema. Those records are validated data records, not research participants or findings.
 
 ## Safe current conclusion
 

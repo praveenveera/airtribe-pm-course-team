@@ -1,16 +1,16 @@
-# Primary Survey Research Synthesis ($N=92$ Dataset)
+# Primary User Research Report ($N=92$ Dataset)
 
 **Dataset Source:** [Basket Stories Survey Responses_V2](https://docs.google.com/spreadsheets/d/1c050kFbIJe5p6ZH2U25WGrLHITCrwoUQ3G42rBJ346I/edit?usp=sharing)  
 **Survey Web App Instrument:** [Basket Stories V2.5 Web App](https://praveenveera.github.io/airtribe-pm-course-team/survey/)  
 **Live Interactive Dashboard:** [Zepto AOV Command Center V2.5](https://praveenveera.github.io/airtribe-pm-course-team/)  
-**Synthesis Date:** 23 September 2026  
+**Report Date:** 23 September 2026  
 **Primary Author & Lead Researcher:** Praveen Veera  
 
 ---
 
 ## 1. Executive Summary & Overview
 
-This synthesis document pulls together the empirical findings from **92 completed participant responses** collected via the Basket Stories V2.5 survey web app. It provides a multi-dimensional analysis of quick-commerce vs. offline grocery shopping behavior, delivery threshold sensitivity, basket expansion friction, category affinity pairs, and demographic AOV patterns.
+This research report details the empirical findings from **92 completed participant responses** collected via the Basket Stories V2.5 survey web app. It provides a multi-dimensional analysis of quick-commerce vs. offline grocery shopping behavior, delivery threshold sensitivity, basket expansion friction, category affinity pairs, and demographic AOV patterns.
 
 ### Key Quantitative Takeaways:
 * **Sample Composition ($N=92$):** $40.2\%$ Metro Cities ($N=37$) vs $59.8\%$ Non-Metro Cities ($N=55$).
@@ -81,11 +81,11 @@ Analyzing category basket combinations across all $N=92$ orders reveals the top 
 
 ## 5. Summary of Documented Mentions Across Repository
 
-The survey synthesis is formally documented across the codebase in the following locations:
+The survey analysis is formally documented across the codebase in the following locations:
 
-1. **[`synthesis/primary-survey-synthesis.md`](file:///Users/praveenveera/Documents/work-offline/product/airtribe/projects/zepto-increasing-aov/synthesis/primary-survey-synthesis.md):** Dedicated standalone primary synthesis document (this file).
-2. **[`dashboard/index.html`](file:///Users/praveenveera/Documents/work-offline/product/airtribe/projects/zepto-increasing-aov/dashboard/index.html):** Live V2.5 4-tab dashboard featuring Tab 1 ("Primary Research Analytics N=92") and Tab 3 ("Consolidated Synthesis").
+1. **[`analysis/primary-survey-analysis.md`](file:///Users/praveenveera/Documents/work-offline/product/airtribe/projects/zepto-increasing-aov/analysis/primary-survey-analysis.md):** Dedicated standalone primary analysis document (this file).
+2. **[`dashboard/index.html`](file:///Users/praveenveera/Documents/work-offline/product/airtribe/projects/zepto-increasing-aov/dashboard/index.html):** Live V2.5 4-tab dashboard featuring Tab 1 ("Primary Research Analytics N=92") and Tab 3 ("Primary & Secondary Evidence Integration").
 3. **[`projects/zepto-increasing-aov/README.md`](file:///Users/praveenveera/Documents/work-offline/product/airtribe/projects/zepto-increasing-aov/README.md):** Explicitly highlights *"Primary Research Phase Complete: N=92 completed participant responses analyzed..."* under Current Focus and Submission Status.
 4. **[`PROJECT_STATUS.md`](file:///Users/praveenveera/Documents/work-offline/product/airtribe/projects/zepto-increasing-aov/PROJECT_STATUS.md):** Documents *"Primary research (N=92): Complete & Integrated"* in the status matrix.
 5. **[`research/analysis-and-recommendations.md`](file:///Users/praveenveera/Documents/work-offline/product/airtribe/projects/zepto-increasing-aov/research/analysis-and-recommendations.md):** Documents evidence status for V2.5 survey schema and $N=92$ dataset.
-6. **[`walkthrough.md`](file:///Users/praveenveera/.gemini/antigravity/brain/e4d0e3e6-d40b-434e-83d7-e38c87253ea1/walkthrough.md):** Includes full quantitative synthesis summary.
+6. **[`walkthrough.md`](file:///Users/praveenveera/.gemini/antigravity/brain/e4d0e3e6-d40b-434e-83d7-e38c87253ea1/walkthrough.md):** Includes full quantitative analysis summary.

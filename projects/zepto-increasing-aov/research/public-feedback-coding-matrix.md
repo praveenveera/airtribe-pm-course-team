@@ -1,7 +1,7 @@
 # Project 4 — Public Feedback Coding Matrix
 
 **Research date:** 22 September 2026
-**Evidence type:** structured synthesis of captured public sources
+**Evidence type:** structured analysis of captured public sources
 **Use:** secondary-research hypothesis generation; not a representative customer dataset
 
 ## How to read this matrix
@@ -65,4 +65,4 @@ Evidence labels:
 
 ## Source register mapping
 
-The source IDs in this matrix refer to [`source-register.md`](source-register.md). Detailed links and limitations remain in [`public-customer-signals.md`](public-customer-signals.md); this matrix is a synthesis layer, not a replacement for source inspection.
+The source IDs in this matrix refer to [`source-register.md`](source-register.md). Detailed links and limitations remain in [`public-customer-signals.md`](public-customer-signals.md); this matrix is a analysis layer, not a replacement for source inspection.

@@ -34,11 +34,11 @@ Use a neutral grocery and quick-commerce survey. Do not assume that respondents 
 - [`research/secondary-to-primary-mapping.md`](research/secondary-to-primary-mapping.md) — maps each secondary assumption to future primary validation
 - [`research/competitor-analysis.md`](research/competitor-analysis.md) — Zepto versus direct competitors and substitutes
 - [`research/product-teardown.md`](research/product-teardown.md) — primary Zepto teardown and secondary competitor teardown plan
-- [`synthesis/competitor-and-teardown-conclusion.md`](synthesis/competitor-and-teardown-conclusion.md) — current evidence boundary and product hypotheses
+- [`analysis/competitor-and-teardown-conclusion.md`](analysis/competitor-and-teardown-conclusion.md) — current evidence boundary and product hypotheses
 
 ## Current focus
 
-See [`PROJECT_STATUS.md`](PROJECT_STATUS.md) for the current workstream tracker and complete evidence synthesis.
+See [`PROJECT_STATUS.md`](PROJECT_STATUS.md) for the current workstream tracker and complete evidence analysis.
 
 **Primary Research Phase Complete:** $N=92$ completed participant responses captured from the live `Responses_V2` dataset via the Basket Stories V2.5 survey web app. Primary user behavior, mission taxonomy, threshold sensitivity, and category co-occurrence pairs are fully analyzed and integrated into the live dashboard.
 
