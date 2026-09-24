@@ -1,0 +1,205 @@
+{
+  "sample_size": 94,
+  "last_updated": "23 September 2026",
+  "source": "Basket Stories Survey Responses_V2 Google Sheet (N=94)",
+  "channels": {
+    "counts": {
+      "local_store": 13,
+      "supermarket": 8,
+      "blinkit": 28,
+      "amazon_fresh": 5,
+      "zepto": 27,
+      "bigbasket": 3,
+      "instamart": 7,
+      "subscription": 1,
+      "bulk_purchase": 1,
+      "local_market": 1
+    },
+    "percentages": {
+      "local_store": 13.8,
+      "supermarket": 8.5,
+      "blinkit": 29.8,
+      "amazon_fresh": 5.3,
+      "zepto": 28.7,
+      "bigbasket": 3.2,
+      "instamart": 7.4,
+      "subscription": 1.1,
+      "bulk_purchase": 1.1,
+      "local_market": 1.1
+    }
+  },
+  "missions": {
+    "counts": {
+      "stock_up": 16,
+      "offer_led": 8,
+      "urgent": 37,
+      "regular_reorder": 3,
+      "ran_out": 17,
+      "planned_top_up": 9,
+      "discovery": 4
+    },
+    "percentages": {
+      "stock_up": 17.0,
+      "offer_led": 8.5,
+      "urgent": 39.4,
+      "regular_reorder": 3.2,
+      "ran_out": 18.1,
+      "planned_top_up": 9.6,
+      "discovery": 4.3
+    }
+  },
+  "thresholds": {
+    "noticed_counts": {
+      "no": 18,
+      "yes": 67,
+      "not_sure": 9
+    },
+    "noticed_percentages": {
+      "no": 19.1,
+      "yes": 71.3,
+      "not_sure": 9.6
+    },
+    "action_counts": {
+      "added_useful": 27,
+      "added_to_unlock": 20,
+      "no_change": 6,
+      "paid_fee": 8,
+      "waited": 3,
+      "larger_pack": 1,
+      "removed_or_abandoned": 2
+    },
+    "action_percentages": {
+      "added_useful": 40.3,
+      "added_to_unlock": 29.9,
+      "no_change": 9.0,
+      "paid_fee": 11.9,
+      "waited": 4.5,
+      "larger_pack": 1.5,
+      "removed_or_abandoned": 3.0
+    }
+  },
+  "receptivity": {
+    "counts": {
+      "found_pushy": 6,
+      "ignored": 26,
+      "looked_no_add": 23,
+      "added_item": 33,
+      "not_sure": 6
+    },
+    "percentages": {
+      "found_pushy": 6.4,
+      "ignored": 27.7,
+      "looked_no_add": 24.5,
+      "added_item": 35.1,
+      "not_sure": 6.4
+    }
+  },
+  "stop_reasons": {
+    "counts": {
+      "other": 1,
+      "quality_concern": 4,
+      "buy_elsewhere": 4,
+      "need_complete": 9,
+      "buy_later": 5,
+      "too_expensive": 6,
+      "unavailable": 2,
+      "control_spend": 14
+    },
+    "percentages": {
+      "other": 2.2,
+      "quality_concern": 8.9,
+      "buy_elsewhere": 8.9,
+      "need_complete": 20.0,
+      "buy_later": 11.1,
+      "too_expensive": 13.3,
+      "unavailable": 4.4,
+      "control_spend": 31.1
+    }
+  },
+  "spend": {
+    "counts": {
+      "1000_plus": 28,
+      "700_999": 14,
+      "below_200": 7,
+      "400_699": 23,
+      "prefer_not": 3,
+      "200_399": 19
+    },
+    "percentages": {
+      "1000_plus": 29.8,
+      "700_999": 14.9,
+      "below_200": 7.4,
+      "400_699": 24.5,
+      "prefer_not": 3.2,
+      "200_399": 20.2
+    }
+  },
+  "items": {
+    "counts": {
+      "more_than_ten": 24,
+      "four_six": 35,
+      "two_three": 18,
+      "seven_ten": 12,
+      "do_not_remember": 1,
+      "one": 4
+    },
+    "percentages": {
+      "more_than_ten": 25.5,
+      "four_six": 37.2,
+      "two_three": 19.1,
+      "seven_ten": 12.8,
+      "do_not_remember": 1.1,
+      "one": 4.3
+    }
+  },
+  "non_zepto_consideration": {
+    "total": 67,
+    "counts": {
+      "no": 35,
+      "yes": 21,
+      "not_sure": 11
+    },
+    "percentages": {
+      "no": 52.2,
+      "yes": 31.3,
+      "not_sure": 16.4
+    }
+  },
+  "top_cities": {
+    "HYDERABAD": 17,
+    "VISAKHAPATNAM": 14,
+    "BENGALURU": 7,
+    "BANGALORE": 5,
+    "KOLKATA": 4,
+    "VIZAG": 3,
+    "SRIKAKULAM": 2,
+    "HYD": 2,
+    "VIZIANAGARAM": 2,
+    "PUNE": 2
+  },
+  "top_categories": {
+    "dairy_bread_eggs": 54,
+    "fresh_produce": 38,
+    "snacks_sweets_beverages": 32,
+    "staples_packaged_cooking": 28,
+    "household_home_kitchen": 27,
+    "beauty_personal_wellness": 11,
+    "prepared_food_cafe": 10,
+    "meat_seafood_frozen": 7,
+    "fashion_toys_lifestyle": 3,
+    "electronics_mobile": 3,
+    "baby_pet": 1
+  },
+  "top_category_pairs": {
+    "dairy_bread_eggs + fresh_produce": 28,
+    "dairy_bread_eggs + staples_packaged_cooking": 19,
+    "dairy_bread_eggs + snacks_sweets_beverages": 16,
+    "fresh_produce + staples_packaged_cooking": 15,
+    "dairy_bread_eggs + household_home_kitchen": 14,
+    "household_home_kitchen + staples_packaged_cooking": 12,
+    "fresh_produce + household_home_kitchen": 10,
+    "fresh_produce + snacks_sweets_beverages": 9,
+    "snacks_sweets_beverages + staples_packaged_cooking": 8,
+    "prepared_food_cafe + snacks_sweets_beverages": 8
+  }
+}
