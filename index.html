@@ -191,7 +191,7 @@
     <!-- Main Tab Control Navigation Bar -->
     <nav class="main-tabs" role="tablist">
       <button class="tab-btn active" id="tab-btn-tracker" onclick="switchTab('tracker')">
-        🎯 Assignment Progress Tracker <span class="badge">4/4 Steps Complete</span>
+        🎯 Assignment Progress Tracker <span class="badge" style="background: #f59e0b; color: #78350f;">Draft Proposal · Under Review</span>
       </button>
       <button class="tab-btn" id="tab-btn-primary" onclick="switchTab('primary')">
         📊 Primary Research Analytics <span class="badge">N=92 Deep Suite</span>
@@ -207,46 +207,46 @@
       </button>
     </nav>
 
-            <!-- TAB 0: ASSIGNMENT CHECKPOINT & STATUS TRACKER -->
+                <!-- TAB 0: ASSIGNMENT CHECKPOINT & STATUS TRACKER (DRAFT / UNDER REVIEW) -->
     <div id="tab-panel-tracker" class="tab-panel active">
       <div class="hero">
         <div class="hero-card" style="background: linear-gradient(135deg, #1e40af, #0f172a); color: white;">
-          <div class="eyebrow" style="color: #bfdbfe;">Airtribe Project 4 Progress Overview</div>
-          <h1 style="color: white;">Project Checkpoint & Progress Tracker</h1>
+          <div class="eyebrow" style="color: #fcd34d;">Working Draft · Pending Final Group Review</div>
+          <h1 style="color: white;">Project Draft & Checkpoint Tracker</h1>
           <p class="hero-copy" style="color: #cbd5e1;">
-            Here is a clear, simple summary of our work across all <strong>4 assignment steps</strong>, backed by our primary survey of <strong>92 real shoppers</strong>.
+            This is our <strong>proposed working draft</strong> across the 4 assignment steps, based on our N=92 survey. All sections, problem statements, and solution priorities are <strong>currently under review and subject to feedback</strong> before finalizing.
           </p>
           <div style="margin-top: 14px; font-size: 0.82rem; color: #94a3b8; display: flex; gap: 10px; flex-wrap: wrap;">
-            <span style="background: rgba(255,255,255,0.15); padding: 5px 12px; border-radius: 8px; color: white; font-weight: 600;">Step 1: User Research & Shopper Types ✅</span>
-            <span style="background: rgba(255,255,255,0.15); padding: 5px 12px; border-radius: 8px; color: white; font-weight: 600;">Step 2: Why Carts Stay Small (Blockers) ✅</span>
-            <span style="background: rgba(255,255,255,0.15); padding: 5px 12px; border-radius: 8px; color: white; font-weight: 600;">Step 3: Our 3 Product Ideas ✅</span>
-            <span style="background: rgba(255,255,255,0.15); padding: 5px 12px; border-radius: 8px; color: white; font-weight: 600;">Step 4: Winning Choice & Success Goals ✅</span>
+            <span style="background: rgba(245, 158, 11, 0.25); border: 1px solid #f59e0b; padding: 5px 12px; border-radius: 8px; color: #fef08a; font-weight: 600;">Step 1: Shopper Types (Draft Ready)</span>
+            <span style="background: rgba(245, 158, 11, 0.25); border: 1px solid #f59e0b; padding: 5px 12px; border-radius: 8px; color: #fef08a; font-weight: 600;">Step 2: Core Problem (Proposed Draft)</span>
+            <span style="background: rgba(245, 158, 11, 0.25); border: 1px solid #f59e0b; padding: 5px 12px; border-radius: 8px; color: #fef08a; font-weight: 600;">Step 3: 3 Product Ideas (Under Review)</span>
+            <span style="background: rgba(245, 158, 11, 0.25); border: 1px solid #f59e0b; padding: 5px 12px; border-radius: 8px; color: #fef08a; font-weight: 600;">Step 4: Proposed Winners (Needs Alignment)</span>
           </div>
         </div>
 
         <div class="card" style="background: white; border: 1px solid var(--border);">
-          <div class="eyebrow">Overall Assignment Progress</div>
-          <h3 style="font-size: 2.2rem; font-family: 'Fira Code', monospace; color: var(--green); margin-bottom: 4px;">100%</h3>
-          <p style="font-size: 0.82rem; color: var(--muted); margin-bottom: 12px;">All 4 Assignment Steps Fully Completed</p>
+          <div class="eyebrow">Overall Assignment Status</div>
+          <h3 style="font-size: 1.8rem; font-family: 'Fira Code', monospace; color: var(--amber); margin-bottom: 4px;">Draft Stage</h3>
+          <p style="font-size: 0.82rem; color: var(--muted); margin-bottom: 12px;">Needs Group Review Before Finalization</p>
           <div style="background: #e2e8f0; height: 10px; border-radius: 99px; overflow: hidden;">
-            <div style="width: 100%; height: 100%; background: var(--green);"></div>
+            <div style="width: 75%; height: 100%; background: var(--amber);"></div>
           </div>
           <div style="margin-top: 14px; font-size: 0.78rem; color: #475569;">
-            <strong>Assignment Document:</strong> <a href="https://github.com/praveenveera/airtribe-pm-course-team/blob/main/projects/zepto-increasing-aov/assignment-brief.md" target="_blank" style="text-decoration: underline; font-weight: 700;">assignment-brief.md</a>
+            <strong>Status Note:</strong> <em>All proposals below are draft recommendations. Please review and provide feedback.</em>
           </div>
         </div>
       </div>
 
-      <!-- 4 CHECKPOINT CARDS GRID WITH SIMPLE LAYMAN LANGUAGE -->
+      <!-- 4 CHECKPOINT CARDS GRID WITH DRAFT / UNDER REVIEW STATUS -->
       <div class="grid-2">
         <!-- STEP 1 CARD -->
         <div class="card">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-            <span class="status done">Step 1 Complete</span>
+            <span class="status active" style="background: #fef3c7; color: #92400e;">Step 1 Draft · Under Review</span>
             <span class="mono" style="font-size: 0.75rem; color: var(--muted);">Survey of 92 Shoppers</span>
           </div>
-          <h3 style="color: var(--blue);">Step 1: User Research & Shopper Types</h3>
-          <p>We surveyed 92 shoppers to see how people buy on Zepto:</p>
+          <h3 style="color: var(--blue);">Step 1: User Research & Shopper Types (Proposed)</h3>
+          <p>Proposed shopper breakdown based on 92 survey responses:</p>
           
           <div class="stat-list" style="margin-top: 12px;">
             <div class="stat-row">
@@ -266,28 +266,28 @@
             </div>
           </div>
 
-          <div style="margin-top: 14px; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid var(--border); font-size: 0.78rem;">
-            <strong>💡 Key Finding:</strong> Over half of orders (57.6%) are quick 1-item emergency buys (like milk or eggs). This is the main reason order totals stay low (around ₹180–₹250).
+          <div style="margin-top: 14px; background: #fff7ed; padding: 10px; border-radius: 8px; border: 1px solid #fed7aa; font-size: 0.78rem; color: #9a3412;">
+            <strong>📌 Status:</strong> Working draft segment model. Over half of orders (57.6%) are quick 1-item emergency buys (milk, eggs), capping average spend at ₹180–₹250.
           </div>
         </div>
 
         <!-- STEP 2 CARD -->
         <div class="card">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-            <span class="status done">Step 2 Complete</span>
-            <span class="mono" style="font-size: 0.75rem; color: var(--muted);">Main Reasons Carts Stay Small</span>
+            <span class="status active" style="background: #fef3c7; color: #92400e;">Step 2 Draft · Needs Review</span>
+            <span class="mono" style="font-size: 0.75rem; color: var(--muted);">Problem Statement Draft</span>
           </div>
-          <h3 style="color: var(--blue);">Step 2: Why Carts Stay Small & Core Problem</h3>
-          <p>Main reasons users checkout with just 1 or 2 items:</p>
+          <h3 style="color: var(--blue);">Step 2: Why Carts Stay Small & Core Problem (Proposed)</h3>
+          <p>Proposed blockers and problem framing for team review:</p>
           
           <ul style="font-size: 0.8rem; color: #334155; line-height: 1.5; padding-left: 16px; margin: 10px 0;">
-            <li><strong>Hurried Mindset:</strong> Users open the app to get 1 specific item and check out fast.</li>
-            <li><strong>Random Suggestions:</strong> App recommendations don't match what the user is currently buying.</li>
+            <li><strong>Hurried Mindset:</strong> Users open app to get 1 specific item and checkout fast.</li>
+            <li><strong>Random Suggestions:</strong> App recommendations don't match what user is currently buying.</li>
             <li><strong>Delivery Fee Caution:</strong> 70.7% notice delivery fees and avoid extra spending.</li>
           </ul>
 
           <div style="background: #eff6ff; padding: 10px; border-radius: 8px; border: 1px solid #bfdbfe; font-size: 0.78rem; color: #1e3a8a;">
-            <strong>📌 Core Problem Statement:</strong><br>
+            <strong>📌 Proposed Problem Statement (Draft):</strong><br>
             <em>"Most users buy just 1 quick emergency item (57.6% of orders) because Zepto suggests random items instead of helpful matching items (like showing cereal when buying milk), keeping cart totals low (₹180–₹240)."</em>
           </div>
         </div>
@@ -295,24 +295,24 @@
         <!-- STEP 3 CARD -->
         <div class="card">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-            <span class="status done">Step 3 Complete</span>
-            <span class="mono" style="font-size: 0.75rem; color: var(--muted);">3 Product Solutions</span>
+            <span class="status active" style="background: #fef3c7; color: #92400e;">Step 3 Draft · Ideas Under Review</span>
+            <span class="mono" style="font-size: 0.75rem; color: var(--muted);">Proposed Product Ideas</span>
           </div>
-          <h3 style="color: var(--blue);">Step 3: Our 3 Proposed Solutions</h3>
-          <p>Simple product ideas to help users add matching items:</p>
+          <h3 style="color: var(--blue);">Step 3: Our 3 Proposed Solutions (Draft)</h3>
+          <p>Proposed product concepts open for team feedback:</p>
           
           <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px; font-size: 0.8rem;">
             <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 8px 12px; border-radius: 8px;">
-              <strong>🥇 Solution A: Smart Matching Add-On Shelf (Top Winner)</strong><br>
-              Shows 2-3 perfect matching items right in your cart (e.g. Milk ➔ Cereal/Cookies). 35.9% of shoppers prefer this.
+              <strong>🥇 Proposed Idea A: Smart Matching Add-On Shelf</strong><br>
+              Shows 2-3 matching items right in cart drawer (e.g. Milk ➔ Cereal/Cookies). 35.9% attach preference in survey.
             </div>
             <div style="background: #f8fafc; border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px;">
-              <strong>🥈 Solution B: Household Grocery Savings Pack</strong><br>
-              Gives extra discounts when buying weekly groceries in bulk.
+              <strong>🥈 Proposed Idea B: Household Grocery Savings Pack</strong><br>
+              Tiered bulk discounts for planned weekly grocery shopping.
             </div>
             <div style="background: #f8fafc; border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px;">
-              <strong>🥉 Solution C: Quick Re-order Reminders</strong><br>
-              Reminds repeat buyers of items they usually buy every week.
+              <strong>🥉 Proposed Idea C: Quick Re-order Reminders</strong><br>
+              Pre-populated repeat items during checkout for regular buyers.
             </div>
           </div>
         </div>
@@ -320,35 +320,35 @@
         <!-- STEP 4 CARD -->
         <div class="card">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-            <span class="status done">Step 4 Complete</span>
-            <span class="mono" style="font-size: 0.75rem; color: var(--muted);">Product Decision</span>
+            <span class="status active" style="background: #fef3c7; color: #92400e;">Step 4 Draft · Needs Alignment</span>
+            <span class="mono" style="font-size: 0.75rem; color: var(--muted);">RICE Prioritization Draft</span>
           </div>
-          <h3 style="color: var(--blue);">Step 4: Picking our #1 Winner & Success Goals</h3>
-          <p>Comparing our 3 ideas to find the best option:</p>
+          <h3 style="color: var(--blue);">Step 4: Proposed Winner & Priorities (Draft)</h3>
+          <p>Preliminary RICE scores subject to team agreement:</p>
 
           <div class="table-responsive">
             <table class="data-table">
               <thead>
                 <tr>
-                  <th>Solution Idea</th>
+                  <th>Proposed Solution</th>
                   <th>Who it Helps</th>
                   <th>Impact</th>
                   <th>Confidence</th>
                   <th>Build Effort</th>
-                  <th>Final Score</th>
+                  <th>Draft Score</th>
                 </tr>
               </thead>
               <tbody>
-                <tr style="background: #ecfdf5; font-weight: 600;">
-                  <td>Solution A (Smart Matcher)</td>
+                <tr style="background: #fffbeb; font-weight: 600;">
+                  <td>Idea A (Smart Matcher)</td>
                   <td>80% of buyers</td>
                   <td>High</td>
                   <td>90% Sure</td>
                   <td>Easy</td>
-                  <td><span class="mono" style="color: var(--green); font-weight: 700;">864 (Winner)</span></td>
+                  <td><span class="mono" style="color: #b45309; font-weight: 700;">864 (Proposed Winner)</span></td>
                 </tr>
                 <tr>
-                  <td>Solution C (Re-order Cues)</td>
+                  <td>Idea C (Re-order Cues)</td>
                   <td>60% of buyers</td>
                   <td>Medium</td>
                   <td>80% Sure</td>
@@ -356,7 +356,7 @@
                   <td><span class="mono">432</span></td>
                 </tr>
                 <tr>
-                  <td>Solution B (Grocery Pack)</td>
+                  <td>Idea B (Grocery Pack)</td>
                   <td>35% of buyers</td>
                   <td>Very High</td>
                   <td>70% Sure</td>
@@ -368,15 +368,15 @@
           </div>
 
           <div style="margin-top: 10px; font-size: 0.78rem; color: var(--muted);">
-            <strong>Success Goal:</strong> Increase average cart value by 12–15% without slowing down 10-minute delivery speed.
+            <strong>Proposed Target:</strong> Increase average cart value by 12–15% without hurting 10-minute delivery speed.
           </div>
         </div>
       </div>
 
-      <!-- SUBMISSION PREPARATION CHECKLIST -->
+      <!-- SUBMISSION PREPARATION CHECKLIST (UNDER REVIEW) -->
       <div class="card" style="margin-bottom: 18px;">
         <div class="eyebrow">Project Deliverables Status</div>
-        <h3>Project Files & Outputs Checklist</h3>
+        <h3>Working Artifacts & Review Status</h3>
         
         <div class="table-responsive">
           <table class="data-table">
@@ -384,40 +384,40 @@
               <tr>
                 <th>Deliverable</th>
                 <th>Assignment Step</th>
-                <th>Status</th>
-                <th>Where to View</th>
+                <th>Current Status</th>
+                <th>Action Needed</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><strong>Primary Survey Data (92 Shoppers)</strong></td>
                 <td>Step 1 (User Research)</td>
-                <td><span class="status done">Complete (92 Rows)</span></td>
-                <td><a href="https://docs.google.com/spreadsheets/d/1c050kFbIJe5p6ZH2U25WGrLHITCrwoUQ3G42rBJ346I/edit?usp=sharing" target="_blank">Google Sheet Survey Data</a></td>
+                <td><span class="status done">Collected (92 Rows)</span></td>
+                <td>Data captured via Google Sheet; ready for review.</td>
               </tr>
               <tr>
-                <td><strong>Interactive Website Dashboard</strong></td>
+                <td><strong>Interactive Dashboard</strong></td>
                 <td>Steps 1–4 (All Steps)</td>
-                <td><span class="status done">Live Website</span></td>
-                <td><a href="https://praveenveera.github.io/airtribe-pm-course-team/" target="_blank">Live Command Center</a></td>
+                <td><span class="status active" style="background: #fef3c7; color: #92400e;">Working Draft Live</span></td>
+                <td>Under review by group before final presentation.</td>
               </tr>
               <tr>
-                <td><strong>Assignment Requirement Brief</strong></td>
+                <td><strong>Assignment Brief & Alignment</strong></td>
                 <td>Project Guidelines</td>
-                <td><span class="status done">Complete</span></td>
-                <td><a href="https://github.com/praveenveera/airtribe-pm-course-team/blob/main/projects/zepto-increasing-aov/assignment-brief.md" target="_blank">assignment-brief.md</a></td>
+                <td><span class="status active" style="background: #fef3c7; color: #92400e;">Draft Brief Aligned</span></td>
+                <td>Review 4-step rubric checkpoints.</td>
               </tr>
               <tr>
                 <td><strong>5-Minute Walkthrough Script</strong></td>
                 <td>Step 4 (Final Pitch Script)</td>
-                <td><span class="status done">Complete</span></td>
-                <td><a href="https://github.com/praveenveera/airtribe-pm-course-team/blob/main/projects/zepto-increasing-aov/submission/walkthrough-script.md" target="_blank">submission/walkthrough-script.md</a></td>
+                <td><span class="status active" style="background: #fef3c7; color: #92400e;">Proposed Draft Script</span></td>
+                <td>Needs team review and speaker allocation.</td>
               </tr>
               <tr>
                 <td><strong>PowerPoint Presentation Deck</strong></td>
                 <td>Final Presentation</td>
-                <td><span class="status active">In Progress</span></td>
-                <td>10–12 Slide Presentation Deck</td>
+                <td><span class="status active">Pending Group Assembly</span></td>
+                <td>Build 10–12 slide presentation deck.</td>
               </tr>
             </tbody>
           </table>
