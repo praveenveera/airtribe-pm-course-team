@@ -2,14 +2,14 @@
 
 ---
 
-### 0:00–0:45 — Step 1: User Research & Segmentation ($N=92$ Empirical Dataset)
+### 0:00–0:45 — Step 1: User Research & Segmentation ($N=102$ Empirical Dataset)
 
 > "Hello everyone. Our project tackles how Zepto can sustainably increase Average Order Value (AOV) without compromising 10-minute delivery speed or customer trust. 
 >
-> We conducted primary research across $N=92$ verified quick-commerce shoppers using our Basket Stories survey app, combined with secondary industry reports from Redseer ($\$90\text{B}+$ retail) and BCG. 
+> We conducted primary research across $N=102$ verified quick-commerce shoppers using our Basket Stories survey app, combined with secondary industry reports from Redseer ($\$90\text{B}+$ retail) and BCG. 
 >
-> From the $N=92$ dataset, we identified 4 distinct user segments:
-> 1. **Urgent Replenishers (57.6% of orders):** Single-item urgent buys (milk, eggs). This is our primary low-AOV driver (capped at ₹180–₹250).
+> From the $N=102$ dataset, we identified 4 distinct user segments:
+> 1. **Urgent Replenishers (57.8% of orders):** Single-item urgent buys (milk, eggs). This is our primary low-AOV driver (capped at ₹180–₹250).
 > 2. **Threshold Fillers (30.8% of orders):** 70.7% notice delivery fee thresholds, actively searching for add-ons to unlock free shipping.
 > 3. **Planned Household Buyers (11.6%):** Multi-category ₹600+ baskets.
 > 4. **Impulsive Explorers:** High category crossover, responsive to discount bundles."
@@ -25,7 +25,7 @@
 > Third, **Threshold Friction**: 30.8% add random low-value filler items just to cross the ₹299 threshold.
 >
 > We framed our core problem statement:
-> *'Users currently check out single-item urgent orders (57.6% of carts), because generic cross-sell recommendations fail to complement their immediate shopping mission, resulting in suppressed AOV (₹180–₹240) and high delivery cost per order.'*"
+> *'Users currently check out single-item urgent orders (57.8% of carts), because generic cross-sell recommendations fail to complement their immediate shopping mission, resulting in suppressed AOV (₹180–₹240) and high delivery cost per order.'*"
 
 ---
 

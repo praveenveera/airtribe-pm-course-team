@@ -1,7 +1,7 @@
 # Project 4 — Increasing AOV at Zepto: Status & Checkpoint Tracker
 
 **Last updated:** 24 September 2026  
-**Overall status:** Primary research dataset ($N=92$) and secondary benchmark research fully integrated into the 4-tab Command Center Dashboard and aligned with the official 4-Step Assignment Brief.  
+**Overall status:** Primary research dataset ($N=102$) and secondary benchmark research fully integrated into the 4-tab Command Center Dashboard and aligned with the official 4-Step Assignment Brief.  
 **Current decision:** Prioritize **Solution A (Mission-Aware Need-Complete Add-On Shelf)** with a RICE score of **864** to drive AOV growth without compromising urgent order speed or customer trust.
 
 ---
@@ -10,18 +10,18 @@
 
 | Step / Checkpoint | Objective | Status | Completed Evidence & Artifacts | Remaining Action Items |
 |---|---|---|---|---|
-| **Step 1: User Research & Segmentation** | Understand shopping behaviors & segment low-AOV drivers | **COMPLETE ($N=92$)** | • $N=92$ primary dataset via Basket Stories app (`Responses_V2`) <br> • 4 User Segments defined (Urgent Replenishers, Threshold Fillers, Planned Grocery Buyers, Impulsive Explorers) <br> • Low-AOV driver identified: Urgent Replenishers (57.6% of orders, single-item carts). | None (Dataset & Tab 1 Dashboard complete). |
+| **Step 1: User Research & Segmentation** | Understand shopping behaviors & segment low-AOV drivers | **COMPLETE ($N=102$)** | • $N=102$ primary dataset via Basket Stories app (`Responses_V2`) <br> • 4 User Segments defined (Urgent Replenishers, Threshold Fillers, Planned Grocery Buyers, Impulsive Explorers) <br> • Low-AOV driver identified: Urgent Replenishers (57.8% of orders, single-item carts). | None (Dataset & Tab 1 Dashboard complete). |
 | **Step 2: Blockers & Problem Statements** | Identify expansion breaks & frame core root causes | **COMPLETE** | • 4 Core Blockers identified (Single-Item Intent Lock, Threshold Friction, Lack of Mission Relevance, Price Disconnect) <br> • Structured Problem Statements defined (`Users currently checkout single items... because recommendations lack contextual relevance... resulting in capped AOV at ₹180–240`). | None (Documented in Tab 3/4 & research synthesis). |
 | **Step 3: Solution Engineering** | Propose 2–3 high-impact, ecosystem-aligned solutions | **COMPLETE** | • **Solution A:** Mission-Aware Need-Complete Add-On Shelf <br> • **Solution B:** Household Basket Builder <br> • **Solution C:** Reorder-Plus Smart Cues <br> • Detailed PRD specs, targeting rationale, and mechanisms defined in Tab 4. | None (PRD specs published in Tab 4). |
-| **Step 4: RICE Prioritization & Metrics** | Apply product judgment & define KPI framework | **COMPLETE** | • RICE Matrix calculated (Solution A = **864**, Solution B = **336**, Solution C = **432**) <br> • Core KPIs defined (AOV Uplift %, Attach Rate 35.9% baseline target, Items/Order +1.2) <br> • Guardrails set (Dark store SLA <15s, Checkout conversion drop <0.5%). | Build final PowerPoint presentation deck & record 5-minute pitch video. |
+| **Step 4: RICE Prioritization & Metrics** | Apply product judgment & define KPI framework | **COMPLETE** | • RICE Matrix calculated (Solution A = **864**, Solution B = **336**, Solution C = **432**) <br> • Core KPIs defined (AOV Uplift %, Attach Rate 33.3% baseline target, Items/Order +1.2) <br> • Guardrails set (Dark store SLA <15s, Checkout conversion drop <0.5%). | Build final PowerPoint presentation deck & record 5-minute pitch video. |
 
 ---
 
 ## Detailed Checkpoint Mapping
 
-### Step 1: User Research & Segmentation ($N=92$ Empirical Evidence)
+### Step 1: User Research & Segmentation ($N=102$ Empirical Evidence)
 
-- **Segment 1: Urgent Replenishers (Low-AOV Driver — 57.6%)**
+- **Segment 1: Urgent Replenishers (Low-AOV Driver — 57.8%)**
   - *Behavior:* High urgency, ran-out of staple items (milk, eggs, bread). Purchases 1–2 items.
   - *Impact on AOV:* Suppresses AOV (₹180–₹250); checks out immediately without browsing search or home page.
 - **Segment 2: Threshold Fillers (30.8%)**
@@ -44,7 +44,7 @@
 
 #### **Structured Problem Statements:**
 * **Problem Statement 1:**
-  > *Users currently* check out single-item urgent orders (57.6% of carts), *because* generic cross-sell recommendations fail to complement their immediate shopping mission, *which results in* suppressed AOV (₹180–₹240) and high logistics cost per order.
+  > *Users currently* check out single-item urgent orders (57.8% of carts), *because* generic cross-sell recommendations fail to complement their immediate shopping mission, *which results in* suppressed AOV (₹180–₹240) and high logistics cost per order.
 * **Problem Statement 2:**
   > *Users currently* abandon cart expansion at the ₹250 threshold, *because* suggested add-ons lack transparent value or immediate utility, *which results in* missed basket expansion opportunities across 70.7% of threshold-conscious shoppers.
 
@@ -55,7 +55,7 @@
 1. **Solution A: Mission-Aware Need-Complete Add-On Shelf (Primary Winner)**
    - *Target Segment:* Urgent Replenishers & Threshold Fillers.
    - *Mechanism:* Machine learning algorithm triggers 2–3 exact recipe/complementary add-ons directly on cart drawer (e.g., Milk $\rightarrow$ Cereal / Biscuits / Coffee).
-   - *Rationale:* Zero cognitive load; completes the user's mission while capturing complementary attach ($35.9\%$ attach rate receptivity in $N=92$ survey).
+   - *Rationale:* Zero cognitive load; completes the user's mission while capturing complementary attach ($35.9\%$ attach rate receptivity in $N=102$ survey).
 2. **Solution B: Household Basket Builder**
    - *Target Segment:* Planned Household Buyers.
    - *Mechanism:* Multi-item bulk pantry selector with progressive tier discounts (e.g., "Add 2 more pantry items to save 15%").
@@ -71,7 +71,7 @@ $$\text{RICE Score} = \frac{\text{Reach} \times \text{Impact} \times \text{Confi
 
 | Solution | Reach (Monthly Orders) | Impact (0.5 - 3.0) | Confidence (%) | Effort (Person-Months) | RICE Score | Rank |
 |---|---|---|---|---|---|---|
-| **Solution A: Need-Complete Add-On Shelf** | 80% (1.84M) | 2.0 (High) | 90% (Empirical $N=92$) | 3.84 | **864** | **#1** |
+| **Solution A: Need-Complete Add-On Shelf** | 80% (1.84M) | 2.0 (High) | 90% (Empirical $N=102$) | 3.84 | **864** | **#1** |
 | **Solution C: Reorder-Plus Smart Cues** | 60% (1.38M) | 1.5 (Medium) | 80% | 4.79 | **432** | **#2** |
 | **Solution B: Household Basket Builder** | 35% (0.80M) | 2.5 (Very High) | 70% | 4.17 | **336** | **#3** |
 
@@ -95,5 +95,5 @@ $$\text{RICE Score} = \frac{\text{Reach} \times \text{Impact} \times \text{Confi
 ## Remaining Action Items for Submission
 
 1. **PowerPoint / Executive Deck Creation:** Build a 10–12 slide presentation deck summarizing Steps 1–4.
-2. **Video Walkthrough Recording Script:** Update [`submission/walkthrough-script.md`](submission/walkthrough-script.md) with empirical $N=92$ metrics for a 5-minute presentation.
+2. **Video Walkthrough Recording Script:** Update [`submission/walkthrough-script.md`](submission/walkthrough-script.md) with empirical $N=102$ metrics for a 5-minute presentation.
 3. **Submission Evidence Package:** Package `submission-ready/` bundle with sanitized dataset CSVs, dashboard screenshots, and manifest.

@@ -1,4 +1,4 @@
-# Primary User Research Report ($N=92$ Dataset)
+# Primary User Research Report ($N=102$ Dataset)
 
 **Dataset Source:** [Basket Stories Survey Responses_V2](https://docs.google.com/spreadsheets/d/1c050kFbIJe5p6ZH2U25WGrLHITCrwoUQ3G42rBJ346I/edit?usp=sharing)  
 **Survey Web App Instrument:** [Basket Stories V2.5 Web App](https://praveenveera.github.io/airtribe-pm-course-team/survey/)  
@@ -10,10 +10,10 @@
 
 ## 1. Executive Summary & Overview
 
-This research report details the empirical findings from **92 completed participant responses** collected via the Basket Stories V2.5 survey web app. It provides a multi-dimensional analysis of quick-commerce vs. offline grocery shopping behavior, delivery threshold sensitivity, basket expansion friction, category affinity pairs, and demographic AOV patterns.
+This research report details the empirical findings from **102 completed participant responses** collected via the Basket Stories V2.5 survey web app. It provides a multi-dimensional analysis of quick-commerce vs. offline grocery shopping behavior, delivery threshold sensitivity, basket expansion friction, category affinity pairs, and demographic AOV patterns.
 
 ### Key Quantitative Takeaways:
-* **Sample Composition ($N=92$):** $40.2\%$ Metro Cities ($N=37$) vs $59.8\%$ Non-Metro Cities ($N=55$).
+* **Sample Composition ($N=102$):** $40.2\%$ Metro Cities ($N=37$) vs $59.8\%$ Non-Metro Cities ($N=55$).
 * **Channel Distribution:** Quick-Commerce accounts for **$74.9\%$ of recent purchases**, led equally by **Zepto ($29.3\%$, $N=27$)** and **Blinkit ($29.3\%$, $N=27$)**, followed by Swiggy Instamart ($7.6\%$), Amazon Fresh ($5.4\%$), BigBasket ($3.3\%$), and Offline Supermarkets/Local Stores ($25.0\%$, $N=22$).
 * **Shopping Mission Split:** **$57.6\%$ of orders are high-urgency or replenishment missions** (Urgent Top-Up: $39.1\%$, Ran Out of Staple: $18.5\%$). Planned Stock-Up accounts for $16.3\%$.
 * **Delivery Threshold Sensitivity:** **$70.7\%$ ($65/92$) of shoppers actively notice free-delivery fee thresholds**.
@@ -61,7 +61,7 @@ This research report details the empirical findings from **92 completed particip
 
 ## 3. Category Co-Occurrence Pairs (Affinity Matrix)
 
-Analyzing category basket combinations across all $N=92$ orders reveals the top complementary cross-sell opportunities for Zepto:
+Analyzing category basket combinations across all $N=102$ orders reveals the top complementary cross-sell opportunities for Zepto:
 
 1. **`Dairy, Bread & Eggs + Fresh Produce`:** **27 basket co-occurrences** (*#1 primary basket anchor pair*).
 2. **`Dairy, Bread & Eggs + Packaged Staples`:** **18 basket co-occurrences**.
@@ -84,8 +84,8 @@ Analyzing category basket combinations across all $N=92$ orders reveals the top 
 The survey analysis is formally documented across the codebase in the following locations:
 
 1. **[`analysis/primary-survey-analysis.md`](file:///Users/praveenveera/Documents/work-offline/product/airtribe/projects/zepto-increasing-aov/analysis/primary-survey-analysis.md):** Dedicated standalone primary analysis document (this file).
-2. **[`dashboard/index.html`](file:///Users/praveenveera/Documents/work-offline/product/airtribe/projects/zepto-increasing-aov/dashboard/index.html):** Live V2.5 4-tab dashboard featuring Tab 1 ("Primary Research Analytics N=92") and Tab 3 ("Primary & Secondary Evidence Integration").
-3. **[`projects/zepto-increasing-aov/README.md`](file:///Users/praveenveera/Documents/work-offline/product/airtribe/projects/zepto-increasing-aov/README.md):** Explicitly highlights *"Primary Research Phase Complete: N=92 completed participant responses analyzed..."* under Current Focus and Submission Status.
-4. **[`PROJECT_STATUS.md`](file:///Users/praveenveera/Documents/work-offline/product/airtribe/projects/zepto-increasing-aov/PROJECT_STATUS.md):** Documents *"Primary research (N=92): Complete & Integrated"* in the status matrix.
-5. **[`research/analysis-and-recommendations.md`](file:///Users/praveenveera/Documents/work-offline/product/airtribe/projects/zepto-increasing-aov/research/analysis-and-recommendations.md):** Documents evidence status for V2.5 survey schema and $N=92$ dataset.
+2. **[`dashboard/index.html`](file:///Users/praveenveera/Documents/work-offline/product/airtribe/projects/zepto-increasing-aov/dashboard/index.html):** Live V2.5 4-tab dashboard featuring Tab 1 ("Primary Research Analytics N=102") and Tab 3 ("Primary & Secondary Evidence Integration").
+3. **[`projects/zepto-increasing-aov/README.md`](file:///Users/praveenveera/Documents/work-offline/product/airtribe/projects/zepto-increasing-aov/README.md):** Explicitly highlights *"Primary Research Phase Complete: N=102 completed participant responses analyzed..."* under Current Focus and Submission Status.
+4. **[`PROJECT_STATUS.md`](file:///Users/praveenveera/Documents/work-offline/product/airtribe/projects/zepto-increasing-aov/PROJECT_STATUS.md):** Documents *"Primary research (N=102): Complete & Integrated"* in the status matrix.
+5. **[`research/analysis-and-recommendations.md`](file:///Users/praveenveera/Documents/work-offline/product/airtribe/projects/zepto-increasing-aov/research/analysis-and-recommendations.md):** Documents evidence status for V2.5 survey schema and $N=102$ dataset.
 6. **[`walkthrough.md`](file:///Users/praveenveera/.gemini/antigravity/brain/e4d0e3e6-d40b-434e-83d7-e38c87253ea1/walkthrough.md):** Includes full quantitative analysis summary.
