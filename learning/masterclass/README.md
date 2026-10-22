@@ -1,6 +1,6 @@
 # Product Masterclass
 
-A static, public learning companion covering Weeks 1–7 of the course. It uses curated explanations from the structured class notes and session decks. The original course PDFs are intentionally excluded from the published site.
+A static, public masterclass covering Weeks 1–7 of the course. It uses curated explanations from the fourteen structured class notes and seven session decks. The original course PDFs are intentionally excluded from the published site.
 
 ## Experience
 
@@ -8,9 +8,12 @@ A static, public learning companion covering Weeks 1–7 of the course. It uses 
 - Extra topics show what else to study in each week.
 - Week 4 includes a prioritization decision lab; Week 7 includes an interactive funnel with step and overall conversion.
 - Each week has a short exercise grounded in its session deck. Week 3 adds an accessible TAM/SAM/SOM diagram.
-- Search, direct concept links, keyboard-operable controls, responsive layout, and browser-local completion state.
+- Each week has an applied decision case with evidence, three options, worked reasoning, a failure mode, an AI product lens, and an artifact prompt.
+- A seven-part AI-first PM track complements the course with task selection, evidence and access, evaluations, human control, release gates, outcome metrics, and operation.
+- A seven-stage capstone supports browser-local writing and export of a plain-text brief. Its rubric is for self-review and does not score answers.
+- Search, direct concept links, keyboard-operable controls, responsive layout, and browser-local completion and capstone state.
 
-Completion state stays in the browser's `localStorage`; it is not synced across devices or accounts. No sign-in, backend, AI answer generation, or analytics collection is used.
+Completion and capstone drafts stay in the browser's `localStorage`; they are not synced across devices or accounts. No sign-in, backend, AI answer generation, automated grading, or analytics collection is used. The illustrative cases are teaching scenarios, not verified product research.
 
 ## Local preview
 

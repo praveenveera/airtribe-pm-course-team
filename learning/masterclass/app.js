@@ -1,10 +1,11 @@
 import { weeks, deckLenses, sourceBoundary } from "./curriculum.js";
+import { studios, aiTrack, capstone, externalGuides } from "./mastery.js";
 
 const app = document.getElementById("app");
 let storedProgress = [];
 try { storedProgress = JSON.parse(localStorage.getItem("pm-masterclass-completed") || "[]"); } catch { storedProgress = []; }
 const saved = new Set(Array.isArray(storedProgress) ? storedProgress : []);
-const state = { week: null, concept: 0, search: "", answerShown: false, mapStep: 0, lab: { viewed: 100, cart: 54, checkout: 31, paid: 19 } };
+const state = { week: null, concept: 0, page: "home", search: "", answerShown: false, studioAnswer: false, studioChoice: null, mapStep: 0, lab: { viewed: 100, cart: 54, checkout: 31, paid: 19 } };
 
 const esc = (value) => String(value).replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[char]);
 const conceptKey = (week, concept) => `${week.id}-${concept}`;
@@ -13,9 +14,12 @@ const percent = (count, total) => total ? Math.round(100 * count / total) : 0;
 
 function updateRoute() {
   const match = location.hash.match(/^#week-(\d+)(?:-concept-(\d+))?$/);
+  state.page = location.hash === "#ai-track" ? "ai" : location.hash === "#capstone" ? "capstone" : match ? "lesson" : "home";
   state.week = match ? Math.min(7, Math.max(1, Number(match[1]))) : null;
   state.concept = match ? Math.min(2, Math.max(0, Number(match[2] || 1) - 1)) : 0;
   state.answerShown = false;
+  state.studioAnswer = false;
+  state.studioChoice = null;
   state.mapStep = 0;
   render();
   if (location.hash === "#curriculum") document.getElementById("curriculum")?.scrollIntoView();
@@ -25,8 +29,8 @@ function updateRoute() {
 function header() {
   return `<header class="site-header"><div class="header-inner">
     <a class="brand" href="#home" aria-label="Product Masterclass home"><span class="brand-symbol" aria-hidden="true"><span></span><span></span><span></span></span><span>PRODUCT<span class="brand-accent">/</span>MASTERCLASS</span></a>
-    <nav aria-label="Main navigation"><a href="#home" ${state.week ? "" : 'aria-current="page"'}>Explore course</a><a href="#week-7">Metric lab</a></nav>
-    <span class="header-progress" aria-label="${completed()} of 21 concepts marked complete"><span class="progress-dot"></span>${completed()} / 21 concepts</span>
+    <nav aria-label="Main navigation"><a href="#home" ${state.page === "home" ? 'aria-current="page"' : ""}>Curriculum</a><a href="#ai-track" ${state.page === "ai" ? 'aria-current="page"' : ""}>AI PM track</a><a href="#capstone" ${state.page === "capstone" ? 'aria-current="page"' : ""}>Capstone</a></nav>
+    <span class="header-progress" aria-label="${completed()} of 21 concepts marked complete">${completed()} / 21</span>
   </div></header>`;
 }
 
@@ -37,10 +41,11 @@ function footer() {
 function home() {
   const matches = weeks.filter(w => `${w.title} ${w.subtitle} ${w.promise} ${w.concepts.map(c => `${c.title} ${c.brief} ${c.deep} ${c.tag}`).join(" ")} ${w.further.map(item => `${item.title} ${item.text}`).join(" ")}`.toLowerCase().includes(state.search.toLowerCase()));
   return `${header()}<main id="main">
-    <section class="hero"><div class="hero-inner"><div class="hero-copy"><span class="eyebrow"><span class="eyebrow-line"></span> THE COMPLETE LEARNING ATLAS · 7 WEEKS</span><h1>Understand the idea.<br><em>Own the decision.</em></h1><p class="hero-lede">A visual product management masterclass built for the way concepts actually stick: see the model, work through an example, examine a product teardown, then test your own judgment.</p><div class="hero-actions"><a class="button button-primary" href="#week-1">Start with Week 1 <span aria-hidden="true">↗</span></a><a class="button button-quiet" href="#curriculum">Explore all weeks <span aria-hidden="true">↓</span></a></div><div class="hero-stats"><span><strong>07</strong> guided weeks</span><span><strong>21</strong> core concepts</span><span><strong>01</strong> decision at a time</span></div></div><div class="hero-art" aria-hidden="true"><div class="orbit orbit-outer"></div><div class="orbit orbit-inner"></div><div class="orbit-center"><span>THE<br>PM<br>LOOP</span></div><span class="orbit-label label-a">DISCOVER</span><span class="orbit-label label-b">DECIDE</span><span class="orbit-label label-c">DESIGN</span><span class="orbit-label label-d">MEASURE</span><span class="orbit-node node-a"></span><span class="orbit-node node-b"></span><span class="orbit-node node-c"></span><span class="orbit-node node-d"></span></div></div></section>
-    <section class="approach-section" aria-label="How each lesson works"><div class="section-kicker">A LIGHT ENTRY. REAL DEPTH.</div><div class="approach-grid"><div><span>01 / SEE</span><h2>A visual first</h2><p>Every week begins with one clear mental model. Select a step to see why it matters.</p></div><div><span>02 / APPLY</span><h2>Examples with edges</h2><p>Move from a simple case to a teardown that exposes trade-offs, failure, and missing evidence.</p></div><div><span>03 / RECALL</span><h2>Test your thinking</h2><p>Answer a short decision question before revealing the explanation. Mark what you can now explain.</p></div></div></section>
+    <section class="hero"><div class="hero-inner"><div class="hero-copy"><span class="eyebrow">A SEVEN-WEEK PRODUCT MASTERCLASS</span><h1>Learn the craft.<br><em>Practice the judgment.</em></h1><p class="hero-lede">From product foundations to analytics, with a parallel AI product track. Each week connects a mental model to a worked case, a decision, a failure mode, and an artifact you can make.</p><div class="hero-actions"><a class="button button-primary" href="#week-1">Begin Week 1 <span aria-hidden="true">↗</span></a><a class="button button-quiet" href="#capstone">Explore the capstone <span aria-hidden="true">↗</span></a></div><div class="hero-stats"><span><strong>07</strong> weeks</span><span><strong>21</strong> core lessons</span><span><strong>07</strong> applied decisions</span></div></div><div class="hero-art" aria-label="The product learning sequence"><div class="hero-art-inner"><span>01 / DISCOVER</span><span>02 / CHOOSE</span><span>03 / DESIGN</span><span>04 / MEASURE</span><strong>Make the reasoning visible.</strong></div></div></div></section>
+    <section class="approach-section" aria-label="How each lesson works"><div class="section-kicker">THE LEARNING METHOD</div><div class="approach-grid"><div><span>01 / UNDERSTAND</span><h2>See the model</h2><p>Start with a plain explanation and a visual sequence you can remember.</p></div><div><span>02 / DECIDE</span><h2>Work the case</h2><p>Read evidence, choose a move, then inspect the reasoning and failure mode.</p></div><div><span>03 / MAKE</span><h2>Build an artifact</h2><p>Turn the concept into a brief, research plan, prototype, decision, or metric.</p></div></div></section>
+    <section class="feature-strip" aria-label="Advanced learning paths"><a href="#ai-track"><span>PARALLEL TRACK / 07 STUDIOS</span><h2>Become an AI-first PM</h2><p>Practice task selection, evidence boundaries, evaluation, human control, release gates, and operation.</p><strong>Explore the track ↗</strong></a><a href="#capstone"><span>FINAL PROJECT / 07 STAGES</span><h2>Build one complete decision</h2><p>Carry a fictional case from customer outcome through strategy, research, design, launch, and metrics.</p><strong>Open the capstone ↗</strong></a></section>
     <section class="course-section" id="curriculum"><div class="section-heading"><div><span class="section-kicker">THE CURRICULUM</span><h2>Seven weeks. One connected craft.</h2><p>Start anywhere, or follow the arc from customer value through measurement.</p></div><label class="search-box"><span class="sr-only">Search weeks and concepts</span><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 5 5"></path></svg><input id="course-search" type="search" placeholder="Search concepts…" value="${esc(state.search)}"></label></div><div class="week-grid">${matches.map(weekCard).join("")}</div>${matches.length ? "" : '<p class="empty-state">No match yet. Try “retention”, “research”, or “PRD”.</p>'}</section>
-    <section class="closing-banner"><span>YOUR NEXT STEP</span><h2>Pick one concept you need to explain clearly this week.</h2><p>Five minutes with an example beats another pass through a long list of definitions.</p><a class="button button-light" href="#week-1">Open the first lesson ↗</a></section>
+    <section class="closing-banner"><span>START WITH A REAL DECISION</span><h2>Learn one model. Use it on one case.</h2><p>Depth comes from explaining the trade-off and making the artifact.</p><a class="button button-light" href="#week-1">Open the first lesson ↗</a></section>
   </main>${footer()}`;
 }
 
@@ -62,9 +67,32 @@ function lesson() {
     <div class="learning-grid"><section class="learning-card example-card"><span class="learning-label">WORKED EXAMPLE</span><h3>See it in context</h3><p>${esc(concept.example)}</p></section><section class="learning-card teardown-card"><span class="learning-label">PRODUCT TEARDOWN</span><h3>Look beneath the surface</h3><p>${esc(concept.teardown)}</p><span class="teardown-foot">Observation → interpretation → evidence to seek</span></section></div>
     <details class="deep-dive"><summary><span><small>GO DEEPER</small><strong>The reasoning behind this concept</strong></span><span class="plus" aria-hidden="true">+</span></summary><div><p>${esc(concept.deep)}</p><p class="source-line">Source orientation: ${esc(week.source)}. ${esc(sourceBoundary)}</p></div></details>
     <section class="practice-panel"><div class="practice-intro"><span class="section-kicker">RECALL & APPLY</span><h3>Can you make the call?</h3><p>${esc(concept.question)}</p></div><div class="practice-action">${state.answerShown ? `<div class="answer-box" tabindex="-1"><span>MODEL ANSWER</span><p>${esc(concept.answer)}</p></div>` : '<button type="button" class="button button-dark" data-action="answer">Reveal the reasoning ↗</button>'}<button type="button" class="mark-button ${done ? "is-done" : ""}" data-action="complete" aria-pressed="${done}">${done ? "✓ Marked as learned" : "Mark as learned"}</button></div></section>
+    ${studio(week.id)}
     <section class="week-compass"><div><span class="section-kicker">BEYOND THE THREE CORE CONCEPTS</span><h3>More to explore this week</h3></div><div class="compass-grid">${week.further.map(item => `<div><strong>${esc(item.title)}</strong><p>${esc(item.text)}</p></div>`).join("")}</div><p>Use these as prompts for deeper study in ${esc(week.source.toLowerCase())}. The original decks are not published on this site.</p></section>
     <div class="lesson-next"><span>${esc(week.source)}</span>${state.concept < 2 ? `<a href="#week-${week.id}-concept-${state.concept+2}">Next concept <strong>↗</strong></a>` : week.id < 7 ? `<a href="#week-${week.id+1}">Next week <strong>↗</strong></a>` : '<a href="#home">Return to course <strong>↗</strong></a>'}</div>
     </article></div></div></main>${footer()}`;
+}
+
+function studio(weekId) {
+  const item = studios[weekId-1];
+  return `<section class="studio-panel" aria-labelledby="studio-title"><div class="studio-header"><span class="section-kicker">WEEK ${String(weekId).padStart(2,"0")} / APPLIED DECISION</span><h3 id="studio-title">${esc(item.title)}</h3><p>${esc(item.situation)}</p></div><div class="studio-evidence"><span>WHAT WE KNOW / ILLUSTRATIVE CASE</span><ul>${item.evidence.map(point => `<li>${esc(point)}</li>`).join("")}</ul></div><div class="studio-choice"><h4>${esc(item.question)}</h4><div role="group" aria-label="Decision options">${item.options.map((option,index) => `<button type="button" class="choice-option ${state.studioChoice===index ? "selected" : ""}" data-choice="${index}" aria-pressed="${state.studioChoice===index}"><span>${String.fromCharCode(65+index)}</span>${esc(option)}</button>`).join("")}</div><button type="button" class="button button-dark" data-action="studio-answer" ${state.studioChoice===null ? "disabled" : ""}>Examine the decision ↗</button></div>${state.studioAnswer ? `<div class="studio-result" tabindex="-1"><span>${state.studioChoice===item.correct ? "STRONG CHOICE" : "RECONSIDER THE TRADE-OFF"}</span><h4>${esc(item.options[item.correct])}</h4><p>${esc(item.reasoning)}</p><div class="studio-points"><p><strong>Failure mode</strong><br>${esc(item.failure)}</p><p><strong>AI product lens</strong><br>${esc(item.ai)}</p></div></div>` : ""}<div class="studio-artifact"><span>MAKE THE ARTIFACT</span><p>${esc(item.artifact)}</p><a href="#capstone">Carry this into the capstone ↗</a></div></section>`;
+}
+
+function aiPage() {
+  return `${header()}<main id="main" class="standalone"><div class="page-intro"><span class="section-kicker">THE PARALLEL TRACK</span><h1>AI-first PM,<br><em>grounded in product craft.</em></h1><p>Technical fluency matters. Product judgment determines whether a capability solves a real job safely and sustainably. Use these seven studios alongside the seven course weeks.</p></div><div class="ai-list">${aiTrack.map((item,index) => `<section><div class="ai-index">${String(index+1).padStart(2,"0")}</div><div><span>${esc(item.source)}</span><h2>${esc(item.title)}</h2><p>${esc(item.premise)}</p><div class="ai-test"><strong>Decision test</strong><p>${esc(item.test)}</p><strong>Make</strong><p>${esc(item.output)}</p></div></div><a href="#week-${Math.min(index+1,7)}">Study the week ↗</a></section>`).join("")}</div><section class="resource-panel"><span class="section-kicker">EXTEND YOUR PRACTICE</span><h2>Read beyond the class material</h2><p>These external guides complement the course. They are not source material for the weekly lessons.</p>${externalGuides.map(item => `<a href="${esc(item.url)}" target="_blank" rel="noopener noreferrer"><strong>${esc(item.label)} ↗</strong><span>${esc(item.use)}</span></a>`).join("")}</section></main>${footer()}`;
+}
+
+function capstonePage() {
+  return `${header()}<main id="main" class="standalone"><div class="page-intro"><span class="section-kicker">THE CAPSTONE / SEVEN STAGES</span><h1>Make a decision<br><em>you can defend.</em></h1><p>${esc(capstone.situation)}</p><p class="page-note">This is a fictional teaching case. Your answers stay in this browser and are not sent to a server.</p></div><div class="capstone-shell"><section class="capstone-stages"><span class="section-kicker">BUILD THE BRIEF</span>${capstone.stages.map(stage => `<div class="capstone-stage"><div><span>WEEK ${String(stage.week).padStart(2,"0")}</span><h2>${esc(stage.label)}</h2><p>${esc(stage.prompt)}</p><a href="#week-${stage.week}">Study this week ↗</a></div><label><span class="sr-only">Your notes for ${esc(stage.label)}</span><textarea data-capstone="${stage.week}" placeholder="Write your reasoning here…">${esc(readDraft(stage.week))}</textarea></label></div>`).join("")}</section><aside class="rubric-panel"><span class="section-kicker">SELF-REVIEW RUBRIC</span><h2>Test the strength of your decision</h2><ol>${capstone.rubric.map(item => `<li>${esc(item)}</li>`).join("")}</ol><p>Self-review is a prompt for reflection. The site does not grade your answer or verify its evidence.</p><button class="button button-dark" type="button" data-action="export">Download my brief ↗</button><button class="button button-quiet" type="button" data-action="clear-draft">Clear this browser draft</button></aside></div></main>${footer()}`;
+}
+
+function readDraft(week) { try { return localStorage.getItem(`pm-capstone-${week}`) || ""; } catch { return ""; } }
+function exportDraft() {
+  const lines = ["Product Masterclass — Capstone brief", "", capstone.situation, "", ...capstone.stages.flatMap(stage => [`Week ${stage.week}: ${stage.label}`, stage.prompt, readDraft(stage.week), ""])];
+  const blob = new Blob([lines.join("\n")], {type:"text/plain;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a"); link.href = url; link.download = "product-masterclass-capstone.txt"; link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 const mapDescriptions = {
@@ -93,16 +121,24 @@ function riceLab() {
 }
 
 function render() {
-  document.title = state.week ? `${weeks[state.week-1].title} · Product Masterclass` : "Product Masterclass · Learn the thinking behind the work";
-  app.innerHTML = state.week ? lesson() : home();
+  document.title = state.week ? `${weeks[state.week-1].title} · Product Masterclass` : state.page === "ai" ? "AI-first PM track · Product Masterclass" : state.page === "capstone" ? "Capstone · Product Masterclass" : "Product Masterclass · Learn the thinking behind the work";
+  app.innerHTML = state.page === "lesson" ? lesson() : state.page === "ai" ? aiPage() : state.page === "capstone" ? capstonePage() : home();
 }
 
 document.addEventListener("click", event => {
+  const choice = event.target.closest("[data-choice]");
+  if (choice) { state.studioChoice = Number(choice.dataset.choice); state.studioAnswer = false; render(); document.querySelector(`[data-choice="${state.studioChoice}"]`)?.focus(); return; }
   const map = event.target.closest("[data-map]");
   if (map) { state.mapStep = Number(map.dataset.map); render(); document.querySelector(`[data-map="${state.mapStep}"]`)?.focus(); return; }
   const action = event.target.closest("[data-action]");
   if (!action) return;
   if (action.dataset.action === "answer") state.answerShown = true;
+  if (action.dataset.action === "studio-answer") state.studioAnswer = true;
+  if (action.dataset.action === "export") { exportDraft(); return; }
+  if (action.dataset.action === "clear-draft") {
+    if (!window.confirm("Clear the seven capstone answers stored in this browser?")) return;
+    capstone.stages.forEach(stage => localStorage.removeItem(`pm-capstone-${stage.week}`));
+  }
   if (action.dataset.action === "complete") {
     const key = conceptKey(weeks[state.week-1],state.concept);
     saved.has(key) ? saved.delete(key) : saved.add(key);
@@ -110,10 +146,12 @@ document.addEventListener("click", event => {
   }
   render();
   if (action.dataset.action === "answer") document.querySelector(".answer-box")?.focus();
+  if (action.dataset.action === "studio-answer") document.querySelector(".studio-result")?.focus();
   if (action.dataset.action === "complete") document.querySelector('[data-action="complete"]')?.focus();
 });
 
 document.addEventListener("input", event => {
+  if (event.target.dataset.capstone) { try { localStorage.setItem(`pm-capstone-${event.target.dataset.capstone}`, event.target.value); } catch { /* Private browsing may block local storage. */ } return; }
   if (event.target.id === "course-search") {
     const selection = event.target.selectionStart;
     state.search = event.target.value;
