@@ -4,7 +4,7 @@ export const weeks = [
   {
     id: 1, title: "Product foundations", subtitle: "What makes a product valuable?", color: "teal", icon: "◈",
     promise: "Move from a feature request to the customer job, the business model, and the decision a PM must make.",
-    source: "Week 1 deck · Fundamentals notes, parts 1–2", time: "24 min",
+    source: "Week 1 deck · Fundamentals notes, parts 1–2", time: "Self-paced",
     outcomes: ["Separate a product from its interface", "Explain value for user and business", "Frame a request as a problem"],
     further: [{title:"Business models",text:"Ask who pays, what cost scales with use, and whether value can be delivered sustainably."},{title:"Product sense",text:"Turn a feature request into a user, situation, desired progress, and evidence question."},{title:"Cross-functional ownership",text:"Keep user, business, design, engineering, and operations aligned on the decision."}],
     map: ["Customer job", "Useful outcome", "Delivery system", "Business value"],
@@ -17,7 +17,7 @@ export const weeks = [
   {
     id: 2, title: "Product strategy", subtitle: "Choose where to win", color: "violet", icon: "◇",
     promise: "Turn market context into a focused choice of customer, value, advantage, and sequence.",
-    source: "Week 2 deck · Strategy notes, parts 1–2", time: "27 min",
+    source: "Week 2 deck · Strategy notes, parts 1–2", time: "Self-paced",
     outcomes: ["Distinguish strategy from roadmap", "Choose a segment and positioning", "Know when a platform is justified"],
     further: [{title:"Market structure",text:"Use industry and competitor analysis to expose pressure, not to copy a leader's feature list."},{title:"Retention and expansion",text:"Earn expansion with repeated value in the first segment; watch the cost of serving new needs."},{title:"Roadmap confidence",text:"Separate committed work from exploratory bets and name the evidence that would change the sequence."}],
     map: ["Target segment", "Painful job", "Distinct promise", "Defensible system"],
@@ -30,7 +30,7 @@ export const weeks = [
   {
     id: 3, title: "Discovery & research", subtitle: "Learn before deciding", color: "blue", icon: "◎",
     promise: "Use interviews, observation, desk research, and market analysis to reduce the right uncertainty.",
-    source: "Week 3 deck · Discovery notes, parts 1–2", time: "26 min",
+    source: "Week 3 deck · Discovery notes, parts 1–2", time: "Self-paced",
     outcomes: ["Match methods to questions", "Spot weak evidence", "Make personas useful for decisions"],
     further: [{title:"Market sizing",text:"Make population, adoption, price, and period assumptions explicit before treating a market number as a forecast."},{title:"Interview technique",text:"Ask about a recent specific event and workaround rather than hypothetical feature preference."},{title:"Competitive research",text:"Compare the job and switching barriers, including manual work and doing nothing."}],
     map: ["Decision question", "Evidence method", "Observed pattern", "Confidence"],
@@ -43,7 +43,7 @@ export const weeks = [
   {
     id: 4, title: "Framing & priority", subtitle: "Choose the right problem", color: "coral", icon: "⌁",
     promise: "Turn messy signals into a bounded problem, compare solutions, and sequence delivery with evidence.",
-    source: "Week 4 deck · Framing notes, parts 1–2", time: "29 min",
+    source: "Week 4 deck · Framing notes, parts 1–2", time: "Self-paced",
     outcomes: ["Write a bounded problem", "Separate root causes from symptoms", "Use scores without surrendering judgment"],
     further: [{title:"Diverge and converge",text:"Explore several causes and solution options, then narrow using evidence and constraints."},{title:"User stories",text:"Describe the user goal and acceptance behavior so teams can discuss delivery without losing intent."},{title:"Roadmap versus backlog",text:"The roadmap communicates outcome bets; the backlog holds the concrete work and sequencing details."}],
     map: ["Signal", "Root cause", "Options", "Prioritized bet"],
@@ -56,7 +56,7 @@ export const weeks = [
   {
     id: 5, title: "UX & design", subtitle: "Make value usable", color: "amber", icon: "▧",
     promise: "Look beyond polished screens to the full experience, accessibility, interaction, and observed usability.",
-    source: "Week 5 deck · UX notes, parts 1–2", time: "28 min",
+    source: "Week 5 deck · UX notes, parts 1–2", time: "Self-paced",
     outcomes: ["Separate product value, UX, and UI", "Critique a journey with evidence", "Collaborate through prototypes"],
     further: [{title:"Information architecture",text:"Structure content so people can predict where to find the next action."},{title:"Design systems",text:"Reuse components and rules while checking whether behavior fits the task and platform."},{title:"Accessibility",text:"Check keyboard use, readable text, focus, labels, contrast, and recovery as part of the experience."}],
     map: ["User goal", "Find the path", "Take action", "Get feedback"],
@@ -69,7 +69,7 @@ export const weeks = [
   {
     id: 6, title: "PM communication", subtitle: "Align people to act", color: "indigo", icon: "✦",
     promise: "Match the message and artifact to the audience, decision, delivery stage, and risk.",
-    source: "Week 6 deck · Communication notes, parts 1–2", time: "25 min",
+    source: "Week 6 deck · Communication notes, parts 1–2", time: "Self-paced",
     outcomes: ["Tailor one decision for multiple audiences", "Use PRDs and updates well", "Communicate an incident without guessing"],
     further: [{title:"Progress updates",text:"State current status, completed work, blockers, owner, and the next milestone."},{title:"Launch enablement",text:"Tell affected teams what users will experience, who has access, and how to respond."},{title:"Evidence-based stories",text:"Use situation, task, action, and result without inventing metrics or claiming sole ownership."}],
     map: ["Audience concern", "Evidence", "Decision", "Owner & follow-up"],
@@ -82,7 +82,7 @@ export const weeks = [
   {
     id: 7, title: "Analytics & metrics", subtitle: "Measure what matters", color: "green", icon: "↗",
     promise: "Define a customer outcome, connect it to drivers, and investigate funnels and cohorts without inventing causes.",
-    source: "Week 7 deck · Analytics notes, parts 1–2", time: "32 min",
+    source: "Week 7 deck · Analytics notes, parts 1–2", time: "Self-paced",
     outcomes: ["Define an interpretable metric", "Connect inputs to outcomes", "Read funnels and cohorts carefully"],
     further: [{title:"OKRs",text:"An objective names a direction; a key result measures an outcome; an initiative is the work proposed to move it."},{title:"Event instrumentation",text:"Specify event, properties, identity, and time window before building a report."},{title:"Marketplace and unit economics",text:"Track each side's value, and keep revenue, profit, acquisition cost, and lifetime value distinct."}],
     map: ["Customer job", "Product outcome", "Input measures", "Guardrails"],
