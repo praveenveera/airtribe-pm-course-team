@@ -20,17 +20,19 @@ const stem = word => word.length > 5 ? word.replace(/(ments|ation|ings|tion|ers|
 const tokens = value => [...new Set(normalize(value).split(/\s+/).filter(word => word && !stopWords.has(word)).map(stem))];
 const related = term => relatedGroups.find(group => group.some(word => stem(word) === term))?.map(stem).filter(word => word !== term) || [];
 
-export function buildSearchIndex(weeks, deckLenses, studios, aiTrack, capstone, chapters = [], courseGuide = {}, glossary = [], companionLessons = {}) {
+export function buildSearchIndex(weeks, deckLenses, studios, aiTrack, capstone, chapters = [], courseGuide = {}, glossary = [], companionLessons = {}, topicMeanings = {}, chapterClarity = []) {
   const entries = [];
   for (const week of weeks) {
     const prefix = `Week ${week.id} · ${week.title}`;
     entries.push({kind:"Week",week:week.id,title:week.title,description:week.promise,body:[week.subtitle,...week.outcomes,...week.map].join(" "),href:`#week-${week.id}`});
     week.concepts.forEach((concept,index) => {
       const chapter = chapters[week.id-1]?.[index];
-      entries.push({kind:"Chapter",week:week.id,title:concept.title,description:concept.brief,body:[concept.tag,concept.deep,concept.example,concept.teardown,concept.question,concept.answer,chapter?.first,chapter?.second,chapter?.case,chapter?.trap,...(chapter?.steps || [])].join(" "),href:`#week-${week.id}-concept-${index+1}`,location:prefix});
+      const clarity = chapterClarity[week.id-1]?.[index];
+      entries.push({kind:"Chapter",week:week.id,title:concept.title,description:concept.brief,body:[concept.tag,concept.deep,concept.example,concept.teardown,concept.question,concept.answer,chapter?.first,chapter?.second,chapter?.case,chapter?.trap,clarity?.meaning,clarity?.pm,...(chapter?.steps || [])].join(" "),href:`#week-${week.id}-concept-${index+1}`,location:prefix});
     });
     const guide = courseGuide[week.id];
     if (guide) entries.push({kind:"Week guide",week:week.id,title:guide.question,description:guide.sessions.join(" · "),body:guide.topics.join(" "),href:`#week-${week.id}`,location:prefix});
+    guide?.topics.forEach((title,index) => entries.push({kind:"Topic meaning",week:week.id,title,description:topicMeanings[week.id]?.[index] || "",body:topicMeanings[week.id]?.[index] || "",href:`#week-${week.id}`,location:prefix}));
     (companionLessons[week.id] || []).forEach(([title,body]) => entries.push({kind:"Companion lesson",week:week.id,title,description:body,body,href:`#week-${week.id}-concept-3`,location:prefix}));
     week.further.forEach(item => entries.push({kind:"Explore",week:week.id,title:item.title,description:item.text,body:week.title,href:`#week-${week.id}`,location:prefix}));
     const lens = deckLenses[week.id];

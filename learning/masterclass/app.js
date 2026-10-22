@@ -1,7 +1,7 @@
 import { weeks, deckLenses, sourceBoundary } from "./curriculum.js?v=3";
 import { studios, aiTrack, capstone, externalGuides } from "./mastery.js?v=2";
-import { buildSearchIndex, searchCourse } from "./search.js?v=3";
-import { courseGuide, chapters, glossary, companionLessons } from "./textbook.js?v=2";
+import { buildSearchIndex, searchCourse } from "./search.js?v=4";
+import { courseGuide, chapters, glossary, companionLessons, topicMeanings, chapterClarity } from "./textbook.js?v=3";
 
 const app = document.getElementById("app");
 let storedProgress = [];
@@ -13,7 +13,7 @@ const esc = (value) => String(value).replace(/[&<>"']/g, char => ({"&":"&amp;","
 const conceptKey = (week, concept) => `${week.id}-${concept}`;
 const completed = () => saved.size;
 const percent = (count, total) => total ? Math.round(100 * count / total) : 0;
-const searchIndex = buildSearchIndex(weeks, deckLenses, studios, aiTrack, capstone, chapters, courseGuide, glossary, companionLessons);
+const searchIndex = buildSearchIndex(weeks, deckLenses, studios, aiTrack, capstone, chapters, courseGuide, glossary, companionLessons, topicMeanings, chapterClarity);
 
 function updateRoute() {
   const match = location.hash.match(/^#week-(\d+)(?:-concept-(\d+))?$/);
@@ -70,9 +70,11 @@ function weekCard(week) {
 function readingChapter(week, index) {
   const chapter = chapters[week.id-1][index];
   const guide = courseGuide[week.id];
+  const clarity = chapterClarity[week.id-1][index];
   return `<div class="reading-path">
-    <section class="week-guide" aria-label="Week orientation"><div><span class="reading-label">WEEK ${String(week.id).padStart(2,"0")} / START HERE</span><h3>${esc(guide.question)}</h3><p>Read the three chapters in order. The class material for this week spans:</p><ul>${guide.sessions.map(item => `<li>${esc(item)}</li>`).join("")}</ul></div><div class="week-coverage"><strong>TOPICS YOU WILL MEET</strong>${guide.topics.map(item => `<span>${esc(item)}</span>`).join("")}</div></section>
-    <section class="textbook-chapter" aria-label="Chapter reading"><div class="reading-topline"><span>THE CHAPTER / READ FIRST</span><span>${String((week.id-1)*3+index+1).padStart(2,"0")} OF 21</span></div><h3>Understand the idea</h3><p>${esc(chapter.first)}</p><p>${esc(chapter.second)}</p><h4>Use it, step by step</h4><ol>${chapter.steps.map(step => `<li>${esc(step)}</li>`).join("")}</ol><div class="running-case"><span>THE RUNNING CASE · NEIGHBORHOOD GROCERY</span><p>${esc(chapter.case)}</p></div><div class="chapter-warning"><strong>Common mistake</strong><p>${esc(chapter.trap)}</p></div></section>
+    ${week.id===1 ? `<section class="zero-primer" aria-label="Product management basics"><span class="reading-label">BEFORE WE BEGIN / THREE DEFINITIONS</span><div><article><h3>What is a product?</h3><p>A repeatable way to help a group achieve a useful outcome. The app, delivery, support, and recovery can all be part of it.</p></article><article><h3>What is a product manager?</h3><p>The person who helps a team decide which customer problem matters, what outcome to seek, what to try, and how to learn whether it worked.</p></article><article><h3>What does a PM do?</h3><p>Talk with users, examine evidence, align business and technical constraints, choose trade-offs with the team, and track the result after launch.</p></article></div><p class="zero-primer-example"><strong>Example:</strong> For grocery delivery, the PM asks whether shoppers need more item choice or a reliable dinner delivery, then helps the team test the stronger problem.</p></section>` : ""}
+    <section class="week-guide" aria-label="Week orientation"><div><span class="reading-label">WEEK ${String(week.id).padStart(2,"0")} / START HERE</span><h3>${esc(guide.question)}</h3><p>Read the three chapters in order. The class material for this week spans:</p><ul>${guide.sessions.map(item => `<li>${esc(item)}</li>`).join("")}</ul></div><div class="week-coverage"><strong>WHAT EACH TOPIC MEANS</strong>${guide.topics.map((item,topicIndex) => `<div class="topic-meaning"><b>${esc(item)}</b><p>${esc(topicMeanings[week.id][topicIndex])}</p></div>`).join("")}</div></section>
+    <section class="textbook-chapter" aria-label="Chapter reading"><div class="reading-topline"><span>THE CHAPTER / READ FIRST</span><span>${String((week.id-1)*3+index+1).padStart(2,"0")} OF 21</span></div><div class="chapter-clarity"><div><span>WHAT IT MEANS</span><p>${esc(clarity.meaning)}</p></div><div><span>WHAT IT MEANS FOR A PM</span><p>${esc(clarity.pm)}</p></div></div><h3>Understand the idea</h3><p>${esc(chapter.first)}</p><p>${esc(chapter.second)}</p><h4>Use it, step by step</h4><ol>${chapter.steps.map(step => `<li>${esc(step)}</li>`).join("")}</ol><div class="running-case"><span>THE RUNNING CASE · NEIGHBORHOOD GROCERY</span><p>${esc(chapter.case)}</p></div><div class="chapter-warning"><strong>Common mistake</strong><p>${esc(chapter.trap)}</p></div></section>
     ${index===2 ? `<section class="companion-lessons"><span class="reading-label">FROM BOTH CLASS SESSIONS</span><h3>More ideas you need this week.</h3><div>${companionLessons[week.id].map(([title,body]) => `<article><h4>${esc(title)}</h4><p>${esc(body)}</p></article>`).join("")}</div></section>` : ""}
     <section class="reading-sources" aria-label="Source and further reading"><div><span class="reading-label">SOURCE TRAIL</span><p>Course basis: ${esc(week.source)}. Class notes are AI-generated and may contain errors. External sources below extend the lesson; examples and calculations here are illustrative.</p></div><div class="reading-links">${guide.reading.map(item => `<a href="${esc(item.url)}" target="_blank" rel="noopener noreferrer"><strong>${esc(item.title)} ↗</strong><span>${esc(item.why)}</span></a>`).join("")}</div></section>
   </div>`;

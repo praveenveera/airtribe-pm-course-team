@@ -6,6 +6,7 @@ A static, public masterclass covering Weeks 1–7 of the course. It uses curated
 
 - Seven weeks and 21 guided chapters, each with a beginner explanation, a three-step method, a continuous fictional grocery case, a common mistake, and a source trail. A week guide maps all fourteen class sessions and additional topics.
 - Twenty-eight companion explanations cover important topics beyond the main chapters, including market sizing, research bias, prioritization methods, UX writing, incident updates, instrumentation, and unit economics.
+- Each chapter begins with explicit “what it means” and “what it means for a PM” explanations. Every listed week topic has a plain-language definition; Week 1 begins with product, product manager, and PM work before the lesson.
 - A plain-language glossary defines recurring PM terms. External primary-source readings extend each week; they are linked and paraphrased, not reproduced.
 - The selectable visual model, deck exercise, teardown, recall prompt, and applied decision follow the reading as practice.
 - Extra topics show what else to study in each week.

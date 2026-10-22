@@ -52,6 +52,8 @@ export const chapters = [
 
 export const glossary = [
   ["Product","A repeatable way to deliver a desired outcome to a defined customer group."],
+  ["Product manager","The role that helps a team choose a customer problem, desired outcome, trade-offs, and evidence for learning."],
+  ["Product management","The ongoing work of understanding a market and users, choosing a direction, delivering value, and learning from results."],
   ["Customer job","The progress someone wants to make in a particular situation."],
   ["Value proposition","The outcome promised to a chosen customer and why it is credible."],
   ["B2B / B2C / B2G","Selling to businesses, consumers, or government; user and buyer roles can differ."],
@@ -122,3 +124,95 @@ export const companionLessons = {
     ["Insight, funnel, flow, retention","An insight chart shows how a measure changes, a funnel locates progression loss, a flow chart reveals paths, and a retention view follows cohorts. Each report answers a different question. Write the decision first, then choose the chart and check data quality before interpreting it."]
   ]
 };
+
+// Each visible topic in the week guide has a plain-language explanation.
+// The parallel arrays are checked against courseGuide in the content check.
+export const topicMeanings = {
+  1:[
+    "A product keeps delivering an outcome over time; a project is time-bound work; a service is work performed for someone. One offering can combine all three.",
+    "B2C serves consumers, B2B serves businesses, and B2G serves government. The person using a product may differ from the person paying for or approving it.",
+    "Value creation is the benefit the customer gets. Value capture is how the provider earns enough to keep delivering that benefit.",
+    "A leading signal may change early, such as fewer failed orders. A lagging signal shows a later result, such as more reliable repeat purchases.",
+    "AI can help summarize research or explore options. The PM remains responsible for checking evidence, deciding what matters, and managing failure risk."
+  ],
+  2:[
+    "Vision describes a desired future; mission describes an enduring purpose; strategy chooses where and how to compete; a roadmap sequences bets that support that choice.",
+    "The user does the task, the buyer purchases, and an economic decision maker controls budget. These may be three different people.",
+    "A point solution handles one job. A platform provides reusable capabilities for several jobs; reuse is valuable only when the needs are real and similar.",
+    "Land and expand means prove one use case with a first customer group, then broaden adoption or spend after value is demonstrated.",
+    "A moat is an advantage that becomes difficult to copy. Workflow fit is how well the product matches real work; switching cost is the effort or risk of changing tools."
+  ],
+  3:[
+    "Primary research gathers new evidence from people or behavior. Secondary research uses existing reports, datasets, or published material.",
+    "TAM is all potential demand, SAM is the portion the product can serve, and SOM is a plausible share it could win. Each needs stated assumptions.",
+    "Sampling is how participants are chosen. Bias is a systematic distortion, such as hearing only from users who stayed rather than those who left.",
+    "Five Forces examines rivals, new entrants, substitutes, buyers, and suppliers. An alternative may also be manual work or doing nothing.",
+    "Discoverability means people can find the product; use means they try it; retention means they return for meaningful value. Each needs a different diagnosis."
+  ],
+  4:[
+    "Five Whys repeatedly asks why a problem occurs to find possible causes. A cause remains a hypothesis until evidence supports it; several causes can coexist.",
+    "How Might We is an open prompt for exploring options. The Double Diamond widens and narrows thinking first about the problem, then about solutions.",
+    "MoSCoW separates scope by necessity; Kano explores satisfaction effects; impact–effort is a quick comparison; RICE estimates reach, impact, confidence, and effort.",
+    "A user story states a user's goal and reason. Acceptance behavior describes what must visibly happen for the work to count as complete.",
+    "Strategy guides priorities, mandatory work sets non-negotiable conditions, and dependencies determine order. A high score cannot erase a release requirement."
+  ],
+  5:[
+    "Utility is whether something solves the job; usability is how easily people can use it; visual design helps them see, understand, and trust it.",
+    "Cognitive load is mental effort. Interaction feedback is the system's response after an action, such as confirming a payment or explaining an error.",
+    "UX writing is the language inside the experience. Information architecture organizes content so people can predict where to find an action or answer.",
+    "Heuristics and UX laws are inspection lenses. Accessibility asks whether people with varied abilities and devices can perceive, operate, and understand the task.",
+    "Prototype fidelity is how closely a model resembles the final product. Task testing watches people try to accomplish a goal, rather than asking if they like a screen."
+  ],
+  6:[
+    "A roadmap communicates direction; a PRD bounds a change; a brief aligns on a decision; a prototype makes an interaction inspectable.",
+    "A progress update says where work stands and what happens next. A launch message says who gets the change, what they will see, and where help is available.",
+    "Incident impact is the confirmed harm and affected group. The next update is a promised time for new information, even if the cause remains unknown.",
+    "STAR organizes situation, task, action, and result. Evidence keeps the story honest about what changed and what the team actually measured.",
+    "A decision record explains what was chosen and why. Change control makes the effect of a later scope or requirement change visible to affected people."
+  ],
+  7:[
+    "A North Star metric is a candidate measure of repeated customer value. Guardrails track quality, cost, trust, or safety that should not deteriorate.",
+    "AARRR groups growth questions; HEART groups experience questions. They are lenses for choosing useful measures, not lists that every team must fill.",
+    "An event records an action; a property adds context; identity connects actions to a person or account; a cohort groups comparable starters; a window sets time.",
+    "A marketplace must work for both demand and supply. Unit economics compares revenue and variable cost per unit, such as one delivered order.",
+    "A funnel shows ordered progression; a flow shows paths; an insight chart shows trends; retention follows cohorts. The decision determines which report is useful."
+  ]
+};
+
+export const chapterClarity = [
+  [
+    {meaning:"A product is the whole repeatable system that helps a customer complete a job, not just the app or screen.",pm:"The PM identifies whose job matters, the outcome to improve, and where the entire system fails to deliver it."},
+    {meaning:"Value creation is customer benefit; value capture is the money or other return that makes continued delivery possible.",pm:"The PM checks both customer success and the cost of serving it, then makes trade-offs when one rises at the expense of the other."},
+    {meaning:"Product management is the work of deciding which customer problem to solve, why now, how to test a response, and whether the result worked.",pm:"A PM brings user, business, design, engineering, and operational evidence together; they do not need to personally design or code every feature."}
+  ],
+  [
+    {meaning:"Strategy is a reasoned choice of customer, need, advantage, and exclusions under limited resources.",pm:"The PM uses that choice to say yes to a focused bet and no to attractive work that would dilute it."},
+    {meaning:"Positioning explains why a target customer would choose this product over every real alternative, including their current habit.",pm:"The PM tests the switching reason and proof, rather than assuming a longer feature list creates preference."},
+    {meaning:"Platform expansion means reusing stable capabilities across validated workflows after a narrow first use case succeeds.",pm:"The PM decides when repeated demand justifies shared infrastructure and when a specific workflow still needs its own solution."}
+  ],
+  [
+    {meaning:"Research is a structured way to reduce uncertainty about a decision, using a method suited to the question.",pm:"The PM states the decision first, chooses whom to learn from, and avoids using a survey to answer an observation question."},
+    {meaning:"An evidence ladder separates a direct observation from an interpretation, estimate, hypothesis, or unknown.",pm:"The PM records a claim's source and limits before using it to justify scope, market size, or investment."},
+    {meaning:"A persona is a research-grounded pattern of needs or constraints that changes a product decision.",pm:"The PM distinguishes segments when their jobs, buying roles, or barriers call for different experiences or priorities."}
+  ],
+  [
+    {meaning:"Problem framing states who struggles, when, what progress is blocked, and what evidence supports the claim.",pm:"The PM keeps a favored feature out of the problem statement so the team can compare genuine alternatives."},
+    {meaning:"Diagnosis is the search for causes behind an observed symptom, while allowing several explanations to compete.",pm:"The PM verifies the metric, segments the affected journey, and collects behavior evidence before declaring a root cause."},
+    {meaning:"Prioritization is choosing an order of work given outcomes, effort, confidence, dependencies, and mandatory constraints.",pm:"The PM makes assumptions visible, explains the selected bet, and names the evidence that would change the order."}
+  ],
+  [
+    {meaning:"UX is the experience of completing a job across every touchpoint; UI is the visible interface within that journey.",pm:"The PM owns clarity on the user outcome and partners with design, engineering, and operations to remove task friction."},
+    {meaning:"A prototype is a low-cost representation used to test one important assumption before building the full solution.",pm:"The PM states what must be learned and chooses a prototype fidelity that can answer that question."},
+    {meaning:"A heuristic is a rule of thumb for spotting possible usability trouble; accessibility checks whether varied people can complete the task.",pm:"The PM treats findings as hypotheses, prioritizes observed harm, and includes recovery and access in success criteria."}
+  ],
+  [
+    {meaning:"PM communication helps a particular audience understand evidence and take a particular action.",pm:"The PM keeps facts consistent while tailoring the decision, detail, and channel to leadership, delivery, and support."},
+    {meaning:"A PRD is a shared record of a bounded change, its rationale, expected behavior, constraints, and measures.",pm:"The PM uses it to resolve ambiguity with the team and updates the record when a decision changes."},
+    {meaning:"Launch and incident communication give affected people a reliable account of status, impact, action, owner, and next update.",pm:"The PM separates confirmed facts from suspected cause and makes recovery and escalation paths clear."}
+  ],
+  [
+    {meaning:"A metric is a defined calculation for a decision, with an event, population, period, and denominator.",pm:"The PM checks that the number represents the customer outcome before interpreting a dashboard movement."},
+    {meaning:"A metric ladder links meaningful customer value to possible input drivers and protective guardrails.",pm:"The PM treats driver links as testable hypotheses and rejects growth that damages reliability, trust, or economics."},
+    {meaning:"A funnel locates where people stop progressing; a cohort shows what happens to a comparable group over time.",pm:"The PM validates event data, investigates the drop, and avoids claiming that a chart alone explains the cause."}
+  ]
+];
