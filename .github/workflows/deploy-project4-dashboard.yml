@@ -29,7 +29,7 @@ jobs:
           mkdir -p _site/survey _site/masterclass/diagrams
           cp -r projects/zepto-increasing-aov/dashboard/* _site/
           cp projects/zepto-increasing-aov/webapp/index.html _site/survey/index.html
-          cp learning/masterclass/index.html learning/masterclass/styles-v2.css learning/masterclass/app.js learning/masterclass/curriculum.js learning/masterclass/mastery.js _site/masterclass/
+          cp learning/masterclass/index.html learning/masterclass/styles-v2.css learning/masterclass/styles-v3.css learning/masterclass/app.js learning/masterclass/curriculum.js learning/masterclass/mastery.js _site/masterclass/
           cp learning/masterclass/diagrams/market-scope.html _site/masterclass/diagrams/
           test -s _site/masterclass/index.html
           test -s _site/masterclass/curriculum.js
