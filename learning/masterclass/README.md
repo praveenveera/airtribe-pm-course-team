@@ -11,7 +11,8 @@ A static, public masterclass covering Weeks 1–7 of the course. It uses curated
 - Each week has an applied decision case with evidence, three options, worked reasoning, a failure mode, an AI product lens, and an artifact prompt.
 - A seven-part AI-first PM track complements the course with task selection, evidence and access, evaluations, human control, release gates, outcome metrics, and operation.
 - A seven-stage capstone supports browser-local writing and export of a plain-text brief. Its rubric is for self-review and does not score answers.
-- Search, direct concept links, keyboard-operable controls, responsive layout, and browser-local completion and capstone state.
+- Keyword and context-based search across lessons, deck exercises, cases, AI PM studios, and capstone stages, with direct result links. Search runs locally using weighted text matches and curated related terms; it does not call an AI service or send queries to a server.
+- Keyboard-operable controls, responsive layout, and browser-local completion and capstone state.
 
 Completion and capstone drafts stay in the browser's `localStorage`; they are not synced across devices or accounts. No sign-in, backend, AI answer generation, automated grading, or analytics collection is used. The illustrative cases are teaching scenarios, not verified product research.
 
