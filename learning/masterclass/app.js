@@ -1,28 +1,34 @@
 import { weeks, deckLenses, sourceBoundary } from "./curriculum.js?v=3";
 import { studios, aiTrack, capstone, externalGuides } from "./mastery.js?v=2";
-import { buildSearchIndex, searchCourse } from "./search.js?v=4";
+import { buildSearchIndex, searchCourse } from "./search.js?v=5";
 import { courseGuide, chapters, glossary, companionLessons, topicMeanings, chapterClarity } from "./textbook.js?v=3";
+import { domainExamples, productSources } from "./domain-examples.js?v=1";
+import { dayPlan, readPractice, writePractice, todayKey, currentDay, nextReview, dueDays } from "./daily.js?v=1";
 
 const app = document.getElementById("app");
 let storedProgress = [];
 try { storedProgress = JSON.parse(localStorage.getItem("pm-masterclass-completed") || "[]"); } catch { storedProgress = []; }
 const saved = new Set(Array.isArray(storedProgress) ? storedProgress : []);
-const state = { week: null, concept: 0, page: "home", search: "", answerShown: false, studioAnswer: false, studioChoice: null, mapStep: 0, lab: { viewed: 100, cart: 54, checkout: 31, paid: 19 } };
+const practice = readPractice();
+const state = { week: null, concept: 0, page: "home", day: 1, search: "", answerShown: false, dailyAnswerShown: false, studioAnswer: false, studioChoice: null, mapStep: 0, lab: { viewed: 100, cart: 54, checkout: 31, paid: 19 } };
 
 const esc = (value) => String(value).replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[char]);
 const conceptKey = (week, concept) => `${week.id}-${concept}`;
 const completed = () => saved.size;
 const percent = (count, total) => total ? Math.round(100 * count / total) : 0;
-const searchIndex = buildSearchIndex(weeks, deckLenses, studios, aiTrack, capstone, chapters, courseGuide, glossary, companionLessons, topicMeanings, chapterClarity);
+const searchIndex = buildSearchIndex(weeks, deckLenses, studios, aiTrack, capstone, chapters, courseGuide, glossary, companionLessons, topicMeanings, chapterClarity, domainExamples);
 
 function updateRoute() {
   const match = location.hash.match(/^#week-(\d+)(?:-concept-(\d+))?$/);
   const aiMatch = location.hash.match(/^#ai-track(?:-(\d+))?$/);
   const capstoneMatch = location.hash.match(/^#capstone(?:-stage-(\d+))?$/);
-  state.page = location.hash === "#glossary" ? "glossary" : aiMatch ? "ai" : capstoneMatch ? "capstone" : match ? "lesson" : "home";
+  const dailyMatch = location.hash.match(/^#daily(?:-(\d+))?$/);
+  state.page = location.hash === "#glossary" ? "glossary" : dailyMatch ? "daily" : aiMatch ? "ai" : capstoneMatch ? "capstone" : match ? "lesson" : "home";
+  state.day = dailyMatch?.[1] ? Math.min(28,Math.max(1,Number(dailyMatch[1]))) : currentDay(practice.started);
   state.week = match ? Math.min(7, Math.max(1, Number(match[1]))) : null;
   state.concept = match ? Math.min(2, Math.max(0, Number(match[2] || 1) - 1)) : 0;
   state.answerShown = false;
+  state.dailyAnswerShown = false;
   state.studioAnswer = false;
   state.studioChoice = null;
   state.mapStep = 0;
@@ -37,7 +43,7 @@ function updateRoute() {
 function header() {
   return `<header class="site-header"><div class="header-inner">
     <a class="brand" href="#home" aria-label="Product Masterclass home"><span class="brand-symbol" aria-hidden="true"><span></span><span></span><span></span></span><span>PRODUCT<span class="brand-accent">/</span>MASTERCLASS</span></a>
-    <nav aria-label="Main navigation"><a href="#home" ${state.page === "home" && location.hash !== "#search" ? 'aria-current="page"' : ""}>Curriculum</a><a href="#search" ${location.hash === "#search" ? 'aria-current="page"' : ""}>Search</a><a href="#glossary" ${state.page === "glossary" ? 'aria-current="page"' : ""}>Glossary</a><a href="#ai-track" ${state.page === "ai" ? 'aria-current="page"' : ""}>AI PM track</a><a href="#capstone" ${state.page === "capstone" ? 'aria-current="page"' : ""}>Capstone</a></nav>
+    <nav aria-label="Main navigation"><a href="#home" ${state.page === "home" && location.hash !== "#search" ? 'aria-current="page"' : ""}>Curriculum</a><a href="#daily" ${state.page === "daily" ? 'aria-current="page"' : ""}>Daily practice</a><a href="#search" ${location.hash === "#search" ? 'aria-current="page"' : ""}>Search</a><a href="#glossary" ${state.page === "glossary" ? 'aria-current="page"' : ""}>Glossary</a><a href="#ai-track" ${state.page === "ai" ? 'aria-current="page"' : ""}>AI PM track</a><a href="#capstone" ${state.page === "capstone" ? 'aria-current="page"' : ""}>Capstone</a></nav>
     <span class="header-progress" aria-label="${completed()} of 21 concepts marked complete">${completed()} / 21</span>
   </div></header>`;
 }
@@ -52,6 +58,7 @@ function home() {
   return `${header()}<main id="main">
     <section class="hero"><div class="hero-inner"><div class="hero-copy"><span class="eyebrow">A SEVEN-WEEK PRODUCT MASTERCLASS</span><h1>Learn the craft.<br><em>Practice the judgment.</em></h1><p class="hero-lede">Start from zero and learn how products create value. Read 21 guided chapters, follow one product from idea to measurement, then test your thinking in visual labs, decisions, and an AI product track.</p><div class="hero-actions"><a class="button button-primary" href="#week-1-concept-1">Start Chapter 1 <span aria-hidden="true">↗</span></a><a class="button button-quiet" href="#glossary">Open the glossary <span aria-hidden="true">↗</span></a></div><div class="hero-stats"><span><strong>07</strong> weeks</span><span><strong>21</strong> guided chapters</span><span><strong>14</strong> class sessions</span></div></div><div class="hero-art" aria-label="The product learning sequence"><div class="hero-orbit" aria-hidden="true"></div><div class="hero-stamp" aria-hidden="true">THINK<br>MAKE<br>LEARN <span>✳</span></div><div class="hero-art-inner"><span>01 / DISCOVER</span><span>02 / CHOOSE</span><span>03 / DESIGN</span><span>04 / MEASURE</span><strong>Make the reasoning visible.</strong></div><span class="hero-art-note" aria-hidden="true">THE CRAFT OF PRODUCT ↗</span></div></div></section>
     <section class="approach-section" aria-label="How each lesson works"><div class="section-kicker">START FROM ZERO</div><h2 class="start-title">No PM background needed.</h2><p class="start-lede">Follow 21 chapters in order. Each one defines the idea, shows how to use it, walks through the same grocery product, then lets you practice. Two class sessions feed each week. The glossary is always one tap away.</p><div class="approach-grid"><div><span>01 / READ</span><h2>Learn the idea</h2><p>Understand the terms, steps, and trade-offs in plain language.</p></div><div><span>02 / FOLLOW</span><h2>Work the case</h2><p>Watch a product decision develop from Week 1 to Week 7.</p></div><div><span>03 / PRACTICE</span><h2>Test your thinking</h2><p>Use the visual tools, decision cases, and capstone after reading.</p></div></div><a class="start-link" href="#week-1-concept-1">Start Chapter 1 ↗</a></section>
+    <section class="daily-invite"><div><span class="section-kicker">28 DAYS / ONE DAILY DECISION</span><h2>Read. Recall. Decide. Review.</h2><p>Practice the craft for 40 minutes a day: a chapter, an answer written before the model, honest self-review, and weekly fieldwork. Due concepts return for spaced recall.</p></div><a class="button button-primary" href="#daily">Open today's practice ↗</a></section>
     <section class="feature-strip" aria-label="Advanced learning paths"><a href="#ai-track"><span>PARALLEL TRACK / 07 STUDIOS</span><h2>Become an AI-first PM</h2><p>Practice task selection, evidence boundaries, evaluation, human control, release gates, and operation.</p><strong>Explore the track ↗</strong></a><a href="#capstone"><span>FINAL PROJECT / 07 STAGES</span><h2>Build one complete decision</h2><p>Carry a fictional case from customer outcome through strategy, research, design, launch, and metrics.</p><strong>Open the capstone ↗</strong></a></section>
     <section class="course-section" id="curriculum"><div class="section-heading"><div><span class="section-kicker">${searching ? "EXPLORE THE COURSE" : "THE CURRICULUM"}</span><h2>${searching ? "Find the right lesson." : "Seven weeks. One connected craft."}</h2><p>${searching ? "Search by a term or describe a product question. Results show both direct and related matches." : "Start anywhere, or follow the arc from customer value through measurement."}</p></div></div><div class="search-tools"><label class="search-box"><span class="sr-only">Search the masterclass by keyword or question</span><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 5 5"></path></svg><input id="course-search" type="search" placeholder="Try “where do users drop off?”" value="${esc(state.search)}" autocomplete="off"></label>${searching ? '<button class="search-clear" type="button" data-action="clear-search">Clear</button>' : ""}</div><div class="search-examples" aria-label="Example searches"><span>TRY A QUESTION</span>${["Where do users drop off?","How do I prioritize?","Is AI the right solution?"].map(item => `<button type="button" data-search-example="${esc(item)}">${esc(item)} ↗</button>`).join("")}</div>${searching ? `<div class="search-status" role="status">${results.length} ${results.length === 1 ? "result" : "results"} for “${esc(state.search)}”</div><div class="search-results">${results.slice(0,16).map(searchCard).join("")}</div>${results.length > 16 ? `<p class="search-more">Showing the 16 strongest matches. Add a specific term to narrow the results.</p>` : ""}${results.length ? "" : '<p class="empty-state">No close match yet. Try a shorter phrase or a topic such as “research”, “metrics”, or “AI evaluation”.</p>'}` : `<div class="week-grid">${weeks.map(weekCard).join("")}</div>`}</section>
     <section class="closing-banner"><span>START WITH A REAL DECISION</span><h2>Learn one model. Use it on one case.</h2><p>Depth comes from explaining the trade-off and making the artifact.</p><a class="button button-light" href="#week-1">Open the first lesson ↗</a></section>
@@ -75,13 +82,46 @@ function readingChapter(week, index) {
     ${week.id===1 ? `<section class="zero-primer" aria-label="Product management basics"><span class="reading-label">BEFORE WE BEGIN / THREE DEFINITIONS</span><div><article><h3>What is a product?</h3><p>A repeatable way to help a group achieve a useful outcome. The app, delivery, support, and recovery can all be part of it.</p></article><article><h3>What is a product manager?</h3><p>The person who helps a team decide which customer problem matters, what outcome to seek, what to try, and how to learn whether it worked.</p></article><article><h3>What does a PM do?</h3><p>Talk with users, examine evidence, align business and technical constraints, choose trade-offs with the team, and track the result after launch.</p></article></div><p class="zero-primer-example"><strong>Example:</strong> For grocery delivery, the PM asks whether shoppers need more item choice or a reliable dinner delivery, then helps the team test the stronger problem.</p></section>` : ""}
     <section class="week-guide" aria-label="Week orientation"><div><span class="reading-label">WEEK ${String(week.id).padStart(2,"0")} / START HERE</span><h3>${esc(guide.question)}</h3><p>Read the three chapters in order. The class material for this week spans:</p><ul>${guide.sessions.map(item => `<li>${esc(item)}</li>`).join("")}</ul></div><div class="week-coverage"><strong>WHAT EACH TOPIC MEANS</strong>${guide.topics.map((item,topicIndex) => `<div class="topic-meaning"><b>${esc(item)}</b><p>${esc(topicMeanings[week.id][topicIndex])}</p></div>`).join("")}</div></section>
     <section class="textbook-chapter" aria-label="Chapter reading"><div class="reading-topline"><span>THE CHAPTER / READ FIRST</span><span>${String((week.id-1)*3+index+1).padStart(2,"0")} OF 21</span></div><div class="chapter-clarity"><div><span>WHAT IT MEANS</span><p>${esc(clarity.meaning)}</p></div><div><span>WHAT IT MEANS FOR A PM</span><p>${esc(clarity.pm)}</p></div></div><h3>Understand the idea</h3><p>${esc(chapter.first)}</p><p>${esc(chapter.second)}</p><h4>Use it, step by step</h4><ol>${chapter.steps.map(step => `<li>${esc(step)}</li>`).join("")}</ol><div class="running-case"><span>THE RUNNING CASE · NEIGHBORHOOD GROCERY</span><p>${esc(chapter.case)}</p></div><div class="chapter-warning"><strong>Common mistake</strong><p>${esc(chapter.trap)}</p></div></section>
+    ${domainGallery(week.id,index)}
     ${index===2 ? `<section class="companion-lessons"><span class="reading-label">FROM BOTH CLASS SESSIONS</span><h3>More ideas you need this week.</h3><div>${companionLessons[week.id].map(([title,body]) => `<article><h4>${esc(title)}</h4><p>${esc(body)}</p></article>`).join("")}</div></section>` : ""}
     <section class="reading-sources" aria-label="Source and further reading"><div><span class="reading-label">SOURCE TRAIL</span><p>Course basis: ${esc(week.source)}. Class notes are AI-generated and may contain errors. External sources below extend the lesson; examples and calculations here are illustrative.</p></div><div class="reading-links">${guide.reading.map(item => `<a href="${esc(item.url)}" target="_blank" rel="noopener noreferrer"><strong>${esc(item.title)} ↗</strong><span>${esc(item.why)}</span></a>`).join("")}</div></section>
   </div>`;
 }
 
+function domainGallery(weekId,index) {
+  const example = domainExamples[weekId-1][index];
+  const labels = {saas:"SaaS / team workflows",commerce:"Ecommerce / checkout",ai:"AI product / answers"};
+  return `<section class="domain-gallery" aria-label="Examples across product domains"><div class="domain-heading"><span class="reading-label">ONE CONCEPT / THREE DOMAINS</span><h3>See the same idea in different products.</h3><p>These illustrative PM decisions use public product documentation and AI evaluation guidance. They do not describe the companies' internal decisions or results.</p></div><div class="domain-cards">${Object.entries(productSources).map(([key,source]) => `<article><span>${esc(labels[key])}</span><p>${esc(example[key])}</p><a href="${esc(source.url)}" target="_blank" rel="noopener noreferrer">Check the public reference: ${esc(source.name)} ↗</a></article>`).join("")}</div><div class="domain-transfer"><strong>Transfer the idea</strong><p>${esc(example.transfer)}</p></div></section>`;
+}
+
 function glossaryPage() {
   return `${header()}<main id="main" class="standalone glossary-page"><div class="page-intro"><span class="section-kicker">REFERENCE / PLAIN LANGUAGE</span><h1>The PM<br><em>glossary.</em></h1><p>Read this when a new term appears. Each definition tells you what it means in a product decision.</p></div><div class="glossary-grid">${glossary.map(([term,definition]) => `<article><h2>${esc(term)}</h2><p>${esc(definition)}</p></article>`).join("")}</div><div class="glossary-end"><a class="button button-primary" href="#week-1-concept-1">Start at Chapter 1 ↗</a></div></main>${footer()}`;
+}
+
+function dailyPage() {
+  const today = todayKey();
+  const assigned = currentDay(practice.started,today);
+  const day = dayPlan[state.day-1];
+  const record = practice.records[day.day] || {};
+  const concept = day.kind === "chapter" ? weeks[day.week-1].concepts[day.concept] : null;
+  const title = concept?.title || day.title;
+  const prompt = concept?.question || day.prompt;
+  const due = dueDays(practice.records,today);
+  const practiced = Object.values(practice.records).filter(item => item?.score!==undefined).length;
+  return `${header()}<main id="main" class="standalone daily-page"><div class="page-intro"><span class="section-kicker">THE DAILY PM GYM / 28 DAY PATH</span><h1>Build judgment<br><em>one decision at a time.</em></h1><p>Spend about 40 minutes: read for 10, recall and decide for 15, compare reasoning for 10, and record one next step for 5. Every fourth day applies the week's ideas to an observed product.</p><p class="page-note">This is self-study. Scores are your own judgment, not a test result. Drafts and dates stay in this browser; export them if you want a backup.</p></div>
+    <div class="daily-stats"><div><strong>${practiced}<small>/ 28</small></strong><span>days practiced</span></div><div><strong>${due.length}</strong><span>due for recall</span></div><div><strong>${practice.started ? String(assigned).padStart(2,"0") : "01"}</strong><span>${practice.started ? "current path day" : "first path day"}</span></div></div>
+    ${practice.started ? "" : `<div class="daily-start"><div><h2>Start when you're ready.</h2><p>Starting sets Day 1 to today's date on this device. You can explore any day before starting.</p></div><button type="button" class="button button-primary" data-action="start-practice">Start my 28 days ↗</button></div>`}
+    <div class="daily-shell"><aside class="daily-rail"><span class="section-kicker">THE 28 DAY PATH</span><div class="daily-day-grid">${dayPlan.map(item => `<a href="#daily-${item.day}" class="${item.day===day.day?"active":""} ${practice.records[item.day]?.score!==undefined?"practiced":""}" ${item.day===day.day?'aria-current="page"':""} aria-label="Day ${item.day}, week ${item.week}, ${item.kind==='fieldwork'?'fieldwork':'chapter'}">${String(item.day).padStart(2,"0")}</a>`).join("")}</div><p>Three concept days, then one fieldwork day per week. Open any day to study at your pace.</p>${due.length ? `<div class="due-list"><strong>RECALL DUE</strong>${due.map(item => `<a href="#daily-${item.day}">Day ${item.day}: ${esc(item.kind==="fieldwork"?item.title:weeks[item.week-1].concepts[item.concept].title)} ↗</a>`).join("")}</div>` : ""}<button type="button" class="button button-quiet" data-action="export-practice">Export practice journal ↗</button></aside>
+    <section class="daily-work"><div class="daily-work-head"><span>DAY ${String(day.day).padStart(2,"0")} / WEEK ${day.week} / ${day.kind==="fieldwork"?"FIELDWORK":"CONCEPT"}</span><h2>${esc(title)}</h2><p>${day.kind==="fieldwork"?"Apply this week's ideas to an observed product. Label assumptions honestly.":"Read the chapter, then answer from memory before revealing the worked reasoning."}</p>${concept?`<a href="#week-${day.week}-concept-${day.concept+1}">Read the full chapter and domain examples ↗</a>`:`<a href="#week-${day.week}">Review this week's lessons ↗</a>`}</div><div class="daily-question"><strong>YOUR DECISION PROMPT</strong><p>${esc(prompt)}</p></div><label class="daily-writing"><span>Your reasoning and evidence</span><textarea data-practice-draft="${day.day}" placeholder="Write your call, why, a trade-off, and what you would check next…">${esc(record.draft||"")}</textarea></label><button type="button" class="button button-dark" data-action="reveal-daily" ${record.draft?.trim()?"":"disabled"}>${day.kind==="fieldwork"?"Open the fieldwork check":"Compare with worked reasoning"} ↗</button>
+    ${state.dailyAnswerShown ? `<div class="daily-model" tabindex="-1"><span>${day.kind==="fieldwork"?"FIELDWORK CHECK":"WORKED REASONING"}</span><p>${esc(concept?.answer||day.check)}</p><p><strong>Review your own answer:</strong> Did you identify the user and outcome, use evidence honestly, weigh a trade-off, and name a next test?</p><div class="daily-score" role="group" aria-label="Self-review score"><span>How strong was your reasoning?</span>${[[0,"0 · Revisit"],[1,"1 · Partial"],[2,"2 · Defensible"],[3,"3 · Strong"]].map(([value,label])=>`<button type="button" data-practice-score="${value}" aria-pressed="${record.score===value}">${label}</button>`).join("")}</div>${record.reviewOn?`<p class="review-date">Next recall: ${esc(record.reviewOn)}. A low score returns tomorrow; a stronger answer returns in three or seven days.</p>`:""}</div>` : ""}
+    ${record.score!==undefined&&!state.dailyAnswerShown?`<p class="saved-review">Last self-review: ${record.score}/3 · recall due ${esc(record.reviewOn||"soon")}. Rewrite your answer to practice again.</p>`:""}<div class="daily-next">${day.day>1?`<a href="#daily-${day.day-1}">← Previous day</a>`:"<span></span>"}${day.day<28?`<a href="#daily-${day.day+1}">Next day →</a>`:`<a href="#capstone">Open the capstone →</a>`}</div></section></div></main>${footer()}`;
+}
+
+function exportPractice() {
+  const lines = ["Product Masterclass — Practice journal",`Started: ${practice.started||"not started"}`,"",...dayPlan.flatMap(day => { const record=practice.records[day.day]; return record ? [`Day ${day.day} · Week ${day.week} · ${day.kind}`,`Last practiced: ${record.updatedAt||""}`,`Self-review: ${record.score===undefined?"not scored":`${record.score}/3`}`,`Next recall: ${record.reviewOn||""}`,record.draft||"",""] : []; })];
+  const url = URL.createObjectURL(new Blob([lines.join("\n")],{type:"text/plain;charset=utf-8"}));
+  const link=document.createElement("a"); link.href=url; link.download="product-masterclass-practice-journal.txt"; link.click();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 
 function lesson() {
@@ -153,11 +193,23 @@ function riceLab() {
 }
 
 function render() {
-  document.title = state.week ? `${weeks[state.week-1].title} · Product Masterclass` : state.page === "glossary" ? "Glossary · Product Masterclass" : state.page === "ai" ? "AI-first PM track · Product Masterclass" : state.page === "capstone" ? "Capstone · Product Masterclass" : "Product Masterclass · Learn the thinking behind the work";
-  app.innerHTML = state.page === "lesson" ? lesson() : state.page === "glossary" ? glossaryPage() : state.page === "ai" ? aiPage() : state.page === "capstone" ? capstonePage() : home();
+  document.title = state.week ? `${weeks[state.week-1].title} · Product Masterclass` : state.page === "daily" ? "Daily practice · Product Masterclass" : state.page === "glossary" ? "Glossary · Product Masterclass" : state.page === "ai" ? "AI-first PM track · Product Masterclass" : state.page === "capstone" ? "Capstone · Product Masterclass" : "Product Masterclass · Learn the thinking behind the work";
+  app.innerHTML = state.page === "lesson" ? lesson() : state.page === "daily" ? dailyPage() : state.page === "glossary" ? glossaryPage() : state.page === "ai" ? aiPage() : state.page === "capstone" ? capstonePage() : home();
 }
 
 document.addEventListener("click", event => {
+  const score = event.target.closest("[data-practice-score]");
+  if (score) {
+    const record = practice.records[state.day] || {};
+    record.score=Number(score.dataset.practiceScore);
+    record.updatedAt=todayKey();
+    record.reviewOn=nextReview(record.score);
+    practice.records[state.day]=record;
+    writePractice(practice);
+    render();
+    document.querySelector(`[data-practice-score="${record.score}"]`)?.focus();
+    return;
+  }
   const example = event.target.closest("[data-search-example]");
   if (example) { state.search = example.dataset.searchExample; render(); document.getElementById("course-search")?.focus(); return; }
   const choice = event.target.closest("[data-choice]");
@@ -166,6 +218,9 @@ document.addEventListener("click", event => {
   if (map) { state.mapStep = Number(map.dataset.map); render(); document.querySelector(`[data-map="${state.mapStep}"]`)?.focus(); return; }
   const action = event.target.closest("[data-action]");
   if (!action) return;
+  if (action.dataset.action === "start-practice") { practice.started=todayKey(); writePractice(practice); render(); return; }
+  if (action.dataset.action === "export-practice") { exportPractice(); return; }
+  if (action.dataset.action === "reveal-daily") { if (!(practice.records[state.day]?.draft||"").trim()) return; state.dailyAnswerShown=true; render(); document.querySelector(".daily-model")?.focus(); return; }
   if (action.dataset.action === "clear-search") { state.search = ""; render(); document.getElementById("course-search")?.focus(); return; }
   if (action.dataset.action === "answer") state.answerShown = true;
   if (action.dataset.action === "studio-answer") state.studioAnswer = true;
@@ -186,6 +241,16 @@ document.addEventListener("click", event => {
 });
 
 document.addEventListener("input", event => {
+  if (event.target.dataset.practiceDraft) {
+    const day=Number(event.target.dataset.practiceDraft);
+    const record=practice.records[day]||{};
+    record.draft=event.target.value;
+    practice.records[day]=record;
+    writePractice(practice);
+    const reveal=document.querySelector('[data-action="reveal-daily"]');
+    if (reveal) reveal.disabled=!record.draft.trim();
+    return;
+  }
   if (event.target.dataset.capstone) { try { localStorage.setItem(`pm-capstone-${event.target.dataset.capstone}`, event.target.value); } catch { /* Private browsing may block local storage. */ } return; }
   if (event.target.id === "course-search") {
     const selection = event.target.selectionStart;

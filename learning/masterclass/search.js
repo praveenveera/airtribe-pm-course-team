@@ -20,7 +20,7 @@ const stem = word => word.length > 5 ? word.replace(/(ments|ation|ings|tion|ers|
 const tokens = value => [...new Set(normalize(value).split(/\s+/).filter(word => word && !stopWords.has(word)).map(stem))];
 const related = term => relatedGroups.find(group => group.some(word => stem(word) === term))?.map(stem).filter(word => word !== term) || [];
 
-export function buildSearchIndex(weeks, deckLenses, studios, aiTrack, capstone, chapters = [], courseGuide = {}, glossary = [], companionLessons = {}, topicMeanings = {}, chapterClarity = []) {
+export function buildSearchIndex(weeks, deckLenses, studios, aiTrack, capstone, chapters = [], courseGuide = {}, glossary = [], companionLessons = {}, topicMeanings = {}, chapterClarity = [], domainExamples = []) {
   const entries = [];
   for (const week of weeks) {
     const prefix = `Week ${week.id} · ${week.title}`;
@@ -29,6 +29,8 @@ export function buildSearchIndex(weeks, deckLenses, studios, aiTrack, capstone, 
       const chapter = chapters[week.id-1]?.[index];
       const clarity = chapterClarity[week.id-1]?.[index];
       entries.push({kind:"Chapter",week:week.id,title:concept.title,description:concept.brief,body:[concept.tag,concept.deep,concept.example,concept.teardown,concept.question,concept.answer,chapter?.first,chapter?.second,chapter?.case,chapter?.trap,clarity?.meaning,clarity?.pm,...(chapter?.steps || [])].join(" "),href:`#week-${week.id}-concept-${index+1}`,location:prefix});
+      const domains = domainExamples[week.id-1]?.[index];
+      if (domains) entries.push({kind:"Domain examples",week:week.id,title:`${concept.title} across SaaS, ecommerce, and AI`,description:domains.transfer,body:[domains.saas,domains.commerce,domains.ai].join(" "),href:`#week-${week.id}-concept-${index+1}`,location:prefix});
     });
     const guide = courseGuide[week.id];
     if (guide) entries.push({kind:"Week guide",week:week.id,title:guide.question,description:guide.sessions.join(" · "),body:guide.topics.join(" "),href:`#week-${week.id}`,location:prefix});

@@ -7,6 +7,8 @@ A static, public masterclass covering Weeks 1–7 of the course. It uses curated
 - Seven weeks and 21 guided chapters, each with a beginner explanation, a three-step method, a continuous fictional grocery case, a common mistake, and a source trail. A week guide maps all fourteen class sessions and additional topics.
 - Twenty-eight companion explanations cover important topics beyond the main chapters, including market sizing, research bias, prioritization methods, UX writing, incident updates, instrumentation, and unit economics.
 - Each chapter begins with explicit “what it means” and “what it means for a PM” explanations. Every listed week topic has a plain-language definition; Week 1 begins with product, product manager, and PM work before the lesson.
+- Every chapter also has SaaS, ecommerce, and AI-product examples (63 total) with a transfer question. Public product documentation supports the capabilities; the PM decisions are labeled illustrative rather than represented as company history.
+- A 28-day practice path pairs three chapter days with one fieldwork day each week. Learners write before seeing worked reasoning, self-review against four criteria, and revisit due items after one, three, or seven days. Practice drafts and dates stay in browser-local storage and can be exported as text.
 - A plain-language glossary defines recurring PM terms. External primary-source readings extend each week; they are linked and paraphrased, not reproduced.
 - The selectable visual model, deck exercise, teardown, recall prompt, and applied decision follow the reading as practice.
 - Extra topics show what else to study in each week.
@@ -18,7 +20,7 @@ A static, public masterclass covering Weeks 1–7 of the course. It uses curated
 - Keyword and context-based search across the full chapter text, week guides, glossary, deck exercises, cases, AI PM studios, and capstone stages, with direct result links. Search runs locally using weighted text matches and curated related terms; it does not call an AI service or send queries to a server.
 - Keyboard-operable controls, responsive layout, and browser-local completion and capstone state.
 
-Completion and capstone drafts stay in the browser's `localStorage`; they are not synced across devices or accounts. No sign-in, backend, AI answer generation, automated grading, or analytics collection is used. The illustrative cases are teaching scenarios, not verified product research.
+Completion, practice journal, and capstone drafts stay in the browser's `localStorage`; they are not synced across devices or accounts. No sign-in, backend, AI answer generation, automated grading, or analytics collection is used. Self-review scores do not prove PM competence. The illustrative cases are teaching scenarios, not verified product research.
 
 ## Local preview
 
