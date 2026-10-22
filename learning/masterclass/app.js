@@ -1,5 +1,5 @@
 import { weeks, deckLenses, sourceBoundary } from "./curriculum.js";
-import { studios, aiTrack, capstone, externalGuides } from "./mastery.js";
+import { studios, aiTrack, capstone, externalGuides } from "./mastery.js?v=2";
 
 const app = document.getElementById("app");
 let storedProgress = [];
