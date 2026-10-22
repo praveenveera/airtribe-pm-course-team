@@ -20,7 +20,7 @@ const stem = word => word.length > 5 ? word.replace(/(ments|ation|ings|tion|ers|
 const tokens = value => [...new Set(normalize(value).split(/\s+/).filter(word => word && !stopWords.has(word)).map(stem))];
 const related = term => relatedGroups.find(group => group.some(word => stem(word) === term))?.map(stem).filter(word => word !== term) || [];
 
-export function buildSearchIndex(weeks, deckLenses, studios, aiTrack, capstone, chapters = [], courseGuide = {}, glossary = []) {
+export function buildSearchIndex(weeks, deckLenses, studios, aiTrack, capstone, chapters = [], courseGuide = {}, glossary = [], companionLessons = {}) {
   const entries = [];
   for (const week of weeks) {
     const prefix = `Week ${week.id} · ${week.title}`;
@@ -31,6 +31,7 @@ export function buildSearchIndex(weeks, deckLenses, studios, aiTrack, capstone, 
     });
     const guide = courseGuide[week.id];
     if (guide) entries.push({kind:"Week guide",week:week.id,title:guide.question,description:guide.sessions.join(" · "),body:guide.topics.join(" "),href:`#week-${week.id}`,location:prefix});
+    (companionLessons[week.id] || []).forEach(([title,body]) => entries.push({kind:"Companion lesson",week:week.id,title,description:body,body,href:`#week-${week.id}-concept-3`,location:prefix}));
     week.further.forEach(item => entries.push({kind:"Explore",week:week.id,title:item.title,description:item.text,body:week.title,href:`#week-${week.id}`,location:prefix}));
     const lens = deckLenses[week.id];
     if (lens) entries.push({kind:"Deck exercise",week:week.id,title:lens.title,description:lens.context,body:[lens.worked,lens.caution,...lens.moves.map(move => `${move.label} ${move.text}`)].join(" "),href:`#week-${week.id}`,location:prefix});

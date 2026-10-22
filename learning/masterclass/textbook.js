@@ -75,3 +75,50 @@ export const glossary = [
   ["Unit economics","Revenue and variable cost attributable to a unit such as an order or customer."],
   ["AI evaluation","A repeatable check that tests an AI system against task, quality, and risk criteria."]
 ];
+
+// Short companion lessons retain ideas that sit between the three main
+// chapters in each week's two sessions. They appear at the end of that week.
+export const companionLessons = {
+  1:[
+    ["Need, want, desire","A need is the underlying progress a person seeks; a want is a preferred way to get it; a desire adds aspiration or emotion. ‘I need dinner ingredients’ can become ‘I want delivery before seven’ and ‘I want to feel in control of the evening.’ Research all three, but do not mistake a requested interface for the underlying need."],
+    ["Product sense and signals","Product sense is a practiced ability to notice a meaningful job, a costly friction, and a plausible change. Use both leading signals, such as fewer substitution disputes, and lagging signals, such as reliable repeat orders. A leading signal is useful only when later outcomes confirm its relationship."],
+    ["Different markets, different roles","In consumer products the shopper may choose and pay. In business products the user, buyer, administrator, and approver can be different people. In public-sector products, procurement, accessibility, and accountability may shape delivery. Map the roles before deciding whose feedback proves demand."]
+  ],
+  2:[
+    ["Go-to-market and pricing","Go-to-market is how a chosen segment discovers, evaluates, buys, adopts, and receives support for the product. Pricing is a product choice: it affects who tries the service, what behavior it rewards, and whether delivery is sustainable. Test willingness and unit cost together; a low headline price can conceal a costly service model."],
+    ["Retention before expansion","Retention shows that a first segment returns for meaningful value. Before entering another segment, inspect what drives repeat use, whether new users succeed, and what it costs to serve them. A land-and-expand plan is credible only when the first use case works without heroic manual effort."],
+    ["PM and product owner","A PM commonly frames customer and business choices across discovery and delivery. A product owner commonly manages backlog clarity and sequencing in a delivery process. Organizations assign these duties differently. Judge the role by the decisions and accountability it carries, not its title."],
+    ["Advantage versus feature parity","A differentiator helps a segment choose you now; a defensible advantage is harder to copy over time. Workflow fit, trusted supply, integrations, and lower switching effort may matter more than a longer feature list. Ask what a competitor could copy in a month and what takes repeated learning or operational capability."]
+  ],
+  3:[
+    ["Primary and secondary research","Primary research collects new evidence for your decision, such as observing a grocery order. Secondary research interprets existing reports, market data, or competitor material. Use secondary sources to form questions and define context; validate local behavior with methods that reach the people and situations you intend to serve."],
+    ["Sampling and bias","A survey result depends on who could be contacted, who responded, and the question wording. Interviewing only enthusiastic users can miss people who abandoned the service. Recruit recent successes, failures, and non-users when the decision concerns adoption. Report the sample and limits instead of turning a small pattern into a population fact."],
+    ["Market and competitor lenses","TAM, SAM, and SOM narrow a market from possible demand to serviceable demand and plausible share. Five Forces examines competitive pressure from rivals, entrants, substitutes, buyers, and suppliers. Neither calculation tells you why a person switches today. Pair market analysis with the actual customer journey."],
+    ["Discoverability, use, retention","Someone may never find the product, may try it once, or may return regularly. These are different problems. Diagnose the stage before choosing marketing, onboarding, reliability, or habit changes. A growing sign-up count can coexist with weak first-use success and declining retention."]
+  ],
+  4:[
+    ["Diverge, then converge","When evidence is incomplete, generate several plausible causes and solution directions. Then narrow using user evidence, feasibility, business fit, and risk. The Double Diamond makes these two expansions and contractions visible. It is a thinking pattern, not a promise that the process will be linear."],
+    ["Five Whys and How Might We","Five Whys helps pursue a possible causal chain; stop when evidence ends, because a complex system can have more than one cause. How Might We turns an evidenced problem into a creative prompt. Keep it open enough for multiple options: ‘How might we make substitutions predictable?’ rather than ‘How might we add a bot?’"],
+    ["MoSCoW, Kano, and RICE","MoSCoW clarifies what is required within a release scope. Kano explores which attributes are basic expectations, performance drivers, or delights. RICE compares estimated reach, impact, confidence, and effort. Use the tool that fits the question, and always show assumptions and mandatory constraints alongside the score."],
+    ["Story, backlog, roadmap","A user story gives a delivery conversation a user goal; acceptance criteria make correct behavior observable. A backlog sequences concrete work. A roadmap communicates outcome bets and confidence over time. Mixing these levels produces a long feature list with no visible strategic choice."]
+  ],
+  5:[
+    ["Information architecture and UX writing","Information architecture groups and names things so people can predict where to go. UX writing makes an action and its consequence clear at the moment of choice. In the grocery case, ‘Approve replacement’ is clearer than a generic ‘Continue’ when the shopper must accept a price change."],
+    ["Accessibility is part of the task","Check that important information can be perceived, controls can be reached with a keyboard, focus is visible, text is readable, and errors can be recovered from. A flow that works only for a precise pointer or a wide screen has a narrower usable audience than its analytics may suggest."],
+    ["Design systems and UX laws","A design system reuses components and interaction rules. UX laws and heuristics suggest where effort or confusion may occur. Neither guarantees a good experience: a reused component can still have the wrong label or behavior. Observe a real task and test whether the pattern helps."],
+    ["PM, design, engineering together","The PM clarifies the job and outcome; design explores comprehension and flow; engineering tests feasibility, reliability, and cost. These are overlapping conversations, not a handoff chain. Bring operations in when the experience depends on a real-world service or recovery process."]
+  ],
+  6:[
+    ["Choose the right artifact","Use a short brief to align on problem and decision, a roadmap to communicate direction, a PRD to bound a change, a prototype to make an interaction inspectable, and a project hub to keep the current decision and links findable. A business requirements document may capture organizational constraints; its name matters less than the decision it supports."],
+    ["Progress and change updates","A useful progress update says what outcome is on track, what changed, what is blocked, who owns the next action, and when to expect another update. When a requirement changes, show scope, cost, timing, and user impact before silently replacing the earlier agreement."],
+    ["Launch and incident messages","A launch note states audience, rollout, expected behavior, support path, success measure, and rollback condition. An incident note states confirmed impact, current mitigation, owner, and next update. Keep suspected cause separate until it is verified."],
+    ["Tell an evidence-based story","STAR organizes situation, task, action, and result. Say what the team did, what you personally decided, and what was actually measured. If the result is unknown, say so and explain what was learned. A confident invented number makes a story weaker, not stronger."]
+  ],
+  7:[
+    ["AARRR and HEART","AARRR groups growth questions into acquisition, activation, retention, referral, and revenue. HEART groups experience questions around happiness, engagement, adoption, retention, and task success. Choose dimensions relevant to the decision; a framework is not a requirement to track everything."],
+    ["Instrument before analyzing","Define an event name, when it fires, properties, identity, exclusions, and the time window. Test edge cases such as retries, refunds, anonymous-to-signed-in changes, and delayed fulfilment. A funnel built on inconsistent events may show a reporting defect rather than a behavior change."],
+    ["Cohorts and retention","Choose a starting cohort, a meaningful return action, and a period matching natural use. A weekly grocery shopper may be healthy without ordering daily. Compare cohorts with similar opportunity to return, and distinguish reactivation from continuous retention."],
+    ["Marketplace and unit economics","A marketplace must create value for demand and supply. Track order contribution margin, acquisition cost, repeat use, refunds, and supply reliability separately. Revenue is not profit; gross merchandise value is not retained value. Improving a conversion rate can still damage the business if fulfilment cost rises faster."],
+    ["Insight, funnel, flow, retention","An insight chart shows how a measure changes, a funnel locates progression loss, a flow chart reveals paths, and a retention view follows cohorts. Each report answers a different question. Write the decision first, then choose the chart and check data quality before interpreting it."]
+  ]
+};
