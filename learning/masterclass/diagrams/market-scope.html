@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5ef">
+  <title>TAM, SAM, SOM · Product Masterclass</title>
+  <style>
+    :root{--paper:#f6f5ef;--ink:#172925;--muted:#60716b;--teal:#1b5b58;--line:#d9dfd8;--gold:#e4bb63}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 Inter,"Avenir Next",Avenir,system-ui,sans-serif}main{max-width:1100px;margin:auto;padding:45px 24px 70px}a{color:#155a50}a:focus-visible{outline:3px solid #b6761e;outline-offset:4px}.back{font-size:13px;font-weight:700}.eyebrow{font-size:11px;font-weight:800;letter-spacing:.15em;color:#2e7369;margin:48px 0 8px}h1{font:400 clamp(38px,6vw,64px)/1.05 Georgia,"Iowan Old Style",serif;letter-spacing:-.055em;margin:0 0 16px}header p{max-width:730px;color:#52635c;margin:0 0 26px}.diagram-container{width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:18px;background:#fffefa}.diagram-container svg{display:block;width:100%;min-width:960px}.explain{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:24px 0}.explain article{border-top:2px solid #80ae99;padding:14px 4px}.explain strong{display:block;color:#1b5b58}.explain p{font-size:13px;color:#52635c;margin:6px 0 0}.note{padding:19px 22px;border-left:4px solid var(--gold);background:#fffefa;color:#425a4e;font-size:14px}.note strong{color:var(--ink)}@media(max-width:700px){main{padding:28px 16px 55px}.eyebrow{margin-top:36px}.explain{grid-template-columns:1fr;gap:5px}.explain article{padding:10px 4px}}@media print{.diagram-container{overflow-x:visible}.diagram-container svg{min-width:0}}
+  </style>
+</head>
+<body>
+<main>
+  <a class="back" href="../index.html#week-3">← Back to Week 3</a>
+  <header><p class="eyebrow">WEEK 03 / MARKET SIZING</p><h1>Three scopes. One honest estimate.</h1><p>TAM, SAM, and SOM are nested boundaries. Each step asks what portion of demand your product can actually address.</p></header>
+  <div class="diagram-container">
+    <svg viewBox="0 0 960 600" role="img" aria-labelledby="market-scope-title market-scope-desc">
+      <title id="market-scope-title">TAM contains SAM, which contains SOM</title>
+      <desc id="market-scope-desc">Total demand is the broadest scope. The serviceable market is smaller because of delivery constraints. The obtainable market is smaller again because of competition, capacity, and adoption.</desc>
+      <rect x="48" y="48" width="864" height="500" rx="8" fill="#f5faf5" stroke="#b8d0c1" stroke-width="2"/>
+      <rect x="72" y="72" width="232" height="32" fill="#f5faf5"/>
+      <text x="84" y="93" fill="#1b5b58" font-family="Inter, Avenir Next, sans-serif" font-size="14" font-weight="600">TAM · ALL DEMAND</text>
+      <text x="84" y="135" fill="#51685a" font-family="Inter, Avenir Next, sans-serif" font-size="12" font-weight="600">Everyone who could need this job done</text>
+      <rect x="176" y="176" width="656" height="324" rx="8" fill="#e9f2eb" stroke="#6eaa90" stroke-width="2"/>
+      <rect x="200" y="160" width="293" height="32" fill="#e9f2eb"/>
+      <text x="212" y="181" fill="#1b5b58" font-family="Inter, Avenir Next, sans-serif" font-size="14" font-weight="600">SAM · REACHABLE DEMAND</text>
+      <text x="212" y="220" fill="#44685b" font-family="Inter, Avenir Next, sans-serif" font-size="12" font-weight="600">Where your model can serve</text>
+      <rect x="312" y="292" width="432" height="160" rx="8" fill="#fff3d7" stroke="#bb8c36" stroke-width="3"/>
+      <rect x="336" y="276" width="292" height="32" fill="#fff3d7"/>
+      <text x="348" y="297" fill="#624715" font-family="Inter, Avenir Next, sans-serif" font-size="14" font-weight="600">SOM · PLAUSIBLE SHARE</text>
+      <text x="348" y="341" fill="#574b34" font-family="Inter, Avenir Next, sans-serif" font-size="12" font-weight="600">What you might win with current</text>
+      <text x="348" y="363" fill="#574b34" font-family="Inter, Avenir Next, sans-serif" font-size="12" font-weight="600">capacity and competition</text>
+      <rect x="48" y="558" width="864" height="1" fill="#d9dfd8"/>
+      <text x="48" y="582" fill="#60716b" font-family="Inter, Avenir Next, sans-serif" font-size="9">SCOPE NARROWS → ASSUMPTIONS INCREASE → CONFIDENCE MUST BE EXPLAINED</text>
+    </svg>
+  </div>
+  <section class="explain" aria-label="How to use the scopes"><article><strong>1. Define demand</strong><p>Choose the customer job, unit, geography, and time period.</p></article><article><strong>2. Apply constraints</strong><p>Limit the scope to channels, regions, and segments you can serve.</p></article><article><strong>3. Test a share</strong><p>Estimate adoption with evidence about alternatives, capacity, and switching.</p></article></section>
+  <p class="note"><strong>Example:</strong> National food spending is too broad for one neighborhood restaurant. Its reachable delivery area is narrower; its plausible orders are narrower again. The Week 3 deck uses a local restaurant to teach this distinction. The numbers on a real plan need their own sources and assumptions.</p>
+</main>
+</body>
+</html>

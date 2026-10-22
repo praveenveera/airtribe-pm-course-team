@@ -1,4 +1,4 @@
-name: Deploy Project 4 dashboard
+name: Deploy course site and Project 4 dashboard
 
 on:
   push:
@@ -24,11 +24,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Assemble dashboard and survey site
+      - name: Assemble dashboard, survey, and masterclass
         run: |
-          mkdir -p _site/survey
+          mkdir -p _site/survey _site/masterclass/diagrams
           cp -r projects/zepto-increasing-aov/dashboard/* _site/
           cp projects/zepto-increasing-aov/webapp/index.html _site/survey/index.html
+          cp learning/masterclass/index.html learning/masterclass/styles.css learning/masterclass/app.js learning/masterclass/curriculum.js _site/masterclass/
+          cp learning/masterclass/diagrams/market-scope.html _site/masterclass/diagrams/
+          test -s _site/masterclass/index.html
+          test -s _site/masterclass/curriculum.js
+          test -s _site/masterclass/diagrams/market-scope.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -37,5 +42,4 @@ jobs:
 
       - name: Deploy to GitHub Pages
         id: deployment
-        continue-on-error: true
         uses: actions/deploy-pages@v4
