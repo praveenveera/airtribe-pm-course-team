@@ -1,6 +1,6 @@
 import { weeks, deckLenses, sourceBoundary } from "./curriculum.js?v=3";
 import { studios, aiTrack, capstone, externalGuides } from "./mastery.js?v=2";
-import { buildSearchIndex, searchCourse } from "./search.js?v=1";
+import { buildSearchIndex, searchCourse } from "./search.js?v=2";
 import { courseGuide, chapters, glossary } from "./textbook.js?v=1";
 
 const app = document.getElementById("app");
