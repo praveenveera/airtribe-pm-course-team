@@ -20,7 +20,7 @@ const stem = word => word.length > 5 ? word.replace(/(ments|ation|ings|tion|ers|
 const tokens = value => [...new Set(normalize(value).split(/\s+/).filter(word => word && !stopWords.has(word)).map(stem))];
 const related = term => relatedGroups.find(group => group.some(word => stem(word) === term))?.map(stem).filter(word => word !== term) || [];
 
-export function buildSearchIndex(weeks, deckLenses, studios, aiTrack, capstone, chapters = [], courseGuide = {}, glossary = [], companionLessons = {}, topicMeanings = {}, chapterClarity = [], domainExamples = [], conceptVisuals = []) {
+export function buildSearchIndex(weeks, deckLenses, studios, aiTrack, capstone, chapters = [], courseGuide = {}, glossary = [], companionLessons = {}, topicMeanings = {}, chapterClarity = [], domainExamples = [], conceptVisuals = [], caseStages = [], simulations = []) {
   const entries = [];
   for (const week of weeks) {
     const prefix = `Week ${week.id} · ${week.title}`;
@@ -41,7 +41,10 @@ export function buildSearchIndex(weeks, deckLenses, studios, aiTrack, capstone, 
     week.further.forEach(item => entries.push({kind:"Explore",week:week.id,title:item.title,description:item.text,body:week.title,href:`#week-${week.id}`,location:prefix}));
     const lens = deckLenses[week.id];
     if (lens) entries.push({kind:"Deck exercise",week:week.id,title:lens.title,description:lens.context,body:[lens.worked,lens.caution,...lens.moves.map(move => `${move.label} ${move.text}`)].join(" "),href:`#week-${week.id}`,location:prefix});
+    const sim = simulations[week.id-1];
+    if (sim) entries.push({kind:"Guided simulation",week:week.id,title:sim.title,description:sim.lead,body:[sim.carry,...sim.steps.map(step=>`${step.label} ${step.prompt} ${step.choices.map(choice=>choice.slice(0,3).join(" ")).join(" ")}`)].join(" "),href:`#week-${week.id}-concept-1`,location:prefix});
   }
+  caseStages.forEach(stage=>entries.push({kind:"Case journey",week:stage.week,title:`Week ${stage.week}: ${stage.label}`,description:stage.decision,body:[stage.evidence,stage.change,stage.artifact,stage.open].join(" "),href:"#case",location:"Seven-week grocery case"}));
   studios.forEach((studio,index) => entries.push({kind:"Decision case",week:index+1,title:studio.title,description:studio.situation,body:[...studio.evidence,studio.question,...studio.options,studio.reasoning,studio.failure,studio.ai,studio.artifact].join(" "),href:`#week-${index+1}`,location:`Week ${index+1} · Applied decision`}));
   aiTrack.forEach((studio,index) => entries.push({kind:"AI PM studio",week:index+1,title:studio.title,description:studio.premise,body:[studio.test,studio.output,studio.explain,studio.example,studio.trap].join(" "),href:`#ai-track-${index+1}`,location:`AI PM track · Studio ${index+1}`}));
   capstone.stages.forEach(stage => entries.push({kind:"Capstone",week:stage.week,title:stage.label,description:stage.prompt,body:capstone.situation,href:`#capstone-stage-${stage.week}`,location:`Capstone · Stage ${stage.week}`}));

@@ -9,6 +9,7 @@ A static, public masterclass covering Weeks 1–7 of the course. It uses curated
 - Each chapter begins with explicit “what it means” and “what it means for a PM” explanations. Every listed week topic has a plain-language definition; Week 1 begins with product, product manager, and PM work before the lesson.
 - Every chapter also has SaaS, ecommerce, and AI-product examples (63 total) with a transfer question. Public product documentation supports the capabilities; the PM decisions are labeled illustrative rather than represented as company history.
 - All 21 chapters now contain an original, chapter-specific visual explanation. The diagrams use distinct shapes for systems, choices, evidence, journeys, records, and metrics, with a short reading guide and transfer question. Deck slide references identify the conceptual inspiration; no slide artwork is copied or hosted.
+- A seven-stage fictional grocery case shows how evidence, decisions, artifacts, and open questions change from Week 1 to Week 7. Every week also has a three-decision simulation with immediate consequences, evidence limits, and a visible decision trace. Simulation choices are saved in this browser for revisiting; they are not graded or synced.
 - A 28-day practice path pairs three chapter days with one fieldwork day each week. Learners write before seeing worked reasoning, self-review against four criteria, and revisit due items after one, three, or seven days. Practice drafts and dates stay in browser-local storage and can be exported as text.
 - A plain-language glossary defines recurring PM terms. External primary-source readings extend each week; they are linked and paraphrased, not reproduced.
 - The selectable visual model, deck exercise, teardown, recall prompt, and applied decision follow the reading as practice.
@@ -21,7 +22,7 @@ A static, public masterclass covering Weeks 1–7 of the course. It uses curated
 - Keyword and context-based search across the full chapter text, week guides, glossary, deck exercises, cases, AI PM studios, and capstone stages, with direct result links. Search runs locally using weighted text matches and curated related terms; it does not call an AI service or send queries to a server.
 - Keyboard-operable controls, responsive layout, and browser-local completion and capstone state.
 
-Completion, practice journal, and capstone drafts stay in the browser's `localStorage`; they are not synced across devices or accounts. No sign-in, backend, AI answer generation, automated grading, or analytics collection is used. Self-review scores do not prove PM competence. The illustrative cases are teaching scenarios, not verified product research.
+Completion, simulation choices, practice journal, and capstone drafts stay in the browser's `localStorage`; they are not synced across devices or accounts. No sign-in, backend, AI answer generation, automated grading, or analytics collection is used. Self-review scores do not prove PM competence. The illustrative cases are teaching scenarios, not verified product research.
 
 ## Local preview
 

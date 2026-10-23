@@ -1,33 +1,41 @@
 import { weeks, deckLenses, sourceBoundary } from "./curriculum.js?v=3";
 import { studios, aiTrack, capstone, externalGuides } from "./mastery.js?v=2";
-import { buildSearchIndex, searchCourse } from "./search.js?v=6";
+import { buildSearchIndex, searchCourse } from "./search.js?v=7";
 import { courseGuide, chapters, glossary, companionLessons, topicMeanings, chapterClarity } from "./textbook.js?v=3";
 import { domainExamples, productSources } from "./domain-examples.js?v=1";
 import { dayPlan, readPractice, writePractice, todayKey, currentDay, nextReview, dueDays } from "./daily.js?v=1";
 import { conceptVisuals } from "./concept-visuals.js?v=1";
+import { caseStages, simulations, readSimulationAnswers, writeSimulationAnswers } from "./simulations.js?v=1";
 
 const app = document.getElementById("app");
 let storedProgress = [];
 try { storedProgress = JSON.parse(localStorage.getItem("pm-masterclass-completed") || "[]"); } catch { storedProgress = []; }
 const saved = new Set(Array.isArray(storedProgress) ? storedProgress : []);
 const practice = readPractice();
-const state = { week: null, concept: 0, page: "home", day: 1, search: "", answerShown: false, dailyAnswerShown: false, studioAnswer: false, studioChoice: null, mapStep: 0, lab: { viewed: 100, cart: 54, checkout: 31, paid: 19 } };
+const simAnswers = readSimulationAnswers();
+const state = { week: null, concept: 0, page: "home", day: 1, caseStage: 1, simStep: 0, search: "", answerShown: false, dailyAnswerShown: false, studioAnswer: false, studioChoice: null, mapStep: 0, lab: { viewed: 100, cart: 54, checkout: 31, paid: 19 } };
 
 const esc = (value) => String(value).replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[char]);
 const conceptKey = (week, concept) => `${week.id}-${concept}`;
 const completed = () => saved.size;
 const percent = (count, total) => total ? Math.round(100 * count / total) : 0;
-const searchIndex = buildSearchIndex(weeks, deckLenses, studios, aiTrack, capstone, chapters, courseGuide, glossary, companionLessons, topicMeanings, chapterClarity, domainExamples, conceptVisuals);
+const searchIndex = buildSearchIndex(weeks, deckLenses, studios, aiTrack, capstone, chapters, courseGuide, glossary, companionLessons, topicMeanings, chapterClarity, domainExamples, conceptVisuals, caseStages, simulations);
 
 function updateRoute() {
   const match = location.hash.match(/^#week-(\d+)(?:-concept-(\d+))?$/);
   const aiMatch = location.hash.match(/^#ai-track(?:-(\d+))?$/);
   const capstoneMatch = location.hash.match(/^#capstone(?:-stage-(\d+))?$/);
   const dailyMatch = location.hash.match(/^#daily(?:-(\d+))?$/);
-  state.page = location.hash === "#glossary" ? "glossary" : dailyMatch ? "daily" : aiMatch ? "ai" : capstoneMatch ? "capstone" : match ? "lesson" : "home";
+  state.page = location.hash === "#glossary" ? "glossary" : location.hash === "#case" ? "case" : dailyMatch ? "daily" : aiMatch ? "ai" : capstoneMatch ? "capstone" : match ? "lesson" : "home";
   state.day = dailyMatch?.[1] ? Math.min(28,Math.max(1,Number(dailyMatch[1]))) : currentDay(practice.started);
   state.week = match ? Math.min(7, Math.max(1, Number(match[1]))) : null;
   state.concept = match ? Math.min(2, Math.max(0, Number(match[2] || 1) - 1)) : 0;
+  state.caseStage = state.week || 1;
+  if (state.week) {
+    const answers = Array.isArray(simAnswers[state.week]) ? simAnswers[state.week] : [];
+    const next = [0,1,2].find(index => !Number.isInteger(answers[index]) || answers[index] < 0 || answers[index] > 2);
+    state.simStep = next ?? 2;
+  }
   state.answerShown = false;
   state.dailyAnswerShown = false;
   state.studioAnswer = false;
@@ -44,7 +52,7 @@ function updateRoute() {
 function header() {
   return `<header class="site-header"><div class="header-inner">
     <a class="brand" href="#home" aria-label="Product Masterclass home"><span class="brand-symbol" aria-hidden="true"><span></span><span></span><span></span></span><span>PRODUCT<span class="brand-accent">/</span>MASTERCLASS</span></a>
-    <nav aria-label="Main navigation"><a href="#home" ${state.page === "home" && location.hash !== "#search" ? 'aria-current="page"' : ""}>Curriculum</a><a href="#daily" ${state.page === "daily" ? 'aria-current="page"' : ""}>Daily practice</a><a href="#search" ${location.hash === "#search" ? 'aria-current="page"' : ""}>Search</a><a href="#glossary" ${state.page === "glossary" ? 'aria-current="page"' : ""}>Glossary</a><a href="#ai-track" ${state.page === "ai" ? 'aria-current="page"' : ""}>AI PM track</a><a href="#capstone" ${state.page === "capstone" ? 'aria-current="page"' : ""}>Capstone</a></nav>
+    <nav aria-label="Main navigation"><a href="#home" ${state.page === "home" && location.hash !== "#search" ? 'aria-current="page"' : ""}>Curriculum</a><a href="#case" ${state.page === "case" ? 'aria-current="page"' : ""}>Case journey</a><a href="#daily" ${state.page === "daily" ? 'aria-current="page"' : ""}>Daily practice</a><a href="#search" ${location.hash === "#search" ? 'aria-current="page"' : ""}>Search</a><a href="#glossary" ${state.page === "glossary" ? 'aria-current="page"' : ""}>Glossary</a><a href="#ai-track" ${state.page === "ai" ? 'aria-current="page"' : ""}>AI PM track</a><a href="#capstone" ${state.page === "capstone" ? 'aria-current="page"' : ""}>Capstone</a></nav>
     <span class="header-progress" aria-label="${completed()} of 21 concepts marked complete">${completed()} / 21</span>
   </div></header>`;
 }
@@ -59,6 +67,7 @@ function home() {
   return `${header()}<main id="main">
     <section class="hero"><div class="hero-inner"><div class="hero-copy"><span class="eyebrow">A SEVEN-WEEK PRODUCT MASTERCLASS</span><h1>Learn the craft.<br><em>Practice the judgment.</em></h1><p class="hero-lede">Start from zero and learn how products create value. Read 21 guided chapters, follow one product from idea to measurement, then test your thinking in visual labs, decisions, and an AI product track.</p><div class="hero-actions"><a class="button button-primary" href="#week-1-concept-1">Start Chapter 1 <span aria-hidden="true">↗</span></a><a class="button button-quiet" href="#glossary">Open the glossary <span aria-hidden="true">↗</span></a></div><div class="hero-stats"><span><strong>07</strong> weeks</span><span><strong>21</strong> guided chapters</span><span><strong>14</strong> class sessions</span></div></div><div class="hero-art" aria-label="The product learning sequence"><div class="hero-orbit" aria-hidden="true"></div><div class="hero-stamp" aria-hidden="true">THINK<br>MAKE<br>LEARN <span>✳</span></div><div class="hero-art-inner"><span>01 / DISCOVER</span><span>02 / CHOOSE</span><span>03 / DESIGN</span><span>04 / MEASURE</span><strong>Make the reasoning visible.</strong></div><span class="hero-art-note" aria-hidden="true">THE CRAFT OF PRODUCT ↗</span></div></div></section>
     <section class="approach-section" aria-label="How each lesson works"><div class="section-kicker">START FROM ZERO</div><h2 class="start-title">No PM background needed.</h2><p class="start-lede">Follow 21 chapters in order. Each one defines the idea, shows how to use it, walks through the same grocery product, then lets you practice. Two class sessions feed each week. The glossary is always one tap away.</p><div class="approach-grid"><div><span>01 / READ</span><h2>Learn the idea</h2><p>Understand the terms, steps, and trade-offs in plain language.</p></div><div><span>02 / FOLLOW</span><h2>Work the case</h2><p>Watch a product decision develop from Week 1 to Week 7.</p></div><div><span>03 / PRACTICE</span><h2>Test your thinking</h2><p>Use the visual tools, decision cases, and capstone after reading.</p></div></div><a class="start-link" href="#week-1-concept-1">Start Chapter 1 ↗</a></section>
+    <section class="case-invite"><div><span class="section-kicker">ONE PRODUCT / SEVEN CHANGING DECISIONS</span><h2>Follow the case as evidence arrives.</h2><p>See a grocery service move from customer job to market choice, research, design, pilot, and metrics. Each week changes what the team can responsibly claim.</p></div><a class="button button-dark" href="#case">Explore the case journey ↗</a></section>
     <section class="daily-invite"><div><span class="section-kicker">28 DAYS / ONE DAILY DECISION</span><h2>Read. Recall. Decide. Review.</h2><p>Practice the craft for 40 minutes a day: a chapter, an answer written before the model, honest self-review, and weekly fieldwork. Due concepts return for spaced recall.</p></div><a class="button button-primary" href="#daily">Open today's practice ↗</a></section>
     <section class="feature-strip" aria-label="Advanced learning paths"><a href="#ai-track"><span>PARALLEL TRACK / 07 STUDIOS</span><h2>Become an AI-first PM</h2><p>Practice task selection, evidence boundaries, evaluation, human control, release gates, and operation.</p><strong>Explore the track ↗</strong></a><a href="#capstone"><span>FINAL PROJECT / 07 STAGES</span><h2>Build one complete decision</h2><p>Carry a fictional case from customer outcome through strategy, research, design, launch, and metrics.</p><strong>Open the capstone ↗</strong></a></section>
     <section class="course-section" id="curriculum"><div class="section-heading"><div><span class="section-kicker">${searching ? "EXPLORE THE COURSE" : "THE CURRICULUM"}</span><h2>${searching ? "Find the right lesson." : "Seven weeks. One connected craft."}</h2><p>${searching ? "Search by a term or describe a product question. Results show both direct and related matches." : "Start anywhere, or follow the arc from customer value through measurement."}</p></div></div><div class="search-tools"><label class="search-box"><span class="sr-only">Search the masterclass by keyword or question</span><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 5 5"></path></svg><input id="course-search" type="search" placeholder="Try “where do users drop off?”" value="${esc(state.search)}" autocomplete="off"></label>${searching ? '<button class="search-clear" type="button" data-action="clear-search">Clear</button>' : ""}</div><div class="search-examples" aria-label="Example searches"><span>TRY A QUESTION</span>${["Where do users drop off?","How do I prioritize?","Is AI the right solution?"].map(item => `<button type="button" data-search-example="${esc(item)}">${esc(item)} ↗</button>`).join("")}</div>${searching ? `<div class="search-status" role="status">${results.length} ${results.length === 1 ? "result" : "results"} for “${esc(state.search)}”</div><div class="search-results">${results.slice(0,16).map(searchCard).join("")}</div>${results.length > 16 ? `<p class="search-more">Showing the 16 strongest matches. Add a specific term to narrow the results.</p>` : ""}${results.length ? "" : '<p class="empty-state">No close match yet. Try a shorter phrase or a topic such as “research”, “metrics”, or “AI evaluation”.</p>'}` : `<div class="week-grid">${weeks.map(weekCard).join("")}</div>`}</section>
@@ -100,6 +109,26 @@ function domainGallery(weekId,index) {
   return `<section class="domain-gallery" aria-label="Examples across product domains"><div class="domain-heading"><span class="reading-label">ONE CONCEPT / THREE DOMAINS</span><h3>See the same idea in different products.</h3><p>These illustrative PM decisions use public product documentation and AI evaluation guidance. They do not describe the companies' internal decisions or results.</p></div><div class="domain-cards">${Object.entries(productSources).map(([key,source]) => `<article><span>${esc(labels[key])}</span><p>${esc(example[key])}</p><a href="${esc(source.url)}" target="_blank" rel="noopener noreferrer">Check the public reference: ${esc(source.name)} ↗</a></article>`).join("")}</div><div class="domain-transfer"><strong>Transfer the idea</strong><p>${esc(example.transfer)}</p></div></section>`;
 }
 
+function caseJourney() {
+  const stage = caseStages[state.caseStage-1];
+  return `<section class="case-journey" aria-label="Seven-week product case journey"><div class="case-journey-head"><span class="section-kicker">THE EVOLVING CASE / NEIGHBORHOOD GROCERY</span><h3>One product. A changing decision.</h3><p>This is a fictional teaching case. Select a week to see what became known, what the team decided, and what stayed uncertain.</p></div><div class="case-track" role="group" aria-label="Case stages">${caseStages.map(item=>`<button type="button" data-case-stage="${item.week}" aria-pressed="${item.week===stage.week}" class="${item.week===stage.week?"active":""}"><span>${String(item.week).padStart(2,"0")}</span><strong>${esc(item.label)}</strong></button>`).join("")}</div><div class="case-stage" aria-live="polite"><div class="case-stage-top"><span>WEEK ${String(stage.week).padStart(2,"0")} / ${esc(weeks[stage.week-1].title.toUpperCase())}</span><h4>${esc(stage.label)}</h4></div><div class="case-stage-grid"><div><span>NEW EVIDENCE</span><p>${esc(stage.evidence)}</p></div><div><span>THE DECISION</span><p>${esc(stage.decision)}</p></div><div><span>WHAT CHANGES</span><p>${esc(stage.change)}</p></div><div><span>STILL OPEN</span><p>${esc(stage.open)}</p></div></div><div class="case-stage-foot"><p><strong>Artifact:</strong> ${esc(stage.artifact)}</p><small>Illustrative synthesis · ${esc(stage.source)}</small><a href="#week-${stage.week}-concept-1">Study Week ${stage.week} ↗</a></div></div></section>`;
+}
+
+function casePage() {
+  return `${header()}<main id="main" class="standalone case-page"><div class="page-intro"><span class="section-kicker">THE CONNECTED STORY</span><h1>Watch the product<br><em>decision evolve.</em></h1><p>Follow one fictional grocery service from a customer's dinner problem to a measured pilot. At each stage, a PM changes the decision as the evidence changes.</p><p class="page-note">The cases and numbers are illustrative. The source decks inform the teaching sequence; the original PDFs are not hosted here.</p></div>${caseJourney()}<section class="case-page-next"><h2>Now make the call yourself.</h2><p>Every week has a three-step decision simulation. Your choices reveal consequences and remaining uncertainty, then build a decision trace.</p><a class="button button-primary" href="#week-1-concept-1">Start Week 1 ↗</a></section></main>${footer()}`;
+}
+
+function simulationPanel(weekId) {
+  const sim = simulations[weekId-1];
+  const answers = Array.isArray(simAnswers[weekId]) ? simAnswers[weekId] : [];
+  const stepIndex = state.simStep;
+  const step = sim.steps[stepIndex];
+  const selected = Number.isInteger(answers[stepIndex]) && answers[stepIndex] >= 0 && answers[stepIndex] < step.choices.length ? answers[stepIndex] : null;
+  const choice = selected === null ? null : step.choices[selected];
+  const finished = sim.steps.every((item,index) => Number.isInteger(answers[index]) && answers[index] >= 0 && answers[index] < item.choices.length);
+  return `<section class="simulation-panel" aria-label="Week ${weekId} guided decision simulation"><div class="simulation-head"><span class="section-kicker">GUIDED SIMULATION / WEEK ${String(weekId).padStart(2,"0")}</span><h3>${esc(sim.title)}</h3><p>${esc(sim.lead)}</p><small>Illustrative scenario. Choices show plausible consequences, not predicted product results.</small></div><div class="simulation-steps" role="group" aria-label="Decision steps">${sim.steps.map((item,index)=>{const unlocked=index===0||Number.isInteger(answers[index-1]);return `<button type="button" data-sim-step="${index}" ${unlocked?"":"disabled"} aria-pressed="${stepIndex===index}" class="${stepIndex===index?"active":""}"><span>${String(index+1).padStart(2,"0")}</span><strong>${esc(item.label)}</strong><small>${Number.isInteger(answers[index])?"Decided":unlocked?"Choose":"Complete prior step"}</small></button>`}).join("")}</div><div class="simulation-work"><div class="simulation-question"><span>DECISION ${stepIndex+1} OF 3</span><h4>${esc(step.prompt)}</h4><p>Select a route. The result will show what it helps and what remains uncertain.</p></div><div class="simulation-options" role="group" aria-label="Choices for decision ${stepIndex+1}">${step.choices.map((item,index)=>`<button type="button" data-sim-choice="${index}" aria-pressed="${selected===index}" class="${selected===index?"selected":""}"><span>${String.fromCharCode(65+index)}</span><strong>${esc(item[0])}</strong></button>`).join("")}</div>${choice?`<div class="sim-feedback" tabindex="-1" aria-live="polite"><span>${choice[3]?"A STRONGER ROUTE FOR THIS CASE":"WHAT THIS ROUTE CHANGES"}</span><p>${esc(choice[1])}</p><p><strong>Still to check:</strong> ${esc(choice[2])}</p>${choice[3]?"":`<p><strong>Compare:</strong> ${esc(step.choices.find(item=>item[3])[0])} is better supported by the scenario evidence.</p>`}</div>`:""}<div class="simulation-controls">${choice&&stepIndex<2?`<button type="button" class="button button-dark" data-action="sim-next">Continue to decision ${stepIndex+2} →</button>`:""}${choice&&stepIndex===2?`<span>Decision trace complete. You can revise any step above.</span>`:""}</div></div><div class="simulation-trace"><div><span>YOUR DECISION TRACE</span><p>Each choice changes the path; a completed path is practice, not a grade.</p></div><ol>${sim.steps.map((item,index)=>`<li><span>${String(index+1).padStart(2,"0")} / ${esc(item.label)}</span><strong>${Number.isInteger(answers[index])?esc(item.choices[answers[index]]?.[0]||"Choose a route"):"Choose a route"}</strong></li>`).join("")}</ol>${finished?`<p class="simulation-carry"><strong>Carry into your PM work:</strong> ${esc(sim.carry)}</p>`:""}</div></section>`;
+}
+
 function glossaryPage() {
   return `${header()}<main id="main" class="standalone glossary-page"><div class="page-intro"><span class="section-kicker">REFERENCE / PLAIN LANGUAGE</span><h1>The PM<br><em>glossary.</em></h1><p>Read this when a new term appears. Each definition tells you what it means in a product decision.</p></div><div class="glossary-grid">${glossary.map(([term,definition]) => `<article><h2>${esc(term)}</h2><p>${esc(definition)}</p></article>`).join("")}</div><div class="glossary-end"><a class="button button-primary" href="#week-1-concept-1">Start at Chapter 1 ↗</a></div></main>${footer()}`;
 }
@@ -138,7 +167,9 @@ function lesson() {
     <section class="concept-nav" aria-label="Concepts in this week"><span class="concept-nav-label">CHOOSE A CONCEPT</span><div>${week.concepts.map((item,index) => `<a href="#week-${week.id}-concept-${index+1}" class="concept-chip ${index===state.concept ? "active" : ""}" ${index===state.concept ? 'aria-current="step"' : ""}><span>${String(index+1).padStart(2,"0")}</span>${esc(item.title)}${saved.has(conceptKey(week,index)) ? '<b aria-label="completed">✓</b>' : ""}</a>`).join("")}</div></section>
     <article class="concept-article"><div class="concept-head"><div><span class="section-kicker">CONCEPT ${String(state.concept+1).padStart(2,"0")} / ${esc(concept.tag.toUpperCase())}</span><h2>${esc(concept.title)}</h2><p>${esc(concept.brief)}</p></div><span class="concept-index" aria-hidden="true">0${state.concept+1}</span></div>
     ${readingChapter(week,state.concept)}
+    ${caseJourney()}
     <div class="workshop-divider"><span>AFTER THE READING</span><h3>Apply the chapter.</h3><p>Use the model, source exercise, and decision case to test what you just learned.</p></div>
+    ${simulationPanel(week.id)}
     <section class="visual-panel" aria-label="Interactive concept map"><div class="visual-panel-title"><span>THE MODEL</span><span>Select a step to explore</span></div><div class="model-line">${week.map.map((step,index) => `<button type="button" class="model-step ${state.mapStep===index ? "selected" : ""}" data-map="${index}" aria-pressed="${state.mapStep===index}"><span>${String(index+1).padStart(2,"0")}</span><strong>${esc(step)}</strong></button>`).join("")}</div><p class="model-caption"><strong>${esc(week.map[state.mapStep])}.</strong> ${esc(mapDescriptions[week.id][state.mapStep])}</p></section>
     ${deckLens(week)}
     ${week.id===7 ? metricLab() : week.id===4 ? riceLab() : ""}
@@ -199,11 +230,36 @@ function riceLab() {
 }
 
 function render() {
-  document.title = state.week ? `${weeks[state.week-1].title} · Product Masterclass` : state.page === "daily" ? "Daily practice · Product Masterclass" : state.page === "glossary" ? "Glossary · Product Masterclass" : state.page === "ai" ? "AI-first PM track · Product Masterclass" : state.page === "capstone" ? "Capstone · Product Masterclass" : "Product Masterclass · Learn the thinking behind the work";
-  app.innerHTML = state.page === "lesson" ? lesson() : state.page === "daily" ? dailyPage() : state.page === "glossary" ? glossaryPage() : state.page === "ai" ? aiPage() : state.page === "capstone" ? capstonePage() : home();
+  document.title = state.week ? `${weeks[state.week-1].title} · Product Masterclass` : state.page === "daily" ? "Daily practice · Product Masterclass" : state.page === "glossary" ? "Glossary · Product Masterclass" : state.page === "case" ? "Case journey · Product Masterclass" : state.page === "ai" ? "AI-first PM track · Product Masterclass" : state.page === "capstone" ? "Capstone · Product Masterclass" : "Product Masterclass · Learn the thinking behind the work";
+  app.innerHTML = state.page === "lesson" ? lesson() : state.page === "daily" ? dailyPage() : state.page === "glossary" ? glossaryPage() : state.page === "case" ? casePage() : state.page === "ai" ? aiPage() : state.page === "capstone" ? capstonePage() : home();
 }
 
 document.addEventListener("click", event => {
+  const caseButton = event.target.closest("[data-case-stage]");
+  if (caseButton) {
+    state.caseStage=Number(caseButton.dataset.caseStage);
+    document.querySelector(".case-journey").outerHTML=caseJourney();
+    document.querySelector(`[data-case-stage="${state.caseStage}"]`)?.focus();
+    return;
+  }
+  const simStep = event.target.closest("[data-sim-step]");
+  if (simStep) {
+    state.simStep=Number(simStep.dataset.simStep);
+    document.querySelector(".simulation-panel").outerHTML=simulationPanel(state.week);
+    document.querySelector(`[data-sim-step="${state.simStep}"]`)?.focus();
+    return;
+  }
+  const simChoice = event.target.closest("[data-sim-choice]");
+  if (simChoice) {
+    const answers=Array.isArray(simAnswers[state.week])?simAnswers[state.week]:[];
+    answers[state.simStep]=Number(simChoice.dataset.simChoice);
+    answers.length=state.simStep+1;
+    simAnswers[state.week]=answers;
+    writeSimulationAnswers(simAnswers);
+    document.querySelector(".simulation-panel").outerHTML=simulationPanel(state.week);
+    document.querySelector(".sim-feedback")?.focus();
+    return;
+  }
   const score = event.target.closest("[data-practice-score]");
   if (score) {
     const record = practice.records[state.day] || {};
@@ -224,6 +280,7 @@ document.addEventListener("click", event => {
   if (map) { state.mapStep = Number(map.dataset.map); render(); document.querySelector(`[data-map="${state.mapStep}"]`)?.focus(); return; }
   const action = event.target.closest("[data-action]");
   if (!action) return;
+  if (action.dataset.action === "sim-next") { state.simStep=Math.min(2,state.simStep+1); document.querySelector(".simulation-panel").outerHTML=simulationPanel(state.week); document.querySelector(`[data-sim-step="${state.simStep}"]`)?.focus(); return; }
   if (action.dataset.action === "start-practice") { practice.started=todayKey(); writePractice(practice); render(); return; }
   if (action.dataset.action === "export-practice") { exportPractice(); return; }
   if (action.dataset.action === "reveal-daily") { if (!(practice.records[state.day]?.draft||"").trim()) return; state.dailyAnswerShown=true; render(); document.querySelector(".daily-model")?.focus(); return; }
