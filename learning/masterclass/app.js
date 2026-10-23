@@ -1,11 +1,12 @@
 import { weeks, deckLenses, sourceBoundary } from "./curriculum.js?v=3";
 import { studios, aiTrack, capstone, externalGuides } from "./mastery.js?v=2";
-import { buildSearchIndex, searchCourse } from "./search.js?v=7";
+import { buildSearchIndex, searchCourse } from "./search.js?v=8";
 import { courseGuide, chapters, glossary, companionLessons, topicMeanings, chapterClarity } from "./textbook.js?v=3";
 import { domainExamples, productSources } from "./domain-examples.js?v=1";
 import { dayPlan, readPractice, writePractice, todayKey, currentDay, nextReview, dueDays } from "./daily.js?v=1";
 import { conceptVisuals } from "./concept-visuals.js?v=1";
 import { caseStages, simulations, readSimulationAnswers, writeSimulationAnswers } from "./simulations.js?v=1";
+import { platformStages, platformConcepts, platformMetricCandidates, platformReading } from "./platform-examples.js?v=1";
 
 const app = document.getElementById("app");
 let storedProgress = [];
@@ -13,20 +14,20 @@ try { storedProgress = JSON.parse(localStorage.getItem("pm-masterclass-completed
 const saved = new Set(Array.isArray(storedProgress) ? storedProgress : []);
 const practice = readPractice();
 const simAnswers = readSimulationAnswers();
-const state = { week: null, concept: 0, page: "home", day: 1, caseStage: 1, simStep: 0, search: "", answerShown: false, dailyAnswerShown: false, studioAnswer: false, studioChoice: null, mapStep: 0, lab: { viewed: 100, cart: 54, checkout: 31, paid: 19 } };
+const state = { week: null, concept: 0, page: "home", day: 1, caseStage: 1, platformStage: 1, platformMetric: "overall", simStep: 0, search: "", answerShown: false, dailyAnswerShown: false, studioAnswer: false, studioChoice: null, mapStep: 0, lab: { viewed: 100, cart: 54, checkout: 31, paid: 19 } };
 
 const esc = (value) => String(value).replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[char]);
 const conceptKey = (week, concept) => `${week.id}-${concept}`;
 const completed = () => saved.size;
 const percent = (count, total) => total ? Math.round(100 * count / total) : 0;
-const searchIndex = buildSearchIndex(weeks, deckLenses, studios, aiTrack, capstone, chapters, courseGuide, glossary, companionLessons, topicMeanings, chapterClarity, domainExamples, conceptVisuals, caseStages, simulations);
+const searchIndex = buildSearchIndex(weeks, deckLenses, studios, aiTrack, capstone, chapters, courseGuide, glossary, companionLessons, topicMeanings, chapterClarity, domainExamples, conceptVisuals, caseStages, simulations, platformStages, platformConcepts, platformMetricCandidates);
 
 function updateRoute() {
   const match = location.hash.match(/^#week-(\d+)(?:-concept-(\d+))?$/);
   const aiMatch = location.hash.match(/^#ai-track(?:-(\d+))?$/);
   const capstoneMatch = location.hash.match(/^#capstone(?:-stage-(\d+))?$/);
   const dailyMatch = location.hash.match(/^#daily(?:-(\d+))?$/);
-  state.page = location.hash === "#glossary" ? "glossary" : location.hash === "#case" ? "case" : dailyMatch ? "daily" : aiMatch ? "ai" : capstoneMatch ? "capstone" : match ? "lesson" : "home";
+  state.page = location.hash === "#glossary" ? "glossary" : location.hash === "#case" ? "case" : location.hash === "#platform" ? "platform" : dailyMatch ? "daily" : aiMatch ? "ai" : capstoneMatch ? "capstone" : match ? "lesson" : "home";
   state.day = dailyMatch?.[1] ? Math.min(28,Math.max(1,Number(dailyMatch[1]))) : currentDay(practice.started);
   state.week = match ? Math.min(7, Math.max(1, Number(match[1]))) : null;
   state.concept = match ? Math.min(2, Math.max(0, Number(match[2] || 1) - 1)) : 0;
@@ -52,7 +53,7 @@ function updateRoute() {
 function header() {
   return `<header class="site-header"><div class="header-inner">
     <a class="brand" href="#home" aria-label="Product Masterclass home"><span class="brand-symbol" aria-hidden="true"><span></span><span></span><span></span></span><span>PRODUCT<span class="brand-accent">/</span>MASTERCLASS</span></a>
-    <nav aria-label="Main navigation"><a href="#home" ${state.page === "home" && location.hash !== "#search" ? 'aria-current="page"' : ""}>Curriculum</a><a href="#case" ${state.page === "case" ? 'aria-current="page"' : ""}>Case journey</a><a href="#daily" ${state.page === "daily" ? 'aria-current="page"' : ""}>Daily practice</a><a href="#search" ${location.hash === "#search" ? 'aria-current="page"' : ""}>Search</a><a href="#glossary" ${state.page === "glossary" ? 'aria-current="page"' : ""}>Glossary</a><a href="#ai-track" ${state.page === "ai" ? 'aria-current="page"' : ""}>AI PM track</a><a href="#capstone" ${state.page === "capstone" ? 'aria-current="page"' : ""}>Capstone</a></nav>
+    <nav aria-label="Main navigation"><a href="#home" ${state.page === "home" && location.hash !== "#search" ? 'aria-current="page"' : ""}>Curriculum</a><a href="#case" ${state.page === "case" ? 'aria-current="page"' : ""}>Case journey</a><a href="#platform" ${state.page === "platform" ? 'aria-current="page"' : ""}>AI platform lens</a><a href="#daily" ${state.page === "daily" ? 'aria-current="page"' : ""}>Daily practice</a><a href="#search" ${location.hash === "#search" ? 'aria-current="page"' : ""}>Search</a><a href="#glossary" ${state.page === "glossary" ? 'aria-current="page"' : ""}>Glossary</a><a href="#ai-track" ${state.page === "ai" ? 'aria-current="page"' : ""}>AI PM track</a><a href="#capstone" ${state.page === "capstone" ? 'aria-current="page"' : ""}>Capstone</a></nav>
     <span class="header-progress" aria-label="${completed()} of 21 concepts marked complete">${completed()} / 21</span>
   </div></header>`;
 }
@@ -68,6 +69,7 @@ function home() {
     <section class="hero"><div class="hero-inner"><div class="hero-copy"><span class="eyebrow">A SEVEN-WEEK PRODUCT MASTERCLASS</span><h1>Learn the craft.<br><em>Practice the judgment.</em></h1><p class="hero-lede">Start from zero and learn how products create value. Read 21 guided chapters, follow one product from idea to measurement, then test your thinking in visual labs, decisions, and an AI product track.</p><div class="hero-actions"><a class="button button-primary" href="#week-1-concept-1">Start Chapter 1 <span aria-hidden="true">↗</span></a><a class="button button-quiet" href="#glossary">Open the glossary <span aria-hidden="true">↗</span></a></div><div class="hero-stats"><span><strong>07</strong> weeks</span><span><strong>21</strong> guided chapters</span><span><strong>14</strong> class sessions</span></div></div><div class="hero-art" aria-label="The product learning sequence"><div class="hero-orbit" aria-hidden="true"></div><div class="hero-stamp" aria-hidden="true">THINK<br>MAKE<br>LEARN <span>✳</span></div><div class="hero-art-inner"><span>01 / DISCOVER</span><span>02 / CHOOSE</span><span>03 / DESIGN</span><span>04 / MEASURE</span><strong>Make the reasoning visible.</strong></div><span class="hero-art-note" aria-hidden="true">THE CRAFT OF PRODUCT ↗</span></div></div></section>
     <section class="approach-section" aria-label="How each lesson works"><div class="section-kicker">START FROM ZERO</div><h2 class="start-title">No PM background needed.</h2><p class="start-lede">Follow 21 chapters in order. Each one defines the idea, shows how to use it, walks through the same grocery product, then lets you practice. Two class sessions feed each week. The glossary is always one tap away.</p><div class="approach-grid"><div><span>01 / READ</span><h2>Learn the idea</h2><p>Understand the terms, steps, and trade-offs in plain language.</p></div><div><span>02 / FOLLOW</span><h2>Work the case</h2><p>Watch a product decision develop from Week 1 to Week 7.</p></div><div><span>03 / PRACTICE</span><h2>Test your thinking</h2><p>Use the visual tools, decision cases, and capstone after reading.</p></div></div><a class="start-link" href="#week-1-concept-1">Start Chapter 1 ↗</a></section>
     <section class="case-invite"><div><span class="section-kicker">ONE PRODUCT / SEVEN CHANGING DECISIONS</span><h2>Follow the case as evidence arrives.</h2><p>See a grocery service move from customer job to market choice, research, design, pilot, and metrics. Each week changes what the team can responsibly claim.</p></div><a class="button button-dark" href="#case">Explore the case journey ↗</a></section>
+    <section class="platform-invite"><div><span class="section-kicker">YOUR SECOND LENS / AI PLATFORM</span><h2>Apply every week to an enterprise AI platform.</h2><p>Follow fictional assistant, automation, and observability scenarios through all 21 chapters. Compare four North Star candidates without exposing any real product details.</p></div><a class="button button-dark" href="#platform">Explore the AI platform lens ↗</a></section>
     <section class="daily-invite"><div><span class="section-kicker">28 DAYS / ONE DAILY DECISION</span><h2>Read. Recall. Decide. Review.</h2><p>Practice the craft for 40 minutes a day: a chapter, an answer written before the model, honest self-review, and weekly fieldwork. Due concepts return for spaced recall.</p></div><a class="button button-primary" href="#daily">Open today's practice ↗</a></section>
     <section class="feature-strip" aria-label="Advanced learning paths"><a href="#ai-track"><span>PARALLEL TRACK / 07 STUDIOS</span><h2>Become an AI-first PM</h2><p>Practice task selection, evidence boundaries, evaluation, human control, release gates, and operation.</p><strong>Explore the track ↗</strong></a><a href="#capstone"><span>FINAL PROJECT / 07 STAGES</span><h2>Build one complete decision</h2><p>Carry a fictional case from customer outcome through strategy, research, design, launch, and metrics.</p><strong>Open the capstone ↗</strong></a></section>
     <section class="course-section" id="curriculum"><div class="section-heading"><div><span class="section-kicker">${searching ? "EXPLORE THE COURSE" : "THE CURRICULUM"}</span><h2>${searching ? "Find the right lesson." : "Seven weeks. One connected craft."}</h2><p>${searching ? "Search by a term or describe a product question. Results show both direct and related matches." : "Start anywhere, or follow the arc from customer value through measurement."}</p></div></div><div class="search-tools"><label class="search-box"><span class="sr-only">Search the masterclass by keyword or question</span><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 5 5"></path></svg><input id="course-search" type="search" placeholder="Try “where do users drop off?”" value="${esc(state.search)}" autocomplete="off"></label>${searching ? '<button class="search-clear" type="button" data-action="clear-search">Clear</button>' : ""}</div><div class="search-examples" aria-label="Example searches"><span>TRY A QUESTION</span>${["Where do users drop off?","How do I prioritize?","Is AI the right solution?"].map(item => `<button type="button" data-search-example="${esc(item)}">${esc(item)} ↗</button>`).join("")}</div>${searching ? `<div class="search-status" role="status">${results.length} ${results.length === 1 ? "result" : "results"} for “${esc(state.search)}”</div><div class="search-results">${results.slice(0,16).map(searchCard).join("")}</div>${results.length > 16 ? `<p class="search-more">Showing the 16 strongest matches. Add a specific term to narrow the results.</p>` : ""}${results.length ? "" : '<p class="empty-state">No close match yet. Try a shorter phrase or a topic such as “research”, “metrics”, or “AI evaluation”.</p>'}` : `<div class="week-grid">${weeks.map(weekCard).join("")}</div>`}</section>
@@ -93,6 +95,7 @@ function readingChapter(week, index) {
     <section class="week-guide" aria-label="Week orientation"><div><span class="reading-label">WEEK ${String(week.id).padStart(2,"0")} / START HERE</span><h3>${esc(guide.question)}</h3><p>Read the three chapters in order. The class material for this week spans:</p><ul>${guide.sessions.map(item => `<li>${esc(item)}</li>`).join("")}</ul></div><div class="week-coverage"><strong>WHAT EACH TOPIC MEANS</strong>${guide.topics.map((item,topicIndex) => `<div class="topic-meaning"><b>${esc(item)}</b><p>${esc(topicMeanings[week.id][topicIndex])}</p></div>`).join("")}</div></section>
     <section class="textbook-chapter" aria-label="Chapter reading"><div class="reading-topline"><span>THE CHAPTER / READ FIRST</span><span>${String((week.id-1)*3+index+1).padStart(2,"0")} OF 21</span></div><div class="chapter-clarity"><div><span>WHAT IT MEANS</span><p>${esc(clarity.meaning)}</p></div><div><span>WHAT IT MEANS FOR A PM</span><p>${esc(clarity.pm)}</p></div></div><h3>Understand the idea</h3><p>${esc(chapter.first)}</p><p>${esc(chapter.second)}</p>${conceptVisual(week.id,index)}<h4>Use it, step by step</h4><ol>${chapter.steps.map(step => `<li>${esc(step)}</li>`).join("")}</ol><div class="running-case"><span>THE RUNNING CASE · NEIGHBORHOOD GROCERY</span><p>${esc(chapter.case)}</p></div><div class="chapter-warning"><strong>Common mistake</strong><p>${esc(chapter.trap)}</p></div></section>
     ${domainGallery(week.id,index)}
+    ${platformConceptLens(week.id,index)}
     ${index===2 ? `<section class="companion-lessons"><span class="reading-label">FROM BOTH CLASS SESSIONS</span><h3>More ideas you need this week.</h3><div>${companionLessons[week.id].map(([title,body]) => `<article><h4>${esc(title)}</h4><p>${esc(body)}</p></article>`).join("")}</div></section>` : ""}
     <section class="reading-sources" aria-label="Source and further reading"><div><span class="reading-label">SOURCE TRAIL</span><p>Course basis: ${esc(week.source)}. Class notes are AI-generated and may contain errors. External sources below extend the lesson; examples and calculations here are illustrative.</p></div><div class="reading-links">${guide.reading.map(item => `<a href="${esc(item.url)}" target="_blank" rel="noopener noreferrer"><strong>${esc(item.title)} ↗</strong><span>${esc(item.why)}</span></a>`).join("")}</div></section>
   </div>`;
@@ -107,6 +110,25 @@ function domainGallery(weekId,index) {
   const example = domainExamples[weekId-1][index];
   const labels = {saas:"SaaS / team workflows",commerce:"Ecommerce / checkout",ai:"AI product / answers"};
   return `<section class="domain-gallery" aria-label="Examples across product domains"><div class="domain-heading"><span class="reading-label">ONE CONCEPT / THREE DOMAINS</span><h3>See the same idea in different products.</h3><p>These illustrative PM decisions use public product documentation and AI evaluation guidance. They do not describe the companies' internal decisions or results.</p></div><div class="domain-cards">${Object.entries(productSources).map(([key,source]) => `<article><span>${esc(labels[key])}</span><p>${esc(example[key])}</p><a href="${esc(source.url)}" target="_blank" rel="noopener noreferrer">Check the public reference: ${esc(source.name)} ↗</a></article>`).join("")}</div><div class="domain-transfer"><strong>Transfer the idea</strong><p>${esc(example.transfer)}</p></div></section>`;
+}
+
+function platformConceptLens(weekId,index) {
+  const item=platformConcepts[weekId-1][index];
+  return `<section class="platform-concept" aria-label="AI platform application for this concept"><div class="platform-concept-head"><span class="reading-label">AI PLATFORM LENS / WEEK ${String(weekId).padStart(2,"0")} · CONCEPT ${index+1}</span><h3>${esc(item.title)}</h3><p>Fictional enterprise AI platform scenario. Apply the thinking; verify any real-world conclusion separately.</p></div><div class="platform-concept-grid"><div><span>SCENARIO</span><p>${esc(item.scenario)}</p></div><div><span>PM MOVE</span><p>${esc(item.move)}</p></div><div><span>MAKE / CHECK</span><p>${esc(item.proof)}</p></div><div><span>GO DEEPER</span><p>${esc(item.ask)}</p></div></div><a href="#platform">Follow the seven-week platform journey ↗</a></section>`;
+}
+
+function platformStagePanel() {
+  const stage=platformStages[state.platformStage-1];
+  return `<section class="platform-map" aria-label="AI platform journey"><div class="platform-map-head"><span class="section-kicker">ONE FICTIONAL PLATFORM / SEVEN WEEKS</span><h2>Watch the PM decision mature.</h2><p>Start with the customer job. Add strategy, research, constraints, experience, release communication, and measurable value.</p></div><div class="platform-stage-track" role="group" aria-label="AI platform stages">${platformStages.map(item=>`<button type="button" data-platform-stage="${item.week}" aria-pressed="${item.week===stage.week}" class="${item.week===stage.week?"active":""}"><span>${String(item.week).padStart(2,"0")}</span><strong>${esc(item.label)}</strong></button>`).join("")}</div><div class="platform-stage-card" aria-live="polite"><div class="platform-stage-title"><span>WEEK ${String(stage.week).padStart(2,"0")} / ${esc(weeks[stage.week-1].title.toUpperCase())}</span><h3>${esc(stage.label)}</h3></div><div class="platform-stage-grid"><div><span>THE SCENARIO</span><p>${esc(stage.situation)}</p></div><div><span>THE PM DECISION</span><p>${esc(stage.decision)}</p></div><div><span>MAKE THE ARTIFACT</span><p>${esc(stage.artifact)}</p></div><div><span>STILL UNKNOWN</span><p>${esc(stage.unknown)}</p></div></div><details class="platform-depth"><summary>Go deeper into the trade-off <span aria-hidden="true">+</span></summary><p>${esc(stage.depth)}</p></details><a href="#week-${stage.week}-concept-1">Read Week ${stage.week} and its three platform examples ↗</a></div></section>`;
+}
+
+function platformMetrics() {
+  const selected=platformMetricCandidates.find(item=>item.key===state.platformMetric)||platformMetricCandidates[0];
+  return `<section class="platform-metrics" aria-label="North Star metric examples"><div class="platform-metric-intro"><span class="section-kicker">WEEK 07 / VALUE BEFORE VOLUME</span><h2>Four North Star candidates.<br>Four different jobs.</h2><p>A North Star is a candidate measure of meaningful customer value. The platform-level measure cannot simply add chat messages, tool calls, and dashboard views. Pick the unit of value for the job you are responsible for.</p></div><div class="platform-metric-tabs" role="group" aria-label="Select an AI product area">${platformMetricCandidates.map(item=>`<button type="button" data-platform-metric="${esc(item.key)}" aria-pressed="${item.key===selected.key}" class="${item.key===selected.key?"active":""}">${esc(item.label)}</button>`).join("")}</div><div class="platform-metric-detail" aria-live="polite"><div class="metric-hero"><span>CANDIDATE NORTH STAR / ${esc(selected.label.toUpperCase())}</span><h3>${esc(selected.northStar)}</h3><p>${esc(selected.why)}</p></div><div class="metric-examples"><div><span>THIS WOULD COUNT</span><p>${esc(selected.counts)}</p></div><div><span>THIS WOULD NOT COUNT</span><p>${esc(selected.excludes)}</p></div></div><div class="metric-contract"><div><span>EXACT DEFINITION TO TEST</span><p>${esc(selected.definition)}</p></div><div><span>LEADING DRIVERS TO INVESTIGATE</span><ul>${selected.drivers.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div><div><span>GUARDRAILS</span><ul>${selected.guardrails.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div><div><span>HOW IT CAN MISLEAD</span><p>${esc(selected.failure)}</p></div></div></div><div class="metric-decision"><strong>Before adopting one:</strong><p>Specify eligible task, verified result, unique unit, population, time window, exclusion rules, segmentation, data owner, and audit method. Compare baselines and quality by cohort. An evaluator score or a completion event alone does not establish a customer outcome.</p></div></section>`;
+}
+
+function platformPage() {
+  return `${header()}<main id="main" class="standalone platform-page"><div class="page-intro"><span class="section-kicker">THE APPLIED AI PLATFORM LENS</span><h1>Learn product craft<br><em>through an AI platform.</em></h1><p>Map each course week to a fictional enterprise AI platform: a knowledge assistant, an automation agent, an observability experience, and the whole product. Each chapter has a concrete scenario, PM move, artifact, and deeper question.</p><p class="page-note">These are original teaching scenarios, not descriptions, results, or metrics of a real company or product.</p></div>${platformStagePanel()}${platformMetrics()}<section class="platform-reading"><span class="section-kicker">PUBLIC READING / EVALUATION & OBSERVABILITY</span><h2>Check the methods behind the examples.</h2><div>${platformReading.map(item=>`<a href="${esc(item.url)}" target="_blank" rel="noopener noreferrer"><strong>${esc(item.label)} ↗</strong><span>${esc(item.use)}</span></a>`).join("")}</div></section></main>${footer()}`;
 }
 
 function caseJourney() {
@@ -230,11 +252,25 @@ function riceLab() {
 }
 
 function render() {
-  document.title = state.week ? `${weeks[state.week-1].title} · Product Masterclass` : state.page === "daily" ? "Daily practice · Product Masterclass" : state.page === "glossary" ? "Glossary · Product Masterclass" : state.page === "case" ? "Case journey · Product Masterclass" : state.page === "ai" ? "AI-first PM track · Product Masterclass" : state.page === "capstone" ? "Capstone · Product Masterclass" : "Product Masterclass · Learn the thinking behind the work";
-  app.innerHTML = state.page === "lesson" ? lesson() : state.page === "daily" ? dailyPage() : state.page === "glossary" ? glossaryPage() : state.page === "case" ? casePage() : state.page === "ai" ? aiPage() : state.page === "capstone" ? capstonePage() : home();
+  document.title = state.week ? `${weeks[state.week-1].title} · Product Masterclass` : state.page === "daily" ? "Daily practice · Product Masterclass" : state.page === "glossary" ? "Glossary · Product Masterclass" : state.page === "case" ? "Case journey · Product Masterclass" : state.page === "platform" ? "AI platform lens · Product Masterclass" : state.page === "ai" ? "AI-first PM track · Product Masterclass" : state.page === "capstone" ? "Capstone · Product Masterclass" : "Product Masterclass · Learn the thinking behind the work";
+  app.innerHTML = state.page === "lesson" ? lesson() : state.page === "daily" ? dailyPage() : state.page === "glossary" ? glossaryPage() : state.page === "case" ? casePage() : state.page === "platform" ? platformPage() : state.page === "ai" ? aiPage() : state.page === "capstone" ? capstonePage() : home();
 }
 
 document.addEventListener("click", event => {
+  const platformStage=event.target.closest("[data-platform-stage]");
+  if (platformStage) {
+    state.platformStage=Number(platformStage.dataset.platformStage);
+    document.querySelector(".platform-map").outerHTML=platformStagePanel();
+    document.querySelector(`[data-platform-stage="${state.platformStage}"]`)?.focus();
+    return;
+  }
+  const platformMetric=event.target.closest("[data-platform-metric]");
+  if (platformMetric) {
+    state.platformMetric=platformMetric.dataset.platformMetric;
+    document.querySelector(".platform-metrics").outerHTML=platformMetrics();
+    document.querySelector(`[data-platform-metric="${state.platformMetric}"]`)?.focus();
+    return;
+  }
   const caseButton = event.target.closest("[data-case-stage]");
   if (caseButton) {
     state.caseStage=Number(caseButton.dataset.caseStage);
