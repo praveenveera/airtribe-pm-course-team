@@ -14,7 +14,7 @@ try { storedProgress = JSON.parse(localStorage.getItem("pm-masterclass-completed
 const saved = new Set(Array.isArray(storedProgress) ? storedProgress : []);
 const practice = readPractice();
 const simAnswers = readSimulationAnswers();
-const state = { week: null, concept: 0, page: "home", day: 1, caseStage: 1, platformStage: 1, platformMetric: "overall", simStep: 0, search: "", answerShown: false, dailyAnswerShown: false, studioAnswer: false, studioChoice: null, mapStep: 0, lab: { started: 100, source: 82, proposed: 61, approved: 40, verified: 28 } };
+const state = { week: null, concept: 0, page: "home", day: 1, caseStage: 1, platformStage: 1, platformMetric: "overall", simStep: 0, search: "", answerShown: false, dailyAnswerShown: false, studioAnswer: false, studioChoice: null, mapStep: 0, visualNode: 0, visualDomain: "ai", lab: { started: 100, source: 82, proposed: 61, approved: 40, verified: 28 } };
 
 const esc = (value) => String(value).replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[char]);
 const conceptKey = (week, concept) => `${week.id}-${concept}`;
@@ -42,6 +42,8 @@ function updateRoute() {
   state.studioAnswer = false;
   state.studioChoice = null;
   state.mapStep = 0;
+  state.visualNode = 0;
+  state.visualDomain = "ai";
   render();
   if (location.hash === "#curriculum" || location.hash === "#search") document.getElementById("curriculum")?.scrollIntoView();
   else if (aiMatch?.[1]) document.getElementById(`ai-studio-${aiMatch[1]}`)?.scrollIntoView();
@@ -67,7 +69,7 @@ function home() {
   const searching = state.search.trim().length > 0;
   return `${header()}<main id="main">
     <section class="hero"><div class="hero-inner"><div class="hero-copy"><span class="eyebrow">A SEVEN-WEEK PRODUCT MASTERCLASS</span><h1>Learn the craft.<br><em>Practice the judgment.</em></h1><p class="hero-lede">Start from zero and learn how products create value. Read 21 guided chapters, follow one product from idea to measurement, then test your thinking in visual labs, decisions, and an AI product track.</p><div class="hero-actions"><a class="button button-primary" href="#week-1-concept-1">Start Chapter 1 <span aria-hidden="true">↗</span></a><a class="button button-quiet" href="#glossary">Open the glossary <span aria-hidden="true">↗</span></a></div><div class="hero-stats"><span><strong>07</strong> weeks</span><span><strong>21</strong> guided chapters</span><span><strong>14</strong> class sessions</span></div></div><div class="hero-art" aria-label="The product learning sequence"><div class="hero-orbit" aria-hidden="true"></div><div class="hero-stamp" aria-hidden="true">THINK<br>MAKE<br>LEARN <span>✳</span></div><div class="hero-art-inner"><span>01 / DISCOVER</span><span>02 / CHOOSE</span><span>03 / DESIGN</span><span>04 / MEASURE</span><strong>Make the reasoning visible.</strong></div><span class="hero-art-note" aria-hidden="true">THE CRAFT OF PRODUCT ↗</span></div></div></section>
-    <section class="approach-section" aria-label="How each lesson works"><div class="section-kicker">START FROM ZERO</div><h2 class="start-title">No PM background needed.</h2><p class="start-lede">Follow 21 chapters in order. Each one defines the idea, shows how to use it, walks through the same grocery product, then lets you practice. Two class sessions feed each week. The glossary is always one tap away.</p><div class="approach-grid"><div><span>01 / READ</span><h2>Learn the idea</h2><p>Understand the terms, steps, and trade-offs in plain language.</p></div><div><span>02 / FOLLOW</span><h2>Work the case</h2><p>Watch a product decision develop from Week 1 to Week 7.</p></div><div><span>03 / PRACTICE</span><h2>Test your thinking</h2><p>Use the visual tools, decision cases, and capstone after reading.</p></div></div><a class="start-link" href="#week-1-concept-1">Start Chapter 1 ↗</a></section>
+    <section class="approach-section" aria-label="How each lesson works"><div class="section-kicker">START FROM ZERO</div><h2 class="start-title">No PM background needed.</h2><p class="start-lede">Follow 21 chapters in order. Each opens with an interactive visual and three product settings. Explore the full reading when you need more depth, then practice the decision.</p><div class="approach-grid"><div><span>01 / SEE</span><h2>Follow the visual</h2><p>Choose a step and see what it means in a product.</p></div><div><span>02 / EXPLORE</span><h2>Go deeper</h2><p>Open the complete lesson, examples, sources, and trade-offs.</p></div><div><span>03 / PRACTICE</span><h2>Test your thinking</h2><p>Use the decision cases and capstone to apply the idea.</p></div></div><a class="start-link" href="#week-1-concept-1">Start Chapter 1 ↗</a></section>
     <section class="case-invite"><div><span class="section-kicker">ONE PRODUCT / SEVEN CHANGING DECISIONS</span><h2>Follow the case as evidence arrives.</h2><p>See a grocery service move from customer job to market choice, research, design, pilot, and metrics. Each week changes what the team can responsibly claim.</p></div><a class="button button-dark" href="#case">Explore the case journey ↗</a></section>
     <section class="platform-invite"><div><span class="section-kicker">YOUR SECOND LENS / AI PLATFORM</span><h2>Apply every week to an enterprise AI platform.</h2><p>Follow fictional assistant, automation, and observability scenarios through all 21 chapters. Compare four North Star candidates without exposing any real product details.</p></div><a class="button button-dark" href="#platform">Explore the AI platform lens ↗</a></section>
     <section class="daily-invite"><div><span class="section-kicker">28 DAYS / ONE DAILY DECISION</span><h2>Read. Recall. Decide. Review.</h2><p>Practice the craft for 40 minutes a day: a chapter, an answer written before the model, honest self-review, and weekly fieldwork. Due concepts return for spaced recall.</p></div><a class="button button-primary" href="#daily">Open today's practice ↗</a></section>
@@ -91,16 +93,32 @@ function readingChapter(week, index) {
   const guide = courseGuide[week.id];
   const clarity = chapterClarity[week.id-1][index];
   return `<div class="reading-path">
+    ${visualLesson(week.id,index)}<details class="week7-full-reading"><summary>Explore the full lesson, diagrams, and sources <span aria-hidden="true">+</span></summary><div>
     ${week.id===1 ? `<section class="zero-primer" aria-label="Product management basics"><span class="reading-label">BEFORE WE BEGIN / THREE DEFINITIONS</span><div><article><h3>What is a product?</h3><p>A repeatable way to help a group achieve a useful outcome. The app, delivery, support, and recovery can all be part of it.</p></article><article><h3>What is a product manager?</h3><p>The person who helps a team decide which customer problem matters, what outcome to seek, what to try, and how to learn whether it worked.</p></article><article><h3>What does a PM do?</h3><p>Talk with users, examine evidence, align business and technical constraints, choose trade-offs with the team, and track the result after launch.</p></article></div><p class="zero-primer-example"><strong>Example:</strong> For grocery delivery, the PM asks whether shoppers need more item choice or a reliable dinner delivery, then helps the team test the stronger problem.</p></section>` : ""}
-    ${week.id===7 ? `${week7Visual(index)}<details class="week7-full-reading"><summary>Read the full explanation, examples, and class sources <span aria-hidden="true">+</span></summary><div>` : ""}
+    ${week.id===7 ? week7Visual(index) : ""}
     <section class="week-guide" aria-label="Week orientation"><div><span class="reading-label">WEEK ${String(week.id).padStart(2,"0")} / START HERE</span><h3>${esc(guide.question)}</h3><p>Read the three chapters in order. The class material for this week spans:</p><ul>${guide.sessions.map(item => `<li>${esc(item)}</li>`).join("")}</ul></div><div class="week-coverage"><strong>WHAT EACH TOPIC MEANS</strong>${guide.topics.map((item,topicIndex) => `<div class="topic-meaning"><b>${esc(item)}</b><p>${esc(topicMeanings[week.id][topicIndex])}</p></div>`).join("")}</div></section>
     <section class="textbook-chapter" aria-label="Chapter reading"><div class="reading-topline"><span>THE CHAPTER / READ FIRST</span><span>${String((week.id-1)*3+index+1).padStart(2,"0")} OF 21</span></div><div class="chapter-clarity"><div><span>WHAT IT MEANS</span><p>${esc(clarity.meaning)}</p></div><div><span>WHAT IT MEANS FOR A PM</span><p>${esc(clarity.pm)}</p></div></div><h3>Understand the idea</h3><p>${esc(chapter.first)}</p><p>${esc(chapter.second)}</p>${conceptVisual(week.id,index)}<h4>Use it, step by step</h4><ol>${chapter.steps.map(step => `<li>${esc(step)}</li>`).join("")}</ol><div class="running-case"><span>THE RUNNING CASE · NEIGHBORHOOD GROCERY</span><p>${esc(chapter.case)}</p></div><div class="chapter-warning"><strong>Common mistake</strong><p>${esc(chapter.trap)}</p></div></section>
     ${domainGallery(week.id,index)}
     ${platformConceptLens(week.id,index)}
     ${index===2 ? `<section class="companion-lessons"><span class="reading-label">FROM BOTH CLASS SESSIONS</span><h3>More ideas you need this week.</h3><div>${companionLessons[week.id].map(([title,body]) => `<article><h4>${esc(title)}</h4><p>${esc(body)}</p></article>`).join("")}</div></section>` : ""}
     <section class="reading-sources" aria-label="Source and further reading"><div><span class="reading-label">SOURCE TRAIL</span><p>Course basis: ${esc(week.source)}. Class notes are AI-generated and may contain errors. External sources below extend the lesson; examples and calculations here are illustrative.</p></div><div class="reading-links">${guide.reading.map(item => `<a href="${esc(item.url)}" target="_blank" rel="noopener noreferrer"><strong>${esc(item.title)} ↗</strong><span>${esc(item.why)}</span></a>`).join("")}</div></section>
-    ${week.id===7 ? "</div></details>" : ""}
+    </div></details>
   </div>`;
+}
+
+const week7Scenes = [
+  {title:"What counts as success?",summary:"Count the customer task, then define the result and time window.",scenario:"An operations analyst starts 100 eligible exception-handling tasks with an automation agent. Sixty-eight finish with a checked outcome; fluent replies and unfinished drafts do not count.",nodes:[{label:"Started",detail:"100 eligible customer tasks began this week.",value:"100"},{label:"Verified",detail:"68 reached the agreed end state. A fluent reply alone does not count.",value:"68"},{label:"Completion",detail:"68 ÷ 100 eligible tasks in the same seven-day cohort.",value:"68%"}],insight:"A metric is useful when another analyst can reproduce it.",try:"Would a response with no verified outcome count as complete?"},
+  {title:"Which number represents value?",summary:"Start with the user outcome. Treat drivers as hypotheses and watch for harm.",scenario:"The assistant team sees more tool calls, but fewer customer tasks finish. The PM shifts attention to verified completions, then checks source access, approval clarity, cost, and unauthorized results.",nodes:[{label:"Job",detail:"Finish a permitted customer task with a checked outcome."},{label:"North Star",detail:"Weekly verified tasks completed by eligible users."},{label:"Inputs",detail:"Source coverage and clear approvals may help. Test whether they do."},{label:"Guardrails",detail:"Unauthorized results, manual repair, latency, and cost must not worsen."}],insight:"More agent activity is not proof of more customer value.",try:"If tool calls rise but verified completions fall, did the product improve?"},
+  {title:"Where did the work stop?",summary:"Follow one cohort through the task. The largest loss tells you where to investigate.",scenario:"An automation agent proposes 61 actions, but only 40 are approved. The PM samples rejected tasks: were they intentionally declined, blocked by permission, or hard to review?",kind:"funnel",nodes:[{label:"Started",detail:"100 eligible tasks entered the funnel.",value:"100"},{label:"Source",detail:"82 found a permitted source. Check access and coverage for the other 18.",value:"82"},{label:"Proposed",detail:"61 reached an actionable proposal.",value:"61"},{label:"Approved",detail:"40 proposals were approved. The 21-task loss needs investigation, not an assumed cause.",value:"40"},{label:"Verified",detail:"28 reached the agreed end state: 28% of tasks started.",value:"28"}],insight:"A funnel locates loss. Logs and observation help explain it.",try:"What would you inspect before redesigning the approval screen?"}
+];
+
+function visualLesson(weekId,index) {
+  const visual = weekId===7 ? week7Scenes[index] : conceptVisuals[weekId-1][index];
+  const examples = domainExamples[weekId-1][index];
+  const domain = ["saas","commerce","ai"].includes(state.visualDomain) ? state.visualDomain : "ai";
+  const node = visual.nodes[Math.min(state.visualNode,visual.nodes.length-1)];
+  const labels = {saas:"SaaS",commerce:"Ecommerce",ai:"AI platform"};
+  return `<section class="visual-lesson ${visual.kind==="funnel"&&visual.nodes.every(item=>item.value)?"visual-lesson--funnel":""}" aria-label="Visual first lesson"><div class="visual-lesson-heading"><span class="reading-label">SEE IT FIRST / ${String(weekId).padStart(2,"0")}.${index+1}</span><h3>${esc(visual.title)}</h3><p>${esc(visual.summary)}</p></div><div class="visual-lesson-grid"><div class="visual-lesson-canvas"><div class="visual-canvas-top"><strong>FOLLOW THE MODEL</strong><span>Choose a step</span></div><ol class="visual-story" style="--story-count:${visual.nodes.length}">${visual.nodes.map((item,i)=>`<li><button type="button" data-visual-node="${i}" class="${state.visualNode===i?"active":""}" aria-pressed="${state.visualNode===i}" aria-label="Step ${i+1}: ${esc(item.label)}"><span class="visual-story-number">${String(i+1).padStart(2,"0")}</span><strong>${esc(item.value||item.label)}</strong>${item.value?`<small>${esc(item.label)}</small>`:""}${visual.kind==="funnel"&&item.value?`<i class="visual-step-bar" style="--bar:${Number(item.value)}%" aria-hidden="true"></i>`:""}</button></li>`).join("")}</ol><div class="visual-node-explain" aria-live="polite"><span>STEP ${String(state.visualNode+1).padStart(2,"0")} / ${esc(node.label.toUpperCase())}</span><p>${esc(node.detail)}</p></div><div class="visual-lesson-insight"><b>THE POINT</b><p>${esc(visual.insight)}</p></div></div><aside class="visual-lesson-case"><div class="visual-case-head"><span>PUT IT IN A PRODUCT</span><h4>Same idea, different setting.</h4></div><div class="visual-domain-tabs" role="group" aria-label="Choose product domain">${Object.entries(labels).map(([key,label])=>`<button type="button" data-visual-domain="${key}" aria-pressed="${domain===key}" class="${domain===key?"active":""}">${label}</button>`).join("")}</div><div class="visual-domain-example" aria-live="polite"><span>${esc(labels[domain].toUpperCase())} / ILLUSTRATIVE SCENARIO</span><p>${esc(domain==="ai"&&visual.scenario?visual.scenario:examples[domain])}</p></div><div class="visual-case-decision"><span>YOUR PM CALL</span><p>${esc(visual.try)}</p></div></aside></div><div class="visual-lesson-foot"><span>Explore the steps and switch domains. The full reading is below.</span><span aria-hidden="true">↓</span></div></section>`;
 }
 
 function week7Visual(index) {
@@ -200,7 +218,7 @@ function lesson() {
     ${readingChapter(week,state.concept)}
     ${week.id===7 && state.concept===2 ? metricLab() : ""}
     ${caseJourney()}
-    <div class="workshop-divider"><span>AFTER THE READING</span><h3>Apply the chapter.</h3><p>Use the model, source exercise, and decision case to test what you just learned.</p></div>
+    <div class="workshop-divider"><span>AFTER THE VISUAL LESSON</span><h3>Apply the chapter.</h3><p>Use the model, source exercise, and decision case to test what you just learned.</p></div>
     ${simulationPanel(week.id)}
     <section class="visual-panel" aria-label="Interactive concept map"><div class="visual-panel-title"><span>THE MODEL</span><span>Select a step to explore</span></div><div class="model-line">${week.map.map((step,index) => `<button type="button" class="model-step ${state.mapStep===index ? "selected" : ""}" data-map="${index}" aria-pressed="${state.mapStep===index}"><span>${String(index+1).padStart(2,"0")}</span><strong>${esc(step)}</strong></button>`).join("")}</div><p class="model-caption"><strong>${esc(week.map[state.mapStep])}.</strong> ${esc(mapDescriptions[week.id][state.mapStep])}</p></section>
     ${deckLens(week)}
@@ -267,6 +285,20 @@ function render() {
 }
 
 document.addEventListener("click", event => {
+  const visualNode=event.target.closest("[data-visual-node]");
+  if (visualNode) {
+    state.visualNode=Number(visualNode.dataset.visualNode);
+    document.querySelector(".visual-lesson").outerHTML=visualLesson(state.week,state.concept);
+    document.querySelector(`[data-visual-node="${state.visualNode}"]`)?.focus();
+    return;
+  }
+  const visualDomain=event.target.closest("[data-visual-domain]");
+  if (visualDomain) {
+    state.visualDomain=visualDomain.dataset.visualDomain;
+    document.querySelector(".visual-lesson").outerHTML=visualLesson(state.week,state.concept);
+    document.querySelector(`[data-visual-domain="${state.visualDomain}"]`)?.focus();
+    return;
+  }
   const platformStage=event.target.closest("[data-platform-stage]");
   if (platformStage) {
     state.platformStage=Number(platformStage.dataset.platformStage);
