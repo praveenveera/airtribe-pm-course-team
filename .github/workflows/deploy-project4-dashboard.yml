@@ -29,7 +29,7 @@ jobs:
           mkdir -p _site/survey _site/masterclass/diagrams
           cp -r projects/zepto-increasing-aov/dashboard/* _site/
           cp projects/zepto-increasing-aov/webapp/index.html _site/survey/index.html
-          cp learning/masterclass/index.html learning/masterclass/styles-v2.css learning/masterclass/styles-v3.css learning/masterclass/app.js learning/masterclass/search.js learning/masterclass/curriculum.js learning/masterclass/mastery.js learning/masterclass/textbook.js learning/masterclass/domain-examples.js learning/masterclass/daily.js _site/masterclass/
+          cp learning/masterclass/index.html learning/masterclass/styles-v2.css learning/masterclass/styles-v3.css learning/masterclass/app.js learning/masterclass/search.js learning/masterclass/curriculum.js learning/masterclass/mastery.js learning/masterclass/textbook.js learning/masterclass/domain-examples.js learning/masterclass/daily.js learning/masterclass/concept-visuals.js _site/masterclass/
           cp learning/masterclass/diagrams/market-scope.html _site/masterclass/diagrams/
           test -s _site/masterclass/index.html
           test -s _site/masterclass/search.js
@@ -38,6 +38,7 @@ jobs:
           test -s _site/masterclass/textbook.js
           test -s _site/masterclass/domain-examples.js
           test -s _site/masterclass/daily.js
+          test -s _site/masterclass/concept-visuals.js
           test -s _site/masterclass/diagrams/market-scope.html
 
       - name: Upload artifact
