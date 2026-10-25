@@ -7,6 +7,23 @@ import { dayPlan, readPractice, writePractice, todayKey, currentDay, nextReview,
 import { conceptVisuals } from "./concept-visuals.js?v=1";
 import { caseStages, simulations, readSimulationAnswers, writeSimulationAnswers } from "./simulations.js?v=1";
 import { platformStages, platformConcepts, platformMetricCandidates, platformReading } from "./platform-examples.js?v=1";
+const sessions = [
+  [1, "Fundamentals of Product Management · Part 1", "What a product and PM do; customer value and business value", "product role value business", 1],
+  [2, "Fundamentals of Product Management · Part 2", "Problem-first thinking, root causes, and user research", "problem research root cause", 1],
+  [3, "Product Strategy · Part 1", "Segments, positioning, advantage, and roadmaps", "strategy segment positioning", 2],
+  [4, "Product Strategy · Part 2", "Platform, retention, expansion, and AI-era strategy", "platform retention expansion", 2],
+  [5, "Problem Discovery & Research · Part 1", "Discovery, primary and secondary research, market sizing", "discovery research market", 3],
+  [6, "Problem Discovery & Research · Part 2", "Methods, personas, and competitive pressure", "research persona competition", 3],
+  [7, "Problem Framing & Prioritization · Part 1", "JTBD, root causes, RICE, and funnel diagnosis", "prioritization rice jobs funnel", 4],
+  [8, "Problem Framing & Prioritization · Part 2", "Solutions, user stories, roadmaps, and alignment", "solutions stories roadmap", 4],
+  [9, "UX & Design Collaboration · Part 1", "Problem framing, prototypes, and usability", "ux prototype usability", 5],
+  [10, "UX & Design Collaboration · Part 2", "Design systems, accessibility, and heuristic review", "design accessibility heuristic", 5],
+  [11, "Effective PM Communication · Part 1", "Audience, PRDs, updates, and incidents", "communication prd incidents", 6],
+  [12, "Effective PM Communication · Part 2", "Partner alignment, evidence, and retention stories", "communication alignment retention", 6],
+  [13, "Analytics & Metrics · Part 1", "Define value, build metric ladders, and read funnels", "analytics metrics north star funnel", 7],
+  [14, "Analytics & Metrics · Part 2", "OKRs, events, cohorts, and trustworthy analysis", "analytics okr event cohort", 7]
+].map(([id, title, outcome, keywords, week]) => ({ id, title, outcome, keywords, week, href: id === 13 ? "#session-13" : `#week-${week}` }));
+
 
 const app = document.getElementById("app");
 let storedProgress = [];
@@ -14,7 +31,7 @@ try { storedProgress = JSON.parse(localStorage.getItem("pm-masterclass-completed
 const saved = new Set(Array.isArray(storedProgress) ? storedProgress : []);
 const practice = readPractice();
 const simAnswers = readSimulationAnswers();
-const state = { week: null, concept: 0, page: "home", day: 1, caseStage: 1, platformStage: 1, platformMetric: "overall", simStep: 0, search: "", answerShown: false, dailyAnswerShown: false, studioAnswer: false, studioChoice: null, mapStep: 0, visualNode: 0, visualDomain: "ai", lab: { started: 100, source: 82, proposed: 61, approved: 40, verified: 28 } };
+const state = { week: null, concept: 0, page: "home", day: 1, caseStage: 1, platformStage: 1, platformMetric: "overall", simStep: 0, search: "", sessionSearch: "", sessionChoice: null, answerShown: false, dailyAnswerShown: false, studioAnswer: false, studioChoice: null, mapStep: 0, visualNode: 0, visualDomain: "ai", lab: { started: 100, source: 82, proposed: 61, approved: 40, verified: 28 } };
 
 const esc = (value) => String(value).replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[char]);
 const conceptKey = (week, concept) => `${week.id}-${concept}`;
@@ -27,7 +44,7 @@ function updateRoute() {
   const aiMatch = location.hash.match(/^#ai-track(?:-(\d+))?$/);
   const capstoneMatch = location.hash.match(/^#capstone(?:-stage-(\d+))?$/);
   const dailyMatch = location.hash.match(/^#daily(?:-(\d+))?$/);
-  state.page = location.hash === "#glossary" ? "glossary" : location.hash === "#case" ? "case" : location.hash === "#platform" ? "platform" : dailyMatch ? "daily" : aiMatch ? "ai" : capstoneMatch ? "capstone" : match ? "lesson" : "home";
+  state.page = location.hash === "#session-13" ? "session" : location.hash === "#glossary" ? "glossary" : location.hash === "#case" ? "case" : location.hash === "#platform" ? "platform" : dailyMatch ? "daily" : aiMatch ? "ai" : capstoneMatch ? "capstone" : match ? "lesson" : "home";
   state.day = dailyMatch?.[1] ? Math.min(28,Math.max(1,Number(dailyMatch[1]))) : currentDay(practice.started);
   state.week = match ? Math.min(7, Math.max(1, Number(match[1]))) : null;
   state.concept = match ? Math.min(2, Math.max(0, Number(match[2] || 1) - 1)) : 0;
@@ -45,18 +62,18 @@ function updateRoute() {
   state.visualNode = 0;
   state.visualDomain = "ai";
   render();
-  if (location.hash === "#curriculum" || location.hash === "#search") document.getElementById("curriculum")?.scrollIntoView();
+  if (location.hash === "#curriculum") document.getElementById("curriculum")?.scrollIntoView();
   else if (aiMatch?.[1]) document.getElementById(`ai-studio-${aiMatch[1]}`)?.scrollIntoView();
   else if (capstoneMatch?.[1]) document.getElementById(`capstone-stage-${capstoneMatch[1]}`)?.scrollIntoView();
   else window.scrollTo({top:0, behavior:"instant"});
-  if (location.hash === "#search") document.getElementById("course-search")?.focus();
+  if (location.hash === "#search") document.getElementById("session-search")?.focus();
 }
 
 function header() {
   return `<header class="site-header"><div class="header-inner">
     <a class="brand" href="#home" aria-label="Product Masterclass home"><span class="brand-symbol" aria-hidden="true"><span></span><span></span><span></span></span><span>PRODUCT<span class="brand-accent">/</span>MASTERCLASS</span></a>
-    <nav aria-label="Main navigation"><a href="#home" ${state.page === "home" && location.hash !== "#search" ? 'aria-current="page"' : ""}>Curriculum</a><a href="#case" ${state.page === "case" ? 'aria-current="page"' : ""}>Case journey</a><a href="#platform" ${state.page === "platform" ? 'aria-current="page"' : ""}>AI platform lens</a><a href="#daily" ${state.page === "daily" ? 'aria-current="page"' : ""}>Daily practice</a><a href="#search" ${location.hash === "#search" ? 'aria-current="page"' : ""}>Search</a><a href="#glossary" ${state.page === "glossary" ? 'aria-current="page"' : ""}>Glossary</a><a href="#ai-track" ${state.page === "ai" ? 'aria-current="page"' : ""}>AI PM track</a><a href="#capstone" ${state.page === "capstone" ? 'aria-current="page"' : ""}>Capstone</a></nav>
-    <span class="header-progress" aria-label="${completed()} of 21 concepts marked complete">${completed()} / 21</span>
+    <nav aria-label="Main navigation"><a href="#home" ${state.page === "home" && !["#curriculum","#search"].includes(location.hash) ? 'aria-current="page"' : ""}>Class notes</a><a href="#curriculum" ${location.hash === "#curriculum" ? 'aria-current="page"' : ""}>PM concepts</a><a href="#daily" ${state.page === "daily" ? 'aria-current="page"' : ""}>Practice lab</a><a href="#glossary" ${state.page === "glossary" ? 'aria-current="page"' : ""}>Revision</a><a href="#capstone" ${state.page === "capstone" ? 'aria-current="page"' : ""}>Applied work</a></nav>
+    <a class="header-search" href="#search" aria-label="Search class notes">Search ↗</a>
   </div></header>`;
 }
 
@@ -65,18 +82,34 @@ function footer() {
 }
 
 function home() {
-  const results = searchCourse(searchIndex,state.search);
-  const searching = state.search.trim().length > 0;
-  return `${header()}<main id="main">
-    <section class="hero"><div class="hero-inner"><div class="hero-copy"><span class="eyebrow">A SEVEN-WEEK PRODUCT MASTERCLASS</span><h1>Learn the craft.<br><em>Practice the judgment.</em></h1><p class="hero-lede">Start from zero and learn how products create value. Read 21 guided chapters, follow one product from idea to measurement, then test your thinking in visual labs, decisions, and an AI product track.</p><div class="hero-actions"><a class="button button-primary" href="#week-1-concept-1">Start Chapter 1 <span aria-hidden="true">↗</span></a><a class="button button-quiet" href="#glossary">Open the glossary <span aria-hidden="true">↗</span></a></div><div class="hero-stats"><span><strong>07</strong> weeks</span><span><strong>21</strong> guided chapters</span><span><strong>14</strong> class sessions</span></div></div><div class="hero-art" aria-label="The product learning sequence"><div class="hero-orbit" aria-hidden="true"></div><div class="hero-stamp" aria-hidden="true">THINK<br>MAKE<br>LEARN <span>✳</span></div><div class="hero-art-inner"><span>01 / DISCOVER</span><span>02 / CHOOSE</span><span>03 / DESIGN</span><span>04 / MEASURE</span><strong>Make the reasoning visible.</strong></div><span class="hero-art-note" aria-hidden="true">THE CRAFT OF PRODUCT ↗</span></div></div></section>
-    <section class="approach-section" aria-label="How each lesson works"><div class="section-kicker">START FROM ZERO</div><h2 class="start-title">No PM background needed.</h2><p class="start-lede">Follow 21 chapters in order. Each opens with an interactive visual and three product settings. Explore the full reading when you need more depth, then practice the decision.</p><div class="approach-grid"><div><span>01 / SEE</span><h2>Follow the visual</h2><p>Choose a step and see what it means in a product.</p></div><div><span>02 / EXPLORE</span><h2>Go deeper</h2><p>Open the complete lesson, examples, sources, and trade-offs.</p></div><div><span>03 / PRACTICE</span><h2>Test your thinking</h2><p>Use the decision cases and capstone to apply the idea.</p></div></div><a class="start-link" href="#week-1-concept-1">Start Chapter 1 ↗</a></section>
-    <section class="case-invite"><div><span class="section-kicker">ONE PRODUCT / SEVEN CHANGING DECISIONS</span><h2>Follow the case as evidence arrives.</h2><p>See a grocery service move from customer job to market choice, research, design, pilot, and metrics. Each week changes what the team can responsibly claim.</p></div><a class="button button-dark" href="#case">Explore the case journey ↗</a></section>
-    <section class="platform-invite"><div><span class="section-kicker">YOUR SECOND LENS / AI PLATFORM</span><h2>Apply every week to an enterprise AI platform.</h2><p>Follow fictional assistant, automation, and observability scenarios through all 21 chapters. Compare four North Star candidates without exposing any real product details.</p></div><a class="button button-dark" href="#platform">Explore the AI platform lens ↗</a></section>
-    <section class="daily-invite"><div><span class="section-kicker">28 DAYS / ONE DAILY DECISION</span><h2>Read. Recall. Decide. Review.</h2><p>Practice the craft for 40 minutes a day: a chapter, an answer written before the model, honest self-review, and weekly fieldwork. Due concepts return for spaced recall.</p></div><a class="button button-primary" href="#daily">Open today's practice ↗</a></section>
-    <section class="feature-strip" aria-label="Advanced learning paths"><a href="#ai-track"><span>PARALLEL TRACK / 07 STUDIOS</span><h2>Become an AI-first PM</h2><p>Practice task selection, evidence boundaries, evaluation, human control, release gates, and operation.</p><strong>Explore the track ↗</strong></a><a href="#capstone"><span>FINAL PROJECT / 07 STAGES</span><h2>Build one complete decision</h2><p>Carry a fictional case from customer outcome through strategy, research, design, launch, and metrics.</p><strong>Open the capstone ↗</strong></a></section>
-    <section class="course-section" id="curriculum"><div class="section-heading"><div><span class="section-kicker">${searching ? "EXPLORE THE COURSE" : "THE CURRICULUM"}</span><h2>${searching ? "Find the right lesson." : "Seven weeks. One connected craft."}</h2><p>${searching ? "Search by a term or describe a product question. Results show both direct and related matches." : "Start anywhere, or follow the arc from customer value through measurement."}</p></div></div><div class="search-tools"><label class="search-box"><span class="sr-only">Search the masterclass by keyword or question</span><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 5 5"></path></svg><input id="course-search" type="search" placeholder="Try “where do users drop off?”" value="${esc(state.search)}" autocomplete="off"></label>${searching ? '<button class="search-clear" type="button" data-action="clear-search">Clear</button>' : ""}</div><div class="search-examples" aria-label="Example searches"><span>TRY A QUESTION</span>${["Where do users drop off?","How do I prioritize?","Is AI the right solution?"].map(item => `<button type="button" data-search-example="${esc(item)}">${esc(item)} ↗</button>`).join("")}</div>${searching ? `<div class="search-status" role="status">${results.length} ${results.length === 1 ? "result" : "results"} for “${esc(state.search)}”</div><div class="search-results">${results.slice(0,16).map(searchCard).join("")}</div>${results.length > 16 ? `<p class="search-more">Showing the 16 strongest matches. Add a specific term to narrow the results.</p>` : ""}${results.length ? "" : '<p class="empty-state">No close match yet. Try a shorter phrase or a topic such as “research”, “metrics”, or “AI evaluation”.</p>'}` : `<div class="week-grid">${weeks.map(weekCard).join("")}</div>`}</section>
-    <section class="closing-banner"><span>START WITH A REAL DECISION</span><h2>Learn one model. Use it on one case.</h2><p>Depth comes from explaining the trade-off and making the artifact.</p><a class="button button-light" href="#week-1">Open the first lesson ↗</a></section>
+  const query = state.sessionSearch.trim().toLowerCase();
+  const matches = sessions.filter(item => `${item.title} ${item.outcome} ${item.keywords} week ${item.week}`.toLowerCase().includes(query));
+  return `${header()}<main id="main" class="notes-home">
+    <section class="notes-hero"><div class="notes-hero-inner"><div><span class="notes-kicker">YOUR AI-FIRST PM LEARNING HUB</span><h1>Learn simply.<br><em>Decide better.</em></h1><p>Start with what your class covered. See the idea in a product, make one PM decision, then return for quick revision.</p><a class="button button-primary" href="#session-13">Open the new lesson ↗</a></div><div class="notes-hero-card"><span>FIRST FULL LESSON · SESSION 13</span><strong>What should an AI product actually measure?</strong><p>Go from a customer job to a useful metric in five minutes.</p><a href="#session-13">Learn Analytics & Metrics Part 1 ↗</a></div></div></section>
+    <section class="notes-index" id="class-notes"><div class="notes-intro"><div><span class="notes-kicker">CLASS NOTES / 14 SESSIONS</span><h2>Find the class. Learn the decision.</h2><p>Titles and outcomes follow the AI-generated session notes. Check the original local decks for exact instructor wording.</p></div><label class="notes-search"><span class="sr-only">Search sessions by question, concept, or keyword</span><input id="session-search" type="search" placeholder="Search: North Star, research, RICE…" value="${esc(state.sessionSearch)}" autocomplete="off"></label></div><div class="notes-list" role="list">${matches.map(item=>`<a role="listitem" class="notes-row" href="${item.href}"><span class="notes-row-number">${String(item.id).padStart(2,"0")}</span><span class="notes-row-main"><strong>${esc(item.title)}</strong><small>${esc(item.outcome)}</small></span><span class="notes-row-tag">${item.id===13?"NEW LESSON":"EXISTING CHAPTER"}</span><span aria-hidden="true">↗</span></a>`).join("") || '<p class="notes-empty">No session found. Try a shorter concept or a week number.</p>'}</div><p class="notes-index-note">Session 13 uses the new learning format. The other sessions currently open their existing week chapters while their notes are prepared for conversion.</p></section>
+    <section class="notes-paths" id="curriculum"><div class="notes-intro"><div><span class="notes-kicker">GO FURTHER WHEN YOU NEED IT</span><h2>Explore, practise, and apply.</h2><p>The full concept library remains available behind the class notes.</p></div></div><div class="notes-path-grid"><a href="#week-1"><strong>PM concepts</strong><span>21 existing chapters across seven weeks ↗</span></a><a href="#daily"><strong>Practice lab</strong><span>Daily decisions and self-review ↗</span></a><a href="#case"><strong>Case journey</strong><span>One product across the course ↗</span></a><a href="#platform"><strong>AI platform lens</strong><span>Anonymous enterprise scenarios ↗</span></a><a href="#ai-track"><strong>AI-first PM track</strong><span>Evaluation, safety, and operations ↗</span></a><a href="#capstone"><strong>Applied work</strong><span>Build a decision case you can explain ↗</span></a></div><details class="notes-week-library"><summary>Browse all seven existing week chapters</summary><div class="week-grid">${weeks.map(weekCard).join("")}</div></details></section>
   </main>${footer()}`;
+}
+
+function sessionLesson() {
+  return `${header()}<main id="main" class="session-lesson"><div class="session-shell"><a class="session-back" href="#home">← All class notes</a><div class="session-heading"><span class="notes-kicker">SESSION 13 · ANALYTICS & METRICS · PART 1</span><h1>Measure the job done,<br><em>not the noise.</em></h1><p>How do you know the product helped a customer, rather than simply producing more activity?</p><div class="session-meta"><span>5-minute first pass</span><span>One decision exercise</span><span>Optional deep dive</span></div></div>
+    <div class="session-source"><strong>Source guide</strong><p><b>Instructor deck:</b> Week 7 pages 5–12 introduce metric anatomy, customer and business goals, input/output measures, and North Star metrics. The original PDF stays local and is not published.</p><p><b>Class note:</b> Session 13 is a condensed AI-generated note and may contain errors. The explanations and fictional scenarios below are newly written teaching material.</p></div>
+    <section class="session-block"><span class="session-label">01 / WHAT WAS TAUGHT</span><h2>Start with the goal, then choose the number.</h2><div class="session-three"><div><b>Customer job</b><p>What outcome is the person trying to reach?</p></div><div><b>Metric definition</b><p>What event, group, period, and calculation count?</p></div><div><b>Metric ladder</b><p>What can the team influence, and what result should follow?</p></div></div><p class="session-source-line">Deck basis: Week 7 pages 5–12. The note also covers funnels, retention, marketplaces, and economics; those remain in the existing Week 7 chapters.</p></section>
+    <section class="session-block session-explainer"><span class="session-label">02 / EXPLAIN SIMPLY</span><h2>Count finished tasks, not button presses.</h2><p>A customer wants a result. A click, response, or tool call is a step on the way. A useful metric says exactly when the result happened.</p><div class="session-flow" aria-label="Illustrative metric calculation"><div><span>ELIGIBLE TASKS</span><strong>100</strong><small>real tasks started this week</small></div><span class="flow-arrow" aria-hidden="true">→</span><div><span>VERIFIED RESULTS</span><strong>68</strong><small>agreed end state checked</small></div><span class="flow-arrow" aria-hidden="true">=</span><div class="flow-result"><span>COMPLETION RATE</span><strong>68%</strong><small>68 ÷ 100</small></div></div><p class="session-caption">Illustrative numbers. Same cohort and seven-day window. A fluent answer without a verified result stays in the 100, not the 68.</p></section>
+    <section class="session-block"><span class="session-label">03 / WHY IT MATTERS</span><h2>A busy product can still fail the user.</h2><p>If activity rises while completed jobs fall, a dashboard based on activity would suggest the wrong decision. A PM needs a measure close to customer value, plus checks for quality and harm.</p><div class="session-example-grid"><div><span>EVERYDAY PRODUCT EXAMPLE</span><h3>A shared ride</h3><p>A ride request is an attempt. A completed journey at an acceptable wait and price is closer to the rider’s job. Driver earnings and cancellations show whether the system works for both sides.</p></div><div><span>APPLY TO AN AI PLATFORM</span><h3>An automation agent</h3><p>A fictional agent handles service exceptions. Proposed North Star: eligible exceptions resolved and verified each week. Track permissions failures, manual repair, and cost as guardrails.</p></div></div><p class="session-source-line">These are teaching scenarios, not internal metrics or results of any real product.</p></section>
+    <section class="session-block"><span class="session-label">04 / FRAMEWORK WHEN USEFUL</span><h2>Connect the work to the outcome.</h2><div class="session-ladder"><div><span>POSSIBLE INPUT</span><b>Permitted source found</b></div><span aria-hidden="true">→</span><div><span>PRODUCT OUTCOME</span><b>Verified task completed</b></div><span aria-hidden="true">→</span><div><span>BUSINESS RESULT</span><b>Repeat valuable use</b></div></div><p>The arrows are hypotheses until evidence supports them. A North Star is a candidate focus measure, not permission to ignore guardrails.</p></section>
+    ${sessionLessonExercise()}
+    <section class="session-block session-revision"><span class="session-label">06 / QUICK REVISION</span><h2>Five things to remember</h2><ol><li>Start with the customer's job.</li><li>Define the event, unit, cohort, period, and calculation.</li><li>Inputs are possible drivers; outcomes show the result.</li><li>A North Star needs quality and safety guardrails.</li><li>A funnel shows where loss occurs, not why.</li></ol></section>
+    <details class="session-depth"><summary>Deep dive: funnels, retention, and full Week 7 reading <span aria-hidden="true">+</span></summary><p>Use a funnel to locate the step where tasks stop. Use retention cohorts to see whether the same starting group returns to a meaningful action. Neither alone explains the cause. The Session 13 AI-generated note also discusses marketplace measures, referrals, revenue, and unit economics.</p><div><a href="#week-7-concept-1">Metric definitions ↗</a><a href="#week-7-concept-2">Metric ladder ↗</a><a href="#week-7-concept-3">Funnels and cohorts ↗</a></div></details>
+    <nav class="session-next" aria-label="Lesson next steps"><a href="#home">All class notes ↗</a><a href="#daily">Practise another decision ↗</a></nav>
+  </div></main>${footer()}`;
+}
+
+function sessionLessonExercise() {
+  const picked=state.sessionChoice;
+  const labels=["Number of tool calls","Weekly verified customer tasks completed","Number of chat responses"];
+  const feedback=["Tool calls show activity. Retries can increase this count while value falls.","Good candidate. Define the eligible task, verified end state, cohort, and period before using it.","A response can sound useful while the customer's task remains unfinished."];
+  return `<section class="session-block session-exercise"><span class="session-label">05 / MAKE THE PM CALL</span><h2>Which metric would you take into review?</h2><p>The agent team has more usage this week. Choose the best <em>starting candidate</em> for customer value.</p><div class="session-choices">${labels.map((label,index)=>`<button type="button" data-session-choice="${index}" aria-pressed="${picked===index}" class="${picked===index?"selected":""}">${esc(label)}</button>`).join("")}</div>${picked!==null?`<div class="session-feedback" tabindex="-1" role="status"><strong>${picked===1?"A useful starting choice":"Look closer at the end state"}</strong><p>${feedback[picked]}</p><p>Next: specify eligibility, the verified end state, cohort, time window, exclusions, and guardrails.</p></div>`:""}</section>`;
 }
 
 function searchCard(item) {
@@ -280,11 +313,13 @@ function riceLab() {
 }
 
 function render() {
-  document.title = state.week ? `${weeks[state.week-1].title} · Product Masterclass` : state.page === "daily" ? "Daily practice · Product Masterclass" : state.page === "glossary" ? "Glossary · Product Masterclass" : state.page === "case" ? "Case journey · Product Masterclass" : state.page === "platform" ? "AI platform lens · Product Masterclass" : state.page === "ai" ? "AI-first PM track · Product Masterclass" : state.page === "capstone" ? "Capstone · Product Masterclass" : "Product Masterclass · Learn the thinking behind the work";
-  app.innerHTML = state.page === "lesson" ? lesson() : state.page === "daily" ? dailyPage() : state.page === "glossary" ? glossaryPage() : state.page === "case" ? casePage() : state.page === "platform" ? platformPage() : state.page === "ai" ? aiPage() : state.page === "capstone" ? capstonePage() : home();
+  document.title = state.week ? `${weeks[state.week-1].title} · Product Masterclass` : state.page === "daily" ? "Daily practice · Product Masterclass" : state.page === "glossary" ? "Glossary · Product Masterclass" : state.page === "case" ? "Case journey · Product Masterclass" : state.page === "platform" ? "AI platform lens · Product Masterclass" : state.page === "ai" ? "AI-first PM track · Product Masterclass" : state.page === "capstone" ? "Capstone · Product Masterclass" : state.page === "session" ? "Analytics and Metrics Part 1 · Class Notes" : "Product Masterclass · Learn the thinking behind the work";
+  app.innerHTML = state.page === "session" ? sessionLesson() : state.page === "lesson" ? lesson() : state.page === "daily" ? dailyPage() : state.page === "glossary" ? glossaryPage() : state.page === "case" ? casePage() : state.page === "platform" ? platformPage() : state.page === "ai" ? aiPage() : state.page === "capstone" ? capstonePage() : home();
 }
 
 document.addEventListener("click", event => {
+  const sessionChoice=event.target.closest("[data-session-choice]");
+  if (sessionChoice) { state.sessionChoice=Number(sessionChoice.dataset.sessionChoice); document.querySelector(".session-exercise").outerHTML=sessionLessonExercise(); document.querySelector(".session-feedback")?.focus(); return; }
   const visualNode=event.target.closest("[data-visual-node]");
   if (visualNode) {
     state.visualNode=Number(visualNode.dataset.visualNode);
@@ -393,6 +428,10 @@ document.addEventListener("input", event => {
     return;
   }
   if (event.target.dataset.capstone) { try { localStorage.setItem(`pm-capstone-${event.target.dataset.capstone}`, event.target.value); } catch { /* Private browsing may block local storage. */ } return; }
+  if (event.target.id === "session-search") {
+    const selection=event.target.selectionStart; state.sessionSearch=event.target.value; render();
+    const input=document.getElementById("session-search"); input.focus(); input.setSelectionRange(selection,selection); return;
+  }
   if (event.target.id === "course-search") {
     const selection = event.target.selectionStart;
     state.search = event.target.value;
