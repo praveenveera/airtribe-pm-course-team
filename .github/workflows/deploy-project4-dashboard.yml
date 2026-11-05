@@ -43,6 +43,14 @@ jobs:
           test -s _site/masterclass/simulations.js
           test -s _site/masterclass/diagrams/market-scope.html
 
+      - name: Assemble Airbnb assignment workspace
+        run: |
+          mkdir -p _site/airbnb
+          cp site/airbnb/*.html _site/airbnb/
+          test -s _site/airbnb/index.html
+          test -s _site/airbnb/research.html
+          test -s _site/airbnb/market-research.html
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
